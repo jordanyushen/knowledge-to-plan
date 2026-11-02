@@ -1,0 +1,4 @@
+interface:
+  display_name: "KnowledgeToPlan"
+  short_description: "将资料转为学习计划、离线课程与测验，配学习进度总览和每日学习量地图"
+  default_prompt: "使用 $knowledge-to-plan，根据我导入的资料和背景，评估时间预算并生成指定天数与每日时长的离线互动课程，包含学习进度总览和每日学习量地图。"

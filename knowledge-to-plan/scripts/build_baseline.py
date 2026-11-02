@@ -1,0 +1,220 @@
+#!/usr/bin/env python3
+"""Build a self-contained, clearly labelled dashboard baseline for review."""
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'scripts'))
+from build_learning_site import build
+
+
+def question(number, prompt, options, correct, explanations):
+    return dict(id=f'q{number}', prompt=prompt, options=options,
+                correct_index=correct, explanations=explanations)
+
+
+def lesson(day, title, objective, body, example, practice, takeaways, questions, review=None):
+    item = dict(id=f'day-{day:02d}', day=day, title=title, objectives=[objective],
+                activities=[dict(kind='read', minutes=6), dict(kind='practice', minutes=8),
+                            dict(kind='review', minutes=2), dict(kind='quiz', minutes=4)],
+                sections=[dict(title=title, body=body, example=example)],
+                practice=practice, takeaways=takeaways, questions=questions,
+                source_ids=['original-demo'])
+    if review:
+        item['review_of'] = review
+    return item
+
+
+def make_plan():
+    return dict(schema_version=1,
+        course=dict(id='ktp-baseline-v01-learning-methods-demo', title='7天学习方法 · 演示课程',
+                    goal='把模糊的学习目标，变成每天能执行、能检查的小步骤。',
+                    background='原创演示课程；预置进度仅用于评审 dashboard，不代表真实学习记录。',
+                    days=7, daily_minutes=20, timezone='Asia/Hong_Kong'),
+        sources=[dict(id='original-demo', title='原创教学示例',
+                      locator='本示例的7课讲解、练习与题目由作者原创，用于展示计划、测验和进度的交互；没有引用外部原文。')],
+        lessons=[
+            lesson(1, '目标拆分：把「想学会」写具体', '写出包含动作、条件和结果的可检查学习目标。',
+                '学习目标需要告诉你：要做什么、在什么条件下做、怎样检查结果。\n'
+                '「了解单位换算」没有说明怎样验收；「不看笔记，将3个毫米数值换算成米，并写出换算关系」包含动作、条件和结果。\n'
+                '先写最终要交付的结果，再拆成能在一次学习中完成的步骤。目标可以很小，但结果要能看见。',
+                '想学会单位换算 → 说出1米=1000毫米 → 完成3道换算 → 用一个生活例子解释为什么数值变了、长度没变。',
+                '用8分钟改写目标「学会做演示」：给定明天需要向同学介绍一本书、发言2分钟。写出一个能验收的目标，再拆成3个步骤。\n'
+                '输出：1句目标 + 3个步骤 + 1条验收标准。最后用2分钟遮住讲解，回忆目标的三个要素。',
+                ['目标包含动作、条件、结果。', '先确定结果，再拆小步骤。'],
+                [question(1, '哪个目标最容易检查是否完成？', ['了解单位换算', '不看笔记完成3道毫米转米换算，并写出换算关系', '努力学习数学'], 1,
+                          ['「了解」没有说明验收动作和结果。', '它写出了不看笔记的条件、换算动作，以及3道题和换算关系的产出。', '「努力」描述态度，没有可检查的结果。']),
+                 question(2, '拆分学习目标时，第一步最合适的是？', ['先写最终要交付的结果', '先收集尽可能多的书', '先决定要使用哪种笔记颜色'], 0,
+                          ['先知道最终产出，才能判断哪些步骤必要。', '资料可以帮助学习，但资料数量不能代替目标。', '笔记颜色不决定学习成果。']),
+                 question(3, '「不看笔记」在目标中属于哪一部分？', ['结果数量', '学习主题', '执行条件'], 2,
+                          ['结果数量例如3道题；不看笔记不是数量。', '主题例如单位换算；不看笔记不说明学什么。', '它限定了完成任务时可以使用的信息，属于执行条件。'])]),
+            lesson(2, '任务安排：给每一步留出时间', '把一天的20分钟分给讲解、练习、回忆和检查。',
+                '时间预算是一天可用的总时长。把任务写进计划前，先把各部分分钟相加。\n'
+                '本演示采用阅读6分钟、练习8分钟、复习2分钟、测验4分钟，合计20分钟。练习和检查也占时间。\n'
+                '如果估算超过预算，先缩小今天的任务范围，保留一个能完成并检查的小成果；需要改变天数或时长时，要明确重新约定。',
+                '一天只有20分钟，却安排阅读15分钟、练习10分钟、检查5分钟，共30分钟。可把阅读缩到一个概念，安排6+8+2+4分钟。',
+                '给定20分钟和任务：阅读6分钟、例题8分钟、回忆2分钟、测验4分钟。先核算合计，再写出今天只学习的一个概念。\n'
+                '输出：4段时间表、总分钟数、一个具体成果。用2分钟回忆昨天目标的三个要素。',
+                ['学习、练习、复习和测验都计入预算。', '超时后调整任务范围或重新约定约束。'],
+                [question(1, '6分钟阅读+8分钟练习+2分钟复习+4分钟测验，共多久？', ['18分钟', '20分钟', '24分钟'], 1,
+                          ['6+8+2+4等于20，18少算了2分钟。', '四项合计20分钟。', '合计20分钟，24多算了4分钟。']),
+                 question(2, '可用20分钟，任务估计30分钟，怎样处理最符合本课方法？', ['把超出的10分钟藏在计划外', '省略所有检查直接算完成', '缩小今天范围，保留可验收的成果'], 2,
+                          ['隐藏时间不会让任务变得可完成。', '没有检查就无法判断目标是否达成。', '缩小范围能尊重预算，同时保留学习闭环。']),
+                 question(3, '哪些活动需要计入一天的时间预算？', ['讲解、练习、复习和测验', '只有看讲解', '只有测验'], 0,
+                          ['这些活动都会消耗当天可用时间。', '练习等活动也占用时间。', '讲解、练习和复习也需要时间。'])], [1]),
+            lesson(3, '主动回忆：先试着说，再对照', '完成一次「遮住材料—回答—对照—补缺」的小循环。',
+                '主动回忆的操作是先遮住材料，试着从记忆中说出或写出答案，然后再打开材料对照。\n'
+                '对照时记录具体缺口，例如「记得要除，但忘了除以1000」。随后补上缺口，再遮住材料回答一次。\n'
+                '本课的检查依据是你独立给出的答案，不把「刚看过觉得熟悉」直接记成通过。',
+                '遮住「1米=1000毫米」，回答「500毫米是多少米」。写出0.5米，再打开材料检查换算方向和单位。',
+                '阅读并记住：1米=1000毫米；毫米转米时除以1000。遮住讲解，完成250毫米、1200毫米、80毫米转米。\n'
+                '输出：0.25米、1.2米、0.08米；圈出与答案不同的地方，写一句原因，再遮住答案重做错题。',
+                ['先独立尝试，再对照材料。', '把缺口写具体，补完后再试一次。'],
+                [question(1, '本课主动回忆循环的第一步是？', ['遮住材料，独立尝试回答', '立即复制答案', '先宣布自己已掌握'], 0,
+                          ['先独立尝试，才能看见自己实际能回忆什么。', '复制无法提供独立回忆的证据。', '需要回答与对照后才能判断掌握情况。']),
+                 question(2, '250毫米等于多少米？', ['2.5米', '250000米', '0.25米'], 2,
+                          ['250÷1000=0.25，2.5比结果大10倍。', '毫米转米应除以1000，不能乘以1000。', '250÷1000=0.25米。']),
+                 question(3, '对照材料后，哪个记录最能帮助补缺？', ['我很笨', '我把毫米转米写成乘法，下次先写1米=1000毫米', '反正看起来差不多'], 1,
+                          ['这没有指出哪个步骤需要修改。', '它标出了方向错误，并给出下一次的检查动作。', '没有定位差异，无法安排针对性练习。'])], [1, 2]),
+            lesson(4, '间隔复习：隔一段时间，再取出来', '为一个知识点安排两次有间隔的独立回忆。',
+                '本课把「隔一段时间再回忆旧内容」作为间隔复习的操作定义。它和同一时刻连续抄写不同。\n'
+                '一个可执行的小安排是：今天学习后做一次检查，明天用2分钟回忆，三天后再用2分钟回忆。这里的日期是练习方案示例，不是适合所有人的固定最佳间隔。\n'
+                '复习先独立回答，再看资料；根据错误调整下次要复习的内容，避免只重复已经熟练的题。',
+                '周一学习单位换算；周二遮住笔记做250毫米转米；周四再做1200毫米转米，并说明换算方向。',
+                '给定今天是周一，知识点是毫米转米。写出周二与周四各2分钟的复习任务，题目分别用250毫米和1200毫米。\n'
+                '输出：两个复习日期、每次的题目、正确答案（0.25米和1.2米）、出错后的补缺动作。',
+                ['隔开复习时点，任务依然要具体。', '间隔示例可以按实际错误调整。'],
+                [question(1, '哪个安排符合本课的间隔复习定义？', ['现在连续抄写10遍', '明天和三天后分别独立回忆一次', '只把笔记换个颜色'], 1,
+                          ['这发生在同一时段，没有隔开复习时点。', '两次回忆之间存在时间间隔。', '换颜色没有安排再次回忆。']),
+                 question(2, '课内「明天、三天后」的间隔应怎样理解？', ['所有人必须照做的最佳间隔', '永远不能调整的考试规则', '一个可按实际错误调整的示例'], 2,
+                          ['课内明确它是方案示例，没有规定适合所有人。', '它是复习安排，不是考试规则。', '可根据掌握情况与错误调整复习内容。']),
+                 question(3, '打开复习资料前，建议先做什么？', ['独立尝试回答旧内容', '把答案直接抄下来', '删除上次错题'], 0,
+                          ['独立回忆后再对照，能看见本次缺口。', '直接抄写无法检查独立回忆。', '错题提供了复习线索，不应为省事删掉。'])], [3]),
+            lesson(5, '例子迁移：换个情境，再用一次', '在新情境中使用同一条规则，并说明适用条件。',
+                '迁移练习是把同一规则用到新的数值或情境。先找到不变的关系，再处理表面上变了的条件。\n'
+                '毫米转米的关系是除以1000。对象从绳子换成桌面长度，规则仍适用，因为都在换算长度单位。\n'
+                '应用前检查数量属于什么类型、原单位和目标单位是什么。同一个数字不能脱离单位直接套公式。',
+                '一根线长500毫米，是0.5米；桌面长1200毫米，是1.2米。对象与数值变了，长度单位换算关系不变。',
+                '给定：卡片宽85毫米、书架宽900毫米、笔长140毫米。分别换算成米，并写出共同规则。\n'
+                '输出：0.085米、0.9米、0.14米；说明这些例子都在进行长度单位换算。',
+                ['先找不变关系，再处理新情境。', '使用规则前检查数量类型与单位。'],
+                [question(1, '桌面长1200毫米，换成米是？', ['1.2米', '12米', '1200000米'], 0,
+                          ['1200÷1000=1.2米。', '12比正确结果大10倍。', '毫米转米不能乘以1000。']),
+                 question(2, '绳子和桌面的例子中，不变的关系是什么？', ['物体名字必须相同', '毫米转米时除以1000', '所有长度的数值都相同'], 1,
+                          ['名字可以变化，单位换算仍成立。', '两个例子都使用同一长度换算关系。', '不同长度的数值不需要相同。']),
+                 question(3, '在新情境套用换算规则前，应先检查？', ['页面颜色', '题目字数', '数量类型、原单位与目标单位'], 2,
+                          ['颜色不决定换算关系。', '字数不能说明该用哪条规则。', '这些条件决定规则是否适用以及换算方向。'])], [3, 4]),
+            lesson(6, '错题订正：改答案，也改判断步骤', '为一次错误写出原因与下次检查动作，再独立重做。',
+                '一条可复习的错题记录包括原题、误选、错误原因、正确过程和下一次的检查动作。\n'
+                '只把答案改成正确值，还没有展示能否独立解决。订正后遮住答案重做，或换一个数值再做。\n'
+                '本页面的课程通过要求全部题目订正正确；错题历史仍然保留，用来安排复习。页面通过不等于所有实际任务能力都已验收。',
+                '误写500毫米=500000米。原因：把应除以1000的方向写成了乘法。检查动作：先写1米=1000毫米，再判断换成较大单位时数值应减小。',
+                '给定错误「80毫米=80000米」。写出错误原因与正确过程，再遮住答案完成140毫米转米。\n'
+                '输出：80÷1000=0.08米；140÷1000=0.14米；一句下次检查动作。',
+                ['订正保留原因与可执行的检查动作。', '订正后独立重做，再判断是否掌握。'],
+                [question(1, '哪种订正最完整？', ['只写正确选项字母', '说明错误原因、正确过程与检查动作，再独立重做', '删掉错题当作没发生'], 1,
+                          ['字母不能说明为什么错或怎样避免重犯。', '它同时记录原因、过程和后续验证。', '删除不能提供补缺证据。']),
+                 question(2, '80毫米的正确结果是？', ['80000米', '0.8米', '0.08米'], 2,
+                          ['这里应除以1000，不能乘以1000。', '80÷1000=0.08，0.8大了10倍。', '80÷1000=0.08米。']),
+                 question(3, '全部测验订正正确后，页面通过表示？', ['本课知识检查通过，实际能力仍可另行验收', '以后永远不会再错', '已经完成所有真实项目'], 0,
+                          ['这是本页面所采用的通过口径。', '一次知识检查不能保证未来永远正确。', '测验没有替代所有实际项目的验证。'])], [3, 5]),
+            lesson(7, '阶段复盘：用证据决定下一步', '用完成记录、独立回答与错题确定下一阶段任务。',
+                '阶段复盘先回到最初的目标，检查已经产生的成果，再确定还缺什么。\n'
+                '可以分三栏记录：已经能独立完成、需要提示才能完成、仍然做错。每一栏写一个具体证据，例如题目或输出文件。\n'
+                '下一步优先安排明确缺口。打卡记录学习活动；课程通过按测验计算；通过课次的计划分钟是安排时长的汇总，不是实际计时。三者回答不同的问题。',
+                '已独立完成3道换算；需要提示才能解释方向；仍把80毫米写成0.8米。下一次先练数量级检查，再遮住材料解释一次。',
+                '给定本周目标是独立换算并解释规则。先不看笔记完成250毫米和1200毫米转米，再用自己的话解释。\n'
+                '输出：两题答案、一句规则、三栏复盘各一条、下一次20分钟只补的一个缺口。',
+                ['用具体证据描述已会与未会。', '打卡、测验通过与计划分钟各有口径。'],
+                [question(1, '哪条复盘最能指导下一步？', ['这周好像学了很多', '我的页面很好看', '我能换算250毫米，但解释方向仍需提示，下一次练口述'], 2,
+                          ['没有具体成果或缺口，难以安排下一步。', '页面外观不是这次学习目标的证据。', '它包含已会内容、缺口与下一次任务。']),
+                 question(2, '点击「今日打卡」后，课程通过数应怎样变化？', ['自动多通过一课', '依据测验状态计算，打卡本身不增加通过数', '自动全部通过'], 1,
+                          ['打卡记录活动，课程通过依赖测验。', '这与页面口径一致：活动记录和测验通过分别计算。', '打卡不能替代全部课程的知识检查。']),
+                 question(3, '「已通过课次的计划分钟」表示什么？', ['已通过课程所安排分钟数的合计', '浏览器精确测得的学习时长', '本周所有活动的实际时间'], 0,
+                          ['它按课程活动安排汇总，不进行实际计时。', '页面没有用这一指标执行计时。', '它只汇总已通过课次的计划分钟，不覆盖所有实际活动。'])], [1, 2, 3, 4, 5, 6])])
+
+
+DEMO_STYLE = '''<style>
+.demo-banner{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:12px 4vw;background:#eee8d5;border-bottom:1px solid #d9cfb2;font-size:11px;line-height:1.8;color:#665b39}
+.demo-banner strong{display:block;font-size:12px;color:#443c27}.demo-banner p{margin:0}.demo-banner nav{display:flex;gap:8px;flex:none}.demo-banner a{padding:6px 11px;border:1px solid #c7bc9e;border-radius:7px;text-decoration:none;color:#665b39;white-space:nowrap}.demo-banner a[aria-current="page"]{background:#fffdf4;color:#244d3c;border-color:#8d9b7c;font-weight:650}
+@media(max-width:650px){.demo-banner{align-items:flex-start;flex-direction:column;padding:12px 22px;gap:9px}.demo-banner p{font-size:10px}.demo-banner nav{gap:8px}}
+@media print{.demo-banner{display:none}}
+</style>'''
+
+DEMO_BANNER = '''
+<div class="demo-banner" role="note" aria-label="演示模式说明">
+  <div><strong id="demo-mode-label">Baseline v0.1 · 示例数据</strong><p id="demo-mode-note">示例进度与历史打卡仅用于展示界面；可继续操作，也可切换到独立的空白试用。</p></div>
+  <nav aria-label="演示模式"><a id="demo-sample" href="?mode=sample#dashboard">示例数据</a><a id="demo-empty" href="?mode=empty#dashboard">空白试用</a></nav>
+</div>
+'''
+
+DEMO_SCRIPT = r'''<script>
+(() => {
+  'use strict';
+  const empty = new URLSearchParams(location.search).get('mode') === 'empty';
+  const data = window.COURSE;
+  if (empty) data.course.id += '-empty';
+  document.getElementById(empty ? 'demo-empty' : 'demo-sample').setAttribute('aria-current', 'page');
+  document.getElementById('demo-mode-label').textContent = 'Baseline v0.1 · ' + (empty ? '空白试用' : '示例数据');
+  if (empty) {
+    document.getElementById('demo-mode-note').textContent = '从零尝试学习、打卡和备份；本模式的记录独立保存在当前浏览器。课程内容仍为原创演示示例。';
+    return;
+  }
+  const key = 'knowledge-to-plan:v1:' + data.course.id;
+  try {
+    if (localStorage.getItem(key) !== null) return;
+    const now = Date.now(), ago = days => now - days * 86400000;
+    const formatter = new Intl.DateTimeFormat('en-US', { timeZone: data.course.timezone, year: 'numeric', month: '2-digit', day: '2-digit' });
+    const dateKey = at => {
+      const parts = formatter.formatToParts(new Date(at));
+      const part = type => parts.find(item => item.type === type).value;
+      return `${part('year')}-${part('month')}-${part('day')}`;
+    };
+    const payload = { schema_version: 1, course_id: data.course.id, answers: {}, notes: {}, checkins: {}, lastDay: 4, view: 'dashboard', cursors: { 'l:day-04': 1 } };
+    const offsets = [88,82,78,74,68,63,60,55,48,41,35,29,24,20,15,11,8,5,4,3,2,1];
+    for (const offset of offsets) {
+      const at = ago(offset);
+      payload.checkins[dateKey(at)] = { at, kind: offset % 3 ? 'study' : 'manual' };
+    }
+    const putAnswer = (lesson, question, selected, at, priorWrong = false) => {
+      const attempts = priorWrong ? [{ selected: (question.correct_index + 1) % question.options.length, at: at - 60000 }] : [];
+      attempts.push({ selected, at });
+      payload.answers['q:' + JSON.stringify([lesson.id, question.id])] = {
+        fingerprint: JSON.stringify([question.prompt, question.options, question.correct_index, question.explanations]),
+        selected, submitted: true, updated_at: at, attempts
+      };
+    };
+    data.lessons.slice(0, 3).forEach((lesson, index) => {
+      const completedDaysAgo = index < 2 ? 3 : 2;
+      lesson.questions.forEach((question, qi) => putAnswer(lesson, question, question.correct_index, ago(completedDaysAgo) - (3 - qi) * 1000, index === 1 && qi === 1));
+      payload.notes['l:' + lesson.id] = { text: '示例笔记：' + lesson.takeaways[0] + '\n这是一条用于展示学习记录的预置内容。', updated_at: ago(completedDaysAgo) };
+    });
+    const fourth = data.lessons[3];
+    putAnswer(fourth, fourth.questions[0], fourth.questions[0].correct_index, ago(1) - 3000);
+    putAnswer(fourth, fourth.questions[1], (fourth.questions[1].correct_index + 1) % fourth.questions[1].options.length, ago(1) - 2000);
+    localStorage.setItem(key, JSON.stringify(payload));
+  } catch (_) {
+    document.getElementById('demo-mode-note').textContent = '当前浏览器不能保存示例记录，页面将以空白状态展示；课程内容仍为原创演示示例。';
+  }
+})();
+</script>'''
+
+
+def main():
+    result = build(make_plan(), ROOT / 'assets' / 'baseline', overwrite=True,
+                   expected_days=7, expected_daily_minutes=20)
+    html_path = Path(result['html'])
+    html = html_path.read_text(encoding='utf-8')
+    html = html.replace('</head>', DEMO_STYLE + '\n</head>', 1)
+    html = html.replace('<body>', '<body>\n' + DEMO_BANNER, 1)
+    # Inject after the COURSE data script, immediately before the bundled app.
+    course_start = html.index('<script>window.COURSE=')
+    course_end = html.index('</script>', course_start) + len('</script>')
+    html = html[:course_end] + '\n  ' + DEMO_SCRIPT + html[course_end:]
+    html_path.write_text(html, encoding='utf-8')
+    print(json.dumps({**result, 'preview_modes': ['sample', 'empty'], 'demo_records': 'clearly labelled; separate local namespaces'}, ensure_ascii=False))
+
+
+if __name__ == '__main__':
+    main()

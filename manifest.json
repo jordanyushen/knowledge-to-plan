@@ -1,0 +1,87 @@
+{
+  "release_date": "2026-11-02",
+  "archive": "dist/knowledge-to-plan-2026-11-02.zip",
+  "archive_sha256": "ad32b05b67f35a8bf4eab663f359a707cf7afd93326bad2b884fd541f84b8f61",
+  "files": [
+    {
+      "path": "knowledge-to-plan/SKILL.md",
+      "bytes": 9466,
+      "sha256": "de658b47e46618bcbbf973576ae943fe9e7fbf3de9488e2672dc49b8f2f717c2"
+    },
+    {
+      "path": "knowledge-to-plan/agents/openai.yaml",
+      "bytes": 382,
+      "sha256": "d2fea58311938b205131ddb29afcf5460b94ae6724da0a8c53edba618381a533"
+    },
+    {
+      "path": "knowledge-to-plan/assets/baseline/index.html",
+      "bytes": 83353,
+      "sha256": "9ec5b8148816783a829635fe432dd557c3d4d488a10bd8a5c822bf7d959dc46d"
+    },
+    {
+      "path": "knowledge-to-plan/assets/baseline/plan.json",
+      "bytes": 24245,
+      "sha256": "cdb4d8811f34816626f35cadfa541d90bb1afc38fa9c99cbf8e4d9f9bfcc383f"
+    },
+    {
+      "path": "knowledge-to-plan/assets/learning-site/app.js",
+      "bytes": 35794,
+      "sha256": "fc42b5e952377417d2fdd13e0eca7376314ac87439c30fe65697bf80006a8fe9"
+    },
+    {
+      "path": "knowledge-to-plan/assets/learning-site/index.html",
+      "bytes": 2606,
+      "sha256": "52b23f0e465680c2a17f0d454d06ea059050189f6f13bc6e0d1b33247bcf0b6a"
+    },
+    {
+      "path": "knowledge-to-plan/assets/learning-site/style.css",
+      "bytes": 23146,
+      "sha256": "12b62f14f163c3492104053c73928b6ecc8560f69d1a918499966020fcf0060b"
+    },
+    {
+      "path": "knowledge-to-plan/references/dashboard-standard.md",
+      "bytes": 7388,
+      "sha256": "ea2ad20471b7b9ccd18549ea53f934296ef230049117d5773dfce8b77e5d2645"
+    },
+    {
+      "path": "knowledge-to-plan/references/delivery.md",
+      "bytes": 3334,
+      "sha256": "ad6f7cf7b4d5171aca992091271a31c85a94d1521ea64b907ae68cbed702a5d4"
+    },
+    {
+      "path": "knowledge-to-plan/references/plan-schema.md",
+      "bytes": 5138,
+      "sha256": "fbfba464e67afb66f0246d52ddff9e7bd7c34438846dcf8c4f4ab14084db6287"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/assess_budget.py",
+      "bytes": 8172,
+      "sha256": "302a618a70b40e3c20615da339f5a66f2ce03dea2abb195eec8170917052b0fd"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/build_baseline.py",
+      "bytes": 22742,
+      "sha256": "ee49b75a5358d3956bf3b57d76ddd3c257e3f5fd6975fa6b2fd778face3b3042"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/build_learning_site.py",
+      "bytes": 6893,
+      "sha256": "d325e09caac6c54a59385d3f4306b38dfddc8082ebf51d6d5342d7cb478ca1c1"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/test_runtime.cjs",
+      "bytes": 28193,
+      "sha256": "657192471b9417d0b4c2c67998a63975626f9b16851f2df17fd944c805ab3b67"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/test_workflow.py",
+      "bytes": 8571,
+      "sha256": "3ce97cadff255c53946506ec4016cc622c7f567966e999988e26b2e2d40b6709"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/validate_plan.py",
+      "bytes": 9857,
+      "sha256": "16a8f33ea4b6af511a099de722d4a4b5d00a018a64618744cc67a83c1b0f8a81"
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>KnowledgeToPlan · 学习计划</title>
+  <style>{{STYLE}}</style>
+</head>
+<body>
+  <a class="skip" href="#main">跳到学习内容</a>
+  <header class="topbar">
+    <a class="brand" href="#dashboard" aria-label="KnowledgeToPlan 学习总览"><span class="brand-icon" aria-hidden="true">K</span>KnowledgeToPlan</a>
+    <span class="tagline">把知识，变成每天的进步。</span>
+    <button id="menu-toggle" class="menu-toggle" aria-controls="sidebar" aria-expanded="false">课程目录</button>
+  </header>
+  <div id="storage-warning" class="warning" role="status" hidden></div>
+  <div class="layout">
+    <aside id="sidebar" class="sidebar" aria-label="学习计划与课程目录">
+      <p class="eyebrow">YOUR LEARNING PLAN</p>
+      <h1 id="course-title"></h1>
+      <p id="course-meta" class="muted"></p>
+      <div class="progress-line"><span id="progress-label"></span><strong id="progress-percent"></strong></div>
+      <progress id="course-progress" max="100" value="0" aria-label="学习计划完成进度"></progress>
+      <button id="dashboard-link" class="tool-button dashboard-link">学习总览 <span aria-hidden="true">↗</span></button>
+      <nav id="lesson-list" class="lesson-list" aria-label="每日课程"></nav>
+      <div class="sidebar-tools">
+        <button id="wrong-book" class="tool-button">错题回顾 <span id="wrong-count" class="count">0</span></button>
+        <button id="export-progress" class="tool-button">导出学习记录 <span aria-hidden="true">↗</span></button>
+        <button id="import-progress" class="tool-button">导入学习记录 <span aria-hidden="true">↙</span></button>
+        <input id="import-file" type="file" accept="application/json,.json" hidden>
+      </div>
+      <p class="local-note">进度和笔记保存在当前浏览器。定期导出，即可备份或换设备继续学习。</p>
+    </aside>
+    <main id="main" tabindex="-1">
+      <div id="notice" class="notice" role="status" aria-live="polite" hidden></div>
+      <div id="lesson-heading"></div>
+      <nav id="study-tabs" class="study-tabs" aria-label="学习步骤"></nav>
+      <section id="content" aria-label="学习内容"></section>
+      <footer class="page-footer">KnowledgeToPlan <span>每天学一点，让理解慢慢扎根。</span></footer>
+    </main>
+  </div>
+  <script>window.COURSE={{COURSE_JSON}};</script>
+  <script>{{SCRIPT}}</script>
+</body>
+</html>
