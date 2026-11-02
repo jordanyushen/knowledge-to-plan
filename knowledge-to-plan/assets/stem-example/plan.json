@@ -1,0 +1,167 @@
+{
+  "schema_version": 1,
+  "course": {
+    "id": "stem-ohms-law-expression-example",
+    "title": "公式与示意图 · 欧姆定律教学示例",
+    "goal": "在明确条件与参考方向的直流电路中，读懂电路图并用欧姆定律求电流。",
+    "background": "认识四则运算，初次学习电压、电流与电阻。此内容用于验证公式排版和示意图，不是用户的正式学习计划。",
+    "days": 1,
+    "daily_minutes": 20,
+    "timezone": "Asia/Hong_Kong"
+  },
+  "sources": [
+    {
+      "id": "openstax-ohm",
+      "title": "OpenStax · University Physics Volume 2 · 9.4 Ohm’s Law",
+      "url": "https://openstax.org/books/university-physics-volume-2/pages/9-4-ohms-law",
+      "locator": "Description of Ohm’s Law：欧姆元件的电流与两端电压成正比；本例用 U 表示原文中的电压 V。"
+    },
+    {
+      "id": "original-circuit",
+      "title": "原创教学示意图与给定数值",
+      "locator": "本示例原创绘制的理想直流电源与单个欧姆电阻闭合回路；给定电源12 V、电阻6 Ω，图不按比例。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "stem-ohm-01",
+      "day": 1,
+      "title": "先读图与条件，再代入公式",
+      "objectives": [
+        "说清电压 U、电流 I、电阻 R 的含义和单位。",
+        "将图中的电流参考方向、正负极性与 I = U/R 对应起来。",
+        "在本例条件下算出2 A，并说明该公式不能直接代表所有元件的特性。"
+      ],
+      "activities": [
+        {
+          "kind": "read",
+          "minutes": 6
+        },
+        {
+          "kind": "practice",
+          "minutes": 8
+        },
+        {
+          "kind": "notes",
+          "minutes": 2
+        },
+        {
+          "kind": "quiz",
+          "minutes": 4
+        }
+      ],
+      "sections": [
+        {
+          "title": "公式中的量与条件",
+          "body": "电压描述两点间的电势差，单位为伏特 V；电流表示电荷流动的速率，单位为安培 A；电阻的单位为欧姆 Ω。\n本例用 U 表示电阻两端电压，OpenStax 原文用 V 表示同一个物理量。写公式前先说明符号，不能将代表物理量的符号与单位混为一谈。\n对于温度保持稳定、满足欧姆特性的电阻，电流与其两端电压成正比。本例从 U = IR 求出 I = U/R，要求 R > 0；它不是对所有器件都成立的普遍线性特性。",
+          "formulas": [
+            {
+              "title": "由电压和电阻求电流",
+              "expression": "I = U/R",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>I</mi><mo>=</mo><mfrac><mi>U</mi><mi>R</mi></mfrac></mrow></math>",
+              "explanation": "将 U = IR 的两边除以非零电阻 R。分式的整个分母是 R；单位关系为 V/Ω = A。计算中的 U 是电阻两端电压，I 的参考方向采用下图所示的常规电流方向。",
+              "variables": [
+                {
+                  "symbol": "I",
+                  "meaning": "按图示参考方向流过电阻的电流",
+                  "unit": "A（安培）"
+                },
+                {
+                  "symbol": "U",
+                  "meaning": "电阻两端沿所约定极性取值的电压",
+                  "unit": "V（伏特）"
+                },
+                {
+                  "symbol": "R",
+                  "meaning": "本例欧姆电阻的电阻值",
+                  "unit": "Ω（欧姆）"
+                }
+              ],
+              "conditions": "本例为理想直流电源、可忽略电阻的导线和温度稳定的欧姆电阻组成的稳态回路；R > 0。对非欧姆元件不能直接假定 U 与 I 始终满足同一个恒定 R 的线性关系。",
+              "source_ids": [
+                "openstax-ohm"
+              ]
+            }
+          ],
+          "example": "已知电阻两端电压 U = 12 V、电阻 R = 6 Ω，且满足上述条件。代入：I = (12 V)/(6 Ω) = 2 A。数量与单位都相除，得到安培；结果为正，表示实际常规电流方向与图中参考箭头一致。"
+        },
+        {
+          "title": "把公式对应到闭合回路",
+          "body": "电路中只有理想直流电源、导线和一个电阻。导线压降按本例假设忽略，因此电阻两端电压为12 V。\n图中电源的上端标为正、下端标为负；常规电流从电源正端沿上方导线向右，经电阻向下，再沿下方导线返回负端。这里讨论常规电流方向，不把它当作金属中电子运动方向。\n图上的 U、I、R 与公式变量表使用相同符号；箭头、连接和正负号都是推理条件，不能用仅有装饰作用的图片替代。",
+          "diagrams": [
+            {
+              "title": "理想直流电源与单个欧姆电阻",
+              "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 720 260\" width=\"720\" height=\"260\"><title>12伏理想直流电源连接6欧姆电阻的闭合回路</title><desc>电源正端在上、负端在下。电流参考箭头沿上方导线向右，经过电阻并回到电源负端，电流为2安培。</desc><defs><marker id=\"current-arrow\" viewBox=\"0 0 8 8\" refX=\"7\" refY=\"4\" markerWidth=\"8\" markerHeight=\"8\" orient=\"auto\"><path d=\"M0 0 L8 4 L0 8 Z\" fill=\"#32674f\"/></marker></defs><rect x=\"1\" y=\"1\" width=\"718\" height=\"258\" rx=\"16\" fill=\"#f7f8f2\" stroke=\"#dce2d1\"/><path d=\"M130 102 V55 H540 V98 M540 182 V225 H130 V178\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"3\"/><circle cx=\"130\" cy=\"140\" r=\"38\" fill=\"#fffefa\" stroke=\"#142d3b\" stroke-width=\"3\"/><rect x=\"518\" y=\"98\" width=\"44\" height=\"84\" fill=\"#e8eee4\" stroke=\"#142d3b\" stroke-width=\"3\"/><path d=\"M280 55 H366\" fill=\"none\" stroke=\"#32674f\" stroke-width=\"3\" marker-end=\"url(#current-arrow)\"/><text x=\"130\" y=\"130\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"24\" fill=\"#142d3b\">+</text><text x=\"130\" y=\"163\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"26\" fill=\"#142d3b\">−</text><text x=\"324\" y=\"36\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"21\" fill=\"#32674f\">I = 2 A →</text><text x=\"582\" y=\"118\" font-family=\"sans-serif\" font-size=\"20\" fill=\"#142d3b\">U = 12 V</text><text x=\"582\" y=\"155\" font-family=\"sans-serif\" font-size=\"20\" fill=\"#142d3b\">R = 6 Ω</text><text x=\"130\" y=\"250\" text-anchor=\"middle\" font-family=\"sans-serif\" font-size=\"18\" fill=\"#6c797b\">理想12 V直流电源</text></svg>",
+              "alt": "闭合回路：左侧理想直流电源上端正、下端负，右侧为6 Ω电阻；常规电流沿上方导线向右流过电阻，I = 2 A，电阻两端电压U = 12 V。",
+              "caption": "按常规电流方向标箭头。电源正端连接电阻上端，负端连接下端；导线压降忽略，所以电阻两端U = 12 V。图不按比例，12 V与6 Ω是本例给定值，2 A由公式计算。",
+              "source_ids": [
+                "original-circuit"
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": {
+        "given": "理想直流电源12 V；欧姆电阻6 Ω；稳态、温度稳定；导线电阻忽略。电流参考方向与图中箭头一致。",
+        "task": "先写出求I的表达式，再代入带单位的数值；最后检查正负方向和单位。",
+        "expected_output": "I = U/R = (12 V)/(6 Ω) = 2 A；V/Ω = A；正号表示与图示参考方向一致。再写一句条件限制，说明不能直接把恒定R的线性模型用于所有器件。"
+      },
+      "takeaways": [
+        "公式必须连同变量含义、单位、适用条件和参考方向一起读。",
+        "本例I = (12 V)/(6 Ω) = 2 A；排成分式后，分子和分母的范围明确。",
+        "示意图中的连接、极性和电流方向应与文字及公式一致。"
+      ],
+      "questions": [
+        {
+          "id": "q-expression",
+          "prompt": "在R > 0且满足本例条件时，由U = IR求电流I，哪一种表达正确？",
+          "options": [
+            "I = U/R",
+            "I = UR",
+            "I = R/U"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "两边同除以非零的R，得到I = U/R；单位V/Ω为A。",
+            "乘以R不能解出原式中的I，单位V·Ω也不是电流单位。",
+            "把分子和分母颠倒了；R/U的单位Ω/V不是A。"
+          ]
+        },
+        {
+          "id": "q-calculation",
+          "prompt": "图示回路给定U = 12 V、R = 6 Ω，按图示参考方向求得的电流是多少？",
+          "options": [
+            "72 A",
+            "2 A",
+            "0.5 A"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "72来自把12与6相乘；本题应使用电压除以电阻。",
+            "I = (12 V)/(6 Ω) = 2 A，且正号与图示常规电流方向一致。",
+            "0.5来自把6除以12，换算方向颠倒，也忽略了单位对应。"
+          ]
+        },
+        {
+          "id": "q-condition",
+          "prompt": "下面哪句话准确说明了本例公式的适用条件？",
+          "options": [
+            "所有元件都能用同一个恒定R描述其全部电压、电流关系",
+            "图中的箭头就是金属中电子的运动方向",
+            "本例采用温度稳定的欧姆电阻和理想直流稳态模型，R > 0"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "非欧姆元件不一定呈电流与电压成正比的恒定R线性关系。",
+            "本图使用常规电流方向；不能将其直接等同于金属中电子的运动方向。",
+            "这些条件说明了为何能使用本课的恒定电阻模型，以及除以R为何合法。"
+          ]
+        }
+      ],
+      "source_ids": [
+        "openstax-ohm",
+        "original-circuit"
+      ]
+    }
+  ]
+}

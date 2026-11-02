@@ -6,6 +6,8 @@
 
 页面使用轻量动效，支持减少动态效果、手机布局和键盘操作。无需账户或外部字体、脚本；进度保存在当前浏览器，跨设备通过导出、导入接续。日历、云盘和在线发布按需连接。
 
+涉及公式的内容须核对来源、符号、单位、适用条件、计算结果和实际排版；需要表达连接、方向、结构或流程时，配套必要示意图。模板支持原生 MathML、符号单位表和内嵌 SVG，标准见 [stem-content-standard.md](knowledge-to-plan/references/stem-content-standard.md)。
+
 ## 安装
 
 下载 [打包文件](dist/knowledge-to-plan-2026-11-02.zip)，解压后将整个 `knowledge-to-plan` 文件夹放入 Codex 的 skills 目录（默认 `~/.codex/skills/`）。已有同名 skill 时先备份再替换。
@@ -15,6 +17,8 @@
 ## 查看演示
 
 下载或克隆仓库后，用浏览器打开 `knowledge-to-plan/assets/baseline/index.html`。演示含明确标注的示例数据和独立的空白试用；它们不会进入正式课程的生成流程。
+
+公式与电路图示例位于 `knowledge-to-plan/assets/stem-example/index.html`；示例用于验证表达与图文对应，正式课程使用自己的资料与课程ID。
 
 ## 生成课程
 

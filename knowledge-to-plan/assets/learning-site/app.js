@@ -281,7 +281,13 @@
     const kindNames = { read: '阅读', reading: '阅读', practice: '练习', quiz: '测验', review: '复习', notes: '笔记', exercise: '练习' };
     for (const a of lesson.activities) { const chip = make('div', 'activity', kindNames[a.kind] || a.kind); chip.append(make('span', '', a.minutes + ' 分钟')); activities.append(chip); } content.append(activities);
     if (lesson.review_of?.length) content.append(make('p', 'muted', '本课回顾：第 ' + lesson.review_of.join('、') + ' 天的内容。'));
-    for (const s of lesson.sections) { const el = card(s.title, s.body); if (s.example) { const example = make('div', 'example'); example.append(make('strong', '', '用一个例子理解'), make('div', 'example-body', s.example)); el.append(example); } content.append(el); }
+    for (const s of lesson.sections) {
+      const el = card(s.title, s.body);
+      for (const formula of Array.isArray(s.formulas) ? s.formulas : []) el.append(renderFormula(formula));
+      for (const diagram of Array.isArray(s.diagrams) ? s.diagrams : []) el.append(renderDiagram(diagram));
+      if (s.example) { const example = make('div', 'example'); example.append(make('strong', '', '用一个例子理解'), make('div', 'example-body', s.example)); el.append(example); }
+      content.append(el);
+    }
     const takeaways = card('带走这几个要点', '', 'soft'); takeaways.append(list('ul', 'takeaways', lesson.takeaways)); content.append(takeaways);
     const sources = data.sources.filter(s => lesson.source_ids.includes(s.id));
     if (sources.length) {
@@ -292,6 +298,89 @@
       } el.append(ul); content.append(el);
     }
     const actions = make('div', 'actions'); actions.append(button('开始练习与笔记 →', 'primary', () => changeTab('practice'))); content.append(actions);
+  }
+  function parseMathML(markup, expression) {
+    if (typeof DOMParser !== 'function') return { warning: '当前环境无法显示数学排版，已保留可读表达式。' };
+    const namespace = 'http://www.w3.org/1998/Math/MathML';
+    const elements = new Set(['math', 'mrow', 'mi', 'mn', 'mo', 'mtext', 'mfrac', 'msqrt', 'mroot', 'msup', 'msub', 'msubsup', 'munder', 'mover', 'munderover', 'mtable', 'mtr', 'mtd', 'mspace', 'mstyle']);
+    const attributes = new Set(['display', 'mathvariant', 'displaystyle', 'scriptlevel', 'stretchy', 'fence', 'separator', 'accent', 'accentunder', 'linethickness', 'columnalign', 'rowalign', 'columnspacing', 'rowspacing', 'notation', 'width', 'height', 'depth', 'lspace', 'rspace', 'mathsize', 'mathcolor', 'mathbackground', 'aria-label']);
+    const arity = { mfrac: 2, mroot: 2, msup: 2, msub: 2, msubsup: 3, munder: 2, mover: 2, munderover: 3 };
+    const tokens = new Set(['mi', 'mn', 'mo', 'mtext']);
+    try {
+      if (typeof markup !== 'string' || /<!\s*(?:DOCTYPE|ENTITY)|<\?/i.test(markup)) throw new Error('Unexpected declaration');
+      const xml = new DOMParser().parseFromString(markup, 'application/xml'), root = xml.documentElement;
+      if (!root || root.localName !== 'math' || root.namespaceURI !== namespace || xml.getElementsByTagName('parsererror').length) throw new Error('Invalid MathML');
+      let count = 0;
+      function check(node, depth = 0) {
+        if (++count > 1000 || depth > 40 || !elements.has(node.localName) || node.namespaceURI !== namespace) throw new Error('Unexpected MathML node');
+        for (const attr of Array.from(node.attributes)) {
+          if (attr.name === 'xmlns' && node === root && attr.value === namespace) continue;
+          if (attr.namespaceURI || !attributes.has(attr.name) || (attr.name === 'aria-label' && node !== root) || /url\s*\(|(?:javascript|https?|data)\s*:|@import|expression\s*\(/i.test(attr.value)) throw new Error('Unexpected MathML attribute');
+        }
+        const childNodes = Array.from(node.childNodes), children = childNodes.filter(child => child.nodeType === 1);
+        const directText = childNodes.filter(child => [3, 4].includes(child.nodeType)).map(child => child.textContent || '').join('');
+        if (arity[node.localName] && children.length !== arity[node.localName]) throw new Error('Invalid MathML arity');
+        if (node.localName === 'math' && !children.length) throw new Error('Empty MathML');
+        if (tokens.has(node.localName) ? children.length || !directText.trim() : directText.trim()) throw new Error('Unexpected MathML text');
+        if (/\\(?:[A-Za-z]+|[\[\]()])|\$\$/.test(directText)) throw new Error('Unrendered TeX');
+        if (node.localName === 'mtable' && (!children.length || children.some(child => child.localName !== 'mtr'))) throw new Error('Invalid MathML table');
+        if (node.localName === 'mtr' && (!children.length || children.some(child => child.localName !== 'mtd'))) throw new Error('Invalid MathML row');
+        for (const child of childNodes) {
+          if (child.nodeType === 1) check(child, depth + 1);
+          else if (![3, 4, 8].includes(child.nodeType)) throw new Error('Unexpected MathML content');
+        }
+      }
+      check(root);
+      const result = document.importNode(root, true);
+      result.setAttribute('display', 'block'); result.setAttribute('aria-label', expression);
+      return { node: result };
+    } catch (_) { return { warning: '数学排版未能正确解析，已显示表达式；请核对该公式的排版。' }; }
+  }
+  function renderFormula(formula) {
+    formula = formula && typeof formula === 'object' ? formula : {};
+    const el = make('section', 'formula-block');
+    if (formula.title) el.append(make('h4', 'formula-title', formula.title));
+    const expression = typeof formula.expression === 'string' ? formula.expression : '公式表达式缺失，请先补全。';
+    const display = make('div', 'formula-display');
+    if (formula.mathml) {
+      const result = parseMathML(formula.mathml, expression);
+      if (result.node) display.append(result.node);
+      else {
+        display.append(make('div', 'formula-expression', expression));
+        const warning = make('p', 'formula-warning', result.warning); warning.setAttribute('role', 'status'); el.append(warning);
+      }
+    } else display.append(make('div', 'formula-expression', expression));
+    el.append(display);
+    if (formula.explanation) el.append(make('p', 'formula-explanation', formula.explanation));
+    if (Array.isArray(formula.variables) && formula.variables.length) {
+      const wrap = make('div', 'formula-table-scroll'), table = make('table', 'formula-variables');
+      const caption = make('caption', '', '符号与单位'), head = make('thead'), row = make('tr');
+      for (const label of ['符号', '含义', '单位']) { const th = make('th', '', label); th.setAttribute('scope', 'col'); row.append(th); }
+      head.append(row); table.append(caption, head);
+      const body = make('tbody');
+      for (const variable of formula.variables) {
+        if (!variable || typeof variable !== 'object') continue;
+        const tr = make('tr');
+        for (const value of [variable.symbol, variable.meaning, variable.unit]) tr.append(make('td', '', typeof value === 'string' ? value : '待补充'));
+        body.append(tr);
+      }
+      table.append(body); wrap.append(table); el.append(wrap);
+    }
+    if (formula.conditions) { const conditions = make('p', 'formula-conditions'); conditions.append(make('strong', '', '适用条件'), make('span', '', formula.conditions)); el.append(conditions); }
+    return el;
+  }
+  function renderDiagram(diagram) {
+    diagram = diagram && typeof diagram === 'object' ? diagram : {};
+    const figure = make('figure', 'lesson-diagram');
+    if (diagram.title) figure.append(make('h4', 'diagram-title', diagram.title));
+    if (typeof diagram.svg === 'string' && diagram.svg.trim()) {
+      const scroll = make('div', 'diagram-scroll'), img = make('img', 'diagram-image');
+      img.src = 'data:image/svg+xml;charset=utf-8,' + encodeURIComponent(diagram.svg);
+      img.alt = typeof diagram.alt === 'string' ? diagram.alt : '示意图缺少替代文字，请核对。';
+      scroll.append(img); figure.append(scroll, make('p', 'diagram-hint', '宽图可横向滑动，查看完整连接与标注。'));
+    } else figure.append(make('p', 'formula-warning', '示意图内容缺失，请先补全。'));
+    if (diagram.caption) figure.append(make('figcaption', '', diagram.caption));
+    return figure;
   }
   function practiceText(value) { if (typeof value === 'string') return value; if (Array.isArray(value)) return value.map(practiceText).join('\n'); if (value && typeof value === 'object') return Object.values(value).map(practiceText).join('\n'); return value == null ? '' : String(value); }
   function renderPractice() {

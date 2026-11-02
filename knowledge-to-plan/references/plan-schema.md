@@ -17,6 +17,20 @@
 
 每题：`id`（在该课内唯一）、`prompt`、`options`（至少2个不同非空字符串）、`correct_index`（从0计数的整数；不是字母或布尔值）、`explanations`（与选项数相同，每个选项都解释为什么对/错）。默认每课3题4选项，但不是模板硬限制。
 
+## 可选公式与示意图
+
+理工科内容及任何含公式的课程遵循 [公式与示意图标准](stem-content-standard.md)。在相应的 `sections[]` 内添加以下可选数组；不改变 `schema_version: 1`，普通课程可省略。
+
+- `formulas[]`：每项必填 `title`、`expression`（正确、无歧义的可读数学表达）、`explanation`、`conditions`（适用条件或定义域）；`variables` 必须为数组，每项包含非空 `symbol`、`meaning`、`unit`，无量纲量写“无量纲”，确实没有变量的数值关系可为空数组。可选 `mathml` 为完整的 `<math xmlns="http://www.w3.org/1998/Math/MathML">…</math>`，用于分式、上下标、根式等结构化排版。简单式可用正确 Unicode；复杂式提供 MathML，避免线性文本歧义，`expression` 仍保留作文字说明。
+- `diagrams[]`：每项必填 `title`、`svg`（完整、自包含的静态 SVG）、`alt`（表达关键结构、方向或关系的替代文字）、`caption`（图示含义、对应推理和必要假设）。按教学需要添加，不能以装饰图替代必要关系图。
+- 两者均可选 `source_ids`；提供时为非空、无重复的来源ID数组，且必须属于该课 `source_ids`。未提供时沿用本课来源。公式与图中具体事实仍需定位到对应来源或注明原创推导。
+
+MathML 与 SVG 使用生成器支持的静态子集，不含脚本、事件处理、外部文件或联网字体。字段和标记校验只能发现结构问题，不能替代公式正确性、单位、适用条件及图文一致性的核验。正文、例题、练习和题目中的公式也要按同一标准审阅，不把未渲染的 LaTeX 当作已完成的数学排版。
+
+完整例子见 [assets/stem-example/plan.json](../assets/stem-example/plan.json)。
+
+## 最小课程示例
+
 以下是结构和脚本冒烟测试用的小例子，正式课程应补足与目标相称的教学深度：
 
 ```json

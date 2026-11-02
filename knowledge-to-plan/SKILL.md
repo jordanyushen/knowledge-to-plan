@@ -48,6 +48,7 @@ python3 <skill-dir>/scripts/assess_budget.py --days 30 --minutes 30 --estimated-
 - 一天可完成多课，地图按真实新通过课数、唯一答题数及对应计划分钟累计，不按每日计划预算封顶；计划分钟不代表实际计时。入场、进度与打卡动效遵循减少动态效果设置，不影响保存和判分。
 - 界面与交互参考 [assets/baseline/index.html](assets/baseline/index.html) 和 [plan.json](assets/baseline/plan.json)，用 `scripts/build_baseline.py` 重建演示。正式课程使用本次资料与独立课程ID，不继承演示内容、成绩或种子记录。
 - 每课直接讲解，不把“请去读PDF”作为主体。可选原文用于溯源；必要的定义、例子、练习数据和公式条件留在课内。
+- 涉及公式或理工科内容时，按 [references/stem-content-standard.md](references/stem-content-standard.md) 核对公式的来源、符号、排版、单位、适用条件与计算结果；需要表达受力、电路、结构、坐标、流程或时序关系时补上必要示意图。正文、例题、练习、题目及选项使用同一核验标准，不能把“页面能打开”当作公式正确。
 - 默认每课3道单选题，可按用户偏好与学习预算调整。每题只有一个无歧义正确答案，所有选项均有对应的正误原因，先在课内教过所考内容。数值题核对单位、边界与结果；跨学科类比说明适用范围。避免总把正确答案放在同一位置。
 - 默认全部题目订正为正确后才记录本课通过；答错即时说明该选项为何不对、提供重试并进入错题本。记录复习与订正，不把反复点击同一题累加为完成更多题。
 - 使用附带模板生成自包含HTML，不依赖联网字体、脚本、模型接口或登录。进度存在浏览器本地，可导出/导入；明确不同设备、在线与离线副本不自动同步。外部原文链接仍需网络。
@@ -56,7 +57,7 @@ python3 <skill-dir>/scripts/assess_budget.py --days 30 --minutes 30 --estimated-
 python3 <skill-dir>/scripts/build_learning_site.py --plan /absolute/path/plan.json --output /absolute/path/output --expected-days 30 --expected-daily-minutes 30
 ```
 
-将示例中的30天/30分钟替换为本次用户已经确认的约束，独立从用户约定传入，不从待校验JSON反抄这两个值。该命令先校验，再生成 `index.html` 与 `plan.json`，HTML可直接用浏览器打开。它不会替你读取原始材料或自动写出教学内容：先由你基于实际来源完成课程JSON。模板支持dashboard、每日学习量地图及详情、课程目录、`#day-1` 深链接、知识讲解、练习笔记、选择题解析、错题本和包含打卡及作答时间历史的进度备份。
+将示例中的30天/30分钟替换为本次用户已经确认的约束，独立从用户约定传入，不从待校验JSON反抄这两个值。该命令先校验，再生成 `index.html` 与 `plan.json`，HTML可直接用浏览器打开。它不会替你读取原始材料或自动写出教学内容：先由你基于实际来源完成课程JSON。模板支持dashboard、每日学习量地图及详情、课程目录、`#day-1` 深链接、知识讲解、公式与示意图、练习笔记、选择题解析、错题本和包含打卡及作答时间历史的进度备份。理工科排版参考 [assets/stem-example/plan.json](assets/stem-example/plan.json) 与生成的 [index.html](assets/stem-example/index.html)，不继承其示例内容或课程ID。
 
 ## 5. 按需连接日历、云盘与在线网站
 
@@ -71,5 +72,7 @@ python3 <skill-dir>/scripts/build_learning_site.py --plan /absolute/path/plan.js
 运行 `scripts/validate_plan.py <plan.json> --expected-days <约定天数> --expected-daily-minutes <约定分钟数>`；新增/修改辅助脚本时运行 `python3 -m unittest discover -s <skill-dir>/scripts -p 'test_*.py'`。模板交互改动时，Node可用则运行 `node <skill-dir>/scripts/test_runtime.cjs`。脚本能检查结构、与独立传入的用户约束是否一致、来源引用与测验形状，不能证明教学事实或正确答案无误；仍需检查来源、计算及讲解与题目是否对应。
 
 按风险测试生成页面的关键路径：未选答案不可提交、错误不通过且有原因、订正后继续、全对才通过、刷新保留、换课与备份导入。dashboard另按 [验收标准](references/dashboard-standard.md#验收) 核对空态、指标联动、同日多课、题数去重、首次通过日期、跨日与时区、旧备份迁移、轻量动效、手机和键盘操作。浏览器操作遵循所在环境规则，不从命令行临时启动被禁止的浏览器。不能进行浏览器验证时报告实际未验证范围。
+
+有公式或示意图时，另按 [理工科验收](references/stem-content-standard.md#验收) 独立复算例题和测验，核对图文一致，并实际查看桌面、手机及打印排版。结构校验和标记合法不证明数学或物理事实正确；记录实际核验的来源、计算与呈现范围。
 
 最终只给一个清晰学习入口、简短的使用步骤、采用的天数/每天时长、已验证结果和必要限制。附上可访问的文件或实际部署URL；不要把尚未发布或待登录后未检查的页面说成已完整验证。

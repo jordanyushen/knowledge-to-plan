@@ -9,6 +9,8 @@ from pathlib import Path
 from urllib.parse import urlparse
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
+from stem_content import validate_section_visuals
+
 
 def valid_date(value):
     try:
@@ -136,11 +138,14 @@ def validate_plan(data, expected_days=None, expected_daily_minutes=None):
         if not isinstance(sections, list) or not sections:
             errors.append(p + '.sections必须包含实际讲解')
             sections = []
-        for s in sections:
+        for section_index, s in enumerate(sections):
             if not isinstance(s, dict) or not text(s.get('title')) or not text(s.get('body')):
                 errors.append(p + '.sections每项需title与body')
             elif s['body'].strip().lower() in ['todo', 'tbd', 'placeholder', '待补充', '待完善', '待生成']:
                 errors.append(p + '.sections包含占位文本')
+            if isinstance(s, dict):
+                lesson_refs = set(refs) if text_list(refs) else set()
+                errors.extend(validate_section_visuals(s, f'{p}.sections[{section_index}]', source_ids, lesson_refs))
         if 'review_of' in lesson and (not isinstance(lesson['review_of'], list) or any(type(n) is not int or n < 1 or n >= i + 1 for n in lesson['review_of'])):
             errors.append(p + '.review_of只能引用此前课次')
         questions, qids = lesson.get('questions'), set()

@@ -25,7 +25,7 @@ const fixture = {
   }))
 };
 
-function launch(data, storage = new Map(), hash = '', unavailable = false, now = Date.now(), reducedMotion = true) {
+function launch(data, storage = new Map(), hash = '', unavailable = false, now = Date.now(), reducedMotion = true, Parser) {
   const walk = element => element.children.flatMap(child => [child, ...walk(child)]);
   class Element {
     constructor(tagName) {
@@ -52,7 +52,17 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
   }
   const body = new Element('body');
   for (const match of html.matchAll(/id="([^"]+)"/g)) { const element = new Element('div'); element.id = match[1]; body.append(element); }
-  const document = { body, createElement: tag => new Element(tag), getElementById: id => walk(body).find(element => element.id === id), addEventListener: (name, handler) => { handlers['document:' + name] = handler; } };
+  function importNode(node, deep) {
+    const element = new Element(node.nodeType === 1 ? node.localName : '#text');
+    element.namespaceURI = node.namespaceURI;
+    if (node.nodeType !== 1) element.textContent = node.textContent || '';
+    else {
+      for (const attr of node.attributes) element.setAttribute(attr.name, attr.value);
+      if (deep) for (const child of node.childNodes) element.append(importNode(child, true));
+    }
+    return element;
+  }
+  const document = { body, createElement: tag => new Element(tag), importNode, getElementById: id => walk(body).find(element => element.id === id), addEventListener: (name, handler) => { handlers['document:' + name] = handler; } };
   const handlers = {}, location = { hash }, downloads = [];
   let tick = now;
   class TestDate extends Date {
@@ -68,7 +78,7 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
       setItem: (key, value) => { if (unavailable) throw new Error('Synthetic storage failure'); storage.set(key, value); },
       removeItem: key => storage.delete(key)
     },
-    URL: TestURL, Blob, Date: TestDate, Intl, setTimeout: handler => { handler(); }
+    URL: TestURL, Blob, Date: TestDate, Intl, DOMParser: Parser, setTimeout: handler => { handler(); }
   };
   vm.runInNewContext(script, context, { filename: 'learning-site/app.js' });
   const get = id => { const element = document.getElementById(id); assert.ok(element, 'Missing element: ' + id); return element; };
@@ -152,7 +162,75 @@ async function main() {
   assert.ok(disabled.get('content').textContent.includes('答对了'), 'Learning continues without local storage');
   await testDashboard();
   await testDailyVolume();
-  console.log('PASS: quiz gating/retry/completion, resume, fingerprints, deep links, history, import/export, notes, storage fallback; dashboard metrics, lesson navigation, calendar map, check-in idempotency, timezone boundaries, real-activity migration, backup validation, and uncapped daily learning volume.');
+  testScientificContent();
+  console.log('PASS: quiz gating/retry/completion, resume, fingerprints, deep links, history, import/export, notes, storage fallback; dashboard metrics, lesson navigation, calendar map, check-in idempotency, timezone boundaries, real-activity migration, backup validation, uncapped daily learning volume, and scientific-content rendering/fallbacks.');
+}
+
+function testScientificContent() {
+  const stem = clone(fixture), section = stem.lessons[0].sections[0];
+  const formula = {
+    title: '欧姆电阻中的电流', expression: 'I = U/R', explanation: '电压除以电阻得到电流。',
+    variables: [{ symbol: 'I', meaning: '电流', unit: 'A' }, { symbol: 'U', meaning: '电阻两端电压', unit: 'V' }, { symbol: 'R', meaning: '电阻', unit: 'Ω' }],
+    conditions: '恒温欧姆电阻，R > 0。',
+    mathml: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mrow><mi>I</mi><mo>=</mo><mfrac><mi>U</mi><mi>R</mi></mfrac></mrow></math>'
+  };
+  const diagram = { title: '电路示意', svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 200"><path d="M20 20H380V180H20Z" fill="none" stroke="black"/></svg>', alt: '电源与电阻构成闭合回路。', caption: '箭头表示约定的正电流方向，示意图不按比例。' };
+  section.formulas = [formula]; section.diagrams = [diagram];
+  const fallback = launch(stem, new Map(), '#day-1');
+  for (const value of [formula.title, formula.expression, formula.explanation, formula.conditions, '电阻两端电压', 'A', 'V', 'Ω', diagram.caption]) assert.ok(fallback.get('content').textContent.includes(value), 'Scientific content exposes: ' + value);
+  assert.ok(fallback.get('content').textContent.includes('当前环境无法显示数学排版'), 'Unavailable native math parsing provides a visible readable fallback');
+  const images = fallback.all().filter(el => el.tagName === 'img');
+  assert.equal(images.length, 1, 'The diagram renders once');
+  assert.equal(images[0].alt, diagram.alt, 'A diagram has its descriptive alternative text');
+  assert.equal(decodeURIComponent(images[0].src.split(',')[1]), diagram.svg, 'The diagram is an embedded SVG rather than a network resource');
+  assert.equal(fallback.get('progress-percent').textContent, '0%', 'Reading formulas and diagrams does not pass a lesson');
+
+  const ns = 'http://www.w3.org/1998/Math/MathML';
+  const text = value => ({ nodeType: 3, textContent: value });
+  const node = (localName, childNodes = [], attributes = []) => ({ nodeType: 1, localName, namespaceURI: ns, childNodes, attributes });
+  const mathRoot = () => node('math', [node('mrow', [node('mi', [text('I')]), node('mo', [text('=')]), node('mfrac', [node('mi', [text('U')]), node('mi', [text('R')])])])], [{ name: 'xmlns', value: ns, namespaceURI: 'http://www.w3.org/2000/xmlns/' }]);
+  class ValidParser { parseFromString() { return { documentElement: mathRoot(), getElementsByTagName: () => [] }; } }
+  const rendered = launch(stem, new Map(), '#day-1', false, Date.now(), true, ValidParser);
+  const math = rendered.all().find(el => el.tagName === 'math');
+  assert.ok(math, 'Validated native MathML is imported');
+  assert.equal(math.namespaceURI, ns);
+  assert.equal(math.getAttribute('aria-label'), formula.expression, 'The equation has an accessible expression');
+  assert.equal(rendered.all().filter(el => el.tagName === 'mfrac').length, 1, 'The fraction remains structured MathML');
+  assert.ok(!rendered.get('content').textContent.includes('未能正确解析'), 'Valid math does not warn');
+
+  class BrokenParser { parseFromString() { return { documentElement: null, getElementsByTagName: () => [] }; } }
+  const broken = launch(stem, new Map(), '#day-1', false, Date.now(), true, BrokenParser);
+  assert.ok(broken.get('content').textContent.includes('数学排版未能正确解析'), 'Malformed math warns instead of failing the course');
+  assert.ok(broken.get('content').textContent.includes(formula.expression), 'Malformed math retains its readable expression');
+  class UnsafeParser { parseFromString() { const root = mathRoot(); root.childNodes.push(node('script', [text('bad()')])); return { documentElement: root, getElementsByTagName: () => [] }; } }
+  const unsafe = launch(stem, new Map(), '#day-1', false, Date.now(), true, UnsafeParser);
+  assert.equal(unsafe.all().filter(el => el.tagName === 'script').length, 0, 'Unexpected executable nodes cannot enter the document');
+  assert.ok(unsafe.get('content').textContent.includes('数学排版未能正确解析'));
+  class UnsafeAttributeParser { parseFromString() { const root = mathRoot(); root.attributes.push({ name: 'onclick', value: 'bad()', namespaceURI: null }); return { documentElement: root, getElementsByTagName: () => [] }; } }
+  const badAttribute = launch(stem, new Map(), '#day-1', false, Date.now(), true, UnsafeAttributeParser);
+  assert.equal(badAttribute.all().filter(el => el.tagName === 'math').length, 0, 'Unexpected event attributes reject the equation markup');
+  for (const [mutate, reason] of [
+    [root => root.childNodes[0].childNodes[2].childNodes.pop(), 'A fraction needs both numerator and denominator'],
+    [root => root.childNodes[0].childNodes.splice(1, 1, text('=')), 'Bare operators cannot disappear between layout elements'],
+    [root => root.childNodes[0].childNodes[0].attributes.push({ name: 'aria-label', value: 'child label', namespaceURI: null }), 'Accessible labels belong on the root math element'],
+    [root => { root.childNodes[0].childNodes[0].childNodes = [text('\\frac{U}{R}')]; }, 'TeX commands cannot masquerade as rendered math'],
+    [root => { root.childNodes = [node('mtable', [node('mi', [text('I')])])]; }, 'Math tables need rows rather than arbitrary direct children']
+  ]) {
+    class InvalidStructureParser { parseFromString() { const root = mathRoot(); mutate(root); return { documentElement: root, getElementsByTagName: () => [] }; } }
+    const invalid = launch(stem, new Map(), '#day-1', false, Date.now(), true, InvalidStructureParser);
+    assert.equal(invalid.all().filter(el => el.tagName === 'math').length, 0, reason);
+    assert.ok(invalid.get('content').textContent.includes(formula.expression), reason + ': retain readable fallback');
+    assert.ok(invalid.get('content').textContent.includes('数学排版未能正确解析'), reason + ': show a warning');
+  }
+
+  const simple = clone(stem); delete simple.lessons[0].sections[0].formulas[0].mathml;
+  const unicode = launch(simple, new Map(), '#day-1');
+  assert.ok(unicode.get('content').textContent.includes(formula.expression), 'Simple expressions do not require a math parser');
+  assert.ok(!unicode.get('content').textContent.includes('当前环境无法显示数学排版'));
+  const incomplete = clone(stem); incomplete.lessons[0].sections[0].formulas = [null]; incomplete.lessons[0].sections[0].diagrams = [null];
+  const incompleteUI = launch(incomplete, new Map(), '#day-1');
+  assert.ok(incompleteUI.get('content').textContent.includes('公式表达式缺失'));
+  assert.ok(incompleteUI.get('content').textContent.includes('示意图内容缺失'));
 }
 async function testDashboard() {
   const morning = Date.parse('2026-11-02T02:00:00Z');

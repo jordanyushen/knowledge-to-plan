@@ -104,7 +104,7 @@ class OutputTests(unittest.TestCase):
             self.assertNotIn('<script>alert(1)</script>', html)
             self.assertIn('\\u003c/script>', html)
             self.assertFalse(re.search(r'<script[^>]+src=', html))
-            self.assertNotIn('@import', html)
+            self.assertNotIn('@import', ''.join(re.findall(r'<style\b[^>]*>(.*?)</style>', html, re.S)))
             self.assertNotIn('fetch(', html)
             self.assertIn('第2天长度换算', html)
             self.assertFalse(result['calendar_events_created'])

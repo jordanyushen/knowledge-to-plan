@@ -1,12 +1,12 @@
 {
   "release_date": "2026-11-02",
   "archive": "dist/knowledge-to-plan-2026-11-02.zip",
-  "archive_sha256": "ad32b05b67f35a8bf4eab663f359a707cf7afd93326bad2b884fd541f84b8f61",
+  "archive_sha256": "2c7fd80e529be892d999ce60e16fca17ead8ae0d96f3e551e38d15a35110a2f7",
   "files": [
     {
       "path": "knowledge-to-plan/SKILL.md",
-      "bytes": 9466,
-      "sha256": "de658b47e46618bcbbf973576ae943fe9e7fbf3de9488e2672dc49b8f2f717c2"
+      "bytes": 10402,
+      "sha256": "4481675c48cc23d23713516ccd7690a9551fd260b5b4fc63c49aea2af6311e84"
     },
     {
       "path": "knowledge-to-plan/agents/openai.yaml",
@@ -15,8 +15,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/baseline/index.html",
-      "bytes": 83353,
-      "sha256": "9ec5b8148816783a829635fe432dd557c3d4d488a10bd8a5c822bf7d959dc46d"
+      "bytes": 93083,
+      "sha256": "fb257eef30dbf92dcf79bb356e4571bd65e08c30f9074cbfa593ae6b89aef099"
     },
     {
       "path": "knowledge-to-plan/assets/baseline/plan.json",
@@ -25,8 +25,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/app.js",
-      "bytes": 35794,
-      "sha256": "fc42b5e952377417d2fdd13e0eca7376314ac87439c30fe65697bf80006a8fe9"
+      "bytes": 42602,
+      "sha256": "84c5018ae3dd7a8d82bca84ce74e6a6ead77863aef8fd87ebecf76bdaa7b33ce"
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/index.html",
@@ -35,8 +35,18 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/style.css",
-      "bytes": 23146,
-      "sha256": "12b62f14f163c3492104053c73928b6ecc8560f69d1a918499966020fcf0060b"
+      "bytes": 26068,
+      "sha256": "e66272347c1916872d323e4f6a268de26bd5b0bb65318ac7b6414e22cc558eef"
+    },
+    {
+      "path": "knowledge-to-plan/assets/stem-example/index.html",
+      "bytes": 79721,
+      "sha256": "5bf93a03d61f16e2f5e1c8359a81528264739b5cfb4ddb1f34126304c464e65b"
+    },
+    {
+      "path": "knowledge-to-plan/assets/stem-example/plan.json",
+      "bytes": 10104,
+      "sha256": "e0686637d0ce6a5ab826e665b242cc739b74b15fa23f0ae956bc89117f656c0f"
     },
     {
       "path": "knowledge-to-plan/references/dashboard-standard.md",
@@ -50,8 +60,13 @@
     },
     {
       "path": "knowledge-to-plan/references/plan-schema.md",
-      "bytes": 5138,
-      "sha256": "fbfba464e67afb66f0246d52ddff9e7bd7c34438846dcf8c4f4ab14084db6287"
+      "bytes": 6980,
+      "sha256": "2be22844274ba8aec511efb1024e17ac84645233437ccae0ab6b8bac6bd75383"
+    },
+    {
+      "path": "knowledge-to-plan/references/stem-content-standard.md",
+      "bytes": 4464,
+      "sha256": "6220bec05c569db08c6b9d42c92d07c507daedf0eff22a83da6fc05e47fa46b5"
     },
     {
       "path": "knowledge-to-plan/scripts/assess_budget.py",
@@ -69,19 +84,29 @@
       "sha256": "d325e09caac6c54a59385d3f4306b38dfddc8082ebf51d6d5342d7cb478ca1c1"
     },
     {
+      "path": "knowledge-to-plan/scripts/stem_content.py",
+      "bytes": 8497,
+      "sha256": "67b8731d04b1cc343bc873c153a868971fd7703ca7d892a252590c38b14baaa7"
+    },
+    {
       "path": "knowledge-to-plan/scripts/test_runtime.cjs",
-      "bytes": 28193,
-      "sha256": "657192471b9417d0b4c2c67998a63975626f9b16851f2df17fd944c805ab3b67"
+      "bytes": 35485,
+      "sha256": "1f4fff9b76fff2399a291af028df3db8807149906969ddffa9853703743a4ec7"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/test_stem.py",
+      "bytes": 9062,
+      "sha256": "f06ed10da6fd0327b99e76c71a4749806f76082c0840d5574da0bb1831f709ef"
     },
     {
       "path": "knowledge-to-plan/scripts/test_workflow.py",
-      "bytes": 8571,
-      "sha256": "3ce97cadff255c53946506ec4016cc622c7f567966e999988e26b2e2d40b6709"
+      "bytes": 8630,
+      "sha256": "b74bb76139cd419375b7ec0a5ca01d6b7cf2be3695cdade64f8a07f7d6a7dc3a"
     },
     {
       "path": "knowledge-to-plan/scripts/validate_plan.py",
-      "bytes": 9857,
-      "sha256": "16a8f33ea4b6af511a099de722d4a4b5d00a018a64618744cc67a83c1b0f8a81"
+      "bytes": 10158,
+      "sha256": "66d845eb5bb7f43f65af09a96fe580cea3c7ac26d858010b32175955c4e5962a"
     }
   ]
 }

@@ -132,3 +132,29 @@
   *,*::before,*::after{animation:none!important;transition:none!important}
   .checkin-burst{display:none}.progress-track{background:#e1e5da}.progress-fill{background:var(--green)}
 }
+
+/* Scientific content stays local: native MathML and self-contained SVG images. */
+.formula-block{margin:23px 0;padding:20px;border:1px solid #d4decc;border-radius:12px;background:#f2f5eb;min-width:0}
+.formula-title,.diagram-title{font-size:14px;line-height:1.7;margin:0 0 13px;color:var(--green)}
+.formula-display{overflow-x:auto;overflow-y:hidden;padding:12px 5px;margin:0 0 13px;max-width:100%;text-align:center;scrollbar-width:thin}
+.formula-display math{font-size:1.4rem;min-width:max-content;margin:0 auto;color:var(--navy)}
+.formula-expression{font-family:"Cambria Math","STIX Two Math","Times New Roman",serif;font-size:1.45rem;line-height:1.8;white-space:pre;overflow-wrap:normal;color:var(--navy)}
+.formula-explanation,.formula-conditions{font-size:13px;line-height:1.9;white-space:pre-wrap;overflow-wrap:anywhere;margin:12px 0 0}
+.formula-conditions{padding-top:13px;border-top:1px solid #d4decc}
+.formula-conditions strong{display:block;color:var(--green);font-size:11px;margin-bottom:3px}
+.formula-warning{color:var(--red);font-size:11px;line-height:1.8;margin:0 0 10px;overflow-wrap:anywhere}
+.formula-table-scroll{overflow-x:auto;max-width:100%;margin-top:16px;scrollbar-width:thin}
+.formula-variables{width:100%;border-collapse:collapse;font-size:12px;line-height:1.8;text-align:left}
+.formula-variables caption{font-size:11px;color:var(--muted);text-align:left;padding:0 0 7px}
+.formula-variables th,.formula-variables td{padding:8px 12px;border-bottom:1px solid #dce2d2;vertical-align:top;overflow-wrap:anywhere}
+.formula-variables th{font-size:10px;color:var(--muted);font-weight:650}
+.formula-variables th:first-child{white-space:nowrap}
+.formula-variables td:first-child{font-family:"Cambria Math","Times New Roman",serif;font-size:15px;white-space:nowrap}
+.formula-variables td:last-child{white-space:nowrap}
+.lesson-diagram{margin:24px 0 0;min-width:0;padding:18px;border:1px solid var(--line);border-radius:12px;background:#fffefa}
+.diagram-scroll{max-width:100%;overflow-x:auto;padding:4px 0;scrollbar-width:thin}
+.diagram-image{display:block;width:100%;height:auto;min-width:480px;max-width:none;margin:auto}
+.diagram-hint{display:none;margin:8px 0 0;font-size:10px;line-height:1.7;color:var(--muted)}
+.lesson-diagram figcaption{margin-top:12px;color:var(--muted);font-size:11px;line-height:1.85;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:580px){.formula-block{padding:17px 14px}.formula-display math{font-size:1.3rem}.formula-expression{font-size:1.3rem}.formula-variables th,.formula-variables td{padding:7px 8px}.lesson-diagram{padding:14px}.diagram-image{min-width:480px}.diagram-hint{display:block}}
+@media print{.formula-block,.lesson-diagram{break-inside:avoid;background:white;border-color:#aab5a5}.formula-display,.formula-table-scroll,.diagram-scroll{overflow:visible}.diagram-image{min-width:0;max-width:100%}.formula-display math,.formula-expression{color:black}}
