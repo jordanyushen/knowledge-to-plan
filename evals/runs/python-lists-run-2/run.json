@@ -1,0 +1,15 @@
+{
+  "case_id": "python-lists",
+  "generated_date": "2026-11-04",
+  "model_id": "unavailable",
+  "generator": "independent Codex subagent; deployment model id not exposed",
+  "base_commit": "b2e5e5d",
+  "generation_skill_note": "working-tree skill; exact as-read snapshot not captured",
+  "initial_structure_valid": true,
+  "raw_validation_errors": [],
+  "raw_plan_sha256": "c652c349221aa9f4d018502ddaed2dfc46ff1d0abf8db304b5c344d02041a4d7",
+  "validated_plan_sha256": "c652c349221aa9f4d018502ddaed2dfc46ff1d0abf8db304b5c344d02041a4d7",
+  "generation_skill_hashes": null,
+  "learner_trial": "pending",
+  "facts_verified": false
+}

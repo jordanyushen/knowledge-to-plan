@@ -60,7 +60,20 @@ def check():
                      'validated_structure_valid': True,
                      'days': case['days'], 'daily_minutes': case['daily_minutes'],
                      'questions': sum(len(x['questions']) for x in plan['lessons'])})
-    return {'reference_checks': 9, 'sources': source_results, 'runs': runs,
+    boundaries = []
+    for case_id in ('insufficient-budget', 'missing-source'):
+        directory = ROOT / 'boundary-runs' / case_id
+        if not directory.exists():
+            continue
+        metadata = json.loads((directory / 'run.json').read_text())
+        case = json.loads((ROOT / 'cases' / (case_id + '.json')).read_text())
+        assert metadata['case_input'] == case
+        assert metadata['constraints_changed'] is False
+        assert metadata['full_course_generated'] is False
+        assert metadata['calendar_created'] is False and metadata['cloud_writes'] is False
+        assert hashlib.sha256((directory / 'response.md').read_bytes()).hexdigest() == metadata['response_sha256']
+        boundaries.append({'case': case_id, 'record_valid': True, 'declared_status': metadata['status']})
+    return {'reference_checks': 9, 'sources': source_results, 'runs': runs, 'boundary_reports': boundaries,
             'facts_verified': False, 'learner_trial': 'pending',
             'note': 'Counts report program checks only; read individual content reviews.'}
 

@@ -1,0 +1,610 @@
+{
+  "run": "python-lists-run-2-independent",
+  "model_id": "unavailable",
+  "input_case": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/cases/python-lists.json",
+  "constraints_independently_supplied": {
+    "expected_days": 3,
+    "expected_daily_minutes": 20
+  },
+  "source_checks": [
+    {
+      "id": "python-datastructures",
+      "url": "https://docs.python.org/3.13/tutorial/datastructures.html",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-datastructures.html",
+      "manifest_sha256": "14cbb79ca8991c75ff9a17db2057640e528bb43b00925e58dd57de2cde746e5b",
+      "actual_sha256": "14cbb79ca8991c75ff9a17db2057640e528bb43b00925e58dd57de2cde746e5b",
+      "matches_manifest": true
+    },
+    {
+      "id": "python-introduction",
+      "url": "https://docs.python.org/3.13/tutorial/introduction.html",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-introduction.html",
+      "manifest_sha256": "e247796cab129020c2362e5171b126cdf19feb69438291d9a13b73f467789500",
+      "actual_sha256": "e247796cab129020c2362e5171b126cdf19feb69438291d9a13b73f467789500",
+      "matches_manifest": true
+    },
+    {
+      "id": "python-sequences",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-sequences.html",
+      "manifest_sha256": "64b31f5ed3e61b48b6785ec1ef523d95892651ca8da045162c1acc4ea5632fa6",
+      "actual_sha256": "64b31f5ed3e61b48b6785ec1ef523d95892651ca8da045162c1acc4ea5632fa6",
+      "matches_manifest": true
+    }
+  ],
+  "actual_read_scope": [
+    "python-introduction.html section#lists",
+    "python-datastructures.html section#more-on-lists (including nested subsections)",
+    "python-sequences.html section#common-sequence-operations, section#mutable-sequence-types and section#lists"
+  ],
+  "not_read": [
+    "evals/reference",
+    "existing runs",
+    "/private/tmp/ktp-eval-python",
+    "other agents outputs"
+  ],
+  "python_executable": "/Library/Developer/CommandLineTools/usr/bin/python3",
+  "python_version": "3.9.6",
+  "python_test_count": 31,
+  "all_python_cases_passed": true,
+  "code_checks": [
+    {
+      "id": "d1-example-mutation",
+      "course_field": "lessons[0].sections[0].example",
+      "code": "nums = [6, 12, 18, 24]\nprint(nums)\nprint(len(nums))\nnums[1] = 99\nprint(nums)",
+      "expected_stdout": "[6, 12, 18, 24]\n4\n[6, 99, 18, 24]\n",
+      "actual_stdout": "[6, 12, 18, 24]\n4\n[6, 99, 18, 24]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-example-index",
+      "course_field": "lessons[0].sections[1].example",
+      "code": "nums = [6, 12, 18, 24]\nprint(nums[0], nums[-2])",
+      "expected_stdout": "6 18\n",
+      "actual_stdout": "6 18\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-example-slice",
+      "course_field": "lessons[0].sections[2].example",
+      "code": "nums = [6, 12, 18, 24]\nprint(nums[1:3])\nprint(nums[:2])\nprint(nums[2:99])\nprint(nums[3:1])",
+      "expected_stdout": "[12, 18]\n[6, 12]\n[18, 24]\n[]\n",
+      "actual_stdout": "[12, 18]\n[6, 12]\n[18, 24]\n[]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-practice",
+      "course_field": "lessons[0].practice",
+      "code": "nums = [6, 12, 18, 24]\nprint(nums[0], nums[-1], len(nums))\nprint(nums[1:3])\nprint(nums[2:])\nprint(nums[8:])",
+      "expected_stdout": "6 24 4\n[12, 18]\n[18, 24]\n[]\n",
+      "actual_stdout": "6 24 4\n[12, 18]\n[18, 24]\n[]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-index-error",
+      "course_field": "lessons[0].practice",
+      "code": "nums = [6, 12, 18, 24]\nprint(nums[4])",
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exception": "IndexError",
+      "actual_exception": "IndexError",
+      "passed": true
+    },
+    {
+      "id": "d1-q1",
+      "course_field": "lessons[0].questions[0]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[-2], len(a))",
+      "expected_stdout": "30 4\n",
+      "actual_stdout": "30 4\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-q2",
+      "course_field": "lessons[0].questions[1]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[1:3])",
+      "expected_stdout": "[20, 30]\n",
+      "actual_stdout": "[20, 30]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-q3-A",
+      "course_field": "lessons[0].questions[2].options[0]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[4])",
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exception": "IndexError",
+      "actual_exception": "IndexError",
+      "passed": true
+    },
+    {
+      "id": "d1-q3-B",
+      "course_field": "lessons[0].questions[2].options[1]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[2:99])",
+      "expected_stdout": "[30, 40]\n",
+      "actual_stdout": "[30, 40]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-q3-C",
+      "course_field": "lessons[0].questions[2].options[2]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[3:1])",
+      "expected_stdout": "[]\n",
+      "actual_stdout": "[]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d1-q3-D",
+      "course_field": "lessons[0].questions[2].options[3]",
+      "code": "a = [10, 20, 30, 40]\nprint(a[4:99])",
+      "expected_stdout": "[]\n",
+      "actual_stdout": "[]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-review",
+      "course_field": "lessons[1].sections[0]",
+      "code": "a = [5, 8, 2]\nprint(a[1])\nprint(a[:2])",
+      "expected_stdout": "8\n[5, 8]\n",
+      "actual_stdout": "8\n[5, 8]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-example-add",
+      "course_field": "lessons[1].sections[1].example",
+      "code": "a = [1]\na.append([2, 3])\nprint(a)\nb = [1]\nb.extend([2, 3])\nprint(b)",
+      "expected_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "actual_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-example-none",
+      "course_field": "lessons[1].sections[1].example",
+      "code": "c = [1]\nresult = c.append(2)\nprint(result)\nprint(c)",
+      "expected_stdout": "None\n[1, 2]\n",
+      "actual_stdout": "None\n[1, 2]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-example-pop",
+      "course_field": "lessons[1].sections[2].example",
+      "code": "a = [5, 8, 2]\nx = a.pop()\nprint(x, a)\ny = a.pop(0)\nprint(y, a)",
+      "expected_stdout": "2 [5, 8]\n5 [8]\n",
+      "actual_stdout": "2 [5, 8]\n5 [8]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-practice",
+      "course_field": "lessons[1].practice",
+      "code": "bag = [5]\nbag.append([6, 7])\nassert bag == [5, [6, 7]]\nbag.extend([8, 9])\nassert bag == [5, [6, 7], 8, 9]\nlast = bag.pop()\nassert bag == [5, [6, 7], 8]\nfirst = bag.pop(0)\nassert bag == [[6, 7], 8]\nprint(first, last, bag)",
+      "expected_stdout": "5 9 [[6, 7], 8]\n",
+      "actual_stdout": "5 9 [[6, 7], 8]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-q1",
+      "course_field": "lessons[1].questions[0]",
+      "code": "a = [1]\nb = [1]\na.append([2, 3])\nb.extend([2, 3])\nprint(a)\nprint(b)",
+      "expected_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "actual_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-q2",
+      "course_field": "lessons[1].questions[1]",
+      "code": "a = [4, 8, 12]\nx = a.pop(1)\nprint(x, a)",
+      "expected_stdout": "8 [4, 12]\n",
+      "actual_stdout": "8 [4, 12]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-q3",
+      "course_field": "lessons[1].questions[2]",
+      "code": "a = [3]\nr = a.append(7)\nprint(r)\nprint(a)",
+      "expected_stdout": "None\n[3, 7]\n",
+      "actual_stdout": "None\n[3, 7]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d2-pop-empty-boundary",
+      "course_field": "lessons[1].sections[2].body",
+      "code": "a = []\na.pop()",
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exception": "IndexError",
+      "actual_exception": "IndexError",
+      "passed": true
+    },
+    {
+      "id": "d2-pop-invalid-boundary",
+      "course_field": "lessons[1].sections[2].body",
+      "code": "a = [1]\na.pop(1)",
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exception": "IndexError",
+      "actual_exception": "IndexError",
+      "passed": true
+    },
+    {
+      "id": "d2-extend-return-boundary",
+      "course_field": "lessons[1].sections[1].body",
+      "code": "a = [1]\nprint(a.extend([2, 3]))\nprint(a)",
+      "expected_stdout": "None\n[1, 2, 3]\n",
+      "actual_stdout": "None\n[1, 2, 3]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-review",
+      "course_field": "lessons[2].sections[0]",
+      "code": "a = [4, 1, 3]\nprint(a[:2])\na.extend([2])\nprint(a.pop())",
+      "expected_stdout": "[4, 1]\n2\n",
+      "actual_stdout": "[4, 1]\n2\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-example-alias",
+      "course_field": "lessons[2].sections[1].example",
+      "code": "a = [3, 1]\nb = a\nc = a.copy()\nb.append(2)\nc[0] = 9\nprint(a)\nprint(b)\nprint(c)",
+      "expected_stdout": "[3, 1, 2]\n[3, 1, 2]\n[9, 1]\n",
+      "actual_stdout": "[3, 1, 2]\n[3, 1, 2]\n[9, 1]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-example-nested",
+      "course_field": "lessons[2].sections[2].example",
+      "code": "a = [[1], 7]\nb = a\nc = a.copy()\nassert a is b and a is not c and a[0] is c[0]\nc[0].append(2)\nc.append(9)\nprint(a)\nprint(c)",
+      "expected_stdout": "[[1, 2], 7]\n[[1, 2], 7, 9]\n",
+      "actual_stdout": "[[1, 2], 7]\n[[1, 2], 7, 9]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-example-sort",
+      "course_field": "lessons[2].sections[3].example",
+      "code": "a = [3, 1, 2]\nb = a\nc = a[:]\nr = a.sort()\nprint(a)\nprint(b)\nprint(c)\nprint(r)",
+      "expected_stdout": "[1, 2, 3]\n[1, 2, 3]\n[3, 1, 2]\nNone\n",
+      "actual_stdout": "[1, 2, 3]\n[1, 2, 3]\n[3, 1, 2]\nNone\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-practice",
+      "course_field": "lessons[2].practice",
+      "code": "a = [6, 2, 4]\nb = a\nc = a[:]\na.append(1)\nx = a.pop(0)\na.sort()\nprint(b)\nprint(c)\nprint(x)",
+      "expected_stdout": "[1, 2, 4]\n[6, 2, 4]\n6\n",
+      "actual_stdout": "[1, 2, 4]\n[6, 2, 4]\n6\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-q1",
+      "course_field": "lessons[2].questions[0]",
+      "code": "a = [3, 1, 2]\nb = a\nc = a.copy()\nr = a.sort()\nprint(b, c, r)",
+      "expected_stdout": "[1, 2, 3] [3, 1, 2] None\n",
+      "actual_stdout": "[1, 2, 3] [3, 1, 2] None\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-q2",
+      "course_field": "lessons[2].questions[1]",
+      "code": "a = [[1], 7]\nc = a.copy()\nc[0].append(2)\nc.append(9)\nprint(a, c)",
+      "expected_stdout": "[[1, 2], 7] [[1, 2], 7, 9]\n",
+      "actual_stdout": "[[1, 2], 7] [[1, 2], 7, 9]\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-q3",
+      "course_field": "lessons[2].questions[2]",
+      "code": "a = [4, 1, 3]\nb = a\nc = a[:]\na.extend([2])\nx = a.pop(0)\na.sort()\nprint(b, c, x)",
+      "expected_stdout": "[1, 2, 3] [4, 1, 3] 4\n",
+      "actual_stdout": "[1, 2, 3] [4, 1, 3] 4\n",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    },
+    {
+      "id": "d3-copy-slice-identity",
+      "course_field": "lessons[2].sections[1].body",
+      "code": "a = [1, 2]\nb = a\nc = a.copy()\nd = a[:]\nassert a is b and a is not c and a is not d\na = a.copy()\nassert a is not b",
+      "expected_stdout": "",
+      "actual_stdout": "",
+      "expected_exception": null,
+      "actual_exception": null,
+      "passed": true
+    }
+  ],
+  "question_evidence": [
+    {
+      "lesson_id": "day-01",
+      "question_id": "q1",
+      "source_section_locators": [
+        "python-introduction#lists",
+        "python-sequences#common-sequence-operations notes 3,8"
+      ],
+      "fact_checked": "索引-2取倒数第二项；len返回元素数。",
+      "verification_case_ids": [
+        "d1-q1"
+      ],
+      "correct_index": 2,
+      "correct_option": "30 4",
+      "option_explanations": [
+        "-2是倒数第二个元素30；len是4，两个数都不对。",
+        "40是a[-1]，不是a[-2]；长度4这部分正确。",
+        "正确：-2取倒数第二个元素30，四个元素的长度为4。",
+        "元素30正确，但长度是元素个数4，不是最大索引3。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-01",
+      "question_id": "q2",
+      "source_section_locators": [
+        "python-introduction#lists",
+        "python-sequences#common-sequence-operations note 4"
+      ],
+      "fact_checked": "默认正向切片包含起点，不包含终点，并返回列表。",
+      "verification_case_ids": [
+        "d1-q2"
+      ],
+      "correct_index": 0,
+      "correct_option": "[20, 30]",
+      "option_explanations": [
+        "正确：包含索引1和2，不包含索引3，结果是列表[20, 30]。",
+        "把终点3也包含了；切片不包含终点。",
+        "从索引0开始了；本题起点1对应20。",
+        "切片得到列表而不是一个整数，且本切片有两个元素。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-01",
+      "question_id": "q3",
+      "source_section_locators": [
+        "python-sequences#common-sequence-operations notes 4,8"
+      ],
+      "fact_checked": "越界单项读取异常，切片端点截断；默认步长下起点不小于终点是空列表。",
+      "verification_case_ids": [
+        "d1-q3-A",
+        "d1-q3-B",
+        "d1-q3-C",
+        "d1-q3-D"
+      ],
+      "correct_index": 3,
+      "correct_option": "print(a[4:99])输出[]",
+      "option_explanations": [
+        "索引4已越过最大有效索引3，会产生IndexError；40在索引3。",
+        "切片终点99会被截断，输出[30, 40]，不会因此越界报错。",
+        "没有指定负步长，起点3不小于终点1，结果是[]，不会自动倒序。",
+        "正确：切片从列表末端开始，终点截到末端，没有元素，输出[]。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q1",
+      "source_section_locators": [
+        "python-datastructures#more-on-lists list.append/list.extend"
+      ],
+      "fact_checked": "append加入一个整体，extend逐个加入给定列表元素。",
+      "verification_case_ids": [
+        "d2-q1"
+      ],
+      "correct_index": 1,
+      "correct_option": "a为[1, [2, 3]]；b为[1, 2, 3]",
+      "option_explanations": [
+        "把两种方法的作用对调了：append保留整个小列表，extend逐项加入。",
+        "正确：append把[2, 3]作为一个元素，extend把2与3作为两个元素加入。",
+        "a不会被展开；append后的a含一个小列表元素。",
+        "b不会新增一个小列表元素；extend加入的是其中两个整数。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q2",
+      "source_section_locators": [
+        "python-datastructures#more-on-lists list.pop"
+      ],
+      "fact_checked": "pop(1)返回并删除索引1的元素。",
+      "verification_case_ids": [
+        "d2-q2"
+      ],
+      "correct_index": 3,
+      "correct_option": "8 [4, 12]",
+      "option_explanations": [
+        "4位于索引0，pop(1)删除的是8。",
+        "返回值8正确，但pop同时删除了它，列表不再保留8。",
+        "剩余列表正确，但pop返回被移除的元素8，而非None。",
+        "正确：索引1的8被返回并删除，剩下[4, 12]。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q3",
+      "source_section_locators": [
+        "python-datastructures#more-on-lists None-return paragraph"
+      ],
+      "fact_checked": "append原地修改并返回None。",
+      "verification_case_ids": [
+        "d2-q3"
+      ],
+      "correct_index": 0,
+      "correct_option": "None，然后[3, 7]",
+      "option_explanations": [
+        "正确：append原地修改a并返回None，所以r是None而a已变为[3, 7]。",
+        "append不返回修改后的列表，r是None。",
+        "append既不返回7，也不是只计算不修改；a会加入7。",
+        "返回None不代表没有修改；a已经加入7。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q1",
+      "source_section_locators": [
+        "python-introduction#lists assignment/shallow-copy paragraphs",
+        "python-datastructures#more-on-lists list.sort/None-return paragraph",
+        "python-sequences#lists list.sort"
+      ],
+      "fact_checked": "赋值共享对象，copy新建外层；sort原地升序并返回None。",
+      "verification_case_ids": [
+        "d3-q1"
+      ],
+      "correct_index": 2,
+      "correct_option": "[1, 2, 3] [3, 1, 2] None",
+      "option_explanations": [
+        "b是别名，会看到原地排序；sort返回None，r不是排序列表。",
+        "b正确、r正确，但c是提前建立的新外层列表，保留原顺序。",
+        "正确：a与b共用列表，c是独立外层，sort返回None。",
+        "把别名与副本的变化对调了：b会跟随a排序，c不跟随。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q2",
+      "source_section_locators": [
+        "python-introduction#lists shallow-copy/nested-lists paragraphs",
+        "python-sequences#mutable-sequence-types sequence.copy"
+      ],
+      "fact_checked": "浅拷贝外层不同而子列表引用共享；内层修改两边可见，外层追加只影响c。",
+      "verification_case_ids": [
+        "d3-q2",
+        "d3-example-nested"
+      ],
+      "correct_index": 1,
+      "correct_option": "[[1, 2], 7] [[1, 2], 7, 9]",
+      "option_explanations": [
+        "浅拷贝仍共享第0项子列表，修改它会让a也看到[1, 2]。",
+        "正确：子列表共享，因此两边都有[1, 2]；外层不同，9只加入c。",
+        "把浅拷贝当成别名了。c.append(9)只修改新外层，a不会多出9。",
+        "子列表修改会在两边可见，外层新增9只在c中；该项把这两点都颠倒了。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q3",
+      "source_section_locators": [
+        "python-introduction#lists slice-copy/assignment paragraphs",
+        "python-datastructures#more-on-lists list.extend/list.pop/list.sort"
+      ],
+      "fact_checked": "按顺序对当前列表extend、pop和sort，别名看到改变，之前的全切片保留外层顺序。",
+      "verification_case_ids": [
+        "d3-q3"
+      ],
+      "correct_index": 3,
+      "correct_option": "[1, 2, 3] [4, 1, 3] 4",
+      "option_explanations": [
+        "pop(0)已移除4并返回4；它不会留下4，也不会返回None。",
+        "pop(0)拿走的是索引0的4，默认pop才拿末尾2；当前列表最后会有1、2、3。",
+        "b是a的别名而非副本，排序会改变b所见内容；c不会跟着排序。",
+        "正确：extend后为[4, 1, 3, 2]，移除首项得到x=4，排序后a和b为[1, 2, 3]；c保留[4, 1, 3]。"
+      ],
+      "check_method": "同一生成者对照已读取原始来源并执行原创代码；不是独立内容审核"
+    }
+  ],
+  "structure_validation": {
+    "command": "python3 <skill>/scripts/validate_plan.py /private/tmp/ktp-eval-python-second/raw-plan.json --expected-days 3 --expected-daily-minutes 20",
+    "exit_code": 0,
+    "result": {
+      "valid": true,
+      "days": 3,
+      "daily_minutes": 20,
+      "questions": 9,
+      "facts_verified": false
+    }
+  },
+  "build": {
+    "command": "python3 <skill>/scripts/build_learning_site.py --plan /private/tmp/ktp-eval-python-second/raw-plan.json --output /private/tmp/ktp-eval-python-second --expected-days 3 --expected-daily-minutes 20",
+    "exit_code": 0,
+    "calendar_events_created": false
+  },
+  "runtime_synthetic_test": {
+    "command": "node <skill>/scripts/test_runtime.cjs",
+    "exit_code": 0,
+    "scope": "附带模板的合成DOM/存储/时间/测验回归测试；不是实际浏览器或本课程的可视化验收"
+  },
+  "static_packaging_checks": {
+    "embedded_course_equals_raw": true,
+    "packaged_plan_equals_raw": true,
+    "external_script_src_count": 0,
+    "external_stylesheet_count": 0,
+    "has_unreplaced_template_tokens": false,
+    "static_svg_count": 1
+  },
+  "diagram_check": {
+    "source": "按Lists赋值与浅拷贝、Mutable Sequence Types copy说明原创绘制",
+    "logic_checked": "修改前a、b共用外层，c使用不同外层且第0项共享子列表；通过对象身份assert核验",
+    "visual_verified": false
+  },
+  "raw_plan_preserved": true,
+  "revision_required": false,
+  "raw_sha256": "c652c349221aa9f4d018502ddaed2dfc46ff1d0abf8db304b5c344d02041a4d7",
+  "budget_basis": {
+    "estimated_minutes_low": 54,
+    "estimated_minutes_high": 60,
+    "allocated_minutes": {
+      "teaching_examples": 22,
+      "practice": 14,
+      "review_repair": 6,
+      "quiz_correction": 18
+    },
+    "buffer_percent": 0,
+    "rationale": "目标限制为短整数列表的基础预测与运行、一个两层列表共享边界；已包含复习和订正，不预留额外加时。没有承诺完整编程熟练度；实际速度可能因初学者而异。"
+  },
+  "verification_limitations": [
+    "模型ID在可见上下文不可用，记为unavailable。",
+    "按约束没有浏览器操作；未核验桌面、手机、打印、键盘、真实localStorage或真实导入导出路径。",
+    "Python实际执行版本3.9.6；来源版本3.13，所用基本列表行为在这些版本一致，但未在Python3.13解释器上运行。",
+    "没有独立内容审核者，也没有宣称独立内容审核通过。",
+    "没有云盘、日历或网站发布操作。"
+  ]
+}

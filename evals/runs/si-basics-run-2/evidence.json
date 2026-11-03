@@ -1,0 +1,1122 @@
+{
+  "evaluation_id": "si-basics-independent-run-2",
+  "model_id": "unavailable",
+  "constraints": {
+    "days": 3,
+    "daily_minutes": 20,
+    "timezone": "Asia/Hong_Kong",
+    "browser": false,
+    "cloud_or_calendar_writes": false
+  },
+  "source_reading": [
+    {
+      "id": "nist-prefixes",
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "access": "web.open + web.find，实际返回文本",
+      "scope": "Prefixes table centi/c/10⁻²、milli/m/10⁻³；common prefix place values",
+      "web_result_lines": "203, 228–233, 251–259",
+      "facts_used": [
+        "1 cm = 0.01 m",
+        "1 mm = 0.001 m"
+      ],
+      "read_entire_document": false
+    },
+    {
+      "id": "nist-derived",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+      "access": "web.open，实际返回文本",
+      "scope": "§4.1 Table 1 length/time；§4.2 Table 2 area/speed",
+      "web_result_lines": "138–165",
+      "facts_used": [
+        "length unit m",
+        "time unit s",
+        "area unit m²",
+        "speed unit m/s"
+      ],
+      "read_entire_document": false
+    },
+    {
+      "id": "nist-rules",
+      "url": "https://physics.nist.gov/cuu/Units/checklist.html",
+      "access": "web.open，实际返回文本",
+      "scope": "checklist #2、#3、#5、#12、#15",
+      "web_result_lines": "7–15, 23–32, 80–96, 116–123",
+      "facts_used": [
+        "standard symbols",
+        "symbols not pluralized",
+        "m/s notation",
+        "units attach to appropriate numbers",
+        "space between numerical value and unit"
+      ],
+      "read_entire_document": false
+    },
+    {
+      "id": "openstax-average-speed",
+      "url": "https://openstax.org/books/physics/pages/2-2-speed-and-velocity",
+      "access": "web.open，实际返回文本；补充一手教材",
+      "scope": "§2.2 Speed definition、Teacher Support average of segment speeds warning",
+      "web_result_lines": "53–76",
+      "facts_used": [
+        "average speed is distance traveled divided by the time interval",
+        "different segment times prevent unrestricted arithmetic average of rates"
+      ],
+      "read_entire_document": false
+    }
+  ],
+  "source_notes_status": "只读过输入摘记以理解清单；不视为原文，实际 web 重读官方对应部分。",
+  "authorship": "讲解、全部例子、题目、数字及两幅SVG为本次原创；来源仅作事实依据。",
+  "budget_assessment": {
+    "current_plan": {
+      "days": 3,
+      "daily_minutes": 20,
+      "buffer_percent": 10.0
+    },
+    "available_hours": 1.0,
+    "usable_hours": 0.9,
+    "estimate_range": {
+      "low": 0.8,
+      "high": 0.9,
+      "unit": "hours"
+    },
+    "status": "fits",
+    "recommended_total_days_range": {
+      "low": 3,
+      "high": 3,
+      "fixed_daily_minutes": 20
+    },
+    "recommended_daily_minutes_range": {
+      "low": 18,
+      "high": 20,
+      "fixed_total_days": 3,
+      "low_within_24_hours": true,
+      "high_within_24_hours": true,
+      "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+    },
+    "recommendation_rules": {
+      "rounding": "up to the next whole unit, minimum 1",
+      "buffer_percent": 10.0,
+      "automatic_plan_changes": false
+    },
+    "candidate_options": []
+  },
+  "validation": {
+    "raw": {
+      "valid": true,
+      "days": 3,
+      "daily_minutes": 20,
+      "questions": 9,
+      "facts_verified": false
+    },
+    "final": {
+      "valid": true,
+      "days": 3,
+      "daily_minutes": 20,
+      "questions": 9,
+      "facts_verified": false
+    },
+    "raw_semantically_equal_to_final": true,
+    "mechanical_repairs": [],
+    "note": "结构校验不证明事实；事实、公式和逐题复算另列。"
+  },
+  "independent_question_checks": [
+    {
+      "lesson_id": "day-01",
+      "question_id": "q1",
+      "prompt": "一根线长 0.72 m。用毫米表示是多少？",
+      "independent_calculation": "0.72 × 1000 = 720 mm",
+      "exact_expected_base_value": "18/25",
+      "base_unit": "m",
+      "expected_display": "720 mm",
+      "recomputed_correct_indices": [
+        1
+      ],
+      "authored_correct_index": 1,
+      "authored_correct_letter": "B",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-01 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "72 mm",
+          "normalized_quantities": [
+            {
+              "given": "72 mm",
+              "dimension": "length",
+              "exact_base_value": "9/125",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "720 mm",
+          "normalized_quantities": [
+            {
+              "given": "720 mm",
+              "dimension": "length",
+              "exact_base_value": "18/25",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "7200 mm",
+          "normalized_quantities": [
+            {
+              "given": "7200 mm",
+              "dimension": "length",
+              "exact_base_value": "36/5",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "0.72 mm",
+          "normalized_quantities": [
+            {
+              "given": "0.72 mm",
+              "dimension": "length",
+              "exact_base_value": "9/12500",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-01",
+      "question_id": "q2",
+      "prompt": "85 mm 换算成厘米，哪项正确？",
+      "independent_calculation": "85 mm / (10 mm per cm) = 8.5 cm",
+      "exact_expected_base_value": "17/200",
+      "base_unit": "m",
+      "expected_display": "8.5 cm",
+      "recomputed_correct_indices": [
+        3
+      ],
+      "authored_correct_index": 3,
+      "authored_correct_letter": "D",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-01 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "0.85 cm",
+          "normalized_quantities": [
+            {
+              "given": "0.85 cm",
+              "dimension": "length",
+              "exact_base_value": "17/2000",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "85 cm",
+          "normalized_quantities": [
+            {
+              "given": "85 cm",
+              "dimension": "length",
+              "exact_base_value": "17/20",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "850 cm",
+          "normalized_quantities": [
+            {
+              "given": "850 cm",
+              "dimension": "length",
+              "exact_base_value": "17/2",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "8.5 cm",
+          "normalized_quantities": [
+            {
+              "given": "8.5 cm",
+              "dimension": "length",
+              "exact_base_value": "17/200",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-01",
+      "question_id": "q3",
+      "prompt": "下面哪一整行的三个数量表示同一个长度？",
+      "independent_calculation": "2.4 m ×100 =240 cm；2.4 m ×1000 =2400 mm；每行三项全部需等于2.4 m",
+      "exact_expected_base_value": "12/5",
+      "base_unit": "m",
+      "expected_display": "2.4 m = 240 cm = 2400 mm",
+      "recomputed_correct_indices": [
+        0
+      ],
+      "authored_correct_index": 0,
+      "authored_correct_letter": "A",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-01 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "2.4 m = 240 cm = 2400 mm",
+          "normalized_quantities": [
+            {
+              "given": "2.4 m",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "240 cm",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "2400 mm",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "2.4 m = 24 cm = 240 mm",
+          "normalized_quantities": [
+            {
+              "given": "2.4 m",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "24 cm",
+              "dimension": "length",
+              "exact_base_value": "6/25",
+              "base_unit": "m"
+            },
+            {
+              "given": "240 mm",
+              "dimension": "length",
+              "exact_base_value": "6/25",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "2.4 m = 2400 cm = 240 mm",
+          "normalized_quantities": [
+            {
+              "given": "2.4 m",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "2400 cm",
+              "dimension": "length",
+              "exact_base_value": "24",
+              "base_unit": "m"
+            },
+            {
+              "given": "240 mm",
+              "dimension": "length",
+              "exact_base_value": "6/25",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "2.4 m = 240 cm = 240 mm",
+          "normalized_quantities": [
+            {
+              "given": "2.4 m",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "240 cm",
+              "dimension": "length",
+              "exact_base_value": "12/5",
+              "base_unit": "m"
+            },
+            {
+              "given": "240 mm",
+              "dimension": "length",
+              "exact_base_value": "6/25",
+              "base_unit": "m"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q1",
+      "prompt": "0.08 m² 等于多少 cm²？",
+      "independent_calculation": "0.08 × (100×100) = 800 cm²",
+      "exact_expected_base_value": "2/25",
+      "base_unit": "m²",
+      "expected_display": "800 cm²",
+      "recomputed_correct_indices": [
+        2
+      ],
+      "authored_correct_index": 2,
+      "authored_correct_letter": "C",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-02 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived",
+        "original-teaching"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "8 cm²",
+          "normalized_quantities": [
+            {
+              "given": "8 cm²",
+              "dimension": "area",
+              "exact_base_value": "1/1250",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "80 cm²",
+          "normalized_quantities": [
+            {
+              "given": "80 cm²",
+              "dimension": "area",
+              "exact_base_value": "1/125",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "800 cm²",
+          "normalized_quantities": [
+            {
+              "given": "800 cm²",
+              "dimension": "area",
+              "exact_base_value": "2/25",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "8000 cm²",
+          "normalized_quantities": [
+            {
+              "given": "8000 cm²",
+              "dimension": "area",
+              "exact_base_value": "4/5",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q2",
+      "prompt": "3 cm² 等于多少 mm²？",
+      "independent_calculation": "3 × (10×10) = 300 mm²",
+      "exact_expected_base_value": "3/10000",
+      "base_unit": "m²",
+      "expected_display": "300 mm²",
+      "recomputed_correct_indices": [
+        0
+      ],
+      "authored_correct_index": 0,
+      "authored_correct_letter": "A",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-02 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived",
+        "original-teaching"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "300 mm²",
+          "normalized_quantities": [
+            {
+              "given": "300 mm²",
+              "dimension": "area",
+              "exact_base_value": "3/10000",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "30 mm²",
+          "normalized_quantities": [
+            {
+              "given": "30 mm²",
+              "dimension": "area",
+              "exact_base_value": "3/100000",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "0.03 mm²",
+          "normalized_quantities": [
+            {
+              "given": "0.03 mm²",
+              "dimension": "area",
+              "exact_base_value": "3/100000000",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "3000 mm²",
+          "normalized_quantities": [
+            {
+              "given": "3000 mm²",
+              "dimension": "area",
+              "exact_base_value": "3/1000",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-02",
+      "question_id": "q3",
+      "prompt": "长方形纸片长 0.6 m、宽 0.4 m。哪一项给出的两个面积都正确？",
+      "independent_calculation": "0.6×0.4 =0.24 m²；0.24×10000 =2400 cm²；两个结果均须正确",
+      "exact_expected_base_value": "6/25",
+      "base_unit": "m²",
+      "expected_display": "0.24 m² = 2400 cm²",
+      "recomputed_correct_indices": [
+        3
+      ],
+      "authored_correct_index": 3,
+      "authored_correct_letter": "D",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-02 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived",
+        "original-teaching"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "0.24 m² = 24 cm²",
+          "normalized_quantities": [
+            {
+              "given": "0.24 m²",
+              "dimension": "area",
+              "exact_base_value": "6/25",
+              "base_unit": "m²"
+            },
+            {
+              "given": "24 cm²",
+              "dimension": "area",
+              "exact_base_value": "3/1250",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "0.024 m² = 240 cm²",
+          "normalized_quantities": [
+            {
+              "given": "0.024 m²",
+              "dimension": "area",
+              "exact_base_value": "3/125",
+              "base_unit": "m²"
+            },
+            {
+              "given": "240 cm²",
+              "dimension": "area",
+              "exact_base_value": "3/125",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "2.4 m² = 24000 cm²",
+          "normalized_quantities": [
+            {
+              "given": "2.4 m²",
+              "dimension": "area",
+              "exact_base_value": "12/5",
+              "base_unit": "m²"
+            },
+            {
+              "given": "24000 cm²",
+              "dimension": "area",
+              "exact_base_value": "12/5",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "0.24 m² = 2400 cm²",
+          "normalized_quantities": [
+            {
+              "given": "0.24 m²",
+              "dimension": "area",
+              "exact_base_value": "6/25",
+              "base_unit": "m²"
+            },
+            {
+              "given": "2400 cm²",
+              "dimension": "area",
+              "exact_base_value": "6/25",
+              "base_unit": "m²"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q1",
+      "prompt": "计时6秒的一整段中，小车共走 18 m。平均速率是多少？",
+      "independent_calculation": "D=18 m；T=6 s；18/6=3 m/s",
+      "exact_expected_base_value": "3",
+      "base_unit": "m/s",
+      "expected_display": "3 m/s",
+      "recomputed_correct_indices": [
+        2
+      ],
+      "authored_correct_index": 2,
+      "authored_correct_letter": "C",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-03 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "openstax-average-speed",
+        "nist-derived"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "108 m/s",
+          "normalized_quantities": [
+            {
+              "given": "108 m/s",
+              "dimension": "speed",
+              "exact_base_value": "108",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "0.333 m/s",
+          "normalized_quantities": [
+            {
+              "given": "0.333 m/s",
+              "dimension": "speed",
+              "exact_base_value": "333/1000",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "3 m/s",
+          "normalized_quantities": [
+            {
+              "given": "3 m/s",
+              "dimension": "speed",
+              "exact_base_value": "3",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "12 m/s",
+          "normalized_quantities": [
+            {
+              "given": "12 m/s",
+              "dimension": "speed",
+              "exact_base_value": "12",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q2",
+      "prompt": "一段无停留行程先走 20 m 用 5 s，再走 30 m 用 15 s。整段平均速率是多少？",
+      "independent_calculation": "D=20+30=50 m；T=5+15=20 s；50/20=2.5 m/s",
+      "exact_expected_base_value": "5/2",
+      "base_unit": "m/s",
+      "expected_display": "2.5 m/s",
+      "recomputed_correct_indices": [
+        1
+      ],
+      "authored_correct_index": 1,
+      "authored_correct_letter": "B",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-03 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "openstax-average-speed",
+        "nist-derived"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "3 m/s",
+          "normalized_quantities": [
+            {
+              "given": "3 m/s",
+              "dimension": "speed",
+              "exact_base_value": "3",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "2.5 m/s",
+          "normalized_quantities": [
+            {
+              "given": "2.5 m/s",
+              "dimension": "speed",
+              "exact_base_value": "5/2",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "4 m/s",
+          "normalized_quantities": [
+            {
+              "given": "4 m/s",
+              "dimension": "speed",
+              "exact_base_value": "4",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "2 m/s",
+          "normalized_quantities": [
+            {
+              "given": "2 m/s",
+              "dimension": "speed",
+              "exact_base_value": "2",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "day-03",
+      "question_id": "q3",
+      "prompt": "从计时开始到结束，小车先在4秒内走 120 cm，然后原地停留2秒。包含停留的整段平均速率，哪项正确？",
+      "independent_calculation": "120 cm =1.2 m；T=4+2=6 s（含停留）；1.2/6=0.2 m/s",
+      "exact_expected_base_value": "1/5",
+      "base_unit": "m/s",
+      "expected_display": "0.2 m/s",
+      "recomputed_correct_indices": [
+        3
+      ],
+      "authored_correct_index": 3,
+      "authored_correct_letter": "D",
+      "unique_correct_answer": true,
+      "answer_matches": true,
+      "taught_before_test": true,
+      "teaching_location": "day-03 sections、example 或 practice 已直接讲授所用关系",
+      "fact_basis_source_ids": [
+        "nist-prefixes",
+        "openstax-average-speed",
+        "nist-derived"
+      ],
+      "options": [
+        {
+          "index": 0,
+          "letter": "A",
+          "text": "0.3 m/s",
+          "normalized_quantities": [
+            {
+              "given": "0.3 m/s",
+              "dimension": "speed",
+              "exact_base_value": "3/10",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 1,
+          "letter": "B",
+          "text": "20 m/s",
+          "normalized_quantities": [
+            {
+              "given": "20 m/s",
+              "dimension": "speed",
+              "exact_base_value": "20",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 2,
+          "letter": "C",
+          "text": "0.02 m/s",
+          "normalized_quantities": [
+            {
+              "given": "0.02 m/s",
+              "dimension": "speed",
+              "exact_base_value": "1/50",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": false,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        },
+        {
+          "index": 3,
+          "letter": "D",
+          "text": "0.2 m/s",
+          "normalized_quantities": [
+            {
+              "given": "0.2 m/s",
+              "dimension": "speed",
+              "exact_base_value": "1/5",
+              "base_unit": "m/s"
+            }
+          ],
+          "matches_recomputed_answer": true,
+          "explanation_present": true,
+          "explanation_review": "已逐项读算：正误与换算方向、平方因子、时间区间或单位一致。"
+        }
+      ]
+    }
+  ],
+  "examples_and_formulas": [
+    {
+      "id": "length-example",
+      "calculations": [
+        "0.36×100=36 cm；0.36×1000=360 mm",
+        "75/10=7.5 cm；75/1000=0.075 m"
+      ],
+      "pass": true
+    },
+    {
+      "id": "length-practice",
+      "calculations": [
+        "1.35×100=135 cm；1.35×1000=1350 mm",
+        "46/10=4.6 cm；46/1000=0.046 m"
+      ],
+      "pass": true
+    },
+    {
+      "id": "area-factors-and-svg",
+      "calculations": [
+        "100×100=10000 cm² per m²",
+        "10×10=100 mm² per cm²",
+        "1000×1000=1000000 mm² per m²",
+        "SVG:10×10=100格；每格10×10=100 cm²；100×100=10000 cm²"
+      ],
+      "pass": true
+    },
+    {
+      "id": "area-card-example",
+      "calculations": [
+        "30×20=600 cm²",
+        "600/10000=0.06 m²",
+        "0.30×0.20=0.06 m²"
+      ],
+      "pass": true
+    },
+    {
+      "id": "area-square-practice",
+      "calculations": [
+        "50×50=2500 mm²",
+        "2500/100=25 cm²",
+        "2500/1000000=0.0025 m²",
+        "5×5=25 cm²；0.05×0.05=0.0025 m²"
+      ],
+      "pass": true
+    },
+    {
+      "id": "speed-example-and-svg",
+      "calculations": [
+        "D=40+0+60=100 m",
+        "T=10+10+30=50 s",
+        "100/50=2 m/s",
+        "分段4 m/s与2 m/s的数值算术平均为3，和整段2 m/s不同"
+      ],
+      "pass": true
+    },
+    {
+      "id": "speed-practice",
+      "calculations": [
+        "90+150=240 cm；240/100=2.4 m",
+        "3+3+2=8 s",
+        "2.4/8=0.3 m/s"
+      ],
+      "pass": true
+    },
+    {
+      "id": "boundary-and-dimensions",
+      "calculations": [
+        "D=0、T>0 时 D/T=0",
+        "D/T 的量纲为长度/时间；T/D 的量纲为时间/长度",
+        "T=0 被公式条件排除",
+        "长方形面积的量纲为长度×长度；更换单位不改变同一几何面积"
+      ],
+      "pass": true
+    }
+  ],
+  "question_summary": {
+    "count": 9,
+    "matched": 9,
+    "unique_correct": 9,
+    "option_count": 36,
+    "position_distribution": {
+      "A": 2,
+      "B": 2,
+      "C": 2,
+      "D": 3
+    }
+  },
+  "runtime_checks": {
+    "template_test_runtime_cjs": "pass",
+    "actual_course_synthetic_runtime": "pass",
+    "no_answer_submit_gated": true,
+    "wrong_answer_then_retry": true,
+    "all_options_reasons_displayed": true,
+    "all_questions_correct_required": true,
+    "initial_zero_progress": true,
+    "3_lessons_9_unique_answers_60_planned_minutes_same_day": true,
+    "reload_retains_progress": true,
+    "backup_export_import_and_repeat_import": true,
+    "2_svg_image_nodes_in_lesson_content": true,
+    "html_embedded_course_equals_final_json": true,
+    "html_embedded_script_equals_tested_runtime": true,
+    "browser_used": false,
+    "limits": "内存DOM及合成存储；不证明真实浏览器渲染、键盘路径或视觉布局。测试状态未写入交付HTML。",
+    "offline_static_scan": {
+      "external_script_style_image_media_resources": [],
+      "network_api_calls_found": false,
+      "scope": "HTMLParser扫描资源属性，并搜索fetch/XMLHttpRequest/WebSocket调用；外部来源链接允许存在",
+      "actual_disconnected_browser_test": false
+    },
+    "final_artifact_inventory": [
+      "budget.json",
+      "evidence.json",
+      "generation-report.md",
+      "index.html",
+      "plan.json",
+      "raw-plan.json"
+    ]
+  },
+  "unverified": [
+    "真实浏览器关键路径",
+    "桌面、手机和打印视觉排版",
+    "MathML原生渲染外观",
+    "键盘真实焦点和屏幕阅读器",
+    "离线断网环境实测",
+    "真实学习者是否恰在20分钟内完成"
+  ],
+  "file_sha256": {
+    "raw-plan.json": "efdb9816a18c7e64fe5351aa795cf80c398500a48a559987badc5e340a9fa684",
+    "plan.json": "efdb9816a18c7e64fe5351aa795cf80c398500a48a559987badc5e340a9fa684",
+    "index.html": "fdbfc4ef6b89bc428fb4027de818c811fe313db39cd9c29b6899ef980224f273",
+    "budget.json": "6c0c9012498ef042d84c4b3e11b7a3d9e0487c45b380728d993aed5a0f40f751"
+  }
+}

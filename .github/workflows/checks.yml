@@ -44,6 +44,8 @@ jobs:
         run: node knowledge-to-plan/scripts/test_runtime.cjs
       - name: Fixed evaluation inputs and archived course structures
         run: python evals/check_evals.py
+      - name: Frozen-course independent calculation records
+        run: python evals/review_checks.py
 
   release-integrity:
     name: Examples and release integrity

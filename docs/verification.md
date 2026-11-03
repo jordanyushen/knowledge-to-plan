@@ -32,4 +32,17 @@
 
 ## 远端CI
 
-待首个候选提交上传后记录实际运行URL、提交和结果。
+提交 `19870f82e25b784b7b4a67cc55a28779b0684a0f` 的 [Checks](https://github.com/jordanyushen/knowledge-to-plan/actions/runs/41709042528) 已全部成功：
+
+- Linux Python 3.9/3.11/3.12/3.13，与 Node 20/22 组合的课程测试、发布工具测试、Node状态测试和已归档课程结构检查通过。
+- Windows Python 3.13 / Node 22 同样通过，且强制使用tzdata包，验证没有系统IANA数据库时的路径。
+- Linux Chromium 12项测试全部通过，包括HTTP与file URL、桌面/390px、真实下载/导入恢复、同日多课、MathML/SVG和打印模式。
+- 演示隔离重建、提交制品完整性与第二次构建的确定性比对通过。
+
+第一次CI确实发现Windows自动换行转换导致评测源摘记hash不同；保留失败记录，新增.gitattributes固定LF后才通过，没有放宽hash检查。
+
+这证明上述Linux Chromium文件场景，不改变“本机file URL未验证”或“Safari/真实手机未验证”的边界。后续仅增加评测归档、文档和候选包的提交继续运行同一门禁。
+
+## 安装副本
+
+已核对原始副本与基线清单相符后，分别备份工作副本和已安装skill，再更新到候选模板；两份26个文件均逐项hash一致。备份位于工作区knowledge-to-plan-update/backups下，文件名knowledge-to-plan-before-reliability-20261104-0.zip和-1.zip。已有课程HTML仍含旧脚本，升级方法见运行环境说明。

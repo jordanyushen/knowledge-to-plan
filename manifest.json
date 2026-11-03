@@ -1,7 +1,7 @@
 {
   "release_date": "2026-11-04",
   "archive": "dist/knowledge-to-plan-2026-11-04.zip",
-  "archive_sha256": "e2fa60003ef42a17e6b2528261189e8642105eb568f3e0c361dc4de4db41ba4f",
+  "archive_sha256": "be26266c127dc7a70149e3dc70e441d843c61a1a88b40ca28f9f9479956361af",
   "files": [
     {
       "path": "LICENSE",
@@ -80,8 +80,8 @@
     },
     {
       "path": "knowledge-to-plan/references/runtime-requirements.md",
-      "bytes": 2626,
-      "sha256": "6ad5dd8d684eaf8d35c8c0ad43c15bda62419e3092fccdea71fec1ed5d493fbc"
+      "bytes": 2939,
+      "sha256": "07fe9826647def436344e9d34aed413863c32fcb60af6d48de1cefd54c53da77"
     },
     {
       "path": "knowledge-to-plan/references/stem-content-standard.md",

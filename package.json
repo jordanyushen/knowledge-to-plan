@@ -1,6 +1,6 @@
 {
   "name": "knowledge-to-plan-checks",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "description": "Development-only browser regression tests; generated courses have no npm dependencies.",
   "engines": {
