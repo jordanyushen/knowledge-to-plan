@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="color-scheme" content="light">
   <title>KnowledgeToPlan · 学习计划</title>
-  <style>:root{--cream:#f7f5ee;--paper:#fffefa;--navy:#142d3b;--muted:#6c797b;--green:#32674f;--light:#e8eee4;--line:#dedfd3;--red:#984b3c;--radius:18px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--navy);background:var(--cream);font-size:16px;line-height:1.75}
-*{box-sizing:border-box}body{margin:0}button,input,textarea{font:inherit}button,a,input,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.58}a{color:var(--green);text-underline-offset:4px}button{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid #a78236;outline-offset:4px}[hidden]{display:none!important}.skip{position:absolute;left:12px;top:-70px;background:var(--paper);padding:8px 16px;z-index:30}.skip:focus{top:8px}
+  <style>:root{--cream:#f7f5ee;--paper:#fffefa;--navy:#142d3b;--muted:#5f6b6d;--green:#32674f;--light:#e8eee4;--line:#dedfd3;--red:#984b3c;--radius:18px;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;color:var(--navy);background:var(--cream);font-size:16px;line-height:1.75}
+*{box-sizing:border-box}body{margin:0}button,input,textarea{font:inherit}button,a,input,textarea{touch-action:manipulation}button{cursor:pointer}button:disabled{cursor:default;opacity:.58}a{color:var(--green);text-underline-offset:4px}button{color:inherit}button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,legend:focus-visible{outline:3px solid #a78236;outline-offset:4px}[hidden]{display:none!important}.skip{position:absolute;left:12px;top:-70px;background:var(--paper);padding:8px 16px;z-index:30}.skip:focus{top:8px}
 .topbar{height:82px;display:flex;align-items:center;justify-content:space-between;padding:0 4vw;border-bottom:1px solid var(--line);background:var(--paper)}.brand{display:flex;align-items:center;gap:11px;font-weight:750;color:var(--navy);font-size:20px;letter-spacing:-.7px;text-decoration:none}.brand-icon{display:grid;place-items:center;width:35px;height:35px;background:var(--navy);color:var(--cream);font-family:Georgia,serif;border-radius:9px;font-size:26px}.tagline{font-size:13px;color:var(--muted);letter-spacing:1px}.menu-toggle{display:none}.layout{max-width:1480px;margin:auto;display:grid;grid-template-columns:310px minmax(0,1fr);min-height:calc(100vh - 82px)}.sidebar{padding:35px 26px 26px;border-right:1px solid var(--line)}.eyebrow{font-size:10px;letter-spacing:2px;font-weight:750;color:var(--green);margin:0 0 10px}h1,h2,h3,h4,p{margin-top:0}h1{font-size:25px;line-height:1.4;letter-spacing:-.5px;margin-bottom:13px;overflow-wrap:anywhere}h2{font-size:34px;line-height:1.35;letter-spacing:-.6px;margin-bottom:16px}h3{font-size:20px;line-height:1.5;margin-bottom:13px}h4{font-size:16px;margin-bottom:10px}.muted,.local-note{color:var(--muted)}#course-meta{font-size:13px}.progress-line{display:flex;justify-content:space-between;gap:12px;font-size:12px;margin-top:25px}.progress-line strong{color:var(--green)}progress{appearance:none;width:100%;height:6px;border:0;background:var(--line);border-radius:12px;overflow:hidden}progress::-webkit-progress-bar{background:var(--line)}progress::-webkit-progress-value{background:var(--green);border-radius:12px}progress::-moz-progress-bar{background:var(--green)}.lesson-list{display:grid;gap:7px;margin:25px 0 30px;max-height:56vh;overflow-y:auto;padding:3px}.lesson-link{border:0;background:transparent;display:grid;grid-template-columns:31px 1fr 16px;align-items:center;text-align:left;gap:9px;width:100%;border-radius:11px;padding:11px 9px;font-size:13px;line-height:1.5}.lesson-link:hover{background:#eeeee5}.lesson-link[aria-current="page"]{background:var(--navy);color:white}.day-number{font-size:11px;opacity:.7}.lesson-check{color:var(--green);font-weight:bold}.lesson-link[aria-current="page"] .lesson-check{color:#c6dfad}.sidebar-tools{border-top:1px solid var(--line);padding-top:14px;display:grid;gap:5px}.tool-button{border:0;background:transparent;display:flex;justify-content:space-between;align-items:center;text-align:left;font-size:13px;padding:9px 3px}.tool-button:hover{color:var(--green)}.count{padding:0 8px;border-radius:9px;background:var(--light);color:var(--green);font-size:11px}.local-note{font-size:11px;line-height:1.8;margin-top:20px;margin-bottom:0}main{min-width:0;padding:44px clamp(25px,5vw,80px) 20px}.lesson-intro{max-width:850px}.lesson-kicker{font-size:12px;letter-spacing:1px;color:var(--green);font-weight:650;margin-bottom:13px}.lesson-goal{color:var(--muted);font-size:14px;max-width:700px;white-space:pre-wrap}.badge{display:inline-block;color:var(--green);background:var(--light);border:1px solid #ccdcca;border-radius:20px;padding:3px 11px;font-size:12px;margin-bottom:15px}.study-tabs{display:flex;gap:24px;border-bottom:1px solid var(--line);margin:28px 0}.tab{border:0;border-bottom:3px solid transparent;background:transparent;font-size:14px;padding:12px 1px;color:var(--muted)}.tab[aria-current="step"]{border-bottom-color:var(--green);color:var(--green);font-weight:700}#content{max-width:900px;min-height:330px}.card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:27px 30px;margin:20px 0}.card> :last-child{margin-bottom:0}.card.soft{background:#edf0e7;border-color:#dce2d2}.section-body,.example-body,.practice-body{white-space:pre-wrap;overflow-wrap:anywhere}.section-body{font-size:15px;line-height:1.95}.example{border-left:3px solid #99b58d;background:#f2f4ea;border-radius:0 9px 9px 0;padding:16px 19px;margin-top:20px;font-size:14px}.example strong{display:block;color:var(--green);font-size:12px;margin-bottom:6px}.objectives{padding-left:21px;margin-bottom:0;font-size:14px}.objectives li{padding:3px 0}.activity-list{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.activity{border:1px solid var(--line);border-radius:24px;font-size:12px;padding:5px 12px;background:var(--paper)}.activity span{color:var(--muted);margin-left:9px}.source-list{font-size:12px;line-height:1.9;padding-left:20px}.source-list li{margin-bottom:6px}.source-locator{color:var(--muted);display:block;white-space:pre-wrap}.takeaways{padding-left:21px;font-size:14px}.actions{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:23px}.primary,.secondary{padding:10px 18px;border-radius:9px;border:1px solid var(--green);font-size:13px;font-weight:600;line-height:1.5}.primary{background:var(--green);color:white}.primary:hover{background:#264f3d}.secondary{background:transparent;color:var(--green)}.secondary:hover{background:var(--light)}label.notes-label{display:block;font-weight:650;margin-bottom:10px}textarea{display:block;resize:vertical;width:100%;min-height:210px;padding:15px;border:1px solid #bdc9bc;border-radius:10px;background:var(--paper);color:var(--navy);font-size:14px;line-height:1.9}.save-status{font-size:12px;color:var(--muted);min-height:22px;margin-top:7px}.question-nav{display:flex;flex-wrap:wrap;gap:7px;margin:20px 0}.question-nav button{width:36px;height:36px;border:1px solid var(--line);border-radius:9px;background:var(--paper);font-size:12px}.question-nav button.correct{background:var(--light);color:var(--green);border-color:#a9bca1}.question-nav button.wrong{background:#f6eae5;border-color:#d7b9ac;color:var(--red)}.question-nav button[aria-current="true"]{outline:2px solid var(--navy);outline-offset:2px}.quiz-counter{font-size:12px;color:var(--muted);margin-bottom:15px}fieldset{padding:0;border:0;min-width:0;margin:0}legend{font-weight:650;font-size:19px;line-height:1.7;margin-bottom:20px;white-space:pre-wrap;overflow-wrap:anywhere;width:100%}.options{display:grid;gap:11px}.option{display:flex;align-items:flex-start;gap:12px;border:1px solid var(--line);border-radius:11px;padding:14px 17px;font-size:14px;background:var(--paper)}.option input{margin:6px 0 0;accent-color:var(--green);flex:none}.option span{white-space:pre-wrap;overflow-wrap:anywhere}.option:has(input:checked){background:#edf2e8;border-color:var(--green)}.feedback{border-radius:11px;padding:17px 20px;margin-top:20px;font-size:14px;background:var(--light);color:#264d38}.feedback.incorrect{background:#f7ece5;color:#784334}.feedback strong{display:block;margin-bottom:5px}.explanation-item{margin:12px 0 0;font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere}.completion{border:1px solid #9cb595;background:#eaf0e1;padding:23px;border-radius:14px;margin-top:25px}.completion h3{color:var(--green);margin-bottom:6px}.history-title{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}.history-title h3{font-size:17px;white-space:pre-wrap}.history-meta{color:var(--muted);font-size:12px}.notice,.warning{background:#f1e9d2;border:1px solid #dbcb9a;padding:12px 18px;border-radius:9px;font-size:13px;margin-bottom:22px}.warning{margin:15px 4vw 0}.page-footer{margin-top:55px;border-top:1px solid var(--line);padding-top:20px;font-size:11px;color:var(--muted);display:flex;justify-content:space-between;gap:16px}.empty{padding:35px 0;color:var(--muted)}
 @media(min-width:1000px){.sidebar{position:sticky;top:0;align-self:start;height:calc(100vh - 8px);overflow:auto}}@media(max-width:800px){.topbar{height:68px;padding:0 20px}.brand{font-size:17px}.brand-icon{width:30px;height:30px;font-size:22px}.tagline{display:none}.menu-toggle{display:block;background:transparent;border:1px solid var(--line);border-radius:8px;font-size:12px;padding:6px 10px}.layout{display:block}.sidebar{display:none;border-right:0;border-bottom:1px solid var(--line);padding:25px}.sidebar.open{display:block}.lesson-list{max-height:45vh}.sidebar h1{max-width:650px}main{padding:29px 22px 20px}h2{font-size:27px}.card{padding:22px 20px}.study-tabs{gap:20px;margin:22px 0}.tab{font-size:13px}.page-footer span{display:none}legend{font-size:17px}.option{padding:12px}.history-title{display:block}}@media(prefers-reduced-motion:no-preference){button{transition:background .15s,color .15s}}@media print{.topbar,.sidebar,.study-tabs,.actions,.question-nav,.page-footer,.warning,.notice{display:none}main{padding:0}.layout{display:block}.card{break-inside:avoid}body{background:white}}
 
@@ -275,7 +275,7 @@
   // A canonical content fingerprint changes whenever any part of a question changes.
   const fingerprint = q => JSON.stringify([q.prompt, q.options, q.correct_index, q.explanations]);
   const questionMap = new Map(lessons.flatMap(l => l.questions.map(q => [qkey(l, q), { l, q }])));
-  let state = { schema_version: 1, course_id: course.id, answers: {}, notes: {}, checkins: {}, lastDay: lessons[0]?.day, view: 'dashboard', cursors: {} };
+  let state = { schema_version: 1, course_id: course.id, answers: {}, notes: {}, checkins: {}, quarantined: [], lastDay: lessons[0]?.day, view: 'dashboard', cursors: {} };
   let lesson, view = 'dashboard', storageAvailable = true, dashboardDate;
   let lastRenderedView, enteringView = false, lastProgress, selectedDate, pendingCelebration = false;
   const motionAllowed = () => !window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
@@ -294,23 +294,52 @@
   const announce = message => { $('notice').textContent = message; $('notice').hidden = false; };
   function storageWarning() { storageAvailable = false; $('storage-warning').textContent = '当前浏览器无法持久保存学习记录。本次学习仍可继续，请在离开前导出记录；重新打开后可导入恢复。'; $('storage-warning').hidden = false; }
   function save() { if (storageAvailable) { try { localStorage.setItem(key, JSON.stringify(state)); } catch (_) { storageWarning(); } } }
-  const validTime = x => Number.isFinite(x) && x >= 0 && x <= Date.now() + 86400000;
+  // Zero/missing timestamps are legacy dates, never an invented activity day.
+  const validTime = x => Number.isFinite(x) && x > 0 && x <= Date.now();
+  const unknownTime = x => x === undefined || x === null || x === 0;
+  function archiveRecord(kind, id, record, reason) {
+    const entry = { kind, id, reason, record }, signature = JSON.stringify(entry);
+    if (state.quarantined.some(saved => JSON.stringify(saved) === signature)) return 0;
+    state.quarantined.push(entry); return 1;
+  }
   function sanitizeAnswer(raw, q) {
     if (!raw || raw.fingerprint !== fingerprint(q)) return null;
     const validSelection = n => Number.isInteger(n) && n >= 0 && n < q.options.length;
-    const attempts = Array.isArray(raw.attempts) ? raw.attempts.filter(a => a && validSelection(a.selected) && validTime(a.at)).map(a => ({ selected: a.selected, at: a.at })) : [];
-    const selected = validSelection(raw.selected) ? raw.selected : null;
-    const updated_at = validTime(raw.updated_at) ? raw.updated_at : 0;
-    const submitted = raw.submitted === true && selected !== null;
+    let invalidTime = false;
+    const attempts = [];
+    for (const attempt of Array.isArray(raw.attempts) ? raw.attempts : []) {
+      if (!attempt || !validSelection(attempt.selected)) continue;
+      if (validTime(attempt.at) || unknownTime(attempt.at)) attempts.push({ selected: attempt.selected, at: attempt.at || 0 });
+      else invalidTime = true;
+    }
+    let selected = validSelection(raw.selected) ? raw.selected : null;
+    let submitted = raw.submitted === true && selected !== null;
+    let updated_at = validTime(raw.updated_at) ? raw.updated_at : 0;
+    if (!validTime(raw.updated_at) && (!unknownTime(raw.updated_at) || invalidTime)) {
+      // Preserve older, dated evidence without accepting a future latest answer.
+      invalidTime = true;
+      const latest = attempts.filter(a => validTime(a.at)).sort((a, b) => b.at - a.at)[0];
+      if (!latest) return { answer: null, invalidTime };
+      selected = latest.selected; submitted = true; updated_at = latest.at;
+    }
     if (submitted && !attempts.some(a => a.at === updated_at && a.selected === selected)) attempts.push({ selected, at: updated_at });
-    return { fingerprint: fingerprint(q), selected, submitted, updated_at, attempts };
+    return { answer: { fingerprint: fingerprint(q), selected, submitted, updated_at, attempts }, invalidTime };
   }
   function mergePayload(payload, restoring = false) {
     if (!payload || payload.schema_version !== 1 || payload.course_id !== course.id) throw new Error('记录不属于当前课程，或文件版本不受支持。');
-    let accepted = 0, skipped = 0;
+    let accepted = 0, skipped = 0, quarantined = 0;
+    // Archived anomalies are retained for export, never silently promoted to progress.
+    for (const entry of Array.isArray(payload.quarantined) ? payload.quarantined : []) {
+      if (entry && ['answer', 'note', 'checkin'].includes(entry.kind) && typeof entry.id === 'string' && typeof entry.reason === 'string' && entry.record && typeof entry.record === 'object') {
+        archiveRecord(entry.kind, entry.id, entry.record, entry.reason);
+      }
+    }
     if (payload.answers && typeof payload.answers === 'object') for (const [id, raw] of Object.entries(payload.answers)) {
-      const item = questionMap.get(id), incoming = item && sanitizeAnswer(raw, item.q);
-      if (!incoming) { skipped++; continue; }
+      const item = questionMap.get(id), sanitized = item && sanitizeAnswer(raw, item.q);
+      if (!sanitized) { skipped++; continue; }
+      if (sanitized.invalidTime) quarantined += archiveRecord('answer', id, raw, '时间在未来或无效，未采用异常时间的答案');
+      const incoming = sanitized.answer;
+      if (!incoming) continue;
       const previous = state.answers[id];
       if (previous) {
         const winner = previous.updated_at > incoming.updated_at ? previous : incoming;
@@ -322,7 +351,13 @@
     }
     for (const l of lessons) {
       const id = nkey(l), note = payload.notes?.[id];
-      if (note && typeof note.text === 'string' && validTime(note.updated_at) && (!state.notes[id] || note.updated_at >= state.notes[id].updated_at)) state.notes[id] = { text: note.text, updated_at: note.updated_at };
+      if (note && typeof note.text === 'string') {
+        if (!validTime(note.updated_at) && !unknownTime(note.updated_at)) quarantined += archiveRecord('note', id, note, '时间在未来或无效，未覆盖现有笔记');
+        else {
+          const at = note.updated_at || 0;
+          if (!state.notes[id] || at >= state.notes[id].updated_at) state.notes[id] = { text: note.text, updated_at: at };
+        }
+      }
       const cursor = payload.cursors?.[id];
       if (restoring && Number.isInteger(cursor) && cursor >= 0 && cursor < l.questions.length) state.cursors[id] = cursor;
     }
@@ -330,19 +365,27 @@
     for (const raw of Object.values(state.answers)) for (const attempt of raw.attempts) markActivity(attempt.at);
     for (const note of Object.values(state.notes)) if (note.text.trim()) markActivity(note.updated_at);
     if (payload.checkins && typeof payload.checkins === 'object') for (const [day, entry] of Object.entries(payload.checkins)) {
-      if (entry && Number.isFinite(entry.at) && entry.at > 0 && entry.at <= Date.now() && ['manual', 'study'].includes(entry.kind) && dateKey(entry.at) === day) markActivity(entry.at, entry.kind);
+      if (entry && validTime(entry.at) && ['manual', 'study'].includes(entry.kind) && dateKey(entry.at) === day) markActivity(entry.at, entry.kind);
+      else if (entry && typeof entry === 'object') quarantined += archiveRecord('checkin', day, entry, '活动日期或时间无效，未计入地图');
     }
     if (restoring) {
       if (lessons.some(l => l.day === payload.lastDay)) state.lastDay = payload.lastDay;
       if (['dashboard', 'learn', 'practice', 'quiz', 'wrong'].includes(payload.view)) state.view = payload.view;
     }
-    return { accepted, skipped };
+    return { accepted, skipped, quarantined };
   }
-  try { const raw = localStorage.getItem(key); if (raw) { try { mergePayload(JSON.parse(raw), true); } catch (_) { announce('已有记录无法读取。你可以导入备份继续学习。'); } } const probe = key + ':probe'; localStorage.setItem(probe, '1'); localStorage.removeItem(probe); } catch (_) { storageWarning(); }
+  try { const raw = localStorage.getItem(key); if (raw) { try { const result = mergePayload(JSON.parse(raw), true); if (result.quarantined) announce(`已保留 ${result.quarantined} 条异常时间记录，未将异常时间计入进度；可导出备份检查。`); } catch (_) { announce('已有记录无法读取。你可以导入备份继续学习。'); } } const probe = key + ':probe'; localStorage.setItem(probe, '1'); localStorage.removeItem(probe); } catch (_) { storageWarning(); }
   const record = (l, q) => state.answers[qkey(l, q)];
-  const correct = (l, q) => { const a = record(l, q); return !!a?.submitted && a.selected === q.correct_index; };
+  const correct = (l, q) => { const a = record(l, q); return !!a?.submitted && (a.updated_at === 0 || validTime(a.updated_at)) && a.selected === q.correct_index; };
   const complete = l => l.questions.length > 0 && l.questions.every(q => correct(l, q));
-  const wrongHistory = (l, q) => (record(l, q)?.attempts || []).filter(a => a.selected !== q.correct_index);
+  const wrongHistory = (l, q) => (record(l, q)?.attempts || []).filter(a => (a.at === 0 || validTime(a.at)) && a.selected !== q.correct_index);
+  const firstCorrectAt = (l, q) => {
+    const correctAttempts = (record(l, q)?.attempts || []).filter(a => a.selected === q.correct_index);
+    if (correctAttempts.some(a => a.at === 0)) return null;
+    const dated = correctAttempts.filter(a => validTime(a.at));
+    return dated.length ? dated.reduce((earliest, a) => Math.min(earliest, a.at), Infinity) : null;
+  };
+  const datedPass = l => l.questions.every(q => firstCorrectAt(l, q) !== null);
   const plannedMinutes = l => l.activities.reduce((sum, a) => sum + a.minutes, 0);
   function dailyLearning() {
     const days = new Map(), now = Date.now();
@@ -355,8 +398,8 @@
       for (const q of l.questions) {
         const attempts = (record(l, q)?.attempts || []).filter(a => a.at > 0 && a.at <= now);
         for (const a of attempts) bucket(dateKey(a.at)).questionIds.add(qkey(l, q));
-        const times = attempts.filter(a => a.selected === q.correct_index).map(a => a.at);
-        if (times.length) firstCorrect.push(times.reduce((earliest, at) => Math.min(earliest, at), Infinity));
+        const first = firstCorrectAt(l, q);
+        if (first !== null) firstCorrect.push(first);
       }
       // The lesson is first passed when the last outstanding question is first corrected.
       if (l.questions.length && firstCorrect.length === l.questions.length) {
@@ -422,7 +465,8 @@
     $('sidebar').classList.remove('open'); $('menu-toggle').setAttribute('aria-expanded', 'false');
     save(); render(); if (focus) $('main').focus();
   }
-  function changeTab(tab) { view = tab; state.view = tab; save(); render(); }
+  function changeTab(tab) { view = tab; state.view = tab; save(); render(); $('study-tab-' + tab)?.focus(); }
+  function changeQuestion(index) { state.cursors[nkey(lesson)] = index; save(); render(); $('quiz-question-heading')?.focus(); }
   function list(tag, cls, items) { const el = make(tag, cls); for (const text of items) el.append(make('li', '', text)); return el; }
   function card(title, text, cls = '') { const el = make('section', 'card ' + cls); if (title) el.append(make('h3', '', title)); if (text) el.append(make('div', 'section-body', text)); return el; }
   function renderDashboard() {
@@ -458,6 +502,9 @@
       stat.append(make('p', 'stat-label', label), valueEl, make('p', 'stat-caption', caption)); stats.append(stat);
     }
     content.append(stats);
+    const undated = lessons.filter(l => complete(l) && !datedPass(l)).length;
+    if (undated) { const note = make('p', 'dashboard-note', `${undated} 课的通过日期未知：已保留旧备份进度，未把它们计入某一天的学习量。`); note.id = 'progress-date-note'; content.append(note); }
+    if (state.quarantined.length) content.append(make('p', 'dashboard-note', `${state.quarantined.length} 条异常记录已单独保留，异常时间不计入进度。导出备份包含这些原始记录，修正后可重新导入。`));
     const checkin = make('section', 'dashboard-panel checkin-panel'), header = make('div', 'panel-heading');
     const activity = dailyLearning(), emptyDay = () => ({ lessons: [], questionIds: new Set(), minutes: 0 });
     if (!selectedDate || selectedDate > today) selectedDate = today;
@@ -535,7 +582,7 @@
     if (complete(lesson)) heading.append(make('span', 'badge', '✓ 本课已通过'));
     heading.append(make('p', 'lesson-goal', course.goal));
     [['learn', '01 阅读学习'], ['practice', '02 练习与笔记'], ['quiz', '03 当日测验']].forEach(([tab, label]) => {
-      const b = button(label, 'tab', () => changeTab(tab)); if (view === tab) b.setAttribute('aria-current', 'step'); $('study-tabs').append(b);
+      const b = button(label, 'tab', () => changeTab(tab)); b.id = 'study-tab-' + tab; if (view === tab) b.setAttribute('aria-current', 'step'); $('study-tabs').append(b);
     });
     if (view === 'quiz') renderQuiz(); else if (view === 'practice') renderPractice(); else renderLearning();
     finishMotion();
@@ -663,9 +710,9 @@
     content.append(make('p', 'muted', '每道题答对后，本课才会通过。答错时可以查看解析，再试一次。'));
     if (!questions.length) { content.append(card('本课缺少测验', '暂不记录通过，请先补齐本课知识检查。')); return; }
     const nav = make('nav', 'question-nav'); nav.setAttribute('aria-label', '测验题目');
-    questions.forEach((q, i) => { const a = record(lesson, q), b = button(String(i + 1), correct(lesson, q) ? 'correct' : a?.submitted ? 'wrong' : '', () => { state.cursors[nkey(lesson)] = i; save(); render(); }); if (i === current) b.setAttribute('aria-current', 'true'); b.setAttribute('aria-label', `第 ${i + 1} 题，${correct(lesson, q) ? '已答对' : a?.submitted ? '待重试' : '未完成'}`); nav.append(b); }); content.append(nav);
+    questions.forEach((q, i) => { const a = record(lesson, q), b = button(String(i + 1), correct(lesson, q) ? 'correct' : a?.submitted ? 'wrong' : '', () => changeQuestion(i)); if (i === current) b.setAttribute('aria-current', 'true'); b.setAttribute('aria-label', `第 ${i + 1} 题，${correct(lesson, q) ? '已答对' : a?.submitted ? '待重试' : '未完成'}`); nav.append(b); }); content.append(nav);
     const q = questions[current], a = record(lesson, q), el = card(); el.append(make('p', 'quiz-counter', `第 ${current + 1} / ${questions.length} 题 · 已答对 ${questions.filter(item => correct(lesson, item)).length} 题`));
-    const fieldset = make('fieldset'), legend = make('legend', '', q.prompt), options = make('div', 'options'); fieldset.append(legend, options);
+    const fieldset = make('fieldset'), legend = make('legend', '', q.prompt), options = make('div', 'options'); legend.id = 'quiz-question-heading'; legend.tabIndex = -1; fieldset.append(legend, options);
     q.options.forEach((text, i) => { const label = make('label', 'option'), input = make('input'); input.type = 'radio'; input.name = 'current-question'; input.id = 'answer-option-' + i; input.value = String(i); input.checked = a?.selected === i; input.disabled = !!a?.submitted; label.htmlFor = input.id;
       input.addEventListener('change', () => { updateAnswer(q, i, false); submit.disabled = false; }); label.append(input, make('span', '', text)); options.append(label);
     }); el.append(fieldset);
@@ -678,8 +725,8 @@
     const actions = make('div', 'actions'), submit = button('提交答案', 'primary', () => { const selected = record(lesson, q)?.selected; if (!Number.isInteger(selected)) return; updateAnswer(q, selected, true); render(); $('content').querySelector('.feedback')?.focus(); });
     submit.disabled = !Number.isInteger(a?.selected); if (!a?.submitted) actions.append(submit);
     else if (!correct(lesson, q)) actions.append(button('再试一次', 'primary', () => { updateAnswer(q, null, false); render(); $('answer-option-0')?.focus(); }));
-    if (current > 0) actions.append(button('上一题', 'secondary', () => { state.cursors[nkey(lesson)] = current - 1; save(); render(); }));
-    if (current + 1 < questions.length) actions.append(button('下一题 →', 'secondary', () => { state.cursors[nkey(lesson)] = current + 1; save(); render(); }));
+    if (current > 0) actions.append(button('上一题', 'secondary', () => changeQuestion(current - 1)));
+    if (current + 1 < questions.length) actions.append(button('下一题 →', 'secondary', () => changeQuestion(current + 1)));
     el.append(actions); content.append(el); appendCompletion();
   }
   function appendCompletion() {
@@ -702,9 +749,9 @@
   $('menu-toggle').addEventListener('click', () => { const open = $('sidebar').classList.toggle('open'); $('menu-toggle').setAttribute('aria-expanded', String(open)); });
   $('dashboard-link').addEventListener('click', () => openDashboard());
   $('wrong-book').addEventListener('click', () => { view = 'wrong'; state.view = view; save(); render(); $('sidebar').classList.remove('open'); $('menu-toggle').setAttribute('aria-expanded', 'false'); $('main').focus(); });
-  $('export-progress').addEventListener('click', () => { const blob = new Blob([JSON.stringify({ ...state, exported_at: new Date().toISOString() }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), a = make('a'); a.href = url; a.download = 'KnowledgeToPlan-' + String(course.id).replace(/[^\p{L}\p{N}_-]/gu, '_') + '-progress.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); announce('学习记录已导出，包含进度、错题历史和笔记。'); });
+  $('export-progress').addEventListener('click', () => { const blob = new Blob([JSON.stringify({ ...state, exported_at: new Date().toISOString() }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), a = make('a'); a.href = url; a.download = 'KnowledgeToPlan-' + String(course.id).replace(/[^\p{L}\p{N}_-]/gu, '_') + '-progress.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); announce(`学习记录已导出，包含进度、错题历史、笔记和异常记录。${blob.size > 10 * 1024 * 1024 ? '文件较大，恢复时请保持页面打开；浏览器存储容量可能不足。' : ''}`); });
   $('import-progress').addEventListener('click', () => $('import-file').click());
-  $('import-file').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; try { if (file.size > 10 * 1024 * 1024) throw new Error('记录文件过大，请选择小于 10 MB 的文件。'); const result = mergePayload(JSON.parse(await file.text())); save(); render(); announce(`导入完成，合并了 ${result.accepted} 道题的记录。${result.skipped ? `另有 ${result.skipped} 条记录因题目已变更或格式无效而跳过。` : ''}笔记已按更新时间合并。`); } catch (error) { announce('无法导入：' + (error instanceof SyntaxError ? '文件不是有效的 JSON 记录。' : error.message)); } event.target.value = ''; });
+  $('import-file').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; try { if (file.size > 10 * 1024 * 1024) announce('正在读取较大的学习记录，请保持页面打开；存储不足时仍可在本次页面学习并导出。'); const result = mergePayload(JSON.parse(await file.text())); save(); render(); announce(`导入完成，合并了 ${result.accepted} 道题的记录。${result.skipped ? `另有 ${result.skipped} 条记录因题目已变更或格式无效而跳过。` : ''}${result.quarantined ? `${result.quarantined} 条异常时间记录已单独保留，可导出检查。` : ''}笔记已按更新时间合并。`); } catch (error) { announce('无法导入：' + (error instanceof SyntaxError ? '文件不是有效的 JSON 记录。' : error.message)); } event.target.value = ''; });
   $('course-title').textContent = course.title; document.title = course.title + ' · KnowledgeToPlan';
   $('course-meta').textContent = `${course.days} 天 · 每天 ${course.daily_minutes} 分钟${course.start_date ? ' · ' + course.start_date + ' 开始' : ''}${course.study_time ? ' · ' + course.study_time + ' ' + course.timezone : ''}`;
   const dayFromHash = () => { const match = /^#day-(\d+)$/.exec(location.hash); return match && lessons.find(l => l.day === Number(match[1])); };

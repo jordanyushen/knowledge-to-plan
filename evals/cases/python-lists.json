@@ -1,0 +1,14 @@
+{
+  "id": "python-lists",
+  "goal": "能独立预测并执行短列表的索引/切片、append与extend、pop与原地排序；理解别名和浅拷贝的基本区别。",
+  "background": "知道变量、整数和print；未学过列表；不要求复杂嵌套拷贝。",
+  "days": 3,
+  "daily_minutes": 20,
+  "timezone": "Asia/Hong_Kong",
+  "source_ids": [
+    "python-introduction",
+    "python-datastructures",
+    "python-sequences"
+  ],
+  "delivery": "完整中文离线课程，三课，每课三道单选并有逐项解析；保留练习输入、预期产出及适度复习。只写原创教学，来源按节定位。"
+}

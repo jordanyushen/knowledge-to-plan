@@ -13,7 +13,7 @@
 
 必填：`id`、`day`、`title`、`objectives`（至少1项）、`activities`（至少1项，每项`kind`和正整数`minutes`）、`sections`（至少1项，每项`title`和非空实际讲解`body`）、`takeaways`（至少1项）、`questions`（至少1道）、`source_ids`（至少1个存在的来源ID）。
 
-`activities`分钟总和不超过`course.daily_minutes`，涵盖阅读、练习、复习和测验，`kind`为可读标签（如learn/practice/review/quiz）。可选`sections[].example`、`practice`、`review_of`（只能引用此前课次）。项目或复习条目同样提供教学内容和可判断的知识检查，不填“待完善”。
+`activities`分钟总和不超过`course.daily_minutes`，涵盖阅读、练习、复习和测验，`kind`为可读标签（如learn/practice/review/quiz）。可选`sections[].example`、`practice`、`review_of`（整数序号数组，例如第3课回顾前两课写 `[1, 2]`；每项必须小于本课 `day`，不能填课次ID字符串）。项目或复习条目同样提供教学内容和可判断的知识检查，不填“待完善”。
 
 每题：`id`（在该课内唯一）、`prompt`、`options`（至少2个不同非空字符串）、`correct_index`（从0计数的整数；不是字母或布尔值）、`explanations`（与选项数相同，每个选项都解释为什么对/错）。默认每课3题4选项，但不是模板硬限制。
 

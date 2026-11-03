@@ -1,0 +1,17 @@
+{
+  "name": "knowledge-to-plan-checks",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Development-only browser regression tests; generated courses have no npm dependencies.",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "test:runtime": "node knowledge-to-plan/scripts/test_runtime.cjs",
+    "test:e2e": "playwright test",
+    "test:e2e:list": "playwright test --list"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

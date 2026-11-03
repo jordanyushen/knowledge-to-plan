@@ -1,0 +1,59 @@
+[
+  {
+    "id": "python-datastructures",
+    "url": "https://docs.python.org/3.13/tutorial/datastructures.html",
+    "artifact_kind": "downloaded-html",
+    "path": "sources/python-datastructures.html",
+    "sha256": "14cbb79ca8991c75ff9a17db2057640e528bb43b00925e58dd57de2cde746e5b",
+    "retrieved_date": "2026-11-04",
+    "redistribution": "local-only; not in skill package"
+  },
+  {
+    "id": "python-introduction",
+    "url": "https://docs.python.org/3.13/tutorial/introduction.html",
+    "artifact_kind": "downloaded-html",
+    "path": "sources/python-introduction.html",
+    "sha256": "e247796cab129020c2362e5171b126cdf19feb69438291d9a13b73f467789500",
+    "retrieved_date": "2026-11-04",
+    "redistribution": "local-only; not in skill package"
+  },
+  {
+    "id": "python-sequences",
+    "url": "https://docs.python.org/3.13/library/stdtypes.html",
+    "artifact_kind": "downloaded-html",
+    "path": "sources/python-sequences.html",
+    "sha256": "64b31f5ed3e61b48b6785ec1ef523d95892651ca8da045162c1acc4ea5632fa6",
+    "retrieved_date": "2026-11-04",
+    "redistribution": "local-only; not in skill package"
+  },
+  {
+    "id": "nist-prefixes",
+    "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+    "artifact_kind": "verified-facts-notes-not-original-page",
+    "path": "source-notes/nist-prefixes.txt",
+    "sha256": "b9eb8be14586e6132ad113ec8bf0bc92e20cc53df5baf1706f5890e926cf16b0",
+    "retrieved_date": "2026-11-04",
+    "acquisition": "official page read with web tool; direct download returned403",
+    "redistribution": "original notes; no original prose or images bundled"
+  },
+  {
+    "id": "nist-derived",
+    "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+    "artifact_kind": "verified-facts-notes-not-original-page",
+    "path": "source-notes/nist-derived.txt",
+    "sha256": "198fde6c4da3859510bf02d177128a453f7fd5c4ef01d489d17839b4acda8c89",
+    "retrieved_date": "2026-11-04",
+    "acquisition": "official page read with web tool; direct download returned403",
+    "redistribution": "original notes; no original prose or images bundled"
+  },
+  {
+    "id": "nist-rules",
+    "url": "https://physics.nist.gov/cuu/Units/checklist.html",
+    "artifact_kind": "verified-facts-notes-not-original-page",
+    "path": "source-notes/nist-rules.txt",
+    "sha256": "f228c3940c11454341b45fbfa9899ab1bfb1b8259844f8c24545c5ef937a7af5",
+    "retrieved_date": "2026-11-04",
+    "acquisition": "official page read with web tool; direct download returned403",
+    "redistribution": "original notes; no original prose or images bundled"
+  }
+]

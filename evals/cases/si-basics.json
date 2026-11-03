@@ -1,0 +1,14 @@
+{
+  "id": "si-basics",
+  "goal": "能在m/cm/mm之间换算、解释面积单位换算的平方因子，并用明确的总路程/总时间求平均速率及正确单位。",
+  "background": "会整数小数乘除；没有物理课程基础；不涉及瞬时速度、向量或完整SI重新定义。",
+  "days": 3,
+  "daily_minutes": 20,
+  "timezone": "Asia/Hong_Kong",
+  "source_ids": [
+    "nist-prefixes",
+    "nist-derived",
+    "nist-rules"
+  ],
+  "delivery": "完整中文离线课程，三课，每课三道单选逐项解析，含公式的变量/单位/条件；面积图和路程时间示意图按需原创建构。来源只作事实依据，例子和计算自行编写。"
+}

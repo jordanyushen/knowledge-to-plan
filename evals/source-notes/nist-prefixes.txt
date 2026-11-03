@@ -1,0 +1,1 @@
+SI prefix table: kilo k = 10^3; centi c = 10^-2; milli m = 10^-3. Independently checked facts; not a verbatim source snapshot.

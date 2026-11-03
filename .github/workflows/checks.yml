@@ -1,0 +1,102 @@
+name: Checks
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  unit:
+    name: Python ${{ matrix.python }} / Node ${{ matrix.node }} / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { os: ubuntu-latest, python: '3.9', node: '20' }
+          - { os: ubuntu-latest, python: '3.11', node: '20' }
+          - { os: ubuntu-latest, python: '3.12', node: '22' }
+          - { os: ubuntu-latest, python: '3.13', node: '22' }
+          - { os: windows-latest, python: '3.13', node: '22' }
+    env:
+      PYTHONUTF8: '1'
+      PYTHONDONTWRITEBYTECODE: '1'
+      # Exercise the installed tzdata package rather than the host IANA database.
+      PYTHONTZPATH: ''
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install runtime timezone data
+        run: python -m pip install -r requirements.txt
+      - name: Python regression tests
+        run: python -m unittest discover -s knowledge-to-plan/scripts -p "test_*.py" -v
+      - name: Release tooling regression tests
+        run: python -m unittest discover -s tools -p "test_*.py" -v
+      - name: JavaScript state-machine tests
+        run: node knowledge-to-plan/scripts/test_runtime.cjs
+      - name: Fixed evaluation inputs and archived course structures
+        run: python evals/check_evals.py
+
+  release-integrity:
+    name: Examples and release integrity
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - run: python -m pip install -r requirements.txt
+      - name: Rebuild examples in a temporary copy
+        run: python tools/check_examples.py
+      - name: Verify checked-in manifest, ZIP and hashes
+        run: python tools/verify_release.py
+      - name: Build a second copy and verify its integrity
+        run: |
+          python tools/build_release.py --output "$RUNNER_TEMP/ktp-release"
+          python tools/verify_release.py --release-root "$RUNNER_TEMP/ktp-release"
+          cmp manifest.json "$RUNNER_TEMP/ktp-release/manifest.json"
+          cmp dist/SHA256SUMS "$RUNNER_TEMP/ktp-release/dist/SHA256SUMS"
+      - name: Require adopted licensing for a tagged release
+        if: startsWith(github.ref, 'refs/tags/')
+        run: python tools/verify_release.py
+
+  browser:
+    name: Chromium / desktop and 390px / HTTP and file
+    runs-on: ubuntu-latest
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: python -m pip install -r requirements.txt
+      - run: npm ci
+      - name: Install CI Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Run real browser regressions
+        run: npm run test:e2e
+      - name: Upload browser report, traces and failure screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-regression-report
+          path: |
+            playwright-report/
+            test-results/
+          if-no-files-found: warn
+          retention-days: 14

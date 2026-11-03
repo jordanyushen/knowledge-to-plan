@@ -1,0 +1,12 @@
+{
+  "id": "missing-source",
+  "goal": "按未提供的指定讲义完整学习其内容",
+  "background": "零基础",
+  "days": 3,
+  "daily_minutes": 20,
+  "timezone": "Asia/Hong_Kong",
+  "source_paths": [
+    "/not-provided/lecture.pdf"
+  ],
+  "delivery": "讲义未提供且该路径不存在；如实说明实际读取范围，准备可评审框架，不冒充已读。"
+}

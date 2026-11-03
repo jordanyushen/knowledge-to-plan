@@ -6,9 +6,9 @@ import hashlib
 import json
 import sys
 from pathlib import Path
-from zoneinfo import ZoneInfo
 
 from validate_plan import load_validated, validate_plan
+from timezone_support import resolve_timezone
 
 ASSETS = Path(__file__).resolve().parents[1] / 'assets' / 'learning-site'
 
@@ -56,7 +56,7 @@ def make_ics(data):
     c = data['course']
     if not c.get('study_time'):
         raise ValueError('导出日历需要明确的study_time；每天分钟数不是开始时刻')
-    dates, zone = study_dates(c), ZoneInfo(c['timezone'])
+    dates, zone = study_dates(c), resolve_timezone(c['timezone'])
     stamp = dt.datetime.now(dt.timezone.utc).strftime('%Y%m%dT%H%M%SZ')
     lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//KnowledgeToPlan//Offline Learning//ZH-CN', 'CALSCALE:GREGORIAN', 'X-WR-CALNAME:' + ics_escape(c['title'])]
     for lesson, date in zip(data['lessons'], dates):

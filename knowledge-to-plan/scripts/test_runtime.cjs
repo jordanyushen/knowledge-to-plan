@@ -46,7 +46,7 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
     getAttribute(name) { return this.attributes[name]; }
     removeAttribute(name) { delete this.attributes[name]; }
     addEventListener(name, handler) { this.events[name] = handler; }
-    focus() { this.focused = true; }
+    focus() { this.focused = true; document.activeElement = this; }
     querySelector(selector) { return walk(this).find(element => selector.startsWith('.') ? element.className.split(' ').includes(selector.slice(1)) : element.tagName === selector); }
     click() { if (!this.disabled) return this.events.click?.({ target: this }); }
   }
@@ -74,8 +74,8 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
     document, window: { COURSE: clone(data), addEventListener: (name, handler) => { handlers[name] = handler; }, setInterval: handler => { handlers.interval = handler; return 1; }, matchMedia: () => ({ matches: reducedMotion }) }, location,
     history: { replaceState: (_state, _title, nextHash) => { location.hash = nextHash; } },
     localStorage: {
-      getItem: key => { if (unavailable) throw new Error('Synthetic storage failure'); return storage.get(key) ?? null; },
-      setItem: (key, value) => { if (unavailable) throw new Error('Synthetic storage failure'); storage.set(key, value); },
+      getItem: key => { if (unavailable === true) throw new Error('Synthetic storage failure'); return storage.get(key) ?? null; },
+      setItem: (key, value) => { if (unavailable === true || (typeof unavailable === 'number' && value.length > unavailable)) throw new Error('Synthetic storage failure'); storage.set(key, value); },
       removeItem: key => storage.delete(key)
     },
     URL: TestURL, Blob, Date: TestDate, Intl, DOMParser: Parser, setTimeout: handler => { handler(); }
@@ -92,17 +92,20 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
   };
   return {
     get, click, snapshot, storage, location, handlers, downloads,
+    activeElement: () => document.activeElement,
     all(root = 'content') { return walk(get(root)); },
     advanceTo(timestamp) { tick = timestamp; },
     choose(index) { const radio = get('answer-option-' + index); assert.ok(!radio.disabled); radio.checked = true; radio.events.change({ target: radio }); },
-    async import(payload) { const input = get('import-file'); input.files = [{ size: 1, text: async () => JSON.stringify(payload) }]; await input.events.change({ target: input }); },
+    async import(payload, size = 1) { const input = get('import-file'); input.files = [{ size, text: async () => JSON.stringify(payload) }]; await input.events.change({ target: input }); },
     note(text) { const input = get('lesson-notes'); input.value = text; input.events.input({ target: input }); }
   };
 }
 
 async function main() {
   for (const token of ['STYLE', 'COURSE_JSON', 'SCRIPT']) assert.equal(html.split('{{' + token + '}}').length - 1, 1, 'Each replacement token occurs once');
-  const store = new Map(); let ui = launch(fixture, store, '#day-1');
+  let mainClock = Date.now();
+  const start = storage => launch(fixture, storage, '#day-1', false, mainClock += 10000);
+  const store = new Map(); let ui = start(store);
   assert.match(ui.get('course-meta').textContent, /4 天.*17 分钟/);
   ui.click('03 当日测验', 'study-tabs'); ui.choose(0); ui.click('提交答案');
   assert.equal(ui.get('progress-percent').textContent, '0%', 'Wrong answers cannot pass a lesson');
@@ -115,7 +118,7 @@ async function main() {
   assert.equal(records[ids[0]].attempts.length, 2, 'Retry retains wrong and correct attempts');
   ui.click('02 练习与笔记', 'study-tabs'); ui.note('合成的本地学习笔记'); ui.click('03 当日测验', 'study-tabs');
 
-  ui = launch(fixture, store, '#day-1');
+  ui = start(store);
   assert.ok(ui.get('content').textContent.includes('第 2 / 2 题'), 'Reload restores the question cursor and quiz view');
   assert.equal(ui.get('answer-option-1').checked, true, 'Reload restores the selected answer');
   assert.equal(ui.get('answer-option-1').disabled, true, 'Passed questions retain their submitted state');
@@ -124,13 +127,14 @@ async function main() {
   ui.location.hash = '#day-3'; ui.handlers.hashchange(); assert.equal(ui.snapshot().lastDay, 3, 'Hash changes select the matching day');
 
   const changed = clone(fixture); changed.lessons[0].questions[0].prompt += '（修订）';
-  const revised = launch(changed, new Map(store), '#day-1'), revisedRecords = revised.snapshot().answers;
+  const revised = launch(changed, new Map(store), '#day-1', false, mainClock += 10000), revisedRecords = revised.snapshot().answers;
   assert.equal(revised.get('progress-percent').textContent, '0%', 'Changed questions invalidate completion');
   assert.equal(Object.keys(revisedRecords).length, 1, 'Only changed question records are discarded');
   assert.ok(revisedRecords[ids[1]], 'Unchanged question records survive');
 
-  ui = launch(fixture, store, '#day-1');
-  const before = ui.snapshot(), incoming = clone(before), now = Date.now() + 1000;
+  ui = start(store);
+  const before = ui.snapshot(), incoming = clone(before), now = mainClock + 1000;
+  ui.advanceTo(now + 10);
   incoming.answers = {
     [ids[0]]: { ...before.answers[ids[0]], updated_at: now, attempts: [{ selected: 2, at: now - 1 }, { selected: 1, at: now }] },
     [ids[1]]: { ...before.answers[ids[1]], updated_at: now + 2, attempts: [{ selected: 0, at: now + 1 }, { selected: 1, at: now + 2 }] },
@@ -162,8 +166,10 @@ async function main() {
   assert.ok(disabled.get('content').textContent.includes('答对了'), 'Learning continues without local storage');
   await testDashboard();
   await testDailyVolume();
+  await testTimeIntegrityAndBackups();
+  testContrast();
   testScientificContent();
-  console.log('PASS: quiz gating/retry/completion, resume, fingerprints, deep links, history, import/export, notes, storage fallback; dashboard metrics, lesson navigation, calendar map, check-in idempotency, timezone boundaries, real-activity migration, backup validation, uncapped daily learning volume, and scientific-content rendering/fallbacks.');
+  console.log('PASS: time quarantine/undated legacy records, focus restoration, large-backup recovery, text contrast; quiz gating/retry/completion, resume, fingerprints, deep links, history, import/export, notes, storage fallback; dashboard metrics, lesson navigation, calendar map, check-in idempotency, timezone boundaries, real-activity migration, backup validation, uncapped daily learning volume, and scientific-content rendering/fallbacks.');
 }
 
 function testScientificContent() {
@@ -445,6 +451,112 @@ async function testDailyVolume() {
   reduced.get('today-checkin').click();
   assert.equal(reduced.all().filter(el => el.className === 'checkin-spark').length, 0, 'Reduced-motion preference skips celebratory particles');
   assert.equal(Object.keys(reduced.snapshot().checkins).length, 1, 'Reduced-motion mode preserves the exact same check-in behavior');
+}
+
+async function testTimeIntegrityAndBackups() {
+  const now = Date.parse('2026-11-02T12:00:00Z'), l = fixture.lessons[1], q = l.questions[0];
+  const id = 'q:' + JSON.stringify([l.id, q.id]);
+  const answer = at => ({ fingerprint: JSON.stringify([q.prompt, q.options, q.correct_index, q.explanations]), selected: 1, submitted: true, updated_at: at, attempts: [{ selected: 1, at }] });
+  const payload = record => ({ schema_version: 1, course_id: fixture.course.id, answers: { [id]: record }, notes: {}, checkins: {} });
+  const future = payload(answer(now + 3600000));
+  const ui = launch(fixture, new Map(), '#dashboard', false, now);
+  await ui.import(future);
+  assert.equal(ui.get('stat-completed').textContent, '0 / 4', 'Future latest answers cannot pass a lesson');
+  assert.equal(ui.get('stat-questions').textContent, '0 / 5', 'Future latest answers cannot count as correct');
+  assert.equal(ui.get('day-question-count').textContent, '0', 'Future latest answers cannot create daily volume');
+  assert.equal(ui.snapshot().answers[id], undefined, 'Future answers remain outside active progress');
+  assert.deepEqual(ui.snapshot().quarantined[0].record, future.answers[id], 'Anomalous raw data is preserved without rewriting its timestamp');
+  assert.match(ui.get('notice').textContent, /异常时间记录已单独保留/);
+  await ui.import(future);
+  assert.equal(ui.snapshot().quarantined.length, 1, 'Repeated anomalies are archived once');
+  ui.get('export-progress').click();
+  const backup = JSON.parse(await ui.downloads[0].text());
+  const restored = launch(fixture, new Map(), '#dashboard', false, now);
+  await restored.import(backup);
+  assert.deepEqual(restored.snapshot().quarantined, backup.quarantined, 'Backup round trips preserve anomalies');
+  restored.advanceTo(now + 7200000); restored.get('dashboard-link').click();
+  assert.equal(restored.get('stat-completed').textContent, '0 / 4', 'An archive is not automatically promoted when time passes');
+
+  const past = payload(answer(now - 60000));
+  await ui.import(past);
+  assert.equal(ui.get('stat-completed').textContent, '1 / 4');
+  const conflict = clone(future); conflict.answers[id].selected = 0; conflict.answers[id].attempts[0].selected = 0;
+  await ui.import(conflict);
+  assert.equal(ui.snapshot().answers[id].selected, 1, 'Future wrong answers cannot overwrite valid progress');
+  assert.equal(ui.get('stat-review').textContent, '0', 'Quarantined wrong answers cannot enter the active wrong book');
+  const mixed = payload(answer(now - 30000)); mixed.answers[id].attempts.push({ selected: 0, at: now + 3600000 });
+  await ui.import(mixed);
+  assert.equal(ui.get('stat-completed').textContent, '1 / 4', 'Valid evidence in a mixed record survives');
+  assert.equal(ui.snapshot().answers[id].attempts.some(a => a.at > now), false, 'Future attempts stay out of active history');
+  assert.equal(ui.get('stat-review').textContent, '0');
+
+  const legacy = payload(answer(0)); delete legacy.answers[id].updated_at; delete legacy.answers[id].attempts;
+  const old = launch(fixture, new Map(), '#dashboard', false, now);
+  await old.import(legacy);
+  assert.equal(old.get('stat-completed').textContent, '1 / 4', 'An undated v1 backup retains its completion');
+  assert.equal(old.get('day-completed-count').textContent, '0', 'An undated completion is not assigned to today');
+  assert.equal(Object.keys(old.snapshot().checkins).length, 0, 'Undated history cannot manufacture check-ins');
+  assert.match(old.get('progress-date-note').textContent, /1 课的通过日期未知/);
+  old.get('export-progress').click();
+  const oldBackup = JSON.parse(await old.downloads[0].text());
+  const oldRestored = launch(fixture, new Map([['knowledge-to-plan:v1:' + fixture.course.id, JSON.stringify(oldBackup)]]), '#dashboard', false, now);
+  assert.equal(oldRestored.get('stat-completed').textContent, '1 / 4', 'Undated legacy completion survives another refresh');
+  assert.match(oldRestored.get('progress-date-note').textContent, /通过日期未知/);
+  await oldRestored.import(past);
+  assert.equal(oldRestored.get('day-completed-count').textContent, '0', 'Later dated review cannot invent an originally unknown first-pass date');
+  assert.match(oldRestored.get('progress-date-note').textContent, /通过日期未知/);
+  const hiddenFuture = clone(future); delete hiddenFuture.answers[id].updated_at;
+  const suspicious = launch(fixture, new Map(), '#dashboard', false, now);
+  await suspicious.import(hiddenFuture);
+  assert.equal(suspicious.get('stat-completed').textContent, '0 / 4', 'A future attempt cannot be disguised as undated legacy progress');
+  const invalid = payload(answer(-1)); await suspicious.import(invalid);
+  assert.equal(suspicious.get('stat-completed').textContent, '0 / 4', 'Negative timestamps are not treated as legacy dates');
+  const existing = launch(fixture, new Map([['knowledge-to-plan:v1:' + fixture.course.id, JSON.stringify(future)]]), '#dashboard', false, now);
+  assert.equal(existing.get('stat-completed').textContent, '0 / 4', 'Reload sanitizes an existing future record');
+  assert.match(existing.get('notice').textContent, /异常时间记录/);
+
+  const noteUI = launch(fixture, new Map(), '#day-1', false, now);
+  noteUI.click('02 练习与笔记', 'study-tabs');
+  assert.equal(noteUI.activeElement(), noteUI.get('study-tab-practice'), 'A tab switch restores focus to its new tab');
+  noteUI.note('已保存的正常笔记');
+  const noteConflict = payload(answer(now - 100)); noteConflict.notes['l:lesson-1'] = { text: '未来冲突笔记', updated_at: now + 3600000 };
+  await noteUI.import(noteConflict);
+  assert.equal(noteUI.get('lesson-notes').value, '已保存的正常笔记', 'Future notes cannot overwrite valid notes');
+  noteUI.click('03 当日测验', 'study-tabs');
+  assert.equal(noteUI.activeElement(), noteUI.get('study-tab-quiz'), 'Quiz tab selection retains keyboard context');
+  noteUI.click('下一题 →');
+  assert.equal(noteUI.activeElement(), noteUI.get('quiz-question-heading'), 'Next question focuses the new question heading');
+  noteUI.click('上一题');
+  assert.equal(noteUI.activeElement(), noteUI.get('quiz-question-heading'), 'Previous question focuses the new question heading');
+  noteUI.click('2');
+  assert.equal(noteUI.activeElement(), noteUI.get('quiz-question-heading'), 'Number navigation focuses the selected question heading');
+
+  // A backup produced by this app must not be rejected solely by a 10 MiB file-size gate.
+  const big = launch(fixture, new Map(), '#day-1', false, now);
+  big.click('02 练习与笔记', 'study-tabs'); big.note('测'.repeat(4 * 1024 * 1024)); big.get('export-progress').click();
+  assert.ok(big.downloads[0].size > 10 * 1024 * 1024, 'The exported fixture really exceeds the old import limit');
+  const largeBackup = JSON.parse(await big.downloads[0].text());
+  const recovered = launch(fixture, new Map(), '#day-1', false, now + 60000);
+  await recovered.import(largeBackup, big.downloads[0].size);
+  assert.equal(recovered.snapshot().notes['l:lesson-1'].text, largeBackup.notes['l:lesson-1'].text, 'Large exports can be imported without truncating notes');
+  const quota = launch(fixture, new Map(), '#day-1', 1024, now);
+  quota.click('02 练习与笔记', 'study-tabs'); quota.note('保留'.repeat(2000));
+  assert.equal(quota.get('storage-warning').hidden, false, 'Storage quota exhaustion warns rather than claiming persistence');
+  quota.get('export-progress').click();
+  assert.equal(JSON.parse(await quota.downloads[0].text()).notes['l:lesson-1'].text.length, 4000, 'Quota failure leaves the full in-memory note available for export');
+}
+
+function testContrast() {
+  const css = fs.readFileSync(path.join(assets, 'style.css'), 'utf8');
+  const muted = /--muted:(#[0-9a-f]{6})/.exec(css)[1];
+  const luminance = hex => {
+    const rgb = hex.slice(1).match(/../g).map(x => parseInt(x, 16) / 255).map(x => x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4);
+    return rgb[0] * 0.2126 + rgb[1] * 0.7152 + rgb[2] * 0.0722;
+  };
+  for (const background of ['#f7f5ee', '#fffefa', '#edf0e7', '#f2f4ea', '#f4f6ed', '#f2f5eb']) {
+    const ratio = (luminance(background) + 0.05) / (luminance(muted) + 0.05);
+    assert.ok(ratio >= 4.5, `Muted small text must reach 4.5:1 on ${background}, measured ${ratio}`);
+  }
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

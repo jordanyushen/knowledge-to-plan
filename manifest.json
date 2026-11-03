@@ -1,12 +1,27 @@
 {
-  "release_date": "2026-11-02",
-  "archive": "dist/knowledge-to-plan-2026-11-02.zip",
-  "archive_sha256": "2c7fd80e529be892d999ce60e16fca17ead8ae0d96f3e551e38d15a35110a2f7",
+  "release_date": "2026-11-04",
+  "archive": "dist/knowledge-to-plan-2026-11-04.zip",
+  "archive_sha256": "e2fa60003ef42a17e6b2528261189e8642105eb568f3e0c361dc4de4db41ba4f",
   "files": [
     {
+      "path": "LICENSE",
+      "bytes": 1102,
+      "sha256": "e8db01920d2c9a466bf805bbc1d46607cfa9fc55c1ea9a060f869c98b21c57ae"
+    },
+    {
+      "path": "VERSION",
+      "bytes": 6,
+      "sha256": "1f930dd1f133c1f97a94fe3acb8db34372cf4c01ffdb2b3ff4ca72f9494121e9"
+    },
+    {
+      "path": "knowledge-to-plan/LICENSE",
+      "bytes": 1102,
+      "sha256": "e8db01920d2c9a466bf805bbc1d46607cfa9fc55c1ea9a060f869c98b21c57ae"
+    },
+    {
       "path": "knowledge-to-plan/SKILL.md",
-      "bytes": 10402,
-      "sha256": "4481675c48cc23d23713516ccd7690a9551fd260b5b4fc63c49aea2af6311e84"
+      "bytes": 10684,
+      "sha256": "b3b4f360ab5d313cae2c41d1146fb03733cfda4e7a8a5c5cf40a932834a1e8d2"
     },
     {
       "path": "knowledge-to-plan/agents/openai.yaml",
@@ -15,8 +30,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/baseline/index.html",
-      "bytes": 93083,
-      "sha256": "fb257eef30dbf92dcf79bb356e4571bd65e08c30f9074cbfa593ae6b89aef099"
+      "bytes": 96753,
+      "sha256": "0830ec3a0ef14e3322adf6b93cb1d50bdeac8d27b21798cef47a44cb580b634f"
     },
     {
       "path": "knowledge-to-plan/assets/baseline/plan.json",
@@ -25,8 +40,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/app.js",
-      "bytes": 42602,
-      "sha256": "84c5018ae3dd7a8d82bca84ce74e6a6ead77863aef8fd87ebecf76bdaa7b33ce"
+      "bytes": 46251,
+      "sha256": "168bd3037baf7a02dbe86bf911c610b9e385b557eaf76005f466e102d2001ad2"
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/index.html",
@@ -35,13 +50,13 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/style.css",
-      "bytes": 26068,
-      "sha256": "e66272347c1916872d323e4f6a268de26bd5b0bb65318ac7b6414e22cc558eef"
+      "bytes": 26089,
+      "sha256": "48e8054ceb4b7d982eddedc961ca327b741640deaf2de7e58577168ad8db349e"
     },
     {
       "path": "knowledge-to-plan/assets/stem-example/index.html",
-      "bytes": 79721,
-      "sha256": "5bf93a03d61f16e2f5e1c8359a81528264739b5cfb4ddb1f34126304c464e65b"
+      "bytes": 83391,
+      "sha256": "2b2a359c5fc6a7139cf76bd586027b0ea503bb9a16202dd26f6d379613831c16"
     },
     {
       "path": "knowledge-to-plan/assets/stem-example/plan.json",
@@ -50,8 +65,8 @@
     },
     {
       "path": "knowledge-to-plan/references/dashboard-standard.md",
-      "bytes": 7388,
-      "sha256": "ea2ad20471b7b9ccd18549ea53f934296ef230049117d5773dfce8b77e5d2645"
+      "bytes": 8824,
+      "sha256": "599265b41a4e291ab2980afb760d8ca25f748d6279fc22b86128e1c6a3ca3c30"
     },
     {
       "path": "knowledge-to-plan/references/delivery.md",
@@ -60,13 +75,23 @@
     },
     {
       "path": "knowledge-to-plan/references/plan-schema.md",
-      "bytes": 6980,
-      "sha256": "2be22844274ba8aec511efb1024e17ac84645233437ccae0ab6b8bac6bd75383"
+      "bytes": 7079,
+      "sha256": "bebe1a422b1a4daaedc44900bd1ea5c7664d8353bbf50b44406dbb705794c66f"
+    },
+    {
+      "path": "knowledge-to-plan/references/runtime-requirements.md",
+      "bytes": 2626,
+      "sha256": "6ad5dd8d684eaf8d35c8c0ad43c15bda62419e3092fccdea71fec1ed5d493fbc"
     },
     {
       "path": "knowledge-to-plan/references/stem-content-standard.md",
       "bytes": 4464,
       "sha256": "6220bec05c569db08c6b9d42c92d07c507daedf0eff22a83da6fc05e47fa46b5"
+    },
+    {
+      "path": "knowledge-to-plan/requirements.txt",
+      "bytes": 153,
+      "sha256": "432f757e711c0251768496136f6d7ffc80b2ea4b102071da98fcfeec67e90bc9"
     },
     {
       "path": "knowledge-to-plan/scripts/assess_budget.py",
@@ -80,8 +105,8 @@
     },
     {
       "path": "knowledge-to-plan/scripts/build_learning_site.py",
-      "bytes": 6893,
-      "sha256": "d325e09caac6c54a59385d3f4306b38dfddc8082ebf51d6d5342d7cb478ca1c1"
+      "bytes": 6917,
+      "sha256": "bf2cf209f999cbb4663007aee4846cb4fd8b3e0ee5357c3d3a45b3690d92f00e"
     },
     {
       "path": "knowledge-to-plan/scripts/stem_content.py",
@@ -89,9 +114,14 @@
       "sha256": "67b8731d04b1cc343bc873c153a868971fd7703ca7d892a252590c38b14baaa7"
     },
     {
+      "path": "knowledge-to-plan/scripts/test_environment.py",
+      "bytes": 5092,
+      "sha256": "5d690f7fe34f33090825a74423a3215d724dac49c69f8d0b671f781329858a9b"
+    },
+    {
       "path": "knowledge-to-plan/scripts/test_runtime.cjs",
-      "bytes": 35485,
-      "sha256": "1f4fff9b76fff2399a291af028df3db8807149906969ddffa9853703743a4ec7"
+      "bytes": 44231,
+      "sha256": "a8baf51a72257185b58dd3f23ceee643a9dcca983fa237302de691b12f9acba5"
     },
     {
       "path": "knowledge-to-plan/scripts/test_stem.py",
@@ -104,9 +134,19 @@
       "sha256": "b74bb76139cd419375b7ec0a5ca01d6b7cf2be3695cdade64f8a07f7d6a7dc3a"
     },
     {
+      "path": "knowledge-to-plan/scripts/timezone_support.py",
+      "bytes": 2030,
+      "sha256": "52f53336aa157d5dbe48154e824215cc0996862d08d4d84fec2b53b959a88936"
+    },
+    {
       "path": "knowledge-to-plan/scripts/validate_plan.py",
-      "bytes": 10158,
-      "sha256": "66d845eb5bb7f43f65af09a96fe580cea3c7ac26d858010b32175955c4e5962a"
+      "bytes": 10125,
+      "sha256": "f2aaedc0af3497ec65b349fd168ddb04c60135925013db2bc57ae80ebdeee954"
+    },
+    {
+      "path": "requirements.txt",
+      "bytes": 38,
+      "sha256": "d5ac030c0111fa4299f729c05dfaa46e6be4325255bf9a6d8211c5cab3c15f46"
     }
   ]
 }

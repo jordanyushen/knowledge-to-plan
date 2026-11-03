@@ -1,0 +1,34 @@
+{
+  "current_plan": {
+    "days": 3,
+    "daily_minutes": 20,
+    "buffer_percent": 10.0
+  },
+  "available_hours": 1.0,
+  "usable_hours": 0.9,
+  "estimate_range": {
+    "low": 0.8,
+    "high": 0.9,
+    "unit": "hours"
+  },
+  "status": "fits",
+  "recommended_total_days_range": {
+    "low": 3,
+    "high": 3,
+    "fixed_daily_minutes": 20
+  },
+  "recommended_daily_minutes_range": {
+    "low": 18,
+    "high": 20,
+    "fixed_total_days": 3,
+    "low_within_24_hours": true,
+    "high_within_24_hours": true,
+    "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+  },
+  "recommendation_rules": {
+    "rounding": "up to the next whole unit, minimum 1",
+    "buffer_percent": 10.0,
+    "automatic_plan_changes": false
+  },
+  "candidate_options": []
+}

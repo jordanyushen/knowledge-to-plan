@@ -1,0 +1,1 @@
+Rules 2,3,5,15: use standard symbols; do not pluralize symbols; m/s denotes meter per second; keep a space between numerical value and unit symbol. Independently checked facts; not a verbatim source snapshot.
