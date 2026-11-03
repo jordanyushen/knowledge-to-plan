@@ -8,3 +8,5 @@ node_modules/
 playwright-report/
 test-results/
 evals/sources/
+# New installation archives are distributed as GitHub Release attachments.
+dist/*.zip

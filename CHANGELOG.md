@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 — 2026-11-04
 
 - Adopt MIT for original code, instructions and original examples.
 - Declare tzdata and distinguish a missing timezone database from a key lookup failure.
@@ -9,6 +9,8 @@
 - Restore focus after tab/question navigation and improve small-text contrast.
 - Allow progress backup round-trips beyond the former fixed 10 MiB import limit.
 - Add fixed-source forward evaluations and retain original outputs and corrections.
+- Record informal feedback from a familiar learner without claiming novice timing or learning effectiveness.
+- Distribute new install ZIPs through GitHub Release attachments; recreate them in CI and check committed metadata.
 - Clarify that review_of contains earlier integer day numbers, not lesson IDs.
 - Add reproducible release packaging and complete manifest/ZIP/checksum checks.
 - Rebuild checked-in examples in a temporary copy to catch stale generated files.

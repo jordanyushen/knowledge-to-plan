@@ -1,0 +1,14 @@
+{
+  "recorded_date": "2026-11-04",
+  "type": "informal_self_report",
+  "participant_identifying_data": "not recorded",
+  "courses_tried": ["python-lists", "si-basics"],
+  "prior_knowledge": "participant reports already knowing the topics",
+  "reported_blocking_issues": false,
+  "reported_time_relative_to_budget": "less than the proposed 20 minutes",
+  "exact_elapsed_minutes": null,
+  "exact_lesson_completion": "not instrumented or specified",
+  "interpretation": "Supports usability for this familiar learner; 20 minutes remains a budget ceiling, not required time on page.",
+  "novice_timing_validation": "pending",
+  "learning_effectiveness_established": false
+}

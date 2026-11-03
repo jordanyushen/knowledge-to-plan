@@ -43,6 +43,10 @@
 
 这证明上述Linux Chromium文件场景，不改变“本机file URL未验证”或“Safari/真实手机未验证”的边界。后续仅增加评测归档、文档和候选包的提交继续运行同一门禁。
 
+四次评测归档后的提交 `4ea471528bfeea49e5c644c2226d163df788fdc8` 的[最终评测Checks](https://github.com/jordanyushen/knowledge-to-plan/actions/runs/41709935765)同样7个job全部成功，包含新增103项独立核算和Windows上的四份原稿hash检查。后续发布附件迁移的CI仍会从源码重建ZIP并比对已提交metadata。
+
+已收到熟悉相关内容的用户对两门课程的非受控试用反馈：未报告阻塞问题，耗时低于20分钟但无精确数字。该自报与受控新手试学、真实计时和教学效果分开记录。
+
 ## 安装副本
 
 已核对原始副本与基线清单相符后，分别备份工作副本和已安装skill，再更新到候选模板；两份26个文件均逐项hash一致。备份位于工作区knowledge-to-plan-update/backups下，文件名knowledge-to-plan-before-reliability-20261104-0.zip和-1.zip。已有课程HTML仍含旧脚本，升级方法见运行环境说明。

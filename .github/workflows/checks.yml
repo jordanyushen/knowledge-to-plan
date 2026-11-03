@@ -60,6 +60,10 @@ jobs:
       - run: python -m pip install -r requirements.txt
       - name: Rebuild examples in a temporary copy
         run: python tools/check_examples.py
+      - name: Recreate the install archive and require committed metadata to match
+        run: |
+          python tools/build_release.py
+          git diff --exit-code -- manifest.json dist/SHA256SUMS
       - name: Verify checked-in manifest, ZIP and hashes
         run: python tools/verify_release.py
       - name: Build a second copy and verify its integrity

@@ -10,7 +10,7 @@
 
 ## 安装
 
-下载 [打包文件](dist/knowledge-to-plan-2026-11-04.zip)，解压后将整个 `knowledge-to-plan` 文件夹放入 Codex 的 skills 目录（默认 `~/.codex/skills/`）。已有同名 skill 时先备份再替换。根目录的许可证和安装目录内的许可证保持一致。
+下载 [v0.2.0 打包文件](https://github.com/jordanyushen/knowledge-to-plan/releases/download/v0.2.0/knowledge-to-plan-2026-11-04.zip)，解压后将整个 `knowledge-to-plan` 文件夹放入 Codex 的 skills 目录（默认 `~/.codex/skills/`）。已有同名 skill 时先备份再替换。根目录的许可证和安装目录内的许可证保持一致。
 
 也可以从本仓库安装 `knowledge-to-plan/` 子目录。在 Codex 中调用 `$knowledge-to-plan`，提供资料、目标、已有基础、学习天数与每天可用时间。
 
@@ -70,6 +70,7 @@ python3 -m unittest discover -s knowledge-to-plan/scripts -p 'test_*.py'
 node knowledge-to-plan/scripts/test_runtime.cjs
 python3 -m unittest discover -s tools -p 'test_*.py'
 python3 tools/check_examples.py
+python3 tools/build_release.py
 python3 tools/verify_release.py
 ```
 
@@ -85,8 +86,10 @@ python3 tools/verify_release.py
 
 首轮两个主题各生成两次，共36题；独立手写核算103项通过，已审范围未发现关键事实或答案错误。SI首次生成有一处复习引用类型错误，原稿与修订版分别保留。详细范围和限制见 [内容审阅报告](docs/content-review.md)，进度见 [实施状态](docs/implementation-status.md)。
 
+已收到一名熟悉相关内容的试学者对两门课程的正常体验反馈，用时少于20分钟；这不证明零基础学习者的耗时或教学效果。每天分钟数是预算上限，提前完成不必刻意延长学习。
+
 ## 发布与许可
 
 原创代码、技能说明与原创示例采用 [MIT](LICENSE)；第三方原始资料保留自己的许可。不会因为引用某个网页就把其原文、图片或商标重新授权。离线安装包不包含评测原始网页或开发测试依赖。
 
-版本与变更见 [CHANGELOG](CHANGELOG.md)。可用 [发布工具](tools/README.md) 重建确定性 ZIP，检查源码清单、示例、manifest 和校验值。后续正式版本可通过 [GitHub Releases](https://github.com/jordanyushen/knowledge-to-plan/releases) 分发；发布回执存在前，不把本地候选包称为已发布版本。
+版本与变更见 [CHANGELOG](CHANGELOG.md)。可用 [发布工具](tools/README.md) 重建确定性 ZIP，检查源码清单、示例、manifest 和校验值。安装包通过 [GitHub Releases](https://github.com/jordanyushen/knowledge-to-plan/releases) 分发；克隆源码后需先重建 ZIP 再做文件完整性检查，CI会校对已提交的manifest和校验值。早期历史ZIP保留兼容入口，后续新增ZIP不再进入Git。
