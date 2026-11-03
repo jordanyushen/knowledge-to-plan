@@ -7,9 +7,9 @@ import re
 import sys
 from pathlib import Path
 from urllib.parse import urlparse
-from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from stem_content import validate_section_visuals
+from timezone_support import resolve_timezone
 
 
 def valid_date(value):
@@ -60,9 +60,9 @@ def validate_plan(data, expected_days=None, expected_daily_minutes=None):
             errors.append(f'每日预算{budget}与用户约定{expected_daily_minutes}分钟不一致')
     if text(course.get('timezone')):
         try:
-            ZoneInfo(course['timezone'])
-        except (ZoneInfoNotFoundError, ValueError):
-            errors.append('course.timezone不是本环境可用的IANA时区')
+            resolve_timezone(course['timezone'])
+        except ValueError as error:
+            errors.append('course.timezone：' + str(error))
     if 'start_date' in course and not valid_date(course['start_date']):
         errors.append('course.start_date必须为YYYY-MM-DD')
     if 'study_time' in course and (not isinstance(course['study_time'], str) or not re.fullmatch(r'(?:[01]\d|2[0-3]):[0-5]\d', course['study_time'])):

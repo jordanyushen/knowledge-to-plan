@@ -1,0 +1,116 @@
+{
+  "fixed_before_generation": "2026-11-04",
+  "python-lists": {
+    "required": [
+      "索引从0开始、负索引",
+      "切片右端不含",
+      "append加一个对象、extend逐项加入",
+      "pop返回并删除",
+      "sort原地且返回None",
+      "别名共享列表、浅拷贝新外层"
+    ],
+    "checks": [
+      {
+        "code": "a=[4,7,9]; result=(a[0],a[-1],a[1:3])",
+        "expected": [
+          4,
+          9,
+          [
+            7,
+            9
+          ]
+        ]
+      },
+      {
+        "code": "a=[1]; a.append([2,3]); result=a",
+        "expected": [
+          1,
+          [
+            2,
+            3
+          ]
+        ]
+      },
+      {
+        "code": "a=[1]; a.extend([2,3]); result=a",
+        "expected": [
+          1,
+          2,
+          3
+        ]
+      },
+      {
+        "code": "a=[3,1,2]; b=a.sort(); result=(a,b)",
+        "expected": [
+          [
+            1,
+            2,
+            3
+          ],
+          null
+        ]
+      },
+      {
+        "code": "a=[1,2]; b=a; c=a[:]; b.append(3); result=(a,c)",
+        "expected": [
+          [
+            1,
+            2,
+            3
+          ],
+          [
+            1,
+            2
+          ]
+        ]
+      }
+    ]
+  },
+  "si-basics": {
+    "required": [
+      "kilo/centi/milli因子与换算方向",
+      "面积两个边长因子同时换算",
+      "平均速率=总路程/总历时,t>0,非瞬时速度",
+      "每个量单位、数值合理性"
+    ],
+    "checks": [
+      {
+        "expression": "250/1000",
+        "expected": 0.25,
+        "unit": "m"
+      },
+      {
+        "expression": "100*100",
+        "expected": 10000,
+        "unit": "cm² per m²"
+      },
+      {
+        "expression": "(30/100)*(20/100)",
+        "expected": 0.06,
+        "unit": "m²"
+      },
+      {
+        "expression": "150/30",
+        "expected": 5,
+        "unit": "m/s"
+      }
+    ]
+  },
+  "hard_gates": [
+    "来源实际可读、无伪造读取",
+    "目标全覆盖",
+    "无关键事实/答案/单位错误",
+    "每题唯一正确、所有选项解析",
+    "用户约束独立传入、不静默更改",
+    "没有占位伪装完整"
+  ],
+  "rubric": {
+    "facts_and_answers": 30,
+    "source_traceability": 20,
+    "constraints_and_budget": 20,
+    "teaching_completeness": 15,
+    "assessment_quality": 15
+  },
+  "trial_threshold": 85,
+  "learner_trial": "pending; time feasibility estimated, learning effectiveness not established"
+}

@@ -1,0 +1,919 @@
+{
+  "run_id": "python-lists-independent-run-1",
+  "model_id": "unavailable",
+  "model_id_reason": "执行环境未提供可靠的当前模型ID；未猜测且未伪造API记录。",
+  "generation_mode": "本聊天agent直接原创编写；没有独立模型API调用。",
+  "python_version": "3.9.6 (default, May 22 2026, 11:13:45) \n[Clang 21.0.0 (clang-2100.1.1.101)]",
+  "source_artifacts": [
+    {
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-introduction.html",
+      "sha256": "e247796cab129020c2362e5171b126cdf19feb69438291d9a13b73f467789500",
+      "read_sections": [
+        "#lists (§3.1.3)"
+      ],
+      "read_entire_file_semantically": false
+    },
+    {
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-datastructures.html",
+      "sha256": "14cbb79ca8991c75ff9a17db2057640e528bb43b00925e58dd57de2cde746e5b",
+      "read_sections": [
+        "#more-on-lists (§5.1)及其子节§5.1.1–§5.1.4全文抽取阅读；子节的队列、推导式没有进入课程"
+      ],
+      "read_entire_file_semantically": false
+    },
+    {
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-sequences.html",
+      "sha256": "64b31f5ed3e61b48b6785ec1ef523d95892651ca8da045162c1acc4ea5632fa6",
+      "read_sections": [
+        "#common-sequence-operations",
+        "#mutable-sequence-types",
+        "#lists"
+      ],
+      "read_entire_file_semantically": false
+    }
+  ],
+  "raw_plan_sha256": "72b0b196d53a8035d8714756fbcefe9391f7a899ef2855d1d0b99ed8d5e3885d",
+  "generated_plan_equals_raw_bytes": false,
+  "checks": [
+    {
+      "id": "python-lists-d1-q1",
+      "kind": "question",
+      "code": "a = [11, 22, 33, 44]\nprint(a[0])\nprint(a[-2])",
+      "expected_stdout": "11\n33\n",
+      "expected_exception": null,
+      "observed_stdout": "11\n33\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i] 与注3、8；0起始、负索引与索引越界。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 索引例。"
+        }
+      ],
+      "question_id": "q1",
+      "lesson_id": "python-lists-d1"
+    },
+    {
+      "id": "python-lists-d1-q2",
+      "kind": "question",
+      "code": "a = [11, 22, 33, 44]\nprint(a[1:3])",
+      "expected_stdout": "[22, 33]\n",
+      "expected_exception": null,
+      "observed_stdout": "[22, 33]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        }
+      ],
+      "question_id": "q2",
+      "lesson_id": "python-lists-d1"
+    },
+    {
+      "id": "python-lists-d1-q3",
+      "kind": "question",
+      "code": "a = [11, 22, 33, 44]\nprint(a[9:12])\nprint(a[9])",
+      "expected_stdout": "[]\n",
+      "expected_exception": "IndexError",
+      "observed_stdout": "[]\n",
+      "observed_exception": "IndexError",
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i] 与注3、8；0起始、负索引与索引越界。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 索引例。"
+        }
+      ],
+      "question_id": "q3",
+      "lesson_id": "python-lists-d1"
+    },
+    {
+      "id": "python-lists-d2-q1",
+      "kind": "question",
+      "code": "a = [1]\na.append([2, 3])\nb = [1]\nb.extend([2, 3])\nprint(a)\nprint(b)",
+      "expected_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "expected_exception": null,
+      "observed_stdout": "[1, [2, 3]]\n[1, 2, 3]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        }
+      ],
+      "question_id": "q1",
+      "lesson_id": "python-lists-d2"
+    },
+    {
+      "id": "python-lists-d2-q2",
+      "kind": "question",
+      "code": "a = [5, 9, 2]\nx = a.pop(1)\nprint(x)\nprint(a)",
+      "expected_stdout": "9\n[5, 2]\n",
+      "expected_exception": null,
+      "observed_stdout": "9\n[5, 2]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.pop(index=-1)：按索引移除、返回与 IndexError。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.pop",
+          "locator": "按索引取走；默认最后一个。"
+        }
+      ],
+      "question_id": "q2",
+      "lesson_id": "python-lists-d2"
+    },
+    {
+      "id": "python-lists-d2-q3",
+      "kind": "question",
+      "code": "a = [4, 1, 3]\nr = a.sort()\nprint(a)\nprint(r)",
+      "expected_stdout": "[1, 3, 4]\nNone\n",
+      "expected_exception": null,
+      "observed_stdout": "[1, 3, 4]\nNone\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        }
+      ],
+      "question_id": "q3",
+      "lesson_id": "python-lists-d2"
+    },
+    {
+      "id": "python-lists-d3-q1",
+      "kind": "question",
+      "code": "a = [6, 2]\nb = a\nc = a.copy()\nb.append(4)\nc.sort()\nprint(a)\nprint(b)\nprint(c)",
+      "expected_stdout": "[6, 2, 4]\n[6, 2, 4]\n[2, 6]\n",
+      "expected_exception": null,
+      "observed_stdout": "[6, 2, 4]\n[6, 2, 4]\n[2, 6]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        }
+      ],
+      "question_id": "q1",
+      "lesson_id": "python-lists-d3"
+    },
+    {
+      "id": "python-lists-d3-q2",
+      "kind": "question",
+      "code": "a = [[3], 8]\nc = a.copy()\nc[0].append(4)\nc.append(9)\nprint(a)",
+      "expected_stdout": "[[3, 4], 8]\n",
+      "expected_exception": null,
+      "observed_stdout": "[[3, 4], 8]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 最后嵌套列表例：列表元素可以是其他列表；结合浅拷贝只创建外层的语义。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        }
+      ],
+      "question_id": "q2",
+      "lesson_id": "python-lists-d3"
+    },
+    {
+      "id": "python-lists-d3-q3",
+      "kind": "question",
+      "code": "a = [9, 1]\nb = a\nb = [7]\nb.append(2)\nprint(a)\nprint(b)",
+      "expected_stdout": "[9, 1]\n[7, 2]\n",
+      "expected_exception": null,
+      "observed_stdout": "[9, 1]\n[7, 2]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        }
+      ],
+      "question_id": "q3",
+      "lesson_id": "python-lists-d3"
+    },
+    {
+      "id": "day1-practice",
+      "kind": "practice",
+      "code": "nums = [7, 14, 21, 28, 35]\nprint(nums[-1])\nprint(nums[1:4])\nprint(nums[:2])\nprint(nums[4:99])\nprint(nums[::2])\nprint(nums[::-1])",
+      "expected_stdout": "35\n[14, 21, 28]\n[7, 14]\n[35]\n[7, 21, 35]\n[35, 28, 21, 14, 7]\n",
+      "expected_exception": null,
+      "observed_stdout": "35\n[14, 21, 28]\n[7, 14]\n[35]\n[7, 21, 35]\n[35, 28, 21, 14, 7]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i] 与注3、8；0起始、负索引与索引越界。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 索引例。"
+        }
+      ]
+    },
+    {
+      "id": "day1-practice-error",
+      "kind": "practice",
+      "code": "nums = [7, 14, 21, 28, 35]\nprint(nums[99])",
+      "expected_stdout": "",
+      "expected_exception": "IndexError",
+      "observed_stdout": "",
+      "observed_exception": "IndexError",
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i] 与注3、8；0起始、负索引与索引越界。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 索引例。"
+        }
+      ]
+    },
+    {
+      "id": "day2-practice",
+      "kind": "practice",
+      "code": "a = [6, 2]\na.append(4)\na.extend([1, 5])\nremoved = a.pop(1)\nprint(removed)\nprint(a)\nresult = a.sort()\nprint(a)\nprint(result)",
+      "expected_stdout": "2\n[6, 4, 1, 5]\n[1, 4, 5, 6]\nNone\n",
+      "expected_exception": null,
+      "observed_stdout": "2\n[6, 4, 1, 5]\n[1, 4, 5, 6]\nNone\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.pop(index=-1)：按索引移除、返回与 IndexError。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.pop",
+          "locator": "按索引取走；默认最后一个。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        }
+      ]
+    },
+    {
+      "id": "day3-practice",
+      "kind": "practice",
+      "code": "a = [7, 2, 5]\nalias = a\nsaved = a[:]\nalias.append(1)\na.sort()\nx = a.pop(0)\nprint(x)\nprint(a)\nprint(alias)\nprint(saved[1:])",
+      "expected_stdout": "1\n[2, 5, 7]\n[2, 5, 7]\n[2, 5]\n",
+      "expected_exception": null,
+      "observed_stdout": "1\n[2, 5, 7]\n[2, 5, 7]\n[2, 5]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.pop(index=-1)：按索引移除、返回与 IndexError。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.pop",
+          "locator": "按索引取走；默认最后一个。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        }
+      ]
+    },
+    {
+      "id": "day3-practice-alias-variant",
+      "kind": "practice",
+      "code": "a = [7, 2, 5]\nalias = a\nsaved = a\nalias.append(1)\na.sort()\nx = a.pop(0)\nprint(x)\nprint(a)\nprint(alias)\nprint(saved[1:])",
+      "expected_stdout": "1\n[2, 5, 7]\n[2, 5, 7]\n[5, 7]\n",
+      "expected_exception": null,
+      "observed_stdout": "1\n[2, 5, 7]\n[2, 5, 7]\n[5, 7]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.append、list.extend 条目。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#mutable-sequence-types",
+          "locator": "Mutable Sequence Methods 的 append 与 extend。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.pop(index=-1)：按索引移除、返回与 IndexError。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.pop",
+          "locator": "按索引取走；默认最后一个。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d1-section-2",
+      "kind": "lesson-example",
+      "code": "values = [12, 24, 36, 48, 60]\nprint(values)",
+      "expected_stdout": "[12, 24, 36, 48, 60]\n",
+      "expected_exception": null,
+      "observed_stdout": "[12, 24, 36, 48, 60]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d1-section-3",
+      "kind": "lesson-example",
+      "code": "values = [12, 24, 36, 48, 60]\nprint(values[0])\nprint(values[-2])",
+      "expected_stdout": "12\n48\n",
+      "expected_exception": null,
+      "observed_stdout": "12\n48\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d1-section-4",
+      "kind": "lesson-example",
+      "code": "values = [12, 24, 36, 48, 60]\nprint(values[1:4])\nprint(values[:1])\nprint(values[-3:-1])",
+      "expected_stdout": "[24, 36, 48]\n[12]\n[36, 48]\n",
+      "expected_exception": null,
+      "observed_stdout": "[24, 36, 48]\n[12]\n[36, 48]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d1-section-5",
+      "kind": "lesson-example",
+      "code": "values = [12, 24, 36, 48, 60]\nprint(values[::2])\nprint(values[::-1])\nprint(values)",
+      "expected_stdout": "[12, 36, 60]\n[60, 48, 36, 24, 12]\n[12, 24, 36, 48, 60]\n",
+      "expected_exception": null,
+      "observed_stdout": "[12, 36, 60]\n[60, 48, 36, 24, 12]\n[12, 24, 36, 48, 60]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d2-section-2",
+      "kind": "lesson-example",
+      "code": "a = [2]\na.append([4, 6])\nprint(a)\nb = [2]\nb.extend([4, 6])\nprint(b)",
+      "expected_stdout": "[2, [4, 6]]\n[2, 4, 6]\n",
+      "expected_exception": null,
+      "observed_stdout": "[2, [4, 6]]\n[2, 4, 6]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d2-section-3",
+      "kind": "lesson-example",
+      "code": "a = [9, 3, 6]\nlast = a.pop()\nprint(last)\nprint(a)\nfirst = a.pop(0)\nprint(first)\nprint(a)",
+      "expected_stdout": "6\n[9, 3]\n9\n[3]\n",
+      "expected_exception": null,
+      "observed_stdout": "6\n[9, 3]\n9\n[3]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d2-section-4",
+      "kind": "lesson-example",
+      "code": "a = [8, 2, 5]\nresult = a.sort()\nprint(a)\nprint(result)",
+      "expected_stdout": "[2, 5, 8]\nNone\n",
+      "expected_exception": null,
+      "observed_stdout": "[2, 5, 8]\nNone\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d3-section-2",
+      "kind": "lesson-example",
+      "code": "a = [3, 1]\nb = a\nb.append(2)\nb.sort()\nprint(a)\nprint(b)",
+      "expected_stdout": "[1, 2, 3]\n[1, 2, 3]\n",
+      "expected_exception": null,
+      "observed_stdout": "[1, 2, 3]\n[1, 2, 3]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d3-section-3",
+      "kind": "lesson-example",
+      "code": "a = [3, 1]\nc = a.copy()\nd = a[:]\nc.sort()\nd[0] = 8\nprint(a)\nprint(c)\nprint(d)",
+      "expected_stdout": "[3, 1]\n[1, 3]\n[8, 1]\n",
+      "expected_exception": null,
+      "observed_stdout": "[3, 1]\n[1, 3]\n[8, 1]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d3-section-4",
+      "kind": "lesson-example",
+      "code": "a = [[5], 9]\nc = a.copy()\nc[0].append(6)\nc.append(7)\nprint(a)\nprint(c)",
+      "expected_stdout": "[[5, 6], 9]\n[[5, 6], 9, 7]\n",
+      "expected_exception": null,
+      "observed_stdout": "[[5, 6], 9]\n[[5, 6], 9, 7]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "python-lists-d3-section-5",
+      "kind": "lesson-example",
+      "code": "a = [4, 2]\nb = a\nb = [7]\nprint(a)\nprint(b)",
+      "expected_stdout": "[4, 2]\n[7]\n",
+      "expected_exception": null,
+      "observed_stdout": "[4, 2]\n[7]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+          "locator": "课程各来源的相关节；细化定位见本课来源和逐题记录。"
+        }
+      ]
+    },
+    {
+      "id": "edge-empty-pop",
+      "kind": "boundary",
+      "code": "a=[]\na.pop()",
+      "expected_stdout": "",
+      "expected_exception": "IndexError",
+      "observed_stdout": "",
+      "observed_exception": "IndexError",
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.pop(index=-1)：按索引移除、返回与 IndexError。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.pop",
+          "locator": "按索引取走；默认最后一个。"
+        }
+      ]
+    },
+    {
+      "id": "edge-zero-step",
+      "kind": "boundary",
+      "code": "a=[1,2]\nprint(a[::0])",
+      "expected_stdout": "",
+      "expected_exception": "ValueError",
+      "observed_stdout": "",
+      "observed_exception": "ValueError",
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#common-sequence-operations",
+          "locator": "表中 s[i:j]、s[i:j:k] 与注3、4、5。"
+        },
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 切片返回新列表。"
+        }
+      ]
+    },
+    {
+      "id": "edge-sort-assignment-alias",
+      "kind": "boundary",
+      "code": "a=[4,2]\nb=a\na=a.sort()\nprint(a)\nprint(b)",
+      "expected_stdout": "None\n[2, 4]\n",
+      "expected_exception": null,
+      "observed_stdout": "None\n[2, 4]\n",
+      "observed_exception": null,
+      "execution_matches_expectation": true,
+      "sources": [
+        {
+          "source_id": "python-introduction",
+          "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+          "locator": "§3.1.3 Simple assignment never copies data 段与全切片浅拷贝段。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence.copy",
+          "locator": "Create a shallow copy，与 sequence[:] 等价。"
+        },
+        {
+          "source_id": "python-datastructures",
+          "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+          "locator": "§5.1 list.sort 与仅修改列表的方法返回 None 的段落。"
+        },
+        {
+          "source_id": "python-sequences",
+          "url": "https://docs.python.org/3.13/library/stdtypes.html#list.sort",
+          "locator": "sort 原地修改，不返回排序后的列表。"
+        }
+      ]
+    }
+  ],
+  "check_count": 28,
+  "execution_matches_count": 28,
+  "independent_factual_audit": false,
+  "note": "代码在本机Python中执行，结果只证明这些代码片段与作者预期一致，不代表独立事实审核、教学有效性测量或浏览器验收。",
+  "generated_plan_equals_raw_json": true,
+  "generated_plan_byte_difference_reason": "build_learning_site.py 将JSON标准化为缩进2空格；原始人工排版与生成文件字节不同，JSON语义相同。",
+  "static_checks": {
+    "lesson_count": 3,
+    "questions_per_lesson": [
+      3,
+      3,
+      3
+    ],
+    "activity_minutes_per_lesson": [
+      18,
+      18,
+      18
+    ],
+    "correct_option_indices": [
+      1,
+      2,
+      0,
+      3,
+      1,
+      2,
+      0,
+      2,
+      3
+    ],
+    "external_resource_elements": [],
+    "calendar_fields_present": [],
+    "html_unresolved_template_markers": []
+  },
+  "artifacts": {
+    "raw-plan.json": {
+      "bytes": 24229,
+      "sha256": "72b0b196d53a8035d8714756fbcefe9391f7a899ef2855d1d0b99ed8d5e3885d"
+    },
+    "plan.json": {
+      "bytes": 25309,
+      "sha256": "0178b0429713f02a85641eca5cfcb3291650d5cdc973173f3a80cfe926a40bdf"
+    },
+    "index.html": {
+      "bytes": 96072,
+      "sha256": "24af88f23619b49802077e15b8de1b278355c5e5165738527c11a1ac00db0acf"
+    },
+    "budget.json": {
+      "bytes": 819,
+      "sha256": "57a405d81da9b78c7ba659d2aca5ef88f1864db557db01cc002f6a9a9fafef26"
+    }
+  }
+}

@@ -1,0 +1,3 @@
+# Generation-time timezone data, including on Windows without a system IANA DB.
+# The generated offline HTML does not use Python or this package.
+tzdata

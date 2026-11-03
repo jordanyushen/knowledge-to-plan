@@ -10,11 +10,32 @@
 
 ## 安装
 
-下载 [打包文件](dist/knowledge-to-plan-2026-11-02.zip)，解压后将整个 `knowledge-to-plan` 文件夹放入 Codex 的 skills 目录（默认 `~/.codex/skills/`）。已有同名 skill 时先备份再替换。
+下载 [v0.2.0 打包文件](https://github.com/jordanyushen/knowledge-to-plan/releases/download/v0.2.0/knowledge-to-plan-2026-11-04.zip)，解压后将整个 `knowledge-to-plan` 文件夹放入 Codex 的 skills 目录（默认 `~/.codex/skills/`）。已有同名 skill 时先备份再替换。根目录的许可证和安装目录内的许可证保持一致。
 
 也可以从本仓库安装 `knowledge-to-plan/` 子目录。在 Codex 中调用 `$knowledge-to-plan`，提供资料、目标、已有基础、学习天数与每天可用时间。
 
+生成端要求 **Python 3.9+ 与可用的 IANA 时区数据**。3.9 是兼容下限，新安装请选仍受官方维护的 Python。建议在虚拟环境中先安装依赖：
+
+```bash
+python3 -m pip install -r knowledge-to-plan/requirements.txt
+```
+
+Windows 可相应使用 `python -m pip`。`tzdata` 提供系统缺少的时区数据；即使不生成 ICS，课程校验也需要它或系统数据库。错误信息会区分环境缺库与名称查找失败，且不会自动替换用户时区。详见 [运行环境说明](knowledge-to-plan/references/runtime-requirements.md) 和 [Python 官方说明](https://docs.python.org/3/library/zoneinfo.html#data-sources)。
+
+学习者只需浏览器打开生成的 HTML，无需 Python、Node、依赖安装或服务器。进度需要定期导出；在线、离线和不同设备之间不自动同步。
+
 ## 查看演示
+
+以下画面来自独立交互测试课程的真实 Chrome HTTP 验收，不是学习效果证明：
+
+![桌面学习总览](docs/screenshots/desktop-dashboard.jpg)
+
+<details>
+<summary>查看手机测验布局</summary>
+
+![390px手机测验](docs/screenshots/mobile-quiz.jpg)
+
+</details>
 
 下载或克隆仓库后，用浏览器打开 `knowledge-to-plan/assets/baseline/index.html`。演示含明确标注的示例数据和独立的空白试用；它们不会进入正式课程的生成流程。
 
@@ -42,13 +63,33 @@ python3 knowledge-to-plan/scripts/build_baseline.py
 
 ## 检查
 
-生成器使用 Python 标准库，运行时检查使用 Node.js，无需安装前端依赖。
+生成器使用 Python 标准库与时区数据。Node.js 只用于开发测试：运行时测试与当前 Playwright 开发包以 Node 20+ 为兼容目标，建议新装仍受维护的 Node；学习页面没有 npm 运行依赖。完整环境与未验证范围见 [验证记录](docs/verification.md)。
 
 ```bash
 python3 -m unittest discover -s knowledge-to-plan/scripts -p 'test_*.py'
 node knowledge-to-plan/scripts/test_runtime.cjs
+python3 -m unittest discover -s tools -p 'test_*.py'
+python3 tools/check_examples.py
+python3 tools/build_release.py
+python3 tools/verify_release.py
 ```
 
 测试覆盖预算与课程校验、测验通过规则、刷新恢复、旧备份兼容、课程时区与跨日、同日多课、题数去重、进度导入导出，以及动效与学习记录的隔离。测试不能代替教学内容与正确答案的事实核对。
 
 压缩包校验值见 [SHA256SUMS](dist/SHA256SUMS)。
+
+真实浏览器测试分别覆盖 HTTP、`file://`、桌面和 390px，运行方式与本机浏览器限制见 [E2E说明](tests/e2e/README.md)。配置了 CI 不代表 CI 已经执行成功；实际记录见上述验证记录。
+
+## 教学内容评测
+
+[evals](evals/README.md) 固定真实资料、学习目标、预算和参考核算，再让独立代理生成课程。原始输出保留，机械修订另存；程序校验、来源和答案复核、真人试学分别记录。未完成真人试学时，时间可行性仍是估计，不能报告教学效果已经通过。
+
+首轮两个主题各生成两次，共36题；独立手写核算103项通过，已审范围未发现关键事实或答案错误。SI首次生成有一处复习引用类型错误，原稿与修订版分别保留。详细范围和限制见 [内容审阅报告](docs/content-review.md)，进度见 [实施状态](docs/implementation-status.md)。
+
+已收到一名熟悉相关内容的试学者对两门课程的正常体验反馈，用时少于20分钟；这不证明零基础学习者的耗时或教学效果。每天分钟数是预算上限，提前完成不必刻意延长学习。
+
+## 发布与许可
+
+原创代码、技能说明与原创示例采用 [MIT](LICENSE)；第三方原始资料保留自己的许可。不会因为引用某个网页就把其原文、图片或商标重新授权。离线安装包不包含评测原始网页或开发测试依赖。
+
+版本与变更见 [CHANGELOG](CHANGELOG.md)。可用 [发布工具](tools/README.md) 重建确定性 ZIP，检查源码清单、示例、manifest 和校验值。安装包通过 [GitHub Releases](https://github.com/jordanyushen/knowledge-to-plan/releases) 分发；克隆源码后需先重建 ZIP 再做文件完整性检查，CI会校对已提交的manifest和校验值。早期历史ZIP保留兼容入口，后续新增ZIP不再进入Git。

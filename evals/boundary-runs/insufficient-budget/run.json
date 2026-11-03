@@ -1,0 +1,157 @@
+{
+  "case_id": "insufficient-budget",
+  "model_id": "unavailable",
+  "skill_path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/knowledge-to-plan/SKILL.md",
+  "case_path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/cases/insufficient-budget.json",
+  "case_input": {
+    "id": "insufficient-budget",
+    "goal": "零基础掌握全部微积分并通过大学期末考试",
+    "background": "只会四则运算",
+    "days": 1,
+    "daily_minutes": 5,
+    "timezone": "Asia/Hong_Kong",
+    "delivery": "先评估并给可比较方案。用户还未选择改变约束，不创建完整课程、日历或云端写入。"
+  },
+  "constraints_changed": false,
+  "read_scope": {
+    "case_json": "read in full",
+    "skill": "same specified SKILL.md already read in this agent session; applicable schema/STEM/dashboard references had been read for prior task",
+    "reference_evaluations_read": false,
+    "other_course_outputs_used": false
+  },
+  "operations": [
+    {
+      "operation": "read_case",
+      "result": "success"
+    },
+    {
+      "operation": "make_prerequisite_framework",
+      "result": "arithmetic → algebra/functions → limits → derivatives → integrals → sequences/series → assessment; provisional single-variable benchmark only"
+    },
+    {
+      "operation": "estimate_learning_time",
+      "result": {
+        "hours_low": 200,
+        "hours_high": 340,
+        "scope": "provisional common single-variable calculus plus prerequisites, not all possible calculus or exam guarantee",
+        "basis_hours": {
+          "prerequisites": [
+            60,
+            100
+          ],
+          "limits_derivatives": [
+            40,
+            70
+          ],
+          "integrals": [
+            40,
+            70
+          ],
+          "sequences_series_applications": [
+            30,
+            50
+          ],
+          "mixed_review_timed_practice": [
+            30,
+            50
+          ]
+        },
+        "epistemic_status": "author planning estimate, not diagnosed learner time or source-derived empirical fact"
+      }
+    },
+    {
+      "operation": "run_budget_script",
+      "command": [
+        "python3",
+        "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/knowledge-to-plan/scripts/assess_budget.py",
+        "--days",
+        "1",
+        "--minutes",
+        "5",
+        "--estimated-hours-low",
+        "200",
+        "--estimated-hours-high",
+        "340",
+        "--buffer-percent",
+        "15",
+        "--pretty"
+      ],
+      "exit_code": 0,
+      "result": {
+        "current_plan": {
+          "days": 1,
+          "daily_minutes": 5,
+          "buffer_percent": 15.0
+        },
+        "available_hours": 0.08333333333333333,
+        "usable_hours": 0.07083333333333333,
+        "estimate_range": {
+          "low": 200.0,
+          "high": 340.0,
+          "unit": "hours"
+        },
+        "status": "insufficient",
+        "recommended_total_days_range": {
+          "low": 2824,
+          "high": 4800,
+          "fixed_daily_minutes": 5
+        },
+        "recommended_daily_minutes_range": {
+          "low": 14118,
+          "high": 24000,
+          "fixed_total_days": 1,
+          "low_within_24_hours": false,
+          "high_within_24_hours": false,
+          "feasibility_note": "Even the low estimate needs more than 1440 minutes/day; this alternative is impossible. Extend duration or reduce scope."
+        },
+        "recommendation_rules": {
+          "rounding": "up to the next whole unit, minimum 1",
+          "buffer_percent": 15.0,
+          "automatic_plan_changes": false
+        },
+        "candidate_options": [
+          {
+            "option": "extend_duration",
+            "description": "Keep scope and daily minutes; consider the recommended total days range."
+          },
+          {
+            "option": "increase_daily_time",
+            "description": "Keep scope and total days; consider the recommended daily minutes range.",
+            "possible_within_24_hours": false
+          },
+          {
+            "option": "reduce_scope",
+            "description": "Define a smaller subset, then supply a new grounded estimate for it."
+          },
+          {
+            "option": "core_first",
+            "description": "Prioritize essential concepts and practice; estimate remaining material as a separate phase."
+          }
+        ]
+      }
+    },
+    {
+      "operation": "present_comparable_options",
+      "result": "keep five minutes/extend days; keep one day/increase time physically impossible; keep both/reduce goal; optionally adjust both to 240 days × 100 min"
+    }
+  ],
+  "files_generated": [
+    "/private/tmp/ktp-eval-boundaries/insufficient-budget/response.md",
+    "/private/tmp/ktp-eval-boundaries/insufficient-budget/run.json"
+  ],
+  "full_course_generated": false,
+  "calendar_created": false,
+  "cloud_writes": false,
+  "browser_started": false,
+  "status": "needs_user_choice",
+  "independent_content_verification": false,
+  "environment": {
+    "python": "3.9.6"
+  },
+  "response_sha256": "efc7eb9464944374c601f6e873a716fd1897a3e443ee76590c29863f3ea5090a",
+  "not_completed": [
+    "user has not selected revised scope or time constraints",
+    "actual exam syllabus, complete-calculus boundary and learner diagnostic unavailable",
+    "no dependent full course, calendar or cloud artifacts created"
+  ]
+}

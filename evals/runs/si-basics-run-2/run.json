@@ -1,0 +1,15 @@
+{
+  "case_id": "si-basics",
+  "generated_date": "2026-11-04",
+  "model_id": "unavailable",
+  "generator": "independent Codex subagent; deployment model id not exposed",
+  "base_commit": "b2e5e5d",
+  "generation_skill_note": "working-tree skill; exact as-read snapshot not captured",
+  "initial_structure_valid": true,
+  "raw_validation_errors": [],
+  "raw_plan_sha256": "efdb9816a18c7e64fe5351aa795cf80c398500a48a559987badc5e340a9fa684",
+  "validated_plan_sha256": "efdb9816a18c7e64fe5351aa795cf80c398500a48a559987badc5e340a9fa684",
+  "generation_skill_hashes": null,
+  "learner_trial": "pending",
+  "facts_verified": false
+}

@@ -1,0 +1,385 @@
+{
+  "schema_version": 1,
+  "course": {
+    "id": "ktp-python-lists-eval-independent-second-20261104",
+    "title": "3天学会预测 Python 列表操作",
+    "goal": "能独立预测并执行短列表的索引/切片、append与extend、pop与原地排序；理解别名和浅拷贝的基本区别。",
+    "background": "知道变量、整数和print；未学过列表。按连续3个学习日安排，每日20分钟；没有约定开始日期。仅训练短列表的基础操作，不要求复杂嵌套拷贝。",
+    "days": 3,
+    "daily_minutes": 20,
+    "timezone": "Asia/Hong_Kong"
+  },
+  "sources": [
+    {
+      "id": "python-introduction",
+      "title": "Python 3.13 官方教程：3.1.3 Lists",
+      "url": "https://docs.python.org/3.13/tutorial/introduction.html#lists",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-introduction.html",
+      "locator": "3.1.3 Lists：列表字面量、索引与切片、可变性、赋值别名、全切片浅拷贝、len及简单嵌套列表。已读取本地原始HTML。"
+    },
+    {
+      "id": "python-datastructures",
+      "title": "Python 3.13 官方教程：5.1 More on Lists",
+      "url": "https://docs.python.org/3.13/tutorial/datastructures.html#more-on-lists",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-datastructures.html",
+      "locator": "5.1 More on Lists：list.append、list.extend、list.pop、list.sort、list.copy的条目及原地修改方法返回None的说明；5.1.1展示默认pop。已读取本地原始HTML。"
+    },
+    {
+      "id": "python-sequences",
+      "title": "Python 3.13 标准库：序列操作与列表",
+      "url": "https://docs.python.org/3.13/library/stdtypes.html#sequence-types-list-tuple-range",
+      "path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/sources/python-sequences.html",
+      "locator": "Common Sequence Operations表及注3、4、8：负索引、起含止不含、切片端点截断与越界索引；Mutable Sequence Types中的copy/append/extend/pop；Lists中list.sort的原地及返回值说明。已读取这些相关节，未声称全文阅读整个stdtypes页面。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "day-01",
+      "day": 1,
+      "title": "从位置取值：索引与切片",
+      "objectives": [
+        "用方括号创建列表，预测正索引、负索引及len的结果。",
+        "区分取一个元素的索引和取一段新列表的切片，解释起含止不含及越界行为。"
+      ],
+      "activities": [
+        {
+          "kind": "讲解与例子",
+          "minutes": 7
+        },
+        {
+          "kind": "预测后运行练习",
+          "minutes": 5
+        },
+        {
+          "kind": "遮住讲解回忆与补缺",
+          "minutes": 2
+        },
+        {
+          "kind": "三题测验及订正",
+          "minutes": 6
+        }
+      ],
+      "sections": [
+        {
+          "title": "列表是有顺序、可修改的一组元素",
+          "body": "用一对方括号和逗号写列表，例如 nums = [6, 12, 18, 24]。把它看成按位置排好的四个整数。变量nums指向这个列表；print(nums)显示整体，len(nums)得到元素个数4。列表可以修改：nums[1] = 99会把第二个元素换成99，不是增加一个元素。每个独立例子都从给定的初始列表重新开始。",
+          "example": "nums = [6, 12, 18, 24]\nprint(nums)\nprint(len(nums))\nnums[1] = 99\nprint(nums)\n预期逐行输出：\n[6, 12, 18, 24]\n4\n[6, 99, 18, 24]"
+        },
+        {
+          "title": "索引从0数，负数从尾部数",
+          "body": "nums[i]取出位置i的一个元素。对于[6, 12, 18, 24]，正索引依次为0、1、2、3；负索引依次为-4、-3、-2、-1。所以nums[0]是6，nums[-1]是24。长度为4并不代表有索引4；读取nums[4]会产生IndexError异常，表示这个位置不存在。异常会打断当前运行，因此越界示例单独运行。",
+          "example": "位置：     0   1   2   3\n元素：     6  12  18  24\n负索引：  -4  -3  -2  -1\n\nnums = [6, 12, 18, 24]\nprint(nums[0], nums[-2])\n预期输出：6 18"
+        },
+        {
+          "title": "切片起含止不含，得到一个新列表",
+          "body": "nums[start:stop]从start位置取到stop之前，包含起点而不包含终点。nums[1:3]取索引1、2，结果是[12, 18]。省略起点表示从头开始，省略终点表示取到结尾；nums[:2]是[6, 12]，nums[2:]是[18, 24]。nums[:]取整个列表，仍得到新的外层列表，第3课再讨论这为什么叫浅拷贝。切片端点超出长度时会截到有效边界，nums[2:99]是[18, 24]，nums[8:]是[]；起点不在终点之前时，如nums[3:1]，也得到空列表。本课只学省略步长的切片。",
+          "example": "nums = [6, 12, 18, 24]\nprint(nums[1:3])\nprint(nums[:2])\nprint(nums[2:99])\nprint(nums[3:1])\n预期逐行输出：\n[12, 18]\n[6, 12]\n[18, 24]\n[]"
+        }
+      ],
+      "practice": "用5分钟先在笔记写预测，再在Python 3中逐行运行。输入：\nnums = [6, 12, 18, 24]\nprint(nums[0], nums[-1], len(nums))\nprint(nums[1:3])\nprint(nums[2:])\nprint(nums[8:])\n产出：4行预测输出，标出每个切片选中的索引。预期依次是：\n6 24 4\n[12, 18]\n[18, 24]\n[]\n然后单独运行print(nums[4])，预期异常类型为IndexError；不要求记住完整报错文字。\n用2分钟遮住讲解，说出“第一个索引、最后一个负索引、切片终点是否取到”。若说错，重看对应小节并修正一行预测，不额外加时。",
+      "takeaways": [
+        "索引从0开始，-1指向最后一个元素；len给的是个数。",
+        "切片起含止不含；超界切片会截断，超界单项读取会产生IndexError。",
+        "索引返回元素，列表切片返回新列表。"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "给定 a = [10, 20, 30, 40]，print(a[-2], len(a))输出什么？",
+          "options": [
+            "20 3",
+            "40 4",
+            "30 4",
+            "30 3"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "-2是倒数第二个元素30；len是4，两个数都不对。",
+            "40是a[-1]，不是a[-2]；长度4这部分正确。",
+            "正确：-2取倒数第二个元素30，四个元素的长度为4。",
+            "元素30正确，但长度是元素个数4，不是最大索引3。"
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "给定 a = [10, 20, 30, 40]，print(a[1:3])输出什么？",
+          "options": [
+            "[20, 30]",
+            "[20, 30, 40]",
+            "[10, 20, 30]",
+            "20"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "正确：包含索引1和2，不包含索引3，结果是列表[20, 30]。",
+            "把终点3也包含了；切片不包含终点。",
+            "从索引0开始了；本题起点1对应20。",
+            "切片得到列表而不是一个整数，且本切片有两个元素。"
+          ]
+        },
+        {
+          "id": "q3",
+          "prompt": "每条语句都在新的 a = [10, 20, 30, 40] 上单独运行，哪一项描述正确？",
+          "options": [
+            "print(a[4])输出40",
+            "print(a[2:99])产生IndexError",
+            "print(a[3:1])输出[40, 30, 20]",
+            "print(a[4:99])输出[]"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "索引4已越过最大有效索引3，会产生IndexError；40在索引3。",
+            "切片终点99会被截断，输出[30, 40]，不会因此越界报错。",
+            "没有指定负步长，起点3不小于终点1，结果是[]，不会自动倒序。",
+            "正确：切片从列表末端开始，终点截到末端，没有元素，输出[]。"
+          ]
+        }
+      ],
+      "source_ids": [
+        "python-introduction",
+        "python-sequences"
+      ]
+    },
+    {
+      "id": "day-02",
+      "day": 2,
+      "title": "改变列表：append、extend与pop",
+      "review_of": [
+        1
+      ],
+      "objectives": [
+        "区分把一个对象放进列表的append和把另一个列表的元素依次加入的extend。",
+        "预测默认pop和指定索引pop的返回值及删除后的列表。",
+        "把原地修改和方法返回值分开记录。"
+      ],
+      "activities": [
+        {
+          "kind": "回忆索引并补缺",
+          "minutes": 2
+        },
+        {
+          "kind": "讲解与例子",
+          "minutes": 7
+        },
+        {
+          "kind": "预测后运行练习",
+          "minutes": 5
+        },
+        {
+          "kind": "三题测验及订正",
+          "minutes": 6
+        }
+      ],
+      "sections": [
+        {
+          "title": "先取回昨天的位置感",
+          "body": "遮住第1课，用a = [5, 8, 2]回答a[1]和a[:2]。预期分别是8与[5, 8]。如果把1当作第一项，先重画0、1、2三个索引；如果包含切片终点，重读“起含止不含”。回忆和补缺共2分钟，随后用同样的位置规则理解删除。"
+        },
+        {
+          "title": "append加入一个对象，extend逐项加入",
+          "body": "a.append(x)把x当成一个整体，加入a的尾部；a.extend(other)把other中的元素依次加入a的尾部。本课other总是列表，不扩展到其他可迭代对象。小括号表示调用列表的方法，点号前的a是被修改的列表。如果x本身是[2, 3]，append后这个小列表只占外层一个位置；这是列表里有列表的简单例子。extend([2, 3])则加入整数2和3两个位置。两种方法都修改原列表并返回None，None表示这里没有返回一个结果列表；需要查看修改结果时，再print(a)。",
+          "example": "a = [1]\na.append([2, 3])\nprint(a)\nb = [1]\nb.extend([2, 3])\nprint(b)\n预期逐行输出：\n[1, [2, 3]]\n[1, 2, 3]\n\nc = [1]\nresult = c.append(2)\nprint(result)\nprint(c)\n预期逐行输出：\nNone\n[1, 2]"
+        },
+        {
+          "title": "pop既删除，也返回被删除的元素",
+          "body": "a.pop()默认删除并返回最后一个元素。a.pop(i)删除并返回索引i处的元素；删除后后面的元素向前补位，所以后续索引要根据当前列表重新计算。把返回值赋给变量可保留被拿出的值。pop和append/extend不同，它返回被删除的元素，而不是None。在空列表上pop，或给出不存在的索引，都产生IndexError；本课操作前确认还有元素。",
+          "example": "a = [5, 8, 2]\nx = a.pop()\nprint(x, a)\ny = a.pop(0)\nprint(y, a)\n预期逐行输出：\n2 [5, 8]\n5 [8]"
+        }
+      ],
+      "practice": "用5分钟先写每一步之后的当前列表，再运行核对：\nbag = [5]\nbag.append([6, 7])\nbag.extend([8, 9])\nlast = bag.pop()\nfirst = bag.pop(0)\nprint(first, last, bag)\n产出：四次修改后的列表及最终一行输出。预期列表依次为[5, [6, 7]]、[5, [6, 7], 8, 9]、[5, [6, 7], 8]、[[6, 7], 8]；最终输出：5 9 [[6, 7], 8]。若结果不符，圈出第一次分歧，重看append和extend的区别，不重做全部代码。",
+      "takeaways": [
+        "append加入一个整体；extend把给定列表的元素逐个加入。",
+        "append和extend原地修改并返回None，查看列表要打印变量本身。",
+        "pop返回并移除元素，默认取末尾；后续操作使用修改后的索引。"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "从a = [1]和b = [1]开始，分别执行a.append([2, 3])、b.extend([2, 3])，最终a、b是什么？",
+          "options": [
+            "a为[1, 2, 3]；b为[1, [2, 3]]",
+            "a为[1, [2, 3]]；b为[1, 2, 3]",
+            "a和b都是[1, 2, 3]",
+            "a和b都是[1, [2, 3]]"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "把两种方法的作用对调了：append保留整个小列表，extend逐项加入。",
+            "正确：append把[2, 3]作为一个元素，extend把2与3作为两个元素加入。",
+            "a不会被展开；append后的a含一个小列表元素。",
+            "b不会新增一个小列表元素；extend加入的是其中两个整数。"
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "运行 a = [4, 8, 12]；x = a.pop(1)；print(x, a)，输出什么？",
+          "options": [
+            "4 [8, 12]",
+            "8 [4, 8, 12]",
+            "None [4, 12]",
+            "8 [4, 12]"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "4位于索引0，pop(1)删除的是8。",
+            "返回值8正确，但pop同时删除了它，列表不再保留8。",
+            "剩余列表正确，但pop返回被移除的元素8，而非None。",
+            "正确：索引1的8被返回并删除，剩下[4, 12]。"
+          ]
+        },
+        {
+          "id": "q3",
+          "prompt": "运行 a = [3]；r = a.append(7)；print(r)；print(a)，两行输出是什么？",
+          "options": [
+            "None，然后[3, 7]",
+            "[3, 7]，然后[3, 7]",
+            "7，然后[3]",
+            "None，然后[3]"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "正确：append原地修改a并返回None，所以r是None而a已变为[3, 7]。",
+            "append不返回修改后的列表，r是None。",
+            "append既不返回7，也不是只计算不修改；a会加入7。",
+            "返回None不代表没有修改；a已经加入7。"
+          ]
+        }
+      ],
+      "source_ids": [
+        "python-datastructures",
+        "python-sequences",
+        "python-introduction"
+      ]
+    },
+    {
+      "id": "day-03",
+      "day": 3,
+      "title": "同一个还是新列表：别名、浅拷贝与原地排序",
+      "review_of": [
+        1,
+        2
+      ],
+      "objectives": [
+        "预测别名看到的原地修改，区分赋值与copy()/[:]创建新外层列表。",
+        "说明浅拷贝仍共享内部可变元素这一边界。",
+        "执行整数列表的sort并区分排序后列表与None返回值。"
+      ],
+      "activities": [
+        {
+          "kind": "前两课回忆及补缺",
+          "minutes": 2
+        },
+        {
+          "kind": "讲解与例子",
+          "minutes": 8
+        },
+        {
+          "kind": "综合预测后运行练习",
+          "minutes": 4
+        },
+        {
+          "kind": "三题测验及订正",
+          "minutes": 6
+        }
+      ],
+      "sections": [
+        {
+          "title": "两分钟复习：先预测，再追踪",
+          "body": "从a = [4, 1, 3]开始，口头回答a[:2]，再说执行a.extend([2])后a.pop()会取走哪个值。预期依次是[4, 1]和2。如果不确定，回看第1课切片或第2课extend/pop中的一段。今天每段代码仍独立从给定初始值开始，并画出“变量指向哪个列表”。"
+        },
+        {
+          "title": "赋值增加名字，浅拷贝新建外层",
+          "body": "b = a不复制列表，而是使b也指向a已有的同一个列表，称为别名。通过任一名字append、pop、赋值一个元素或排序，另一个名字都会看到这个列表的改变。c = a.copy()与c = a[:]则创建新外层列表；对c新增、删除或替换外层位置不会直接改动a的外层。对只有整数的列表，这已足够让两边各自改动列表位置。注意a = a.copy()这种重新赋值会换掉a的指向，不能与a.append(...)这种修改同一个对象混淆；本课综合题均采用后者。",
+          "example": "a = [3, 1]\nb = a\nc = a.copy()\nb.append(2)\nc[0] = 9\nprint(a)\nprint(b)\nprint(c)\n预期逐行输出：\n[3, 1, 2]\n[3, 1, 2]\n[9, 1]"
+        },
+        {
+          "title": "浅拷贝的边界：里面的列表仍可能共享",
+          "body": "浅拷贝复制的是外层结构和其中的元素引用，不会递归复制每一个子列表。阅读下面的图：a、b连向同一个原外层，c连向新外层；两个外层的第0项仍连向同一个[1]子列表。因此c[0].append(2)先取出那个子列表再修改它，两边都看得到；c.append(9)只增加c的外层元素，不会给a的外层增加9。只需理解这一层共享，不学习深拷贝工具或更复杂的嵌套。",
+          "example": "a = [[1], 7]\nb = a\nc = a.copy()\nc[0].append(2)\nc.append(9)\nprint(a)\nprint(c)\n预期逐行输出：\n[[1, 2], 7]\n[[1, 2], 7, 9]",
+          "diagrams": [
+            {
+              "title": "别名、浅拷贝与共享子列表",
+              "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 660 260\" role=\"img\"><rect x=\"5\" y=\"5\" width=\"650\" height=\"250\" rx=\"10\" fill=\"#f7f5ee\" stroke=\"#65766d\"/><text x=\"25\" y=\"35\" font-size=\"16\" fill=\"#142d3b\">a = [[1], 7]；b = a；c = a.copy()（修改前）</text><text x=\"35\" y=\"88\" font-size=\"20\" fill=\"#142d3b\">a</text><text x=\"35\" y=\"145\" font-size=\"20\" fill=\"#142d3b\">b</text><text x=\"35\" y=\"214\" font-size=\"20\" fill=\"#142d3b\">c</text><rect x=\"175\" y=\"68\" width=\"190\" height=\"82\" rx=\"8\" fill=\"#e8eee4\" stroke=\"#32674f\"/><text x=\"190\" y=\"94\" font-size=\"16\" fill=\"#142d3b\">原外层列表</text><text x=\"190\" y=\"126\" font-size=\"18\" fill=\"#142d3b\">[ 子列表引用, 7 ]</text><rect x=\"175\" y=\"175\" width=\"190\" height=\"65\" rx=\"8\" fill=\"#e8eee4\" stroke=\"#32674f\"/><text x=\"190\" y=\"197\" font-size=\"16\" fill=\"#142d3b\">新外层列表</text><text x=\"190\" y=\"224\" font-size=\"18\" fill=\"#142d3b\">[ 子列表引用, 7 ]</text><rect x=\"480\" y=\"120\" width=\"145\" height=\"70\" rx=\"8\" fill=\"#fffefa\" stroke=\"#32674f\"/><text x=\"495\" y=\"146\" font-size=\"16\" fill=\"#142d3b\">同一个子列表</text><text x=\"530\" y=\"176\" font-size=\"20\" fill=\"#142d3b\">[1]</text><line x1=\"60\" y1=\"82\" x2=\"175\" y2=\"95\" stroke=\"#142d3b\" stroke-width=\"2\"/><polyline points=\"164,88 175,95 162,99\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"2\"/><line x1=\"60\" y1=\"140\" x2=\"175\" y2=\"125\" stroke=\"#142d3b\" stroke-width=\"2\"/><polyline points=\"163,120 175,125 164,132\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"2\"/><line x1=\"60\" y1=\"208\" x2=\"175\" y2=\"208\" stroke=\"#142d3b\" stroke-width=\"2\"/><polyline points=\"163,202 175,208 163,214\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"2\"/><line x1=\"365\" y1=\"112\" x2=\"480\" y2=\"140\" stroke=\"#142d3b\" stroke-width=\"2\"/><polyline points=\"470,132 480,140 467,144\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"2\"/><line x1=\"365\" y1=\"208\" x2=\"480\" y2=\"170\" stroke=\"#142d3b\" stroke-width=\"2\"/><polyline points=\"467,168 480,170 471,180\" fill=\"none\" stroke=\"#142d3b\" stroke-width=\"2\"/></svg>",
+              "alt": "修改前a和b都指向原外层列表，c指向新外层列表；原外层和新外层的第0项都引用同一个[1]子列表。",
+              "caption": "依据官方Lists与copy说明原创绘制的引用关系示意图，表示示例修改前状态；箭头表示引用方向，不表示复制动作。两个外层不同，但第0项共享。",
+              "source_ids": [
+                "python-introduction",
+                "python-sequences"
+              ]
+            }
+          ]
+        },
+        {
+          "title": "sort改变原列表，返回None",
+          "body": "对本课的整数列表，a.sort()把a按数值从小到大重新排列，称为原地排序。原地指原来的列表本身被改变，因此别名也看到排序后的顺序；之前创建的独立外层副本保留自己的顺序。sort()返回None，不返回排序后的列表；要得到排序结果，应先调用a.sort()再print(a)。写r = a.sort()只会让r得到None。排序有比较条件，本课只用能互相比较的整数，不把不同任意类型混在一起排序。",
+          "example": "a = [3, 1, 2]\nb = a\nc = a[:]\nr = a.sort()\nprint(a)\nprint(b)\nprint(c)\nprint(r)\n预期逐行输出：\n[1, 2, 3]\n[1, 2, 3]\n[3, 1, 2]\nNone"
+        }
+      ],
+      "practice": "用4分钟画出别名/副本关系，先预测再运行：\na = [6, 2, 4]\nb = a\nc = a[:]\na.append(1)\nx = a.pop(0)\na.sort()\nprint(b)\nprint(c)\nprint(x)\n产出：3行预测，以及一句“为什么b变、c不变”。预期逐行输出：\n[1, 2, 4]\n[6, 2, 4]\n6\n理由：b与a指向同一个外层列表，c是修改前创建的另一外层列表。若出错，把第一次分歧的修改单独重跑；复习优先用已安排的2分钟及本练习时间，不要求课后加时。",
+      "takeaways": [
+        "b = a是同一列表的两个名字；a.copy()和a[:]新建外层。",
+        "浅拷贝不会递归复制子列表，修改共享子列表仍会两边可见。",
+        "整数列表sort原地升序排列并返回None；别名看到修改。",
+        "通过本课测验只代表这些短代码的知识检查，不等于已掌握完整Python编程。"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "运行 a = [3, 1, 2]；b = a；c = a.copy()；r = a.sort()；print(b, c, r)，输出什么？",
+          "options": [
+            "[3, 1, 2] [3, 1, 2] [1, 2, 3]",
+            "[1, 2, 3] [1, 2, 3] None",
+            "[1, 2, 3] [3, 1, 2] None",
+            "[3, 1, 2] [1, 2, 3] None"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "b是别名，会看到原地排序；sort返回None，r不是排序列表。",
+            "b正确、r正确，但c是提前建立的新外层列表，保留原顺序。",
+            "正确：a与b共用列表，c是独立外层，sort返回None。",
+            "把别名与副本的变化对调了：b会跟随a排序，c不跟随。"
+          ]
+        },
+        {
+          "id": "q2",
+          "prompt": "运行 a = [[1], 7]；c = a.copy()；c[0].append(2)；c.append(9)；print(a, c)，输出什么？",
+          "options": [
+            "[[1], 7] [[1, 2], 7, 9]",
+            "[[1, 2], 7] [[1, 2], 7, 9]",
+            "[[1, 2], 7, 9] [[1, 2], 7, 9]",
+            "[[1], 7, 9] [[1, 2], 7]"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "浅拷贝仍共享第0项子列表，修改它会让a也看到[1, 2]。",
+            "正确：子列表共享，因此两边都有[1, 2]；外层不同，9只加入c。",
+            "把浅拷贝当成别名了。c.append(9)只修改新外层，a不会多出9。",
+            "子列表修改会在两边可见，外层新增9只在c中；该项把这两点都颠倒了。"
+          ]
+        },
+        {
+          "id": "q3",
+          "prompt": "运行 a = [4, 1, 3]；b = a；c = a[:]；a.extend([2])；x = a.pop(0)；a.sort()；print(b, c, x)，输出什么？",
+          "options": [
+            "[1, 2, 3, 4] [4, 1, 3] None",
+            "[1, 3] [4, 1, 3] 2",
+            "[4, 1, 3] [1, 2, 3] 4",
+            "[1, 2, 3] [4, 1, 3] 4"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "pop(0)已移除4并返回4；它不会留下4，也不会返回None。",
+            "pop(0)拿走的是索引0的4，默认pop才拿末尾2；当前列表最后会有1、2、3。",
+            "b是a的别名而非副本，排序会改变b所见内容；c不会跟着排序。",
+            "正确：extend后为[4, 1, 3, 2]，移除首项得到x=4，排序后a和b为[1, 2, 3]；c保留[4, 1, 3]。"
+          ]
+        }
+      ],
+      "source_ids": [
+        "python-introduction",
+        "python-datastructures",
+        "python-sequences"
+      ]
+    }
+  ]
+}

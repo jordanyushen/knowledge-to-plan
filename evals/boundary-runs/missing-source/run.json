@@ -1,0 +1,74 @@
+{
+  "case_id": "missing-source",
+  "model_id": "unavailable",
+  "skill_path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/knowledge-to-plan/SKILL.md",
+  "case_path": "/Users/damoo/Documents/ChatGPT/优化/knowledge-to-plan-update/release/evals/cases/missing-source.json",
+  "case_input": {
+    "id": "missing-source",
+    "goal": "按未提供的指定讲义完整学习其内容",
+    "background": "零基础",
+    "days": 3,
+    "daily_minutes": 20,
+    "timezone": "Asia/Hong_Kong",
+    "source_paths": [
+      "/not-provided/lecture.pdf"
+    ],
+    "delivery": "讲义未提供且该路径不存在；如实说明实际读取范围，准备可评审框架，不冒充已读。"
+  },
+  "constraints_changed": false,
+  "read_scope": {
+    "case_json": "read in full",
+    "skill": "same specified SKILL.md already read in this agent session; applicable schema/STEM/dashboard references had been read for prior task",
+    "reference_evaluations_read": false,
+    "other_course_outputs_used": false,
+    "lecture_pdf": {
+      "path": "/not-provided/lecture.pdf",
+      "exists": false,
+      "bytes_read": 0,
+      "pages_read": 0,
+      "error_type": "FileNotFoundError",
+      "error_message": "[Errno 2] No such file or directory: '/not-provided/lecture.pdf'"
+    }
+  },
+  "operations": [
+    {
+      "operation": "read_case",
+      "result": "success"
+    },
+    {
+      "operation": "check_source_and_attempt_read",
+      "result": {
+        "path": "/not-provided/lecture.pdf",
+        "exists": false,
+        "bytes_read": 0,
+        "pages_read": 0,
+        "error_type": "FileNotFoundError",
+        "error_message": "[Errno 2] No such file or directory: '/not-provided/lecture.pdf'"
+      }
+    },
+    {
+      "operation": "prepare_reviewable_framework",
+      "result": "source inventory, goal/scope alignment, pending prerequisite map and budget assessment, conditional 3×20-minute containers"
+    }
+  ],
+  "files_generated": [
+    "/private/tmp/ktp-eval-boundaries/missing-source/response.md",
+    "/private/tmp/ktp-eval-boundaries/missing-source/run.json"
+  ],
+  "full_course_generated": false,
+  "calendar_created": false,
+  "cloud_writes": false,
+  "browser_started": false,
+  "status": "needs_source",
+  "independent_content_verification": false,
+  "environment": {
+    "python": "3.9.6"
+  },
+  "response_sha256": "cec58abc147489ba88e4872d316d79591c2276e3d2f6e76c7f173e46459cbb1e",
+  "not_completed": [
+    "specified lecture absent: 0 bytes and 0 pages read",
+    "cannot estimate actual learning volume or certify full 60-minute coverage",
+    "cannot produce source-grounded lesson content, equations, examples or quizzes",
+    "no full HTML course, plan.json, calendar or cloud artifacts created"
+  ]
+}

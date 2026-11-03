@@ -10,7 +10,7 @@
   // A canonical content fingerprint changes whenever any part of a question changes.
   const fingerprint = q => JSON.stringify([q.prompt, q.options, q.correct_index, q.explanations]);
   const questionMap = new Map(lessons.flatMap(l => l.questions.map(q => [qkey(l, q), { l, q }])));
-  let state = { schema_version: 1, course_id: course.id, answers: {}, notes: {}, checkins: {}, lastDay: lessons[0]?.day, view: 'dashboard', cursors: {} };
+  let state = { schema_version: 1, course_id: course.id, answers: {}, notes: {}, checkins: {}, quarantined: [], lastDay: lessons[0]?.day, view: 'dashboard', cursors: {} };
   let lesson, view = 'dashboard', storageAvailable = true, dashboardDate;
   let lastRenderedView, enteringView = false, lastProgress, selectedDate, pendingCelebration = false;
   const motionAllowed = () => !window.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches;
@@ -29,23 +29,52 @@
   const announce = message => { $('notice').textContent = message; $('notice').hidden = false; };
   function storageWarning() { storageAvailable = false; $('storage-warning').textContent = '当前浏览器无法持久保存学习记录。本次学习仍可继续，请在离开前导出记录；重新打开后可导入恢复。'; $('storage-warning').hidden = false; }
   function save() { if (storageAvailable) { try { localStorage.setItem(key, JSON.stringify(state)); } catch (_) { storageWarning(); } } }
-  const validTime = x => Number.isFinite(x) && x >= 0 && x <= Date.now() + 86400000;
+  // Zero/missing timestamps are legacy dates, never an invented activity day.
+  const validTime = x => Number.isFinite(x) && x > 0 && x <= Date.now();
+  const unknownTime = x => x === undefined || x === null || x === 0;
+  function archiveRecord(kind, id, record, reason) {
+    const entry = { kind, id, reason, record }, signature = JSON.stringify(entry);
+    if (state.quarantined.some(saved => JSON.stringify(saved) === signature)) return 0;
+    state.quarantined.push(entry); return 1;
+  }
   function sanitizeAnswer(raw, q) {
     if (!raw || raw.fingerprint !== fingerprint(q)) return null;
     const validSelection = n => Number.isInteger(n) && n >= 0 && n < q.options.length;
-    const attempts = Array.isArray(raw.attempts) ? raw.attempts.filter(a => a && validSelection(a.selected) && validTime(a.at)).map(a => ({ selected: a.selected, at: a.at })) : [];
-    const selected = validSelection(raw.selected) ? raw.selected : null;
-    const updated_at = validTime(raw.updated_at) ? raw.updated_at : 0;
-    const submitted = raw.submitted === true && selected !== null;
+    let invalidTime = false;
+    const attempts = [];
+    for (const attempt of Array.isArray(raw.attempts) ? raw.attempts : []) {
+      if (!attempt || !validSelection(attempt.selected)) continue;
+      if (validTime(attempt.at) || unknownTime(attempt.at)) attempts.push({ selected: attempt.selected, at: attempt.at || 0 });
+      else invalidTime = true;
+    }
+    let selected = validSelection(raw.selected) ? raw.selected : null;
+    let submitted = raw.submitted === true && selected !== null;
+    let updated_at = validTime(raw.updated_at) ? raw.updated_at : 0;
+    if (!validTime(raw.updated_at) && (!unknownTime(raw.updated_at) || invalidTime)) {
+      // Preserve older, dated evidence without accepting a future latest answer.
+      invalidTime = true;
+      const latest = attempts.filter(a => validTime(a.at)).sort((a, b) => b.at - a.at)[0];
+      if (!latest) return { answer: null, invalidTime };
+      selected = latest.selected; submitted = true; updated_at = latest.at;
+    }
     if (submitted && !attempts.some(a => a.at === updated_at && a.selected === selected)) attempts.push({ selected, at: updated_at });
-    return { fingerprint: fingerprint(q), selected, submitted, updated_at, attempts };
+    return { answer: { fingerprint: fingerprint(q), selected, submitted, updated_at, attempts }, invalidTime };
   }
   function mergePayload(payload, restoring = false) {
     if (!payload || payload.schema_version !== 1 || payload.course_id !== course.id) throw new Error('记录不属于当前课程，或文件版本不受支持。');
-    let accepted = 0, skipped = 0;
+    let accepted = 0, skipped = 0, quarantined = 0;
+    // Archived anomalies are retained for export, never silently promoted to progress.
+    for (const entry of Array.isArray(payload.quarantined) ? payload.quarantined : []) {
+      if (entry && ['answer', 'note', 'checkin'].includes(entry.kind) && typeof entry.id === 'string' && typeof entry.reason === 'string' && entry.record && typeof entry.record === 'object') {
+        archiveRecord(entry.kind, entry.id, entry.record, entry.reason);
+      }
+    }
     if (payload.answers && typeof payload.answers === 'object') for (const [id, raw] of Object.entries(payload.answers)) {
-      const item = questionMap.get(id), incoming = item && sanitizeAnswer(raw, item.q);
-      if (!incoming) { skipped++; continue; }
+      const item = questionMap.get(id), sanitized = item && sanitizeAnswer(raw, item.q);
+      if (!sanitized) { skipped++; continue; }
+      if (sanitized.invalidTime) quarantined += archiveRecord('answer', id, raw, '时间在未来或无效，未采用异常时间的答案');
+      const incoming = sanitized.answer;
+      if (!incoming) continue;
       const previous = state.answers[id];
       if (previous) {
         const winner = previous.updated_at > incoming.updated_at ? previous : incoming;
@@ -57,7 +86,13 @@
     }
     for (const l of lessons) {
       const id = nkey(l), note = payload.notes?.[id];
-      if (note && typeof note.text === 'string' && validTime(note.updated_at) && (!state.notes[id] || note.updated_at >= state.notes[id].updated_at)) state.notes[id] = { text: note.text, updated_at: note.updated_at };
+      if (note && typeof note.text === 'string') {
+        if (!validTime(note.updated_at) && !unknownTime(note.updated_at)) quarantined += archiveRecord('note', id, note, '时间在未来或无效，未覆盖现有笔记');
+        else {
+          const at = note.updated_at || 0;
+          if (!state.notes[id] || at >= state.notes[id].updated_at) state.notes[id] = { text: note.text, updated_at: at };
+        }
+      }
       const cursor = payload.cursors?.[id];
       if (restoring && Number.isInteger(cursor) && cursor >= 0 && cursor < l.questions.length) state.cursors[id] = cursor;
     }
@@ -65,19 +100,27 @@
     for (const raw of Object.values(state.answers)) for (const attempt of raw.attempts) markActivity(attempt.at);
     for (const note of Object.values(state.notes)) if (note.text.trim()) markActivity(note.updated_at);
     if (payload.checkins && typeof payload.checkins === 'object') for (const [day, entry] of Object.entries(payload.checkins)) {
-      if (entry && Number.isFinite(entry.at) && entry.at > 0 && entry.at <= Date.now() && ['manual', 'study'].includes(entry.kind) && dateKey(entry.at) === day) markActivity(entry.at, entry.kind);
+      if (entry && validTime(entry.at) && ['manual', 'study'].includes(entry.kind) && dateKey(entry.at) === day) markActivity(entry.at, entry.kind);
+      else if (entry && typeof entry === 'object') quarantined += archiveRecord('checkin', day, entry, '活动日期或时间无效，未计入地图');
     }
     if (restoring) {
       if (lessons.some(l => l.day === payload.lastDay)) state.lastDay = payload.lastDay;
       if (['dashboard', 'learn', 'practice', 'quiz', 'wrong'].includes(payload.view)) state.view = payload.view;
     }
-    return { accepted, skipped };
+    return { accepted, skipped, quarantined };
   }
-  try { const raw = localStorage.getItem(key); if (raw) { try { mergePayload(JSON.parse(raw), true); } catch (_) { announce('已有记录无法读取。你可以导入备份继续学习。'); } } const probe = key + ':probe'; localStorage.setItem(probe, '1'); localStorage.removeItem(probe); } catch (_) { storageWarning(); }
+  try { const raw = localStorage.getItem(key); if (raw) { try { const result = mergePayload(JSON.parse(raw), true); if (result.quarantined) announce(`已保留 ${result.quarantined} 条异常时间记录，未将异常时间计入进度；可导出备份检查。`); } catch (_) { announce('已有记录无法读取。你可以导入备份继续学习。'); } } const probe = key + ':probe'; localStorage.setItem(probe, '1'); localStorage.removeItem(probe); } catch (_) { storageWarning(); }
   const record = (l, q) => state.answers[qkey(l, q)];
-  const correct = (l, q) => { const a = record(l, q); return !!a?.submitted && a.selected === q.correct_index; };
+  const correct = (l, q) => { const a = record(l, q); return !!a?.submitted && (a.updated_at === 0 || validTime(a.updated_at)) && a.selected === q.correct_index; };
   const complete = l => l.questions.length > 0 && l.questions.every(q => correct(l, q));
-  const wrongHistory = (l, q) => (record(l, q)?.attempts || []).filter(a => a.selected !== q.correct_index);
+  const wrongHistory = (l, q) => (record(l, q)?.attempts || []).filter(a => (a.at === 0 || validTime(a.at)) && a.selected !== q.correct_index);
+  const firstCorrectAt = (l, q) => {
+    const correctAttempts = (record(l, q)?.attempts || []).filter(a => a.selected === q.correct_index);
+    if (correctAttempts.some(a => a.at === 0)) return null;
+    const dated = correctAttempts.filter(a => validTime(a.at));
+    return dated.length ? dated.reduce((earliest, a) => Math.min(earliest, a.at), Infinity) : null;
+  };
+  const datedPass = l => l.questions.every(q => firstCorrectAt(l, q) !== null);
   const plannedMinutes = l => l.activities.reduce((sum, a) => sum + a.minutes, 0);
   function dailyLearning() {
     const days = new Map(), now = Date.now();
@@ -90,8 +133,8 @@
       for (const q of l.questions) {
         const attempts = (record(l, q)?.attempts || []).filter(a => a.at > 0 && a.at <= now);
         for (const a of attempts) bucket(dateKey(a.at)).questionIds.add(qkey(l, q));
-        const times = attempts.filter(a => a.selected === q.correct_index).map(a => a.at);
-        if (times.length) firstCorrect.push(times.reduce((earliest, at) => Math.min(earliest, at), Infinity));
+        const first = firstCorrectAt(l, q);
+        if (first !== null) firstCorrect.push(first);
       }
       // The lesson is first passed when the last outstanding question is first corrected.
       if (l.questions.length && firstCorrect.length === l.questions.length) {
@@ -157,7 +200,8 @@
     $('sidebar').classList.remove('open'); $('menu-toggle').setAttribute('aria-expanded', 'false');
     save(); render(); if (focus) $('main').focus();
   }
-  function changeTab(tab) { view = tab; state.view = tab; save(); render(); }
+  function changeTab(tab) { view = tab; state.view = tab; save(); render(); $('study-tab-' + tab)?.focus(); }
+  function changeQuestion(index) { state.cursors[nkey(lesson)] = index; save(); render(); $('quiz-question-heading')?.focus(); }
   function list(tag, cls, items) { const el = make(tag, cls); for (const text of items) el.append(make('li', '', text)); return el; }
   function card(title, text, cls = '') { const el = make('section', 'card ' + cls); if (title) el.append(make('h3', '', title)); if (text) el.append(make('div', 'section-body', text)); return el; }
   function renderDashboard() {
@@ -193,6 +237,9 @@
       stat.append(make('p', 'stat-label', label), valueEl, make('p', 'stat-caption', caption)); stats.append(stat);
     }
     content.append(stats);
+    const undated = lessons.filter(l => complete(l) && !datedPass(l)).length;
+    if (undated) { const note = make('p', 'dashboard-note', `${undated} 课的通过日期未知：已保留旧备份进度，未把它们计入某一天的学习量。`); note.id = 'progress-date-note'; content.append(note); }
+    if (state.quarantined.length) content.append(make('p', 'dashboard-note', `${state.quarantined.length} 条异常记录已单独保留，异常时间不计入进度。导出备份包含这些原始记录，修正后可重新导入。`));
     const checkin = make('section', 'dashboard-panel checkin-panel'), header = make('div', 'panel-heading');
     const activity = dailyLearning(), emptyDay = () => ({ lessons: [], questionIds: new Set(), minutes: 0 });
     if (!selectedDate || selectedDate > today) selectedDate = today;
@@ -270,7 +317,7 @@
     if (complete(lesson)) heading.append(make('span', 'badge', '✓ 本课已通过'));
     heading.append(make('p', 'lesson-goal', course.goal));
     [['learn', '01 阅读学习'], ['practice', '02 练习与笔记'], ['quiz', '03 当日测验']].forEach(([tab, label]) => {
-      const b = button(label, 'tab', () => changeTab(tab)); if (view === tab) b.setAttribute('aria-current', 'step'); $('study-tabs').append(b);
+      const b = button(label, 'tab', () => changeTab(tab)); b.id = 'study-tab-' + tab; if (view === tab) b.setAttribute('aria-current', 'step'); $('study-tabs').append(b);
     });
     if (view === 'quiz') renderQuiz(); else if (view === 'practice') renderPractice(); else renderLearning();
     finishMotion();
@@ -398,9 +445,9 @@
     content.append(make('p', 'muted', '每道题答对后，本课才会通过。答错时可以查看解析，再试一次。'));
     if (!questions.length) { content.append(card('本课缺少测验', '暂不记录通过，请先补齐本课知识检查。')); return; }
     const nav = make('nav', 'question-nav'); nav.setAttribute('aria-label', '测验题目');
-    questions.forEach((q, i) => { const a = record(lesson, q), b = button(String(i + 1), correct(lesson, q) ? 'correct' : a?.submitted ? 'wrong' : '', () => { state.cursors[nkey(lesson)] = i; save(); render(); }); if (i === current) b.setAttribute('aria-current', 'true'); b.setAttribute('aria-label', `第 ${i + 1} 题，${correct(lesson, q) ? '已答对' : a?.submitted ? '待重试' : '未完成'}`); nav.append(b); }); content.append(nav);
+    questions.forEach((q, i) => { const a = record(lesson, q), b = button(String(i + 1), correct(lesson, q) ? 'correct' : a?.submitted ? 'wrong' : '', () => changeQuestion(i)); if (i === current) b.setAttribute('aria-current', 'true'); b.setAttribute('aria-label', `第 ${i + 1} 题，${correct(lesson, q) ? '已答对' : a?.submitted ? '待重试' : '未完成'}`); nav.append(b); }); content.append(nav);
     const q = questions[current], a = record(lesson, q), el = card(); el.append(make('p', 'quiz-counter', `第 ${current + 1} / ${questions.length} 题 · 已答对 ${questions.filter(item => correct(lesson, item)).length} 题`));
-    const fieldset = make('fieldset'), legend = make('legend', '', q.prompt), options = make('div', 'options'); fieldset.append(legend, options);
+    const fieldset = make('fieldset'), legend = make('legend', '', q.prompt), options = make('div', 'options'); legend.id = 'quiz-question-heading'; legend.tabIndex = -1; fieldset.append(legend, options);
     q.options.forEach((text, i) => { const label = make('label', 'option'), input = make('input'); input.type = 'radio'; input.name = 'current-question'; input.id = 'answer-option-' + i; input.value = String(i); input.checked = a?.selected === i; input.disabled = !!a?.submitted; label.htmlFor = input.id;
       input.addEventListener('change', () => { updateAnswer(q, i, false); submit.disabled = false; }); label.append(input, make('span', '', text)); options.append(label);
     }); el.append(fieldset);
@@ -413,8 +460,8 @@
     const actions = make('div', 'actions'), submit = button('提交答案', 'primary', () => { const selected = record(lesson, q)?.selected; if (!Number.isInteger(selected)) return; updateAnswer(q, selected, true); render(); $('content').querySelector('.feedback')?.focus(); });
     submit.disabled = !Number.isInteger(a?.selected); if (!a?.submitted) actions.append(submit);
     else if (!correct(lesson, q)) actions.append(button('再试一次', 'primary', () => { updateAnswer(q, null, false); render(); $('answer-option-0')?.focus(); }));
-    if (current > 0) actions.append(button('上一题', 'secondary', () => { state.cursors[nkey(lesson)] = current - 1; save(); render(); }));
-    if (current + 1 < questions.length) actions.append(button('下一题 →', 'secondary', () => { state.cursors[nkey(lesson)] = current + 1; save(); render(); }));
+    if (current > 0) actions.append(button('上一题', 'secondary', () => changeQuestion(current - 1)));
+    if (current + 1 < questions.length) actions.append(button('下一题 →', 'secondary', () => changeQuestion(current + 1)));
     el.append(actions); content.append(el); appendCompletion();
   }
   function appendCompletion() {
@@ -437,9 +484,9 @@
   $('menu-toggle').addEventListener('click', () => { const open = $('sidebar').classList.toggle('open'); $('menu-toggle').setAttribute('aria-expanded', String(open)); });
   $('dashboard-link').addEventListener('click', () => openDashboard());
   $('wrong-book').addEventListener('click', () => { view = 'wrong'; state.view = view; save(); render(); $('sidebar').classList.remove('open'); $('menu-toggle').setAttribute('aria-expanded', 'false'); $('main').focus(); });
-  $('export-progress').addEventListener('click', () => { const blob = new Blob([JSON.stringify({ ...state, exported_at: new Date().toISOString() }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), a = make('a'); a.href = url; a.download = 'KnowledgeToPlan-' + String(course.id).replace(/[^\p{L}\p{N}_-]/gu, '_') + '-progress.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); announce('学习记录已导出，包含进度、错题历史和笔记。'); });
+  $('export-progress').addEventListener('click', () => { const blob = new Blob([JSON.stringify({ ...state, exported_at: new Date().toISOString() }, null, 2)], { type: 'application/json' }), url = URL.createObjectURL(blob), a = make('a'); a.href = url; a.download = 'KnowledgeToPlan-' + String(course.id).replace(/[^\p{L}\p{N}_-]/gu, '_') + '-progress.json'; document.body.append(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(url), 1000); announce(`学习记录已导出，包含进度、错题历史、笔记和异常记录。${blob.size > 10 * 1024 * 1024 ? '文件较大，恢复时请保持页面打开；浏览器存储容量可能不足。' : ''}`); });
   $('import-progress').addEventListener('click', () => $('import-file').click());
-  $('import-file').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; try { if (file.size > 10 * 1024 * 1024) throw new Error('记录文件过大，请选择小于 10 MB 的文件。'); const result = mergePayload(JSON.parse(await file.text())); save(); render(); announce(`导入完成，合并了 ${result.accepted} 道题的记录。${result.skipped ? `另有 ${result.skipped} 条记录因题目已变更或格式无效而跳过。` : ''}笔记已按更新时间合并。`); } catch (error) { announce('无法导入：' + (error instanceof SyntaxError ? '文件不是有效的 JSON 记录。' : error.message)); } event.target.value = ''; });
+  $('import-file').addEventListener('change', async event => { const file = event.target.files[0]; if (!file) return; try { if (file.size > 10 * 1024 * 1024) announce('正在读取较大的学习记录，请保持页面打开；存储不足时仍可在本次页面学习并导出。'); const result = mergePayload(JSON.parse(await file.text())); save(); render(); announce(`导入完成，合并了 ${result.accepted} 道题的记录。${result.skipped ? `另有 ${result.skipped} 条记录因题目已变更或格式无效而跳过。` : ''}${result.quarantined ? `${result.quarantined} 条异常时间记录已单独保留，可导出检查。` : ''}笔记已按更新时间合并。`); } catch (error) { announce('无法导入：' + (error instanceof SyntaxError ? '文件不是有效的 JSON 记录。' : error.message)); } event.target.value = ''; });
   $('course-title').textContent = course.title; document.title = course.title + ' · KnowledgeToPlan';
   $('course-meta').textContent = `${course.days} 天 · 每天 ${course.daily_minutes} 分钟${course.start_date ? ' · ' + course.start_date + ' 开始' : ''}${course.study_time ? ' · ' + course.study_time + ' ' + course.timezone : ''}`;
   const dayFromHash = () => { const match = /^#day-(\d+)$/.exec(location.hash); return match && lessons.find(l => l.day === Number(match[1])); };

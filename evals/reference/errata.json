@@ -1,0 +1,9 @@
+{
+  "recorded_date": "2026-11-04",
+  "original_reference_preserved": true,
+  "case_id": "si-basics",
+  "field": "required[0]",
+  "issue": "The original oracle includes kilo although the fixed user input asks only for m/cm/mm conversion.",
+  "scoring_resolution": "Require centi/milli and conversion direction. Do not penalize omission of kilo, and do not silently expand the case goal.",
+  "reason": "Align scoring with the original fixed input; retain the original rubric and this correction for audit."
+}

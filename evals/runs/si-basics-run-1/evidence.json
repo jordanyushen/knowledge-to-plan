@@ -1,0 +1,714 @@
+{
+  "case_id": "si-basics",
+  "model_id": "unavailable",
+  "generator_role": "forward-course-author",
+  "independent_content_verification": false,
+  "source_notes_are_original_pages": false,
+  "official_sources_read": [
+    {
+      "id": "nist-prefixes",
+      "url": "https://www.nist.gov/pml/owm/metric-si-prefixes",
+      "locator": "实际读取正文 Prefixes 表：centi c = 10⁻²、milli m = 10⁻³（网页文本行202–233）；仅使用本课所需前缀，不声称读完整站。",
+      "actual_read": "web official page text",
+      "coverage": "selected relevant portions only; not full publication"
+    },
+    {
+      "id": "nist-derived",
+      "url": "https://www.nist.gov/pml/special-publication-811/nist-guide-si-chapter-4-two-classes-si-units-and-si-prefixes",
+      "locator": "实际读取 §4.1 Table 1 的 length / meter / m、time / second / s，以及 §4.2 Table 2 的 area / m²、speed / m/s（网页文本行138–165）。",
+      "actual_read": "web official page text",
+      "coverage": "selected relevant portions only; not full publication"
+    },
+    {
+      "id": "nist-rules",
+      "url": "https://physics.nist.gov/cuu/Units/checklist.html",
+      "locator": "实际读取规则2（标准符号）、3（符号不加复数）、5（乘除记法）、12（各数值单位明确）、15（数字与单位符号间空格）、17（量方程与数值方程须区分）。",
+      "actual_read": "web official page text",
+      "coverage": "selected relevant portions only; not full publication"
+    },
+    {
+      "id": "openstax-speed",
+      "url": "https://openstax.org/books/physics/pages/2-2-speed-and-velocity",
+      "locator": "仅取 Speed 部分：网页文本行56–78，平均速率为路程除以对应经过时间；不能一般地直接平均两段速率。例题与图为本课程原创；不采用该节向量或瞬时量教学。",
+      "actual_read": "web official page text",
+      "coverage": "selected relevant portions only; not full publication"
+    },
+    {
+      "id": "original-teaching",
+      "url": null,
+      "locator": "所有中文讲解、教学数值、例题、练习、九道测验、面积网格图及累计路程时间图原创。面积换算由长方形面积与长度等量替换推导；题目给定量均视为精确教学数值，不另引入测量误差。",
+      "actual_read": "original authoring",
+      "coverage": "selected relevant portions only; not full publication"
+    }
+  ],
+  "hard_constraints": {
+    "days": 3,
+    "daily_minutes": 20,
+    "lesson_count": 3,
+    "question_counts": [
+      3,
+      3,
+      3
+    ],
+    "activity_minutes": [
+      20,
+      20,
+      20
+    ]
+  },
+  "question_calculations": [
+    {
+      "lesson_id": "si-day-1",
+      "question_id": "q1",
+      "type": "length",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes"
+      ],
+      "reasoning_steps": [
+        "2.4 m = 2.4 × 100 cm = 240 cm",
+        "240 cm ÷ 100 = 2.4 m"
+      ],
+      "rational_result": "240",
+      "expected_answer": "240 cm",
+      "correct_index_zero_based": 1,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "24 cm",
+          "correct": false,
+          "reason_in_course": "错误：只乘10；米到厘米应乘100。"
+        },
+        {
+          "index": 1,
+          "text": "240 cm",
+          "correct": true,
+          "reason_in_course": "正确：2.4 × 100 = 240，所以同一长度为 240 cm。"
+        },
+        {
+          "index": 2,
+          "text": "0.024 cm",
+          "correct": false,
+          "reason_in_course": "错误：除以100把方向倒置；厘米更小，数值应增大。"
+        },
+        {
+          "index": 3,
+          "text": "2400 cm",
+          "correct": false,
+          "reason_in_course": "错误：乘1000是米到毫米的数值因子；2400 mm 才等于 2.4 m。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-1",
+      "question_id": "q2",
+      "type": "length",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes"
+      ],
+      "reasoning_steps": [
+        "75 mm = (75 ÷ 1000) m = 0.075 m",
+        "0.075 m × 1000 = 75 mm"
+      ],
+      "rational_result": "3/40",
+      "expected_answer": "0.075 m",
+      "correct_index_zero_based": 3,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "0.75 m",
+          "correct": false,
+          "reason_in_course": "错误：除以100得到0.75，但毫米到米需除以1000。"
+        },
+        {
+          "index": 1,
+          "text": "7.5 m",
+          "correct": false,
+          "reason_in_course": "错误：只除以10，这是毫米到厘米的数值因子。"
+        },
+        {
+          "index": 2,
+          "text": "75000 m",
+          "correct": false,
+          "reason_in_course": "错误：把应除以1000写成乘1000，且方向相反。"
+        },
+        {
+          "index": 3,
+          "text": "0.075 m",
+          "correct": true,
+          "reason_in_course": "正确：75 ÷ 1000 = 0.075；反算0.075 × 1000 = 75。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-1",
+      "question_id": "q3",
+      "type": "length_and_notation",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes",
+        "nist-rules"
+      ],
+      "reasoning_steps": [
+        "6.8 cm = (6.8 × 10) mm = 68 mm",
+        "正确符号是mm；mm后不加s；数字与单位留空格"
+      ],
+      "rational_result": "68",
+      "expected_answer": "68 mm",
+      "correct_index_zero_based": 0,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "68 mm",
+          "correct": true,
+          "reason_in_course": "正确：1 cm = 10 mm，6.8 × 10 = 68；数字与 mm 之间留空格，符号不加复数。"
+        },
+        {
+          "index": 1,
+          "text": "0.68 mm",
+          "correct": false,
+          "reason_in_course": "错误：厘米到毫米应乘10，这里除以10。"
+        },
+        {
+          "index": 2,
+          "text": "680 mm",
+          "correct": false,
+          "reason_in_course": "错误：这里乘了100；厘米到毫米只乘10。"
+        },
+        {
+          "index": 3,
+          "text": "68 mms",
+          "correct": false,
+          "reason_in_course": "错误：数值换算虽为68，但毫米符号是 mm，不能写 mms。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-2",
+      "question_id": "q1",
+      "type": "squared_factor",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived"
+      ],
+      "reasoning_steps": [
+        "1 m² = (100 cm) × (100 cm)",
+        "100 × 100 = 10000；不是100，也不是100+100"
+      ],
+      "rational_result": "10000",
+      "expected_answer": "10000 cm²",
+      "correct_index_zero_based": 2,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "100 cm²，因为1 m等于100 cm",
+          "correct": false,
+          "reason_in_course": "错误：100是长度数值因子，面积需要两个方向各乘100。"
+        },
+        {
+          "index": 1,
+          "text": "200 cm²，因为有两条边，所以100乘2",
+          "correct": false,
+          "reason_in_course": "错误：面积是两个长度相乘，不是两个长度因子相加。"
+        },
+        {
+          "index": 2,
+          "text": "10000 cm²，因为两条边都由1 m换为100 cm，再算100乘100",
+          "correct": true,
+          "reason_in_course": "正确：(100 cm) × (100 cm) = 10000 cm²，因子为100²。"
+        },
+        {
+          "index": 3,
+          "text": "1000000 cm²，因为1 m等于1000 mm",
+          "correct": false,
+          "reason_in_course": "错误：1000000对应 m² 到 mm² 的因子，不是到 cm² 的因子。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-2",
+      "question_id": "q2",
+      "type": "area",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived"
+      ],
+      "reasoning_steps": [
+        "450 cm² × (1 m² / 10000 cm²) = 0.045 m²",
+        "0.045 × 10000 = 450"
+      ],
+      "rational_result": "9/200",
+      "expected_answer": "0.045 m²",
+      "correct_index_zero_based": 0,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "0.045 m²",
+          "correct": true,
+          "reason_in_course": "正确：从平方厘米到平方米除以10000，450 ÷ 10000 = 0.045。"
+        },
+        {
+          "index": 1,
+          "text": "4.5 m²",
+          "correct": false,
+          "reason_in_course": "错误：只除以100，误用长度因子。"
+        },
+        {
+          "index": 2,
+          "text": "4500000 m²",
+          "correct": false,
+          "reason_in_course": "错误：乘10000把方向倒转；平方米更大，数值应减小。"
+        },
+        {
+          "index": 3,
+          "text": "0.0045 m²",
+          "correct": false,
+          "reason_in_course": "错误：除以100000，因子多了10倍。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-2",
+      "question_id": "q3",
+      "type": "mixed_length_area",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived"
+      ],
+      "reasoning_steps": [
+        "15 cm = 0.15 m",
+        "A = (0.2 m) × (0.15 m) = 0.03 m²",
+        "复核：(20 cm) × (15 cm) = 300 cm² = 0.03 m²"
+      ],
+      "rational_result": "3/100",
+      "expected_answer": "0.03 m²",
+      "correct_index_zero_based": 3,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "3 m²",
+          "correct": false,
+          "reason_in_course": "错误：0.2和15的单位未统一，不能相乘后直接标 m²。"
+        },
+        {
+          "index": 1,
+          "text": "0.03 m",
+          "correct": false,
+          "reason_in_course": "错误：0.2 × 0.15 = 0.03 的数值正确，但面积单位应为 m²。"
+        },
+        {
+          "index": 2,
+          "text": "0.003 m²",
+          "correct": false,
+          "reason_in_course": "错误：15 cm = 0.15 m，乘0.2得0.03，非0.003。"
+        },
+        {
+          "index": 3,
+          "text": "0.03 m²",
+          "correct": true,
+          "reason_in_course": "正确：15 cm = 0.15 m，面积 (0.2 m) × (0.15 m) = 0.03 m²。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-3",
+      "question_id": "q1",
+      "type": "average_speed",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "nist-prefixes",
+        "nist-derived",
+        "openstax-speed"
+      ],
+      "reasoning_steps": [
+        "4500 mm = 4.5 m",
+        "v_avg = d_total / T = (4.5 m)/(3 s) = 1.5 m/s",
+        "T=3 s >0；长度/时间量纲"
+      ],
+      "rational_result": "3/2",
+      "expected_answer": "1.5 m/s",
+      "correct_index_zero_based": 1,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "1500 m/s",
+          "correct": false,
+          "reason_in_course": "错误：4500÷3=1500的单位是mm/s；再换算为m/s应除以1000。"
+        },
+        {
+          "index": 1,
+          "text": "1.5 m/s",
+          "correct": true,
+          "reason_in_course": "正确：4500 mm = 4.5 m，(4.5 m)/(3 s) = 1.5 m/s。"
+        },
+        {
+          "index": 2,
+          "text": "0.002 m/s",
+          "correct": false,
+          "reason_in_course": "错误：3/4500不是路程除以时间，并且混用了mm和m；正确结果为1.5 m/s。"
+        },
+        {
+          "index": 3,
+          "text": "1.5 m²",
+          "correct": false,
+          "reason_in_course": "错误：数值1.5虽对，m²是面积；路程除以时间的单位为m/s。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-3",
+      "question_id": "q2",
+      "type": "segmented_average_speed",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "openstax-speed",
+        "nist-derived"
+      ],
+      "reasoning_steps": [
+        "d_total = 60 m + 60 m = 120 m",
+        "T = 20 s + 30 s = 50 s",
+        "v_avg = 120/50 = 2.4 m/s",
+        "两段速率分别3与2 m/s；(3+2)/2=2.5，因时间不等而非本题答案"
+      ],
+      "rational_result": "12/5",
+      "expected_answer": "2.4 m/s",
+      "correct_index_zero_based": 2,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "2.5 m/s",
+          "correct": false,
+          "reason_in_course": "错误：这是两段速率3 m/s与2 m/s的算术平均；两段时间不同，不能直接这样求全程平均速率。"
+        },
+        {
+          "index": 1,
+          "text": "3 m/s",
+          "correct": false,
+          "reason_in_course": "错误：60/20=3，只描述第一段，遗漏第二段。"
+        },
+        {
+          "index": 2,
+          "text": "2.4 m/s",
+          "correct": true,
+          "reason_in_course": "正确：总路程60+60=120 m，总时间20+30=50 s，120/50=2.4 m/s。"
+        },
+        {
+          "index": 3,
+          "text": "2 m/s",
+          "correct": false,
+          "reason_in_course": "错误：60/30=2，只描述第二段；全程要同时包括两段。"
+        }
+      ]
+    },
+    {
+      "lesson_id": "si-day-3",
+      "question_id": "q3",
+      "type": "roundtrip_pause",
+      "conditions": "题给数值视为精确；计算覆盖题目指定的量和区间。速率题分母用时均大于0。",
+      "basis_source_ids": [
+        "openstax-speed",
+        "nist-derived"
+      ],
+      "reasoning_steps": [
+        "d_total = 40 m + 40 m = 80 m；返程仍累加",
+        "T = 20 s + 20 s + 10 s = 50 s；暂停计时",
+        "v_avg = 80/50 = 1.6 m/s；回到起点不意味着路程为0"
+      ],
+      "rational_result": "8/5",
+      "expected_answer": "1.6 m/s",
+      "correct_index_zero_based": 3,
+      "matches_generated_key": true,
+      "options": [
+        {
+          "index": 0,
+          "text": "0 m/s",
+          "correct": false,
+          "reason_in_course": "错误：回到起点仍实际走了80 m；平均速率按总路程计算。"
+        },
+        {
+          "index": 1,
+          "text": "2 m/s",
+          "correct": false,
+          "reason_in_course": "错误：80/40=2遗漏了区间内10 s等待；题目计时到等待结束。"
+        },
+        {
+          "index": 2,
+          "text": "0.8 m/s",
+          "correct": false,
+          "reason_in_course": "错误：40/50=0.8只算单程路程，漏了返回40 m。"
+        },
+        {
+          "index": 3,
+          "text": "1.6 m/s",
+          "correct": true,
+          "reason_in_course": "正确：总路程40+40=80 m，总时间20+20+10=50 s，80/50=1.6 m/s。"
+        }
+      ]
+    }
+  ],
+  "example_calculations": [
+    {
+      "calculation": "0.5 m to cm",
+      "exact_result": "50",
+      "displayed_result": "50",
+      "matched": true
+    },
+    {
+      "calculation": "2.35 m to cm",
+      "exact_result": "235",
+      "displayed_result": "235",
+      "matched": true
+    },
+    {
+      "calculation": "480 mm to m",
+      "exact_result": "12/25",
+      "displayed_result": "0.48",
+      "matched": true
+    },
+    {
+      "calculation": "7.2 cm to mm",
+      "exact_result": "72",
+      "displayed_result": "72",
+      "matched": true
+    },
+    {
+      "calculation": "320 mm to m",
+      "exact_result": "8/25",
+      "displayed_result": "0.32",
+      "matched": true
+    },
+    {
+      "calculation": "0.64 m to cm",
+      "exact_result": "64",
+      "displayed_result": "64",
+      "matched": true
+    },
+    {
+      "calculation": "0.64 m to mm",
+      "exact_result": "640",
+      "displayed_result": "640",
+      "matched": true
+    },
+    {
+      "calculation": "95 mm to cm",
+      "exact_result": "19/2",
+      "displayed_result": "9.5",
+      "matched": true
+    },
+    {
+      "calculation": "95 mm to m",
+      "exact_result": "19/200",
+      "displayed_result": "0.095",
+      "matched": true
+    },
+    {
+      "calculation": "4cm x 3cm",
+      "exact_result": "12",
+      "displayed_result": "12",
+      "matched": true
+    },
+    {
+      "calculation": "0.35m² to cm²",
+      "exact_result": "3500",
+      "displayed_result": "3500",
+      "matched": true
+    },
+    {
+      "calculation": "2500cm² to m²",
+      "exact_result": "1/4",
+      "displayed_result": "0.25",
+      "matched": true
+    },
+    {
+      "calculation": "0.5m x 0.5m",
+      "exact_result": "1/4",
+      "displayed_result": "0.25",
+      "matched": true
+    },
+    {
+      "calculation": "0.3m x 0.2m",
+      "exact_result": "3/50",
+      "displayed_result": "0.06",
+      "matched": true
+    },
+    {
+      "calculation": "30cm x 20cm",
+      "exact_result": "600",
+      "displayed_result": "600",
+      "matched": true
+    },
+    {
+      "calculation": "0.08m² to cm²",
+      "exact_result": "800",
+      "displayed_result": "800",
+      "matched": true
+    },
+    {
+      "calculation": "300mm² to cm²",
+      "exact_result": "3",
+      "displayed_result": "3",
+      "matched": true
+    },
+    {
+      "calculation": "2cm square to mm²",
+      "exact_result": "400",
+      "displayed_result": "400",
+      "matched": true
+    },
+    {
+      "calculation": "4.5m / 3s",
+      "exact_result": "3/2",
+      "displayed_result": "1.5",
+      "matched": true
+    },
+    {
+      "calculation": "120m / 60s including pause",
+      "exact_result": "2",
+      "displayed_result": "2",
+      "matched": true
+    },
+    {
+      "calculation": "120m / 50s before pause",
+      "exact_result": "12/5",
+      "displayed_result": "2.4",
+      "matched": true
+    },
+    {
+      "calculation": "direct arithmetic mean of 3 and 2",
+      "exact_result": "5/2",
+      "displayed_result": "2.5",
+      "matched": true
+    },
+    {
+      "calculation": "80m / 50s including return and pause",
+      "exact_result": "8/5",
+      "displayed_result": "1.6",
+      "matched": true
+    },
+    {
+      "calculation": "72m / 24s including pause",
+      "exact_result": "3",
+      "displayed_result": "3",
+      "matched": true
+    },
+    {
+      "calculation": "72m / 18s moving interval only",
+      "exact_result": "4",
+      "displayed_result": "4",
+      "matched": true
+    }
+  ],
+  "formulas": [
+    {
+      "lesson_id": "si-day-1",
+      "title": "本课的精确长度单位关系",
+      "expression": "1 m = 100 cm = 1000 mm；1 cm = 10 mm",
+      "variables_and_units_present": true,
+      "conditions_present": true
+    },
+    {
+      "lesson_id": "si-day-2",
+      "title": "长方形面积",
+      "expression": "A = L × W",
+      "variables_and_units_present": true,
+      "conditions_present": true
+    },
+    {
+      "lesson_id": "si-day-2",
+      "title": "本课的精确面积单位关系",
+      "expression": "1 m² = 10000 cm²；1 cm² = 100 mm²；1 m² = 1000000 mm²",
+      "variables_and_units_present": true,
+      "conditions_present": true
+    },
+    {
+      "lesson_id": "si-day-3",
+      "title": "平均速率的定义",
+      "expression": "v_avg = d_total / T",
+      "variables_and_units_present": true,
+      "conditions_present": true
+    },
+    {
+      "lesson_id": "si-day-3",
+      "title": "两段行程的总量",
+      "expression": "d_total = d₁ + d₂；T = t₁ + t₂",
+      "variables_and_units_present": true,
+      "conditions_present": true
+    }
+  ],
+  "diagrams": [
+    {
+      "lesson_id": "si-day-2",
+      "title": "一平方米的两方向换算",
+      "xml_parse": true,
+      "static_only": true,
+      "data_consistency_check": "面积图：10×10格，各10 cm×10 cm，合计10000 cm²。",
+      "visual_render_checked": false
+    },
+    {
+      "lesson_id": "si-day-3",
+      "title": "计时继续，暂停仍在总时间内",
+      "xml_parse": true,
+      "static_only": true,
+      "data_consistency_check": "图点(0 s,0 m),(20 s,60 m),(50 s,120 m),(60 s,120 m)与文中三时段一致；最后10 s暂停。",
+      "visual_render_checked": false
+    }
+  ],
+  "build_and_checks": {
+    "raw_initial_validation": "failed: review_of used IDs rather than integer day numbers",
+    "correction_scope": [
+      "lessons[1].review_of: [\"si-day-1\"] → [1]",
+      "lessons[2].review_of: [\"si-day-1\",\"si-day-2\"] → [1,2]"
+    ],
+    "raw_preserved": true,
+    "raw_and_built_content_same_except_review_of": true,
+    "final_validate": "pass; facts_verified=false",
+    "build": "pass; --expected-days 3 --expected-daily-minutes 20 independently supplied from case",
+    "template_runtime_smoke": "pass; synthetic fixtures, no browser",
+    "actual_packaged_runtime": "pass in synthetic DOM using actual embedded plan/runtime; fresh dashboard, unselected disabled, wrong answer/retry, all 9 corrected, same-day 3 lessons / 9 unique questions / 60 planned minutes / 1 activity day, refresh, export/import",
+    "actual_packaged_runtime_first_attempt": "harness error: fresh launch used lower synthetic clock, so validly quarantined future records; rerun with monotonic simulated clock passed. No course content/runtime changed.",
+    "offline_static_scan": "two inline scripts, inline styles; no external stylesheet/script/image/iframe/font imports found; source links intentionally external",
+    "browser_or_print_render": "not run by instruction",
+    "cloud_or_calendar_writes": false
+  },
+  "artifacts": [
+    {
+      "path": "/private/tmp/ktp-eval-si/raw-plan.json",
+      "bytes": 33271,
+      "sha256": "3bc76a3c958414f1d4e560a142ec02730b939ddfc9b60145044bb957cd1ce3fc"
+    },
+    {
+      "path": "/private/tmp/ktp-eval-si/course/plan.json",
+      "bytes": 33244,
+      "sha256": "57987baae79ce125ae2256133ab0b49a9cf8002f87f8f6e318ceca74b0810eb6"
+    },
+    {
+      "path": "/private/tmp/ktp-eval-si/course/index.html",
+      "bytes": 102007,
+      "sha256": "cd71cabda0d19fd24a84fbe71a4bb2051cf9085709697993647657043f47464d"
+    },
+    {
+      "path": "/private/tmp/ktp-eval-si/budget.json",
+      "bytes": 818,
+      "sha256": "6c0c9012498ef042d84c4b3e11b7a3d9e0487c45b380728d993aed5a0f40f751"
+    }
+  ],
+  "environment": {
+    "python": "3.9.6",
+    "platform": "macOS host execution via permitted shell",
+    "browser_started": false,
+    "model_id": "unavailable",
+    "node": "v26.0.0"
+  }
+}

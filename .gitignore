@@ -3,3 +3,10 @@ __pycache__/
 .DS_Store
 .venv/
 .validation-venv/
+node_modules/
+.e2e/
+playwright-report/
+test-results/
+evals/sources/
+# New installation archives are distributed as GitHub Release attachments.
+dist/*.zip
