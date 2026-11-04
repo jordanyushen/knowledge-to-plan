@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "estimate_sha256": "7f09ac96e1a2ffff1249e920852c9467fa20b054534b12376c29bedb789ea33c",
+  "plan_sha256": "e9b276943b61c4e89380081daa4dc23681ecd4ed7001a1dda344c5e9d168b42e",
+  "original_goal": "独立完成毫米到米的换算",
+  "selected_goal": "独立完成毫米到米的换算",
+  "scope": {
+    "mode": "full",
+    "excluded": []
+  },
+  "goal_totals": [
+    {
+      "id": "unit-conversion",
+      "low_minutes": 6.0,
+      "high_minutes": 6.0
+    }
+  ],
+  "estimated_minutes": {
+    "low": 6.0,
+    "high": 6.0
+  },
+  "assessment": {
+    "current_plan": {
+      "days": 1,
+      "daily_minutes": 10,
+      "buffer_percent": 0.0
+    },
+    "available_hours": 0.16666666666666666,
+    "usable_hours": 0.16666666666666666,
+    "estimate_range": {
+      "low": 0.1,
+      "high": 0.1,
+      "unit": "hours"
+    },
+    "status": "fits",
+    "recommended_total_days_range": {
+      "low": 1,
+      "high": 1,
+      "fixed_daily_minutes": 10
+    },
+    "recommended_daily_minutes_range": {
+      "low": 6,
+      "high": 6,
+      "fixed_total_days": 1,
+      "low_within_24_hours": true,
+      "high_within_24_hours": true,
+      "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+    },
+    "recommendation_rules": {
+      "rounding": "up to the next whole unit, minimum 1",
+      "buffer_percent": 0.0,
+      "automatic_plan_changes": false
+    },
+    "candidate_options": []
+  },
+  "status": "fits",
+  "time_feasibility": "estimated",
+  "evidence_truth_verified": false,
+  "note": "Arithmetic and input binding only; source, scope and task-time assumptions require review."
+}

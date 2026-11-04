@@ -1,0 +1,209 @@
+{
+  "plan_sha256": "478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "goals": [
+    {
+      "id": "rate",
+      "description": "区分并计算二次函数的区间平均变化率与点上瞬时变化率。",
+      "core": true,
+      "taught_in": [
+        "quadratic-001",
+        "quadratic-002",
+        "quadratic-003",
+        "quadratic-004",
+        "quadratic-005"
+      ],
+      "practiced_in": [
+        "quadratic-001",
+        "quadratic-002",
+        "quadratic-003",
+        "quadratic-004",
+        "quadratic-005"
+      ],
+      "reviewed_in": [
+        "quadratic-003",
+        "quadratic-005",
+        "quadratic-007",
+        "quadratic-010",
+        "quadratic-018",
+        "quadratic-021"
+      ],
+      "assessed_by": [
+        {
+          "lesson_id": "quadratic-001",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-002",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-003",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-004",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-005",
+          "question_id": "q1"
+        }
+      ]
+    },
+    {
+      "id": "derivative",
+      "description": "在次数不超过2的多项式上，使用给定求导规则计算导数函数与指定点的导数值。",
+      "core": true,
+      "taught_in": [
+        "quadratic-006",
+        "quadratic-007",
+        "quadratic-008",
+        "quadratic-009",
+        "quadratic-010"
+      ],
+      "practiced_in": [
+        "quadratic-006",
+        "quadratic-007",
+        "quadratic-008",
+        "quadratic-009",
+        "quadratic-010"
+      ],
+      "reviewed_in": [
+        "quadratic-007",
+        "quadratic-008",
+        "quadratic-009",
+        "quadratic-010",
+        "quadratic-012",
+        "quadratic-018",
+        "quadratic-021"
+      ],
+      "assessed_by": [
+        {
+          "lesson_id": "quadratic-006",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-007",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-008",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-009",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-010",
+          "question_id": "q1"
+        }
+      ]
+    },
+    {
+      "id": "integral",
+      "description": "对连续且次数不超过2的多项式，使用给定原函数规则与基本定理计算简单区间定积分。",
+      "core": true,
+      "taught_in": [
+        "quadratic-011",
+        "quadratic-012",
+        "quadratic-013",
+        "quadratic-014",
+        "quadratic-015"
+      ],
+      "practiced_in": [
+        "quadratic-011",
+        "quadratic-012",
+        "quadratic-013",
+        "quadratic-014",
+        "quadratic-015"
+      ],
+      "reviewed_in": [
+        "quadratic-012",
+        "quadratic-013",
+        "quadratic-014",
+        "quadratic-015",
+        "quadratic-017",
+        "quadratic-019",
+        "quadratic-020",
+        "quadratic-021"
+      ],
+      "assessed_by": [
+        {
+          "lesson_id": "quadratic-011",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-012",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-013",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-014",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-015",
+          "question_id": "q1"
+        }
+      ]
+    },
+    {
+      "id": "interpretation",
+      "description": "区分瞬时变化率、净变化、定积分和几何总面积，并在新二次函数上选择正确运算。",
+      "core": true,
+      "taught_in": [
+        "quadratic-016",
+        "quadratic-017",
+        "quadratic-018",
+        "quadratic-019",
+        "quadratic-020",
+        "quadratic-021"
+      ],
+      "practiced_in": [
+        "quadratic-016",
+        "quadratic-017",
+        "quadratic-018",
+        "quadratic-019",
+        "quadratic-020",
+        "quadratic-021"
+      ],
+      "reviewed_in": [
+        "quadratic-017",
+        "quadratic-018",
+        "quadratic-019",
+        "quadratic-020",
+        "quadratic-021"
+      ],
+      "assessed_by": [
+        {
+          "lesson_id": "quadratic-016",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-017",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-018",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-019",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-020",
+          "question_id": "q1"
+        },
+        {
+          "lesson_id": "quadratic-021",
+          "question_id": "q1"
+        }
+      ]
+    }
+  ]
+}

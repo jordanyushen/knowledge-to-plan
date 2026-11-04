@@ -1,5 +1,7 @@
 # 验证记录
 
+第二轮评价后的未发布本地改动另见 [预算与长课质量实施记录](teaching-quality-status.md)。下文0.2.0的CI和发布回执属于原版本，不用于证明新分支已通过远端CI。
+
 日期：2026-11-04。候选版本：0.2.0。源码基线：`b2e5e5d`；改进位于 `codex/knowledge-to-plan-reliability`。
 
 ## 本机已完成

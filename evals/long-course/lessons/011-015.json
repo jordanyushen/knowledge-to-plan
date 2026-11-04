@@ -1,0 +1,424 @@
+[
+  {
+    "id": "quadratic-011",
+    "day": 11,
+    "title": "反向看：什么叫原函数",
+    "objectives": [
+      "用已学导数解释原函数与常数自由度。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "反向看：什么叫原函数",
+        "body": "如果F的导数等于f，就称F是f的一个原函数。对f(x)=2x，F(x)=x²和x²+3都符合条件，因为常数求导为0。原函数一般不唯一；本课从已知多项式规则反向识别，不教授完整积分技巧。",
+        "example": "F(x)=x²+3是2x的一个原函数，它在x=1处的导数是2，而不是F(1)=4。"
+      }
+    ],
+    "practice": "写出2x的两个不同原函数，并用其中F(x)=x²+5算F′(2)。预期产出：两个函数和一次求导核对。",
+    "takeaways": [
+      "原函数相差常数，导数却相同。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "F(x)=x²+3是2x的原函数。F′(1)是多少？",
+        "options": [
+          "4",
+          "3",
+          "2",
+          "1"
+        ],
+        "correct_index": 2,
+        "explanations": [
+          "4是原函数F(1)的值，不是其导数。",
+          "3是原函数的常数项，其导数为0。",
+          "按本课条件独立计算得到2；其余选项混淆了运算或漏算步骤。",
+          "1是输入点，不是导数值。"
+        ]
+      }
+    ],
+    "review_of": [
+      6,
+      8,
+      10
+    ]
+  },
+  {
+    "id": "quadratic-012",
+    "day": 12,
+    "title": "初始值选定一个原函数",
+    "objectives": [
+      "利用给定初始值确定原函数常数。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "初始值选定一个原函数",
+        "body": "如果F′(x)=4x+1，原函数族可写为F(x)=2x²+x+C。给出F(0)=5，代入0得到C=5，才选定一个具体函数。这里初始值是函数值，不能直接当成导数。",
+        "example": "F(x)=2x²+x+5时，F(0)=5，F(1)=8。"
+      }
+    ],
+    "practice": "对G′(x)=2x+2且G(0)=3，写出G(x)并求G(2)，同时用求导验证。",
+    "takeaways": [
+      "初始条件固定常数，求导规则固定变化率。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "已知F′(x)=4x+1且F(0)=5，F(1)是多少？",
+        "options": [
+          "3",
+          "5",
+          "5/2",
+          "8"
+        ],
+        "correct_index": 3,
+        "explanations": [
+          "3是遗漏初始常数时的结果。",
+          "5只保留了初始值，没有加入变化。",
+          "5/2不是根据给定原函数规则得到的值。",
+          "按本课条件独立计算得到8；其余选项混淆了运算或漏算步骤。"
+        ]
+      }
+    ],
+    "review_of": [
+      8,
+      11
+    ]
+  },
+  {
+    "id": "quadratic-013",
+    "day": 13,
+    "title": "先从常数的累积开始",
+    "objectives": [
+      "把定积分看作有方向的累积数值。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "先从常数的累积开始",
+        "body": "固定上下限的定积分是一个数，不是原函数族。对非负常数函数，累积可以用矩形面积理解：高度乘输入区间长度。若值为负，则在输入正向增加时贡献负的有向累积。",
+        "example": "常数f(x)=3在[1,4]上的定积分为3×(4−1)=9。"
+      }
+    ],
+    "practice": "求常数f(x)=−2在[0,3]上的定积分，并解释为何几何总面积为6而定积分为−6。",
+    "takeaways": [
+      "定积分的符号不能用几何面积的非负性抹掉。"
+    ],
+    "source_ids": [
+      "os-definite",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "常数f(x)=3在[1,4]上的定积分是多少？",
+        "options": [
+          "9",
+          "12",
+          "3",
+          "1"
+        ],
+        "correct_index": 0,
+        "explanations": [
+          "按本课条件独立计算得到9；其余选项混淆了运算或漏算步骤。",
+          "12忘记减去起点1，误用区间长度4。",
+          "3只保留了高度，漏掉宽度。",
+          "1不是高度乘实际区间长度的结果。"
+        ]
+      }
+    ],
+    "review_of": [
+      11,
+      12
+    ]
+  },
+  {
+    "id": "quadratic-014",
+    "day": 14,
+    "title": "给定幂函数原函数，再算端点",
+    "objectives": [
+      "使用给定原函数处理二次项定积分。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "给定幂函数原函数，再算端点",
+        "body": "本课给定x²的一个原函数F(x)=x³/3，不要求从头证明幂函数规则。对于本例连续多项式，定积分可由F(b)−F(a)计算。三次表达式只作为已给原函数使用，不扩展到一般高次求导训练。",
+        "example": "在[0,3]上，x²的定积分为F(3)−F(0)=27/3−0=9。",
+        "formulas": [
+          {
+            "title": "本课给定的原函数",
+            "expression": "F(x) = x³/3",
+            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>F</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mn>3</mn></mfrac></mrow></math>",
+            "explanation": "这是被积函数x²的一个原函数，用于端点求值。",
+            "conditions": "只在本课多项式情境使用；不要求从此证明一般幂函数原函数规则。",
+            "variables": [
+              {
+                "symbol": "x",
+                "meaning": "积分变量",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "F",
+                "meaning": "x²的给定原函数",
+                "unit": "无量纲"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "给定原函数F(x)=x³/3，计算x²在[0,2]上的定积分，写出端点代入；保留分数。",
+    "takeaways": [
+      "原函数的取值差给出定积分，不要再求一次导数。"
+    ],
+    "source_ids": [
+      "os-ftc",
+      "os-integration",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "给定F(x)=x³/3是x²的原函数，x²在[0,3]上的定积分是多少？",
+        "options": [
+          "6",
+          "9",
+          "27",
+          "3"
+        ],
+        "correct_index": 1,
+        "explanations": [
+          "6是x²在3处的导数值，运算选错。",
+          "按本课条件独立计算得到9；其余选项混淆了运算或漏算步骤。",
+          "27遗漏原函数中的除以3。",
+          "3是终点，不是累积值。"
+        ]
+      }
+    ],
+    "review_of": [
+      11,
+      13
+    ]
+  },
+  {
+    "id": "quadratic-015",
+    "day": 15,
+    "title": "基本定理：上端点减下端点",
+    "objectives": [
+      "在说明连续条件后计算简单定积分。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "基本定理：上端点减下端点",
+        "body": "本课采用基本定理的求值形式：f在闭区间连续，F是f的一个原函数，则从a到b的定积分等于F(b)−F(a)。多项式满足连续条件。不能只算F(b)，也不能把f(b)−f(a)当成定积分。",
+        "example": "f(x)=2x+1，取F(x)=x²+x；在[1,3]上得到(9+3)−(1+1)=10。",
+        "formulas": [
+          {
+            "title": "基本定理的求值形式",
+            "expression": "从a到b对f(x)积分 = F(b)−F(a)",
+            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><munderover><mo>∫</mo><mi>a</mi><mi>b</mi></munderover><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mi>d</mi><mi>x</mi><mo>=</mo><mi>F</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>F</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow></math>",
+            "explanation": "上端点减下端点；F为f的原函数。",
+            "conditions": "a<b，f在[a,b]连续且F′=f；本课多项式符合条件。",
+            "variables": [
+              {
+                "symbol": "a",
+                "meaning": "下限",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "b",
+                "meaning": "上限",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "x",
+                "meaning": "积分变量",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "f",
+                "meaning": "被积函数",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "F",
+                "meaning": "f的一个原函数",
+                "unit": "无量纲"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "对f(x)=2x+1，计算[0,2]上的定积分；另选F(x)=x²+x+7验证常数会抵消。",
+    "takeaways": [
+      "求值差的是原函数，而不是被积函数。"
+    ],
+    "source_ids": [
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=2x+1在[1,3]上的定积分是多少？",
+        "options": [
+          "12",
+          "4",
+          "10",
+          "2"
+        ],
+        "correct_index": 2,
+        "explanations": [
+          "12只算了原函数的上端点，忘记下端点。",
+          "4是被积函数端点值之差。",
+          "按本课条件独立计算得到10；其余选项混淆了运算或漏算步骤。",
+          "2只算了区间长度。"
+        ]
+      }
+    ],
+    "review_of": [
+      12,
+      13,
+      14
+    ]
+  }
+]

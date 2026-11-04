@@ -1,0 +1,65 @@
+[
+  {
+    "name": "valid-unreviewed",
+    "accepted": true,
+    "delivery_status": "generated_pending_content_review",
+    "course_structure_complete": true,
+    "content_review_status": "not_performed",
+    "facts_verified": false
+  },
+  {
+    "name": "stale-plan",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "budget.json is stale, unbound or modified; recompute it from this estimate and plan",
+    "files_after_failure": []
+  },
+  {
+    "name": "stale-estimate",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "budget.json is stale, unbound or modified; recompute it from this estimate and plan",
+    "files_after_failure": []
+  },
+  {
+    "name": "unbound-budget",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "budget.json is stale, unbound or modified; recompute it from this estimate and plan",
+    "files_after_failure": []
+  },
+  {
+    "name": "modified-budget",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "budget.json is stale, unbound or modified; recompute it from this estimate and plan",
+    "files_after_failure": []
+  },
+  {
+    "name": "nonfinite-goal-map",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "Out of range float values are not JSON compliant: nan",
+    "files_after_failure": []
+  },
+  {
+    "name": "coverage-claim-without-teaching",
+    "accepted": true,
+    "delivery_status": "generated_pending_content_review",
+    "course_structure_complete": true,
+    "content_review_status": "not_performed",
+    "facts_verified": false
+  },
+  {
+    "name": "nonfinite-json",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "non-finite JSON constant: NaN"
+  },
+  {
+    "name": "duplicate-key-json",
+    "accepted": false,
+    "exception": "ValueError",
+    "error": "duplicate JSON key: days"
+  }
+]

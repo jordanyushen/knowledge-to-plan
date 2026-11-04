@@ -1,0 +1,18 @@
+[
+  {
+    "id": "openstax-scope",
+    "url": "https://openstax.org/books/calculus-volume-3/pages/preface",
+    "locator": "About Calculus; Coverage and scope; three-volume chapter list",
+    "read_on": "2026-11-05",
+    "kind": "scope only; no exercises or source text copied",
+    "note": "三册通识微积分教材覆盖函数、极限、导数、积分及其应用、积分技巧、微分方程、级数、参数/极坐标、向量及多变量；这里仅用课程范围判断先修与目标跨度。"
+  },
+  {
+    "id": "openstax-prereq",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/1-introduction",
+    "locator": "Chapter outline and final introduction paragraph",
+    "read_on": "2026-11-05",
+    "kind": "scope only",
+    "note": "复习函数类型、图像、三角、指数对数等；用户只确认基本代数，不能假定已具备。"
+  }
+]

@@ -179,9 +179,10 @@
     $('wrong-count').textContent = [...questionMap.values()].filter(({ l, q }) => wrongHistory(l, q).length && !correct(l, q)).length;
     $('lesson-list').replaceChildren(...lessons.map(l => {
       const b = button('', 'lesson-link', () => openLesson(l));
-      b.append(make('span', 'day-number', String(l.day).padStart(2, '0')), make('span', '', l.title), make('span', 'lesson-check', complete(l) ? '✓' : ''));
+      b.append(make('span', 'day-number', String(l.day).padStart(2, '0')), make('span', 'lesson-title', l.title), make('span', 'lesson-check', complete(l) ? '✓' : ''));
       if (lesson?.id === l.id && !['wrong', 'dashboard'].includes(view)) b.setAttribute('aria-current', 'page');
       b.setAttribute('aria-label', `第 ${l.day} 天：${l.title}${complete(l) ? '，已通过' : ''}`);
+      b.title = l.title;
       return b;
     }));
     if (view === 'dashboard') $('dashboard-link').setAttribute('aria-current', 'page');
@@ -213,7 +214,11 @@
     const pending = items.filter(({ l, q }) => wrongHistory(l, q).length && !correct(l, q));
     const next = lessons.find(l => l.day === state.lastDay && !complete(l)) || lessons.find(l => !complete(l));
     const hero = make('section', 'dashboard-hero'), copy = make('div', 'hero-copy');
-    copy.append(make('p', 'eyebrow', 'YOUR LEARNING DASHBOARD'), make('h2', '', done === lessons.length && lessons.length ? '每一步积累，都有迹可循。' : '今天，也向目标靠近一点。'), make('p', '', course.goal));
+    copy.append(make('p', 'eyebrow', 'YOUR LEARNING DASHBOARD'), make('h2', '', done === lessons.length && lessons.length ? '每一步积累，都有迹可循。' : '今天，也向目标靠近一点。'), make('p', '', Array.from(course.goal).length > 120 ? '按每日计划学习、练习与复习；具体目标和覆盖范围见下方。' : course.goal));
+    if (Array.from(course.goal).length > 120) {
+      const goal = make('details', 'hero-goal');
+      goal.append(make('summary', '', '查看完整学习目标'), make('p', '', course.goal)); copy.append(goal);
+    }
     const heroActions = make('div', 'hero-actions');
     const resume = button(next ? `继续学习 · 第 ${next.day} 天 →` : lessons.length ? '回顾第一课 →' : '暂无课程', 'primary', () => { if (next || lessons[0]) openLesson(next || lessons[0]); });
     resume.id = 'continue-learning'; resume.disabled = !lessons.length; heroActions.append(resume);
@@ -325,7 +330,7 @@
   function renderLearning() {
     const content = $('content'), intro = card('今天你会学会'); intro.append(list('ul', 'objectives', lesson.objectives)); content.append(intro);
     const activities = make('div', 'activity-list');
-    const kindNames = { read: '阅读', reading: '阅读', practice: '练习', quiz: '测验', review: '复习', notes: '笔记', exercise: '练习' };
+    const kindNames = { learn: '学习', read: '阅读', reading: '阅读', practice: '练习', quiz: '测验', review: '复习', notes: '笔记', exercise: '练习' };
     for (const a of lesson.activities) { const chip = make('div', 'activity', kindNames[a.kind] || a.kind); chip.append(make('span', '', a.minutes + ' 分钟')); activities.append(chip); } content.append(activities);
     if (lesson.review_of?.length) content.append(make('p', 'muted', '本课回顾：第 ' + lesson.review_of.join('、') + ' 天的内容。'));
     for (const s of lesson.sections) {

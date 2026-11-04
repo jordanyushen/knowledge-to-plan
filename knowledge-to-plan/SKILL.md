@@ -5,7 +5,7 @@ description: 将用户导入的资料或知识目标，结合已有基础、指�
 
 # KnowledgeToPlan
 
-把知识来源转成“学什么、怎么学、当天产出什么、怎样确认掌握”的闭环。用户指定的天数、每天时长与学习时段是独立约束；任何领域均可使用，不继承旧项目的课程内容、账户、目录、日期或网站身份。
+把知识来源转成“学什么、怎么学、当天产出什么、怎样确认掌握”的闭环。用户指定的天数、每天时长与学习时段是独立约束；不继承旧项目的课程内容、账户、目录、日期或网站身份。目前验证较充分的是短篇概念与 STEM 课程；长课效果、编程实作和人文论述仍需专门复核。内置能力是离线页面与可选 ICS；云盘/原生日历依赖宿主工具，未内置 PWA 或页内代码执行器。
 
 运行生成脚本需要 Python 3.9+ 和可用的 IANA 时区数据；首次配置或遇到时区错误时读取 [运行环境说明](references/runtime-requirements.md)，在同一 Python 环境安装 `<skill-dir>/requirements.txt`。这些依赖不进入生成的离线页面。
 
@@ -19,18 +19,18 @@ description: 将用户导入的资料或知识目标，结合已有基础、指�
 
 ## 2. 先评估是否装得下
 
-先建立先修依赖，区分必学、可选、后续深化。结合资料量、目标深度、基础差距及练习难度，估算一个有依据的小时区间，覆盖讲解、练习、复习与测验。页数不等于掌握时间，不按固定阅读速度机械压缩，不保证通过面试、考试或获得录用。
+读取 [预算估算与交付门禁](references/budget-estimation.md)。先固定原始目标与基础，拆成可观察产出及先修差距，按资料定位、任务数量/难度估算讲解、示例、练习、反馈订正、复习、测验的低/高分钟，保存 `estimate.json`。页数不等于掌握时间，不保证通过面试、考试或获得录用。
 
-用 `scripts/assess_budget.py` 核算预算：
+先用任务估算生成写课前预算：
 
 ```bash
-python3 <skill-dir>/scripts/assess_budget.py --days 30 --minutes 30 --estimated-hours-low 18 --estimated-hours-high 24 --buffer-percent 15 --pretty
+python3 <skill-dir>/scripts/budget_evidence.py --estimate /absolute/path/estimate.json --output /absolute/path/budget-draft.json --expected-days 30 --expected-daily-minutes 30
 ```
 
-估算由你根据实际知识目标提供，脚本只算预算。缓冲比例可调整，说明用途；不要把已经计入估算的复习再当缓冲重复计算。
+脚本验证任务明细与算术，不能证明估时依据真实或用户一定能学会。缓冲用途单独说明，设为零也要有理由；不要重复计算已安排的复习。`assess_budget.py` 继续提供裸算术比较，不能替代估算记录。
 
 - **fits**：按用户约束推进，不额外增加确认步骤。
-- **borderline**：说明可能卡住的知识点，加入复盘节点，提供轻量调整选项。可在不突破硬约束的前提下先安排必学部分，标明覆盖边界。
+- **borderline**：说明可能卡住的知识点，加入复盘节点，提供轻量调整选项。可在不突破硬约束的前提下先安排明确的核心范围，列出原目标与排除内容并重估；不得宣称完整掌握原范围。
 - **insufficient**：直接展示“可用时间 vs 所需区间”和依据，提出可比较的具体方案：保持每天时长并延长天数、保持天数并增加每天时长、保持两者但缩小到明确的核心目标。建议须符合每天24小时等现实边界，超过边界的结果只能说明该方向不可行。不得静默增加天数、加长每天学习、删掉用户主线或把超时任务塞进计划。先完成可评审的框架和调整建议，等用户选择后再生成依赖该选择的完整课程、日历或云端写入。
 
 ## 3. 制定每日计划
@@ -40,7 +40,7 @@ python3 <skill-dir>/scripts/assess_budget.py --days 30 --minutes 30 --estimated-
 - 练习需要“给定数据/条件/单位/预期产出”，避免“做十题”却没有题目、“参考数据卡”却没有提供数据。复习日也要有具体题目或回忆任务。
 - 保留可调整的复盘与补缺机制。缺学后优先用后续复盘时段补缺；确需延长周期时提出建议，不自动改变已约定日期。自测通过只代表本课知识检查，和实际岗位能力分开验收。
 
-结构化计划使用 [references/plan-schema.md](references/plan-schema.md)。准备较长课程时可按模块在本地增量编写，交付前必须合并校验；不发布只有目录、后续占位或缺失课次却宣称完整的版本。
+结构化计划使用 [references/plan-schema.md](references/plan-schema.md)。长课按 [分片编写规范](references/long-course-authoring.md) 固定目标/课次/复习节点，每批最多编写并检查5课，用 `merge_plan.py` 合并；不发布只有目录、后续占位或缺失课次却宣称完整的版本。
 
 ## 4. 生成教学和测验
 
@@ -51,27 +51,30 @@ python3 <skill-dir>/scripts/assess_budget.py --days 30 --minutes 30 --estimated-
 - 界面与交互参考 [assets/baseline/index.html](assets/baseline/index.html) 和 [plan.json](assets/baseline/plan.json)，用 `scripts/build_baseline.py` 重建演示。正式课程使用本次资料与独立课程ID，不继承演示内容、成绩或种子记录。
 - 每课直接讲解，不把“请去读PDF”作为主体。可选原文用于溯源；必要的定义、例子、练习数据和公式条件留在课内。
 - 涉及公式或理工科内容时，按 [references/stem-content-standard.md](references/stem-content-standard.md) 核对公式的来源、符号、排版、单位、适用条件与计算结果；需要表达受力、电路、结构、坐标、流程或时序关系时补上必要示意图。正文、例题、练习、题目及选项使用同一核验标准，不能把“页面能打开”当作公式正确。
-- 默认每课3道单选题，可按用户偏好与学习预算调整。每题只有一个无歧义正确答案，所有选项均有对应的正误原因，先在课内教过所考内容。数值题核对单位、边界与结果；跨学科类比说明适用范围。避免总把正确答案放在同一位置。
+- 默认每课3道单选题，可按用户偏好与学习预算调整。每题只有一个无歧义正确答案，显式填写 `correct_index`，所有选项均有对应的正误原因，先在课内教过所考内容。数值题核对单位、边界与结果；跨学科类比说明适用范围。避免总把正确答案放在同一位置，移动选项时同步对应解析。开放论述或实际写码另设产出与 rubric，单选通过不表示这些能力通过。
 - 默认全部题目订正为正确后才记录本课通过；答错即时说明该选项为何不对、提供重试并进入错题本。记录复习与订正，不把反复点击同一题累加为完成更多题。
 - 使用附带模板生成自包含HTML，不依赖联网字体、脚本、模型接口或登录。进度存在浏览器本地，可导出/导入；明确不同设备、在线与离线副本不自动同步。外部原文链接仍需网络。
 
 ```bash
-python3 <skill-dir>/scripts/build_learning_site.py --plan /absolute/path/plan.json --output /absolute/path/output --expected-days 30 --expected-daily-minutes 30
+python3 <skill-dir>/scripts/budget_evidence.py --estimate /absolute/path/estimate.json --plan /absolute/path/plan.json --output /absolute/path/budget.json --expected-days 30 --expected-daily-minutes 30
+python3 <skill-dir>/scripts/build_course.py --plan /absolute/path/plan.json --estimate /absolute/path/estimate.json --budget /absolute/path/budget.json --goal-map /absolute/path/goal-map.json --output /absolute/path/output --expected-days 30 --expected-daily-minutes 30
 ```
 
-将示例中的30天/30分钟替换为本次用户已经确认的约束，独立从用户约定传入，不从待校验JSON反抄这两个值。该命令先校验，再生成 `index.html` 与 `plan.json`，HTML可直接用浏览器打开。它不会替你读取原始材料或自动写出教学内容：先由你基于实际来源完成课程JSON。模板支持dashboard、每日学习量地图及详情、课程目录、`#day-1` 深链接、知识讲解、公式与示意图、练习笔记、选择题解析、错题本和包含打卡及作答时间历史的进度备份。理工科排版参考 [assets/stem-example/plan.json](assets/stem-example/plan.json) 与生成的 [index.html](assets/stem-example/index.html)，不继承其示例内容或课程ID。
+将示例中的30天/30分钟替换为用户已经确认的约束，独立传入，不从待校验JSON反抄。按 [教学映射与复核规范](references/pedagogy-review.md) 写好 `goal-map.json`，再运行门禁；需处理已核实内容缺陷或精确风险处置时传入 `--review`。输出自包含 `index.html`、计划及审阅记录。生成器不代读资料或代写内容。旧 `build_learning_site.py` 仅校验结构，保留给旧课程和草稿，不能用来绕过完整交付门禁。理工科排版参考 [示例](assets/stem-example/index.html)，不继承其内容或课程ID。
 
 ## 5. 按需连接日历、云盘与在线网站
 
 仅在用户要求相关交付时执行，工具不可用就准确说明并交付本地结果。不要因为技能可调用就自动改动账户、原课程或分享设置。
 
 - 日历/云盘/在线发布流程和核验见 [references/delivery.md](references/delivery.md)，只在需要时读取。原始文件保留；云端文件和日历事件需有任务对应关系及写入回执。
-- 可用日历工具时优先原生创建；可选用 `build_learning_site.py --calendar` 生成手动导入的ICS备用。已有原生日历事件时，不让用户再次导入同一份ICS造成重复。
+- 可用日历工具时优先原生创建；新完整课程可选用 `build_course.py --calendar` 生成手动导入的ICS备用；旧课程/草稿保留底层生成器路径。已有原生日历事件时，不让用户再次导入同一份ICS造成重复。
 - 用户要求在线网站时采用可用的网站技能/托管工具并保留原受众。离线HTML不等于线上网址已经有离线缓存；PWA需另行实现和断网验证。
 
 ## 6. 验证与交付
 
-运行 `scripts/validate_plan.py <plan.json> --expected-days <约定天数> --expected-daily-minutes <约定分钟数>`；新增/修改辅助脚本时运行 `python3 -m unittest discover -s <skill-dir>/scripts -p 'test_*.py'`。模板交互改动时，Node可用则运行 `node <skill-dir>/scripts/test_runtime.cjs`。脚本能检查结构、与独立传入的用户约束是否一致、来源引用与测验形状，不能证明教学事实或正确答案无误；仍需检查来源、计算及讲解与题目是否对应。
+结构校验、教学风险检查、来源/复算和真人试学分别报告。运行 `validate_plan.py` 与 `lint_pedagogy.py`，按 [教学映射与复核规范](references/pedagogy-review.md) 处理答案分布、复习过晚、目标覆盖和过大承诺；必要图示缺失是提示，不规定每个公式都必须配图。已确认的错式、错答、单位或图文冲突未修正时不得交付。结构和风险检查通过仍保留 `facts_verified: false`，人工/独立复核结论只适用于实际读过的版本与范围。
+
+新增/修改辅助脚本时运行 `python3 -m unittest discover -s <skill-dir>/scripts -p 'test_*.py'`。模板交互改动时，Node可用则运行 `node <skill-dir>/scripts/test_runtime.cjs`。
 
 按风险测试生成页面的关键路径：未选答案不可提交、错误不通过且有原因、订正后继续、全对才通过、刷新保留、换课与备份导入。dashboard另按 [验收标准](references/dashboard-standard.md#验收) 核对空态、指标联动、同日多课、题数去重、首次通过日期、跨日与时区、旧备份迁移、轻量动效、手机和键盘操作。浏览器操作遵循所在环境规则，不从命令行临时启动被禁止的浏览器。不能进行浏览器验证时报告实际未验证范围。
 

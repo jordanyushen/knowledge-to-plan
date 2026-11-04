@@ -152,3 +152,30 @@ test('STEM MathML and embedded SVG render at this viewport and in print mode', a
   await expect(page.locator('math').first()).toBeVisible();
   await expect(image).toBeVisible();
 });
+
+
+test('long goals and lesson titles remain readable across narrow layout breakpoints', async ({ page }, testInfo) => {
+  await page.goto(courseURL(testInfo, 'layout/index.html'));
+  const details = page.locator('.hero-goal');
+  await expect(details.locator('p')).toBeHidden();
+  await details.locator('summary').click();
+  await expect(details.locator('p')).toContainText('完整目标末尾保留核查标记。');
+  await expect(details.locator('p')).toBeVisible();
+  await details.locator('summary').click();
+  await expect(page.locator('.progress-fill')).toHaveCSS('width', '0px');
+  for (const width of [390, 580, 600, 768, 800, 801, 1024, 1440]) {
+    await page.setViewportSize({ width, height: 1000 });
+    await expectNoPageOverflow(page);
+    const columns = await page.locator('.dashboard-stats').evaluate(element => getComputedStyle(element).gridTemplateColumns.split(' ').length);
+    expect(columns).toBe(width < 1000 ? 2 : 4);
+    await openSidebar(page);
+    const title = page.locator('.lesson-title').first();
+    const size = await title.boundingBox();
+    expect(size.width).toBeGreaterThan(100);
+    await expect(page.locator('.lesson-link').first()).toHaveAttribute('aria-label', /从长度单位换算逐步理解数量关系/);
+    if (width === 600 || width === 1440) await page.screenshot({ path: testInfo.outputPath(`long-layout-${width}.png`), fullPage: true });
+  }
+  await page.locator('#continue-learning').click();
+  await expect(page.locator('.activity').first()).toContainText('学习');
+  await expect(page.locator('.activity').first()).not.toContainText('learn');
+});

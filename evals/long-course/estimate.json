@@ -1,0 +1,273 @@
+{
+  "schema_version": 1,
+  "constraints": {
+    "days": 21,
+    "daily_minutes": 30
+  },
+  "original_goal": "零基础掌握完整基础微积分",
+  "selected_goal": "在给定规则下，区分二次函数的平均与瞬时变化率，计算次数不超过2的多项式的导数值及简单区间定积分，并区分净有向面积与总面积。",
+  "background": "合成评测假设：已会分数、带符号四则运算、代入、展开平方和一次方程；尚未系统学过微积分。未做真人先修诊断。",
+  "prerequisite_basis": "这是用于工具回归的合成输入；基础代数被明确设为已知假设，而非对真实用户做出的诊断。第一次真人试学前应另做诊断。",
+  "prerequisites": [
+    {
+      "skill": "分数与带符号四则运算",
+      "status": "assumed",
+      "evidence": "固定合成输入明确具备；非真人证据。"
+    },
+    {
+      "skill": "代入、展开平方与一次方程",
+      "status": "assumed",
+      "evidence": "固定合成输入明确具备；第1课只复习函数值，不承担补齐全部代数。"
+    }
+  ],
+  "scope": {
+    "mode": "core",
+    "excluded": [
+      "完整极限理论与证明",
+      "三角/指数/对数函数",
+      "乘积、商、链式求导",
+      "换元、分部积分及广泛应用",
+      "大学微积分考试或完整掌握保证"
+    ],
+    "change_basis": "合成评测设计明确选择缩小范围并改变背景假设；不是把真实用户的原目标静默替换。21天与每天30分钟保持不变，原目标保留作边界任务。"
+  },
+  "buffer_percent": 15,
+  "buffer_reason": "额外不确定性储备94.5分钟；已安排的复习和订正另计在任务区间，不重复作为储备。每课安排24分钟，30分钟是预算上限，不要求停留满30分钟。",
+  "goals": [
+    {
+      "id": "rate",
+      "outcome": "区分并计算二次函数的区间平均变化率与点上瞬时变化率。",
+      "source_ids": [
+        "os-derivative"
+      ],
+      "basis": "对照所列OpenStax节的规则；本目标5课，每课一个原创例子、一个具体练习和一个计分题，相关数字见reference.json；不是按教材页数压缩。",
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "阅读并口述当课一个主概念",
+          "count": 5,
+          "minutes_low": 4,
+          "minutes_high": 5,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "example",
+          "description": "跟做一个完整数值例子",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看例子完成当课具体任务",
+          "count": 5,
+          "minutes_low": 5,
+          "minutes_high": 7,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对照计算与解释定位错步并订正",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "review",
+          "description": "闭卷检索指定此前课次的一条关系",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "quiz",
+          "description": "完成当课一道四选一知识检查并看解析",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        }
+      ]
+    },
+    {
+      "id": "derivative",
+      "outcome": "在次数不超过2的多项式上，使用给定求导规则计算导数函数与指定点的导数值。",
+      "source_ids": [
+        "os-rules"
+      ],
+      "basis": "对照所列OpenStax节的规则；本目标5课，每课一个原创例子、一个具体练习和一个计分题，相关数字见reference.json；不是按教材页数压缩。",
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "阅读并口述当课一个主概念",
+          "count": 5,
+          "minutes_low": 4,
+          "minutes_high": 5,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "example",
+          "description": "跟做一个完整数值例子",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看例子完成当课具体任务",
+          "count": 5,
+          "minutes_low": 5,
+          "minutes_high": 7,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对照计算与解释定位错步并订正",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "review",
+          "description": "闭卷检索指定此前课次的一条关系",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "quiz",
+          "description": "完成当课一道四选一知识检查并看解析",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        }
+      ]
+    },
+    {
+      "id": "integral",
+      "outcome": "对连续且次数不超过2的多项式，使用给定原函数规则与基本定理计算简单区间定积分。",
+      "source_ids": [
+        "os-ftc",
+        "os-integration"
+      ],
+      "basis": "对照所列OpenStax节的规则；本目标5课，每课一个原创例子、一个具体练习和一个计分题，相关数字见reference.json；不是按教材页数压缩。",
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "阅读并口述当课一个主概念",
+          "count": 5,
+          "minutes_low": 4,
+          "minutes_high": 5,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "example",
+          "description": "跟做一个完整数值例子",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看例子完成当课具体任务",
+          "count": 5,
+          "minutes_low": 5,
+          "minutes_high": 7,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对照计算与解释定位错步并订正",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "review",
+          "description": "闭卷检索指定此前课次的一条关系",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "quiz",
+          "description": "完成当课一道四选一知识检查并看解析",
+          "count": 5,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖5课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        }
+      ]
+    },
+    {
+      "id": "interpretation",
+      "outcome": "区分瞬时变化率、净变化、定积分和几何总面积，并在新二次函数上选择正确运算。",
+      "source_ids": [
+        "os-definite",
+        "os-ftc",
+        "os-derivative"
+      ],
+      "basis": "对照所列OpenStax节的规则；本目标6课，每课一个原创例子、一个具体练习和一个计分题，相关数字见reference.json；不是按教材页数压缩。",
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "阅读并口述当课一个主概念",
+          "count": 6,
+          "minutes_low": 4,
+          "minutes_high": 5,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "example",
+          "description": "跟做一个完整数值例子",
+          "count": 6,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看例子完成当课具体任务",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 7,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对照计算与解释定位错步并订正",
+          "count": 6,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "review",
+          "description": "闭卷检索指定此前课次的一条关系",
+          "count": 6,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        },
+        {
+          "kind": "quiz",
+          "description": "完成当课一道四选一知识检查并看解析",
+          "count": 6,
+          "minutes_low": 2,
+          "minutes_high": 3,
+          "basis": "本目标覆盖6课，每课一次该任务；一次7分钟以内的计算或短解释，不含一般证明；时间为作者假设，等待目标背景试学校准。"
+        }
+      ]
+    }
+  ]
+}

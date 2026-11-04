@@ -1,0 +1,143 @@
+{
+  "schema_version": 1,
+  "estimate_sha256": "ccac1b478df1081e07474f3afb62314e08a7dd1f18e4c6c537a295be5403e6d2",
+  "plan_sha256": null,
+  "original_goal": "掌握完整微积分",
+  "selected_goal": "掌握完整微积分",
+  "scope": {
+    "mode": "full",
+    "excluded": []
+  },
+  "goal_totals": [
+    {
+      "id": "g01",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g02",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g03",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g04",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g05",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g06",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g07",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g08",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g09",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g10",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g11",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g12",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g13",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    },
+    {
+      "id": "g14",
+      "low_minutes": 280.0,
+      "high_minutes": 476.0
+    }
+  ],
+  "estimated_minutes": {
+    "low": 3920.0,
+    "high": 6664.0
+  },
+  "assessment": {
+    "current_plan": {
+      "days": 21,
+      "daily_minutes": 30,
+      "buffer_percent": 15.0
+    },
+    "available_hours": 10.5,
+    "usable_hours": 8.925,
+    "estimate_range": {
+      "low": 65.33333333333333,
+      "high": 111.06666666666666,
+      "unit": "hours"
+    },
+    "status": "insufficient",
+    "recommended_total_days_range": {
+      "low": 154,
+      "high": 262,
+      "fixed_daily_minutes": 30
+    },
+    "recommended_daily_minutes_range": {
+      "low": 220,
+      "high": 374,
+      "fixed_total_days": 21,
+      "low_within_24_hours": true,
+      "high_within_24_hours": true,
+      "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+    },
+    "recommendation_rules": {
+      "rounding": "up to the next whole unit, minimum 1",
+      "buffer_percent": 15.0,
+      "automatic_plan_changes": false
+    },
+    "candidate_options": [
+      {
+        "option": "extend_duration",
+        "description": "Keep scope and daily minutes; consider the recommended total days range."
+      },
+      {
+        "option": "increase_daily_time",
+        "description": "Keep scope and total days; consider the recommended daily minutes range.",
+        "possible_within_24_hours": true
+      },
+      {
+        "option": "reduce_scope",
+        "description": "Define a smaller subset, then supply a new grounded estimate for it."
+      },
+      {
+        "option": "core_first",
+        "description": "Prioritize essential concepts and practice; estimate remaining material as a separate phase."
+      }
+    ]
+  },
+  "status": "insufficient",
+  "time_feasibility": "estimated",
+  "evidence_truth_verified": false,
+  "note": "Arithmetic and input binding only; source, scope and task-time assumptions require review."
+}

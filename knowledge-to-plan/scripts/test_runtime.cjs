@@ -102,6 +102,7 @@ function launch(data, storage = new Map(), hash = '', unavailable = false, now =
 }
 
 async function main() {
+  testLongAuthorText();
   for (const token of ['STYLE', 'COURSE_JSON', 'SCRIPT']) assert.equal(html.split('{{' + token + '}}').length - 1, 1, 'Each replacement token occurs once');
   let mainClock = Date.now();
   const start = storage => launch(fixture, storage, '#day-1', false, mainClock += 10000);
@@ -238,6 +239,24 @@ function testScientificContent() {
   assert.ok(incompleteUI.get('content').textContent.includes('公式表达式缺失'));
   assert.ok(incompleteUI.get('content').textContent.includes('示意图内容缺失'));
 }
+function testLongAuthorText() {
+  const long = clone(fixture);
+  long.course.goal = '在每天的学习预算内练习、核对单位与解释过程。'.repeat(10) + '完整目标末尾。';
+  long.lessons[0].title = '从长度单位换算逐步理解数量关系并通过独立计算核对学习结果';
+  long.lessons[0].activities[0].kind = 'learn';
+  const ui = launch(long);
+  const details = ui.all().find(element => element.tagName === 'details');
+  assert.ok(details, 'Long learning goals have an explicit disclosure instead of disappearing in a visual clamp');
+  assert.ok(details.textContent.includes(long.course.goal), 'The full authored goal is retained verbatim');
+  const fill = ui.all().find(element => element.className === 'progress-fill');
+  assert.equal(fill.style.width, '0%', 'An unstarted course never paints fake progress');
+  const link = ui.all('lesson-list').find(element => element.className === 'lesson-link');
+  assert.equal(link.title, long.lessons[0].title, 'The full lesson title remains available in navigation');
+  link.click();
+  assert.ok(ui.get('content').textContent.includes('学习17 分钟'), 'The documented learn activity has a Chinese label');
+  assert.ok(!ui.get('content').textContent.includes('learn17 分钟'));
+}
+
 async function testDashboard() {
   const morning = Date.parse('2026-11-02T02:00:00Z');
   const freshStore = new Map();
@@ -557,6 +576,11 @@ function testContrast() {
     const ratio = (luminance(background) + 0.05) / (luminance(muted) + 0.05);
     assert.ok(ratio >= 4.5, `Muted small text must reach 4.5:1 on ${background}, measured ${ratio}`);
   }
+  const track = /\.progress-track\{[^}]*border:1px solid (#[0-9a-f]{6})/.exec(css)[1];
+  const sidebar = /progress\{[^}]*border:1px solid (#[0-9a-f]{6})/.exec(css)[1];
+  const ratio = (a, b) => (Math.max(luminance(a), luminance(b)) + 0.05) / (Math.min(luminance(a), luminance(b)) + 0.05);
+  assert.ok(ratio(track, '#244d3c') >= 3, 'The empty hero progress boundary is distinguishable from its background');
+  assert.ok(ratio(sidebar, '#f7f5ee') >= 3, 'The empty sidebar progress boundary is distinguishable from its background');
 }
 
 main().catch(error => { console.error(error); process.exitCode = 1; });

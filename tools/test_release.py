@@ -43,6 +43,16 @@ class ReleaseTests(unittest.TestCase):
             verify_release(self.root, self.output)
         self.assertEqual(len(self.build()['files']), 4)
 
+    def test_source_checkout_missing_archive_has_actionable_failure_then_rebuilds(self):
+        manifest = self.build()
+        archive = self.output / manifest['archive']
+        archive.unlink()
+        with self.assertRaisesRegex(ValueError, 'Install archive is missing.*build_release.py'):
+            verify_release(self.root, self.output)
+        self.assertFalse(archive.exists(), 'Verification must not silently reconstruct an archive')
+        self.build()
+        self.assertTrue(verify_release(self.root, self.output)['verified'])
+
     def test_changed_source_and_archive_are_rejected(self):
         manifest = self.build()
         (self.root / 'LICENSE').write_text('changed\n', encoding='utf-8')

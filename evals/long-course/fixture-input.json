@@ -1,0 +1,16 @@
+{
+  "id": "long-quadratic-core-authored",
+  "original_goal": "零基础掌握完整基础微积分",
+  "selected_goal": "在给定规则下，区分二次函数的平均与瞬时变化率，计算次数不超过2的多项式的导数值及简单区间定积分，并区分净有向面积与总面积。",
+  "background": "合成评测假设：已会分数、带符号四则运算、代入、展开平方和一次方程；尚未系统学过微积分。未做真人先修诊断。",
+  "days": 21,
+  "daily_minutes": 30,
+  "scope_choice": "explicit synthetic evaluation design",
+  "learner_trial": "not_performed",
+  "time_feasibility": "estimated",
+  "authoring_method": "Hand-authored fixed fixture; no claim of independent course-generation benchmark.",
+  "source_access": {
+    "date": "2026-11-05",
+    "method": "Supported web tool opened five official OpenStax sections; only identified rules/concepts used. No textbook fulltext or original image downloaded into repository."
+  }
+}

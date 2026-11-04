@@ -1,7 +1,7 @@
 {
-  "release_date": "2026-11-04",
-  "archive": "dist/knowledge-to-plan-2026-11-04.zip",
-  "archive_sha256": "be26266c127dc7a70149e3dc70e441d843c61a1a88b40ca28f9f9479956361af",
+  "release_date": "2026-11-05",
+  "archive": "dist/knowledge-to-plan-2026-11-05.zip",
+  "archive_sha256": "c6e6fed2f481bcb5092581959bc4a9782a73ed5792ccc72ddf2ee42dbb058124",
   "files": [
     {
       "path": "LICENSE",
@@ -20,8 +20,8 @@
     },
     {
       "path": "knowledge-to-plan/SKILL.md",
-      "bytes": 10684,
-      "sha256": "b3b4f360ab5d313cae2c41d1146fb03733cfda4e7a8a5c5cf40a932834a1e8d2"
+      "bytes": 11792,
+      "sha256": "9f7151e3c2ff2887a87a682e82e1a18b146e03e96af6d224f6d1900be9c492f4"
     },
     {
       "path": "knowledge-to-plan/agents/openai.yaml",
@@ -30,8 +30,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/baseline/index.html",
-      "bytes": 96753,
-      "sha256": "0830ec3a0ef14e3322adf6b93cb1d50bdeac8d27b21798cef47a44cb580b634f"
+      "bytes": 97570,
+      "sha256": "752eaf60cf94ad8007b8475336a889970be18874df774edb8acddb2b31a9fcb9"
     },
     {
       "path": "knowledge-to-plan/assets/baseline/plan.json",
@@ -40,8 +40,8 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/app.js",
-      "bytes": 46251,
-      "sha256": "168bd3037baf7a02dbe86bf911c610b9e385b557eaf76005f466e102d2001ad2"
+      "bytes": 46648,
+      "sha256": "e4745ca4284bed2ef7301aeccf660d4505b46a17874d12340ef8d72f7972b411"
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/index.html",
@@ -50,18 +50,23 @@
     },
     {
       "path": "knowledge-to-plan/assets/learning-site/style.css",
-      "bytes": 26089,
-      "sha256": "48e8054ceb4b7d982eddedc961ca327b741640deaf2de7e58577168ad8db349e"
+      "bytes": 26509,
+      "sha256": "85598d97fffd439bf3b94741326a004f5397880fc67a5a2e3cbfb09d8f8da58f"
     },
     {
       "path": "knowledge-to-plan/assets/stem-example/index.html",
-      "bytes": 83391,
-      "sha256": "2b2a359c5fc6a7139cf76bd586027b0ea503bb9a16202dd26f6d379613831c16"
+      "bytes": 84208,
+      "sha256": "33be2351d753e134b2a0a4d9bd53ced6f25de68824d395c34d0d82986aa97d95"
     },
     {
       "path": "knowledge-to-plan/assets/stem-example/plan.json",
       "bytes": 10104,
       "sha256": "e0686637d0ce6a5ab826e665b242cc739b74b15fa23f0ae956bc89117f656c0f"
+    },
+    {
+      "path": "knowledge-to-plan/references/budget-estimation.md",
+      "bytes": 5204,
+      "sha256": "23763ed4ce973038ddf13d85b90abf71c7dd433f37498f66647d4591209fd969"
     },
     {
       "path": "knowledge-to-plan/references/dashboard-standard.md",
@@ -70,13 +75,23 @@
     },
     {
       "path": "knowledge-to-plan/references/delivery.md",
-      "bytes": 3334,
-      "sha256": "ad6f7cf7b4d5171aca992091271a31c85a94d1521ea64b907ae68cbed702a5d4"
+      "bytes": 3666,
+      "sha256": "0a7af7deccde6faaa954092c76491d9cf025d89f04466767559be3e84032efe1"
+    },
+    {
+      "path": "knowledge-to-plan/references/long-course-authoring.md",
+      "bytes": 3932,
+      "sha256": "fe2a63e76ea2dfcb23b4e865374253311e5dcd3f913c5c1934163965bb1c07a1"
+    },
+    {
+      "path": "knowledge-to-plan/references/pedagogy-review.md",
+      "bytes": 5750,
+      "sha256": "f186fa183014ed8e3ced2b62de28a0f7de27c355d0006c648ee4824554c40458"
     },
     {
       "path": "knowledge-to-plan/references/plan-schema.md",
-      "bytes": 7079,
-      "sha256": "bebe1a422b1a4daaedc44900bd1ea5c7664d8353bbf50b44406dbb705794c66f"
+      "bytes": 7361,
+      "sha256": "ff119d11854c34d1495a8f846565a5847ed439d9e1cc703110337e34f0619a60"
     },
     {
       "path": "knowledge-to-plan/references/runtime-requirements.md",
@@ -95,8 +110,13 @@
     },
     {
       "path": "knowledge-to-plan/scripts/assess_budget.py",
-      "bytes": 8172,
-      "sha256": "302a618a70b40e3c20615da339f5a66f2ce03dea2abb195eec8170917052b0fd"
+      "bytes": 8392,
+      "sha256": "5029d9909078cbecf22942d188afaf6574c8af76564cc4f2c9a5cf9430844262"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/budget_evidence.py",
+      "bytes": 11074,
+      "sha256": "9892a11855378d94d0b5b3225cd550d9aeb7feb4a611f8b17c8826a847459c34"
     },
     {
       "path": "knowledge-to-plan/scripts/build_baseline.py",
@@ -104,9 +124,24 @@
       "sha256": "ee49b75a5358d3956bf3b57d76ddd3c257e3f5fd6975fa6b2fd778face3b3042"
     },
     {
+      "path": "knowledge-to-plan/scripts/build_course.py",
+      "bytes": 5117,
+      "sha256": "c7579ed1b88c5f0661a2cd6015b9ba42e55013e7ce7718c89c85372efe8b07d5"
+    },
+    {
       "path": "knowledge-to-plan/scripts/build_learning_site.py",
-      "bytes": 6917,
-      "sha256": "bf2cf209f999cbb4663007aee4846cb4fd8b3e0ee5357c3d3a45b3690d92f00e"
+      "bytes": 7028,
+      "sha256": "6ccfabd134ee12fbab712344238f411bd927334e1f187f27a5b482cbcdf642e0"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/lint_pedagogy.py",
+      "bytes": 20255,
+      "sha256": "8697562fe8942ed159a74749afaec06a9d451eb9a7c64dc4e3bc2a04d000c834"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/merge_plan.py",
+      "bytes": 8255,
+      "sha256": "3dec1947a47971cb443cbf5b6aeeefaf1900c4d3ad679c8186bc845075c24e9e"
     },
     {
       "path": "knowledge-to-plan/scripts/stem_content.py",
@@ -114,14 +149,29 @@
       "sha256": "67b8731d04b1cc343bc873c153a868971fd7703ca7d892a252590c38b14baaa7"
     },
     {
+      "path": "knowledge-to-plan/scripts/test_budget_evidence.py",
+      "bytes": 10154,
+      "sha256": "0de6b7bd42c8182bde62cce56836c3535478d5f3103fc929cb687646b6b6dbc6"
+    },
+    {
       "path": "knowledge-to-plan/scripts/test_environment.py",
       "bytes": 5092,
       "sha256": "5d690f7fe34f33090825a74423a3215d724dac49c69f8d0b671f781329858a9b"
     },
     {
+      "path": "knowledge-to-plan/scripts/test_merge_plan.py",
+      "bytes": 9021,
+      "sha256": "9b1decd6042316db55209a2b494097361a981a4d060e559e1162e200763d6e3d"
+    },
+    {
+      "path": "knowledge-to-plan/scripts/test_pedagogy.py",
+      "bytes": 11546,
+      "sha256": "2f0327596e688a765239779e4e910ded823e6351361821a73ea285e5a2f3992e"
+    },
+    {
       "path": "knowledge-to-plan/scripts/test_runtime.cjs",
-      "bytes": 44231,
-      "sha256": "a8baf51a72257185b58dd3f23ceee643a9dcca983fa237302de691b12f9acba5"
+      "bytes": 46048,
+      "sha256": "fb348a741dc4af8b6092a21300ca81cc3672fde24c31515833e38cf030a083b2"
     },
     {
       "path": "knowledge-to-plan/scripts/test_stem.py",

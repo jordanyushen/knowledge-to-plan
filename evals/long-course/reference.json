@@ -1,0 +1,1232 @@
+{
+  "schema_version": 1,
+  "fixture_kind": "authored_synthetic_tool_evaluation",
+  "plan_sha256": "478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "checks": [
+    {
+      "location": "lessons[0].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "delta",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "3",
+      "a": "1",
+      "b": "2"
+    },
+    {
+      "location": "lessons[0].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "delta",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "3",
+      "a": "1",
+      "b": "2"
+    },
+    {
+      "location": "lessons[0].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "delta",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "9",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[1].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[1].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[1].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "2",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[2].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "-2",
+      "a": "-2",
+      "b": "0"
+    },
+    {
+      "location": "lessons[2].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "-2",
+      "a": "-2",
+      "b": "0"
+    },
+    {
+      "location": "lessons[2].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "-4",
+      "a": "-3",
+      "b": "-1"
+    },
+    {
+      "location": "lessons[3].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[3].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[3].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "6",
+      "x": "3"
+    },
+    {
+      "location": "lessons[4].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "6",
+      "a": "2",
+      "b": "4"
+    },
+    {
+      "location": "lessons[4].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "6",
+      "a": "2",
+      "b": "4"
+    },
+    {
+      "location": "lessons[4].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[4].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "average",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "6",
+      "a": "1",
+      "b": "5"
+    },
+    {
+      "location": "lessons[4].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[5].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "-2",
+        "3"
+      ],
+      "expected": "3",
+      "x": "-4"
+    },
+    {
+      "location": "lessons[5].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "-2",
+        "3"
+      ],
+      "expected": "3",
+      "x": "-4"
+    },
+    {
+      "location": "lessons[5].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "derivative",
+      "coefficients": [
+        "7"
+      ],
+      "expected": "0",
+      "x": "0"
+    },
+    {
+      "location": "lessons[5].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "5",
+        "-2"
+      ],
+      "expected": "-2",
+      "x": "3"
+    },
+    {
+      "location": "lessons[5].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "average",
+      "coefficients": [
+        "5",
+        "-2"
+      ],
+      "expected": "-2",
+      "a": "0",
+      "b": "1"
+    },
+    {
+      "location": "lessons[6].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "2"
+      ],
+      "expected": "12",
+      "x": "3"
+    },
+    {
+      "location": "lessons[6].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "2"
+      ],
+      "expected": "12",
+      "x": "3"
+    },
+    {
+      "location": "lessons[6].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "3"
+      ],
+      "expected": "12",
+      "x": "2"
+    },
+    {
+      "location": "lessons[7].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "2",
+        "3",
+        "1"
+      ],
+      "expected": "7",
+      "x": "2"
+    },
+    {
+      "location": "lessons[7].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "2",
+        "3",
+        "1"
+      ],
+      "expected": "7",
+      "x": "2"
+    },
+    {
+      "location": "lessons[7].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "4",
+        "-1",
+        "2"
+      ],
+      "expected": "3",
+      "x": "1"
+    },
+    {
+      "location": "lessons[8].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "4",
+        "-1"
+      ],
+      "expected": "2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[8].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "4",
+        "-1"
+      ],
+      "expected": "2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[8].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "6",
+        "-2"
+      ],
+      "expected": "-2",
+      "x": "2"
+    },
+    {
+      "location": "lessons[8].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "value",
+      "coefficients": [
+        "0",
+        "6",
+        "-2"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[9].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-4",
+        "1"
+      ],
+      "expected": "0",
+      "x": "2"
+    },
+    {
+      "location": "lessons[9].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-4",
+        "1"
+      ],
+      "expected": "0",
+      "x": "2"
+    },
+    {
+      "location": "lessons[9].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-4",
+        "1"
+      ],
+      "expected": "-2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[9].sections[0].example",
+      "category": "example",
+      "claim": "example-3",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-4",
+        "1"
+      ],
+      "expected": "2",
+      "x": "3"
+    },
+    {
+      "location": "lessons[9].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-6",
+        "1"
+      ],
+      "expected": "0",
+      "x": "3"
+    },
+    {
+      "location": "lessons[9].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-6",
+        "1"
+      ],
+      "expected": "-2",
+      "x": "2"
+    },
+    {
+      "location": "lessons[9].practice",
+      "category": "practice",
+      "claim": "practice-3",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-6",
+        "1"
+      ],
+      "expected": "2",
+      "x": "4"
+    },
+    {
+      "location": "lessons[10].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "3",
+        "0",
+        "1"
+      ],
+      "expected": "2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[10].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "3",
+        "0",
+        "1"
+      ],
+      "expected": "2",
+      "x": "1"
+    },
+    {
+      "location": "lessons[10].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "5",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[11].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "value",
+      "coefficients": [
+        "5",
+        "1",
+        "2"
+      ],
+      "expected": "8",
+      "x": "1"
+    },
+    {
+      "location": "lessons[11].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "value",
+      "coefficients": [
+        "5",
+        "1",
+        "2"
+      ],
+      "expected": "5",
+      "x": "0"
+    },
+    {
+      "location": "lessons[11].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "value",
+      "coefficients": [
+        "5",
+        "1",
+        "2"
+      ],
+      "expected": "8",
+      "x": "1"
+    },
+    {
+      "location": "lessons[11].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "value",
+      "coefficients": [
+        "3",
+        "2",
+        "1"
+      ],
+      "expected": "11",
+      "x": "2"
+    },
+    {
+      "location": "lessons[12].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "3"
+      ],
+      "expected": "9",
+      "a": "1",
+      "b": "4"
+    },
+    {
+      "location": "lessons[12].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "3"
+      ],
+      "expected": "9",
+      "a": "1",
+      "b": "4"
+    },
+    {
+      "location": "lessons[12].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "-2"
+      ],
+      "expected": "-6",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[13].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "9",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[13].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "9",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[13].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "8/3",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[14].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "2"
+      ],
+      "expected": "10",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[14].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "2"
+      ],
+      "expected": "10",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[14].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "2"
+      ],
+      "expected": "6",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[15].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "0",
+      "a": "-1",
+      "b": "1"
+    },
+    {
+      "location": "lessons[15].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "-1/2",
+      "a": "-1",
+      "b": "0"
+    },
+    {
+      "location": "lessons[15].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "1/2",
+      "a": "0",
+      "b": "1"
+    },
+    {
+      "location": "lessons[15].sections[0].example",
+      "category": "example",
+      "claim": "example-3",
+      "kind": "absolute_integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "a": "-1",
+      "b": "1",
+      "splits": [
+        "0"
+      ],
+      "expected": "1"
+    },
+    {
+      "location": "lessons[15].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "0",
+      "a": "-2",
+      "b": "2"
+    },
+    {
+      "location": "lessons[15].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "absolute_integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "a": "-2",
+      "b": "2",
+      "splits": [
+        "0"
+      ],
+      "expected": "4"
+    },
+    {
+      "location": "lessons[16].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "2"
+      ],
+      "expected": "-10",
+      "a": "3",
+      "b": "1"
+    },
+    {
+      "location": "lessons[16].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "2"
+      ],
+      "expected": "-10",
+      "a": "3",
+      "b": "1"
+    },
+    {
+      "location": "lessons[16].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "1/2",
+      "a": "0",
+      "b": "1"
+    },
+    {
+      "location": "lessons[16].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "3/2",
+      "a": "1",
+      "b": "2"
+    },
+    {
+      "location": "lessons[16].practice",
+      "category": "practice",
+      "claim": "practice-3",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "2",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[16].practice",
+      "category": "practice",
+      "claim": "practice-4",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "1"
+      ],
+      "expected": "-2",
+      "a": "2",
+      "b": "0"
+    },
+    {
+      "location": "lessons[17].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "delta",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "8",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[17].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "4",
+      "x": "2"
+    },
+    {
+      "location": "lessons[17].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "delta",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "8",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[17].sections[0].example",
+      "category": "example",
+      "claim": "example-3",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "2"
+      ],
+      "expected": "8",
+      "a": "1",
+      "b": "3"
+    },
+    {
+      "location": "lessons[17].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "6",
+      "x": "3"
+    },
+    {
+      "location": "lessons[17].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "delta",
+      "coefficients": [
+        "0",
+        "0",
+        "1"
+      ],
+      "expected": "12",
+      "a": "2",
+      "b": "4"
+    },
+    {
+      "location": "lessons[17].practice",
+      "category": "practice",
+      "claim": "practice-3",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "2"
+      ],
+      "expected": "12",
+      "a": "2",
+      "b": "4"
+    },
+    {
+      "location": "lessons[18].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "-1"
+      ],
+      "expected": "-9",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[18].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "-1"
+      ],
+      "expected": "-9",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[18].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "0",
+        "-1"
+      ],
+      "expected": "-8/3",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[18].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "absolute_integral",
+      "coefficients": [
+        "0",
+        "0",
+        "-1"
+      ],
+      "a": "0",
+      "b": "2",
+      "splits": [],
+      "expected": "8/3"
+    },
+    {
+      "location": "lessons[19].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "14/3",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[19].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "14/3",
+      "a": "0",
+      "b": "2"
+    },
+    {
+      "location": "lessons[19].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "integral",
+      "coefficients": [
+        "1",
+        "0",
+        "1"
+      ],
+      "expected": "4/3",
+      "a": "0",
+      "b": "1"
+    },
+    {
+      "location": "lessons[20].questions[0]",
+      "category": "question",
+      "claim": "question-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "4",
+      "x": "3"
+    },
+    {
+      "location": "lessons[20].sections[0].example",
+      "category": "example",
+      "claim": "example-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "4",
+      "x": "3"
+    },
+    {
+      "location": "lessons[20].sections[0].example",
+      "category": "example",
+      "claim": "example-2",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "0",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[20].practice",
+      "category": "practice",
+      "claim": "practice-1",
+      "kind": "derivative",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "0",
+      "x": "1"
+    },
+    {
+      "location": "lessons[20].practice",
+      "category": "practice",
+      "claim": "practice-2",
+      "kind": "delta",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "3",
+      "a": "0",
+      "b": "3"
+    },
+    {
+      "location": "lessons[20].practice",
+      "category": "practice",
+      "claim": "practice-3",
+      "kind": "integral",
+      "coefficients": [
+        "0",
+        "-2",
+        "1"
+      ],
+      "expected": "0",
+      "a": "0",
+      "b": "3"
+    }
+  ],
+  "formulas": [
+    {
+      "day": 2,
+      "relation": "average",
+      "expression": "m = [f(b)−f(a)] ÷ (b−a)"
+    },
+    {
+      "day": 4,
+      "relation": "derivative_limit",
+      "expression": "f′(a) = lim（h→0）[f(a+h)−f(a)] ÷ h"
+    },
+    {
+      "day": 8,
+      "relation": "quadratic_derivative",
+      "expression": "f(x)=ax²+bx+c ⇒ f′(x)=2ax+b"
+    },
+    {
+      "day": 14,
+      "relation": "given_antiderivative",
+      "expression": "F(x) = x³/3"
+    },
+    {
+      "day": 15,
+      "relation": "ftc",
+      "expression": "从a到b对f(x)积分 = F(b)−F(a)"
+    }
+  ],
+  "diagrams": [
+    {
+      "day": 2,
+      "kind": "secant",
+      "x_origin": "50",
+      "y_origin": "250",
+      "x_scale": "60",
+      "y_scale": "15",
+      "points": [
+        {
+          "id": "point-a",
+          "x": "1",
+          "y": "1"
+        },
+        {
+          "id": "point-b",
+          "x": "3",
+          "y": "9"
+        }
+      ],
+      "line_id": "secant",
+      "slope": "4"
+    },
+    {
+      "day": 16,
+      "kind": "signed_area",
+      "x_origin": "170",
+      "y_origin": "180",
+      "x_scale": "100",
+      "y_scale": "100",
+      "graph_id": "graph",
+      "negative_region": "negative-region",
+      "positive_region": "positive-region",
+      "each_triangle_area": "1/2"
+    }
+  ],
+  "limits": [
+    "原始参考是同一作者手写数据与独立算法的可复核记录，不是独立模型生成评测、专家认证或真人学习实验。",
+    "程序可复核冻结样本的算术、关系与图形坐标；自然语言含义和教学适切性仍需内容审阅。"
+  ]
+}

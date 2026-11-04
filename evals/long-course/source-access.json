@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-05",
+  "access": "web tool official OpenStax pages",
+  "pages": [
+    {
+      "id": "os-derivative",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative",
+      "locator": "Tangent Lines；The Derivative at a Point；Instantaneous Rates of Change：割线差商、导数极限和瞬时变化率。只取规则与概念，不复制原书题目或图片。"
+    },
+    {
+      "id": "os-rules",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "locator": "The Constant Rule；The Power Rule；Theorem 3.4 Sum, Difference, and Constant Multiple Rules。"
+    },
+    {
+      "id": "os-definite",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+      "locator": "Definition and Notation；The Definite Integral and Net Area；Properties of the Definite Integral。"
+    },
+    {
+      "id": "os-ftc",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus",
+      "locator": "Fundamental Theorem of Calculus, Part 2: The Evaluation Theorem；Theorem 5.5及其连续性条件；Example 5.20前的幂函数原函数规则。"
+    },
+    {
+      "id": "os-integration",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-4-integration-formulas-and-the-net-change-theorem",
+      "locator": "Basic Integration Formulas；The Net Change Theorem：变化量和端点差关系。"
+    }
+  ],
+  "copyright": "原创中文讲解与数字任务；只存来源定位，不复制教材原题、原图或全文。"
+}

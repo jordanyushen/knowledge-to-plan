@@ -1,0 +1,52 @@
+{
+  "plan_sha256": "478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "review_scope": "Authored fixture arithmetic/source self-review with independently recorded semantic corrections. Not a human trial or expert certification.",
+  "content_findings": [
+    {
+      "kind": "fact",
+      "location": "$.lessons[4].sections[0].body",
+      "message": "LC-01: original quadratic coincidence wording corrected; nondegenerate quadratics with distinct endpoints cannot have average equal to the start derivative.",
+      "evidence": [
+        "review-history/first-reviewed-plan.json day5 original wording",
+        "../long-course-independent-first-findings.json LC-01",
+        "For Ax²+Bx+C, average minus start derivative is A(b-a), nonzero when A and b-a are nonzero."
+      ],
+      "status": "resolved"
+    },
+    {
+      "kind": "fact",
+      "location": "$.lessons[17].sections[0].body",
+      "message": "LC-02: rate and net change are different quantities whose numerical values may coincide.",
+      "evidence": [
+        "review-history/first-reviewed-plan.json day18 original wording",
+        "../long-course-independent-first-findings.json LC-02",
+        "Q=x² gives Q′(2)=4 and Q(2)-Q(0)=4."
+      ],
+      "status": "resolved"
+    }
+  ],
+  "resolutions": [
+    {
+      "code": "diagram_need_review",
+      "location": "$.lessons[16].sections[0]",
+      "rationale": "Day17 concerns reversed limits and interval addition. The reference to geometric area only prevents a sign misconception; the prerequisite signed-area diagram is already supplied at day16 and explicitly recalled. Endpoint arithmetic needs no additional diagram.",
+      "evidence": [
+        "lessons/016-020.json day16 SVG and day17 review_of=[14,15,16]",
+        "OpenStax 5.2 Properties of the Definite Integral",
+        "reference.json day17 rational computations"
+      ]
+    },
+    {
+      "code": "diagram_need_review",
+      "location": "$.lessons[18].sections[0]",
+      "rationale": "Day19 checks the algebraic sign of -x² and uses the distinction from day16. No new spatial relation is introduced; exact negative integrals and total area are separately recomputed.",
+      "evidence": [
+        "lessons/016-020.json day19 prose and task",
+        "reference.json day19 integral and absolute-area computations",
+        "OpenStax 5.2 The Definite Integral and Net Area"
+      ]
+    }
+  ],
+  "learner_trial": "not_performed",
+  "time_feasibility": "estimated"
+}

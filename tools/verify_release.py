@@ -24,6 +24,13 @@ def verify_release(root, release_root, allow_unlicensed=False):
     if relative_archive.parts[0] != 'dist' or relative_archive.suffix != '.zip':
         raise ValueError('Archive must be a ZIP in dist/')
     archive_path = release_root.joinpath(*relative_archive.parts)
+    if not archive_path.is_file():
+        raise ValueError(
+            'Install archive is missing: ' + relative_archive.as_posix() + '. '
+            'Source checkouts do not include new release ZIPs. '
+            'From the source repository run python3 tools/build_release.py, '
+            'then python3 tools/verify_release.py '
+            '(use matching --root/--output/--release-root for a separate artifact directory).')
     digest = sha256(archive_path.read_bytes())
     if digest != manifest.get('archive_sha256'):
         raise ValueError('Archive SHA256 does not match manifest')

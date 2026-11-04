@@ -1,0 +1,21 @@
+{
+  "schema_version": 1,
+  "description": "Authored fixture plus explicit independent-review corrections, frozen for exact regression; changed content requires re-review before updating hashes.",
+  "files": {
+    "budget.json": "55cbe8e9e3f3ab2343da067f936fb2655b476174a36d950d509fe3817bcc2109",
+    "course.json": "394f7792beb03d3ee6b7d7f5760c874ab38f4593bc3d0c286624c07abb6e5256",
+    "estimate.json": "26732b826171107a420d372d011e9286ca463648ab22798c39bd95f6b6228239",
+    "fixture-input.json": "8d20b4df7aa5f8a96991027ffae375490cc9db7224674e8153f5a96f71f65dc0",
+    "goal-map.json": "4332799e1c236141f99598d11e07635ed9e1574ee39dd39b4fe0f93f4f7023f2",
+    "lessons/001-005.json": "7907a489caf1acded86a909089cf79e616ebf64ba3ed611decb808127398567c",
+    "lessons/006-010.json": "5c264ae9d6072060e404362b371bdc3c48306e32b9a95669239bcee8f76aa69a",
+    "lessons/011-015.json": "8bf84a714bdf357cee08abeed3a6578d9177b4664e3b558cd092fb0198f1cdeb",
+    "lessons/016-020.json": "8d4a945784ae9a75bd5ae1972bf8b64f5bb55501f0af7439bda35ec970169798",
+    "lessons/021-021.json": "d71bfe337f87f6487a047c1747ca1f2f1d981453501de83cb8713d6f70d8674f",
+    "reference.json": "c534f82c740815d66e61e276563549ad3bc3b4737c3c94bd36f874e8429d791c",
+    "review-history/first-reviewed-plan.json": "d4ddba7d471944b8a53252200b63a1df74e692adf9e00ee89e4bff439ee04c89",
+    "review.json": "4519517d72d3d34b37942829d92fcb970f9a2711f9114bea9527793cc34f9d3f",
+    "source-access.json": "0c4ab233e01abfe4a6e37b6080bae1815064e74ae82240c7b148b2637eb2362b",
+    "sources.json": "5b1c9d802ea2ce2872922830f70a4464809124617bc559c79a075c80bb8f947d"
+  }
+}
