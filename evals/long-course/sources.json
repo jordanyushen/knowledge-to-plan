@@ -1,0 +1,37 @@
+[
+  {
+    "id": "os-derivative",
+    "title": "OpenStax Calculus Volume 1 §3.1 Defining the Derivative",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative",
+    "locator": "Tangent Lines；The Derivative at a Point；Instantaneous Rates of Change：割线差商、导数极限和瞬时变化率。只取规则与概念，不复制原书题目或图片。"
+  },
+  {
+    "id": "os-rules",
+    "title": "OpenStax Calculus Volume 1 §3.3 Differentiation Rules",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+    "locator": "The Constant Rule；The Power Rule；Theorem 3.4 Sum, Difference, and Constant Multiple Rules。"
+  },
+  {
+    "id": "os-definite",
+    "title": "OpenStax Calculus Volume 1 §5.2 The Definite Integral",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+    "locator": "Definition and Notation；The Definite Integral and Net Area；Properties of the Definite Integral。"
+  },
+  {
+    "id": "os-ftc",
+    "title": "OpenStax Calculus Volume 1 §5.3 The Fundamental Theorem of Calculus",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus",
+    "locator": "Fundamental Theorem of Calculus, Part 2: The Evaluation Theorem；Theorem 5.5及其连续性条件；Example 5.20前的幂函数原函数规则。"
+  },
+  {
+    "id": "os-integration",
+    "title": "OpenStax Calculus Volume 1 §5.4 Integration Formulas and the Net Change Theorem",
+    "url": "https://openstax.org/books/calculus-volume-1/pages/5-4-integration-formulas-and-the-net-change-theorem",
+    "locator": "Basic Integration Formulas；The Net Change Theorem：变化量和端点差关系。"
+  },
+  {
+    "id": "original",
+    "title": "本仓库原创工具评测任务与示意图",
+    "locator": "2026-11-05撰写的窄范围合成任务、数字、讲解、练习、选项与SVG；不是用户真实课程、独立模型生成实验或OpenStax原题。"
+  }
+]

@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 """Create a small, unseeded course for browser state and layout tests."""
+import copy
 import json
 from pathlib import Path
 import sys
@@ -36,6 +37,14 @@ def prepare():
         })
     output = ROOT / '.e2e' / 'site'
     result = build(plan, output, overwrite=True, expected_days=2, expected_daily_minutes=10)
+    layout = copy.deepcopy(plan)
+    layout['course']['id'] = 'ktp-layout-regression'
+    layout['course']['title'] = '长中文课名与学习目标的离线课程排版检查'
+    layout['course']['goal'] = ('在每天的学习预算内，先理解数量关系，再独立完成换算、核对单位并解释过程；' * 5) + '完整目标末尾保留核查标记。'
+    for lesson in layout['lessons']:
+        lesson['title'] = '从长度单位换算逐步理解数量关系并通过独立计算核对学习结果 ' + str(lesson['day'])
+        lesson['activities'][0]['kind'] = 'learn'
+    build(layout, output / 'layout', overwrite=True)
     stem = json.loads((ROOT / 'knowledge-to-plan' / 'assets' / 'stem-example' / 'plan.json').read_text(encoding='utf-8'))
     build(stem, output / 'stem', overwrite=True)
     return result

@@ -1,5 +1,7 @@
 # 改进实施状态
 
+第二轮多角度评价的本地实施另见 [预算与长课质量记录](teaching-quality-status.md)；下表仍保留第一轮0.2.0交付历史。
+
 2026-11-04，版本0.2.0，变更PR：https://github.com/jordanyushen/knowledge-to-plan/pull/1 。实际合并与发布回执见该PR及 https://github.com/jordanyushen/knowledge-to-plan/releases/tag/v0.2.0 。
 
 | 批次 | 已交付 | 待完成 |

@@ -1,0 +1,8 @@
+{
+  "id": "calculus-21x30-algebra-only",
+  "request": "我只会基本代数，想21天每天30分钟掌握完整微积分；先判断能不能装下，别改我的天数时间，也别写入日历或云盘。",
+  "days": 21,
+  "daily_minutes": 30,
+  "external_actions": "none",
+  "scope_change_authorized": false
+}

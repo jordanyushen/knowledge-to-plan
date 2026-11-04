@@ -7,8 +7,8 @@ timezone data on Windows or hosts without system timezone data.
 ```sh
 python3 -m unittest discover -s tools -p 'test_*.py' -v
 python3 tools/check_examples.py
+python3 tools/build_release.py
 python3 tools/verify_release.py
-python3 tools/build_release.py --release-date 2026-11-04
 ```
 
 `check_examples.py` copies the skill to a temporary directory, rebuilds the
@@ -22,6 +22,12 @@ changing the renderer, regenerate the actual examples before checking them.
 `dist/SHA256SUMS`. ZIP paths, permissions, timestamps and file order are fixed;
 entries are stored without compression to avoid platform zlib differences.
 Identical source bytes and release dates produce identical artifacts.
+
+Fresh source checkouts do not contain installation ZIPs. Build first, then verify;
+a missing archive fails with a rebuild instruction instead of silently creating
+one. Source metadata (`manifest.json`, `dist/SHA256SUMS`) must still match the
+rebuilt archive. Stable published attachments and unreleased local candidates
+are separate artifacts; old tracked ZIPs are no longer kept in the source tree.
 
 `verify_release.py` checks the complete source inventory, each size/hash, archive
 hash, checksum file, exact ZIP entry list, CRC and extracted bytes. It rejects
@@ -40,8 +46,8 @@ python3 tools/verify_release.py --release-root /tmp/ktp-release --allow-unlicens
 ```
 
 That override reports `release_ready: false`; it verifies artifact integrity and
-does not authorize redistribution. Regular CI permits this integrity-only mode;
-tagged-release CI additionally requires the adopted license without an override.
+does not authorize redistribution. Current CI requires the adopted license;
+the override remains a local diagnostic option only.
 The presence of a file is a packaging gate, not a legal review or confirmation of
 third-party content rights.
 

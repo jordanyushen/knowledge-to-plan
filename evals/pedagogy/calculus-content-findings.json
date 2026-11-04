@@ -1,0 +1,34 @@
+{
+  "plan_sha256": "2cdedff5fe6564aba6cfd75e5a5aefba41e61ea2346cae62a13392290284f883",
+  "resolutions": [],
+  "content_findings": [
+    {
+      "kind": "diagram",
+      "location": "$.lessons[11].sections[0].diagrams[0]",
+      "message": "Day12把局部极大点标成拐点；实际SVG在标记点两侧的笛卡尔二阶导数均为-1/125，没有凹凸变号。",
+      "evidence": ["docs/calculus-review.md#D12", "evals/pedagogy/review_calculus_sample.py"],
+      "status": "open"
+    },
+    {
+      "kind": "diagram",
+      "location": "$.lessons[5].sections[0].diagrams[0]",
+      "message": "Day6点B(屏幕400,120)不在所绘曲线或标称割线上：相同横坐标的曲线y为132.5，割线y为112.5。",
+      "evidence": ["docs/calculus-review.md#D6", "evals/pedagogy/review_calculus_sample.py"],
+      "status": "open"
+    },
+    {
+      "kind": "fact",
+      "location": "$.lessons[10].sections[0].body",
+      "message": "Day11例题残留“在−1左负右正？”与后续正确的正/负/正符号表相冲突，需删除或明确纠正。",
+      "evidence": ["docs/calculus-review.md#D11", "evals/pedagogy/review_calculus_sample.py"],
+      "status": "open"
+    },
+    {
+      "kind": "fact",
+      "location": "$.lessons[16].sections[0].diagrams[0].caption",
+      "message": "Day17图注把矩形“越高越密”与收敛联系；黎曼和控制的是分割宽度趋零，不要求高度不断增大。",
+      "evidence": ["docs/calculus-review.md#D17"],
+      "status": "open"
+    }
+  ]
+}

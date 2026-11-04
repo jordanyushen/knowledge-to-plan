@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "estimate_sha256": "f3a6281f12e67ce9bdb5f7c07ee97f68347957b7daa69966597a763ab15054a9",
+  "plan_sha256": "478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "original_goal": "零基础掌握完整基础微积分",
+  "selected_goal": "在给定规则下，区分二次函数的平均与瞬时变化率，计算次数不超过2的多项式的导数值及简单区间定积分，并区分净有向面积与总面积。",
+  "scope": {
+    "mode": "core",
+    "excluded": [
+      "完整极限理论与证明",
+      "三角/指数/对数函数",
+      "乘积、商、链式求导",
+      "换元、分部积分及广泛应用",
+      "大学微积分考试或完整掌握保证"
+    ],
+    "change_basis": "合成评测设计明确选择缩小范围并改变背景假设；不是把真实用户的原目标静默替换。21天与每天30分钟保持不变，原目标保留作边界任务。"
+  },
+  "goal_totals": [
+    {
+      "id": "rate",
+      "low_minutes": 85.0,
+      "high_minutes": 120.0
+    },
+    {
+      "id": "derivative",
+      "low_minutes": 85.0,
+      "high_minutes": 120.0
+    },
+    {
+      "id": "integral",
+      "low_minutes": 85.0,
+      "high_minutes": 120.0
+    },
+    {
+      "id": "interpretation",
+      "low_minutes": 102.0,
+      "high_minutes": 144.0
+    }
+  ],
+  "estimated_minutes": {
+    "low": 357.0,
+    "high": 504.0
+  },
+  "assessment": {
+    "current_plan": {
+      "days": 21,
+      "daily_minutes": 30,
+      "buffer_percent": 15.0
+    },
+    "available_hours": 10.5,
+    "usable_hours": 8.925,
+    "estimate_range": {
+      "low": 5.95,
+      "high": 8.4,
+      "unit": "hours"
+    },
+    "status": "fits",
+    "recommended_total_days_range": {
+      "low": 14,
+      "high": 20,
+      "fixed_daily_minutes": 30
+    },
+    "recommended_daily_minutes_range": {
+      "low": 20,
+      "high": 29,
+      "fixed_total_days": 21,
+      "low_within_24_hours": true,
+      "high_within_24_hours": true,
+      "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+    },
+    "recommendation_rules": {
+      "rounding": "up to the next whole unit, minimum 1",
+      "buffer_percent": 15.0,
+      "automatic_plan_changes": false
+    },
+    "candidate_options": []
+  },
+  "status": "fits",
+  "time_feasibility": "estimated",
+  "evidence_truth_verified": false,
+  "note": "Arithmetic and input binding only; source, scope and task-time assumptions require review."
+}

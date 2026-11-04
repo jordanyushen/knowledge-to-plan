@@ -1,5 +1,17 @@
 # Changelog
 
+## Unreleased
+
+- Record task-level estimate evidence and bind reproducible budgets to the final plan.
+- Gate complete-course delivery on unchanged independent constraints, scoped budget,
+  mapped outcomes, and unresolved teaching risks; preserve the legacy draft builder.
+- Add stable 1–5-lesson batches, full-plan merge checks and input fingerprints.
+- Separate structure checks, teaching risk reports, confirmed content findings and
+  unverified learner outcomes; add a scoped long-course evaluation.
+- Fix translated activity labels, long goals/navigation, narrow metrics and empty progress visibility.
+- Clarify missing-archive rebuild instructions and host-dependent capabilities.
+- Remove the obsolete tracked install archive; distribute packages separately from source.
+
 ## 0.2.0 — 2026-11-04
 
 - Adopt MIT for original code, instructions and original examples.

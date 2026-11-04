@@ -1,0 +1,1747 @@
+{
+  "schema_version": 1,
+  "course": {
+    "id": "authored-quadratic-calculus-long-eval",
+    "title": "二次函数的变化与累积 · 21课工具评测样本",
+    "goal": "在给定规则下，区分二次函数的平均与瞬时变化率，计算次数不超过2的多项式的导数值及简单区间定积分，并区分净有向面积与总面积。",
+    "background": "合成评测假设：已会分数、带符号四则运算、代入、展开平方和一次方程；尚未系统学过微积分。未做真人先修诊断。",
+    "days": 21,
+    "daily_minutes": 30,
+    "timezone": "Asia/Hong_Kong"
+  },
+  "sources": [
+    {
+      "id": "os-derivative",
+      "title": "OpenStax Calculus Volume 1 §3.1 Defining the Derivative",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-1-defining-the-derivative",
+      "locator": "Tangent Lines；The Derivative at a Point；Instantaneous Rates of Change：割线差商、导数极限和瞬时变化率。只取规则与概念，不复制原书题目或图片。"
+    },
+    {
+      "id": "os-rules",
+      "title": "OpenStax Calculus Volume 1 §3.3 Differentiation Rules",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/3-3-differentiation-rules",
+      "locator": "The Constant Rule；The Power Rule；Theorem 3.4 Sum, Difference, and Constant Multiple Rules。"
+    },
+    {
+      "id": "os-definite",
+      "title": "OpenStax Calculus Volume 1 §5.2 The Definite Integral",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-2-the-definite-integral",
+      "locator": "Definition and Notation；The Definite Integral and Net Area；Properties of the Definite Integral。"
+    },
+    {
+      "id": "os-ftc",
+      "title": "OpenStax Calculus Volume 1 §5.3 The Fundamental Theorem of Calculus",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-3-the-fundamental-theorem-of-calculus",
+      "locator": "Fundamental Theorem of Calculus, Part 2: The Evaluation Theorem；Theorem 5.5及其连续性条件；Example 5.20前的幂函数原函数规则。"
+    },
+    {
+      "id": "os-integration",
+      "title": "OpenStax Calculus Volume 1 §5.4 Integration Formulas and the Net Change Theorem",
+      "url": "https://openstax.org/books/calculus-volume-1/pages/5-4-integration-formulas-and-the-net-change-theorem",
+      "locator": "Basic Integration Formulas；The Net Change Theorem：变化量和端点差关系。"
+    },
+    {
+      "id": "original",
+      "title": "本仓库原创工具评测任务与示意图",
+      "locator": "2026-11-05撰写的窄范围合成任务、数字、讲解、练习、选项与SVG；不是用户真实课程、独立模型生成实验或OpenStax原题。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "quadratic-001",
+      "day": 1,
+      "title": "先算函数值，再谈变化",
+      "objectives": [
+        "准确区分函数值与两个输入之间的变化量。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "先算函数值，再谈变化",
+          "body": "本课所有变量都无量纲。函数f把每个输入x映射到一个值；f(2)是在2处的值，f(2)−f(1)才是从1到2的变化量。对f(x)=x²+1，先分别代入，再相减，不能把差值误当端点值。",
+          "example": "f(x)=x²+1时，f(1)=2、f(2)=5，所以从1到2的变化量为3。"
+        }
+      ],
+      "practice": "对g(x)=x²+1，列出g(0)、g(3)，再写出从0到3的变化量，并说明它不是g(3)。预期产出：两次代入和一次相减。",
+      "takeaways": [
+        "变化量=结束值−开始值。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²+1，从x=1到x=2的变化量是多少？",
+          "options": [
+            "3",
+            "5",
+            "2",
+            "4"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到3；其余选项混淆了运算或漏算步骤。",
+            "5是结束函数值，还没有减去开始值。",
+            "2是开始函数值，不是变化量。",
+            "4把x²的值与完整函数混在了一起。"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "quadratic-002",
+      "day": 2,
+      "title": "平均变化率：先比较同一区间",
+      "objectives": [
+        "计算二次函数在非零长度区间上的平均变化率。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "平均变化率：先比较同一区间",
+          "body": "平均变化率把输出变化量除以输入变化量。当起点a和终点b不相同时，它是连接两点的割线斜率。对f(x)=x²，不能用f(b)÷b代替差商，除非已说明为何起点项为零。",
+          "example": "f(x)=x²在[1,3]上的变化量为9−1=8，输入变化为2，所以平均变化率是4。",
+          "formulas": [
+            {
+              "title": "平均变化率",
+              "expression": "m = [f(b)−f(a)] ÷ (b−a)",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow></math>",
+              "explanation": "分子分母使用同一对端点，所得数是割线斜率。",
+              "conditions": "a与b是定义域内不同输入；本例函数为二次多项式。",
+              "variables": [
+                {
+                  "symbol": "a",
+                  "meaning": "起点输入",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "b",
+                  "meaning": "终点输入",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "f",
+                  "meaning": "给定函数",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "m",
+                  "meaning": "平均变化率",
+                  "unit": "无量纲"
+                }
+              ]
+            }
+          ],
+          "diagrams": [
+            {
+              "title": "二次函数的两点割线",
+              "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 310\"><title>x²与两点割线</title><desc>横轴x，纵轴y，点A为(1,1)，点B为(3,9)，连接两点得到割线斜率4。</desc><line x1=\"50\" y1=\"250\" x2=\"320\" y2=\"250\" stroke=\"#355e48\"/><line x1=\"50\" y1=\"275\" x2=\"50\" y2=\"10\" stroke=\"#355e48\"/><path d=\"M 50 250 Q 170 250 290 10\" fill=\"none\" stroke=\"#355e48\" stroke-width=\"3\"/><line id=\"secant\" x1=\"110\" y1=\"235\" x2=\"230\" y2=\"115\" stroke=\"#ab703b\" stroke-width=\"3\"/><circle id=\"point-a\" cx=\"110\" cy=\"235\" r=\"4\" fill=\"#ab703b\"/><circle id=\"point-b\" cx=\"230\" cy=\"115\" r=\"4\" fill=\"#ab703b\"/><text x=\"114\" y=\"226\" font-size=\"14\">A(1,1)</text><text x=\"234\" y=\"110\" font-size=\"14\">B(3,9)</text><text x=\"300\" y=\"272\" font-size=\"14\">x</text><text x=\"28\" y=\"20\" font-size=\"14\">y</text><text x=\"42\" y=\"268\" font-size=\"12\">0</text><text x=\"180\" y=\"30\" font-size=\"14\">y=x²</text></svg>",
+              "alt": "点A(1,1)和B(3,9)位于y=x²上，割线平均变化率为4。",
+              "caption": "原图使用横轴每单位60像素、纵轴每单位15像素。两轴缩放不同，不能从屏幕倾角直接读斜率；根据标注数据计算(9−1)÷(3−1)=4。图线按所声明数值绘制。",
+              "source_ids": [
+                "original"
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "计算f(x)=x²在[0,2]上的平均变化率。写出分子和分母，并用“每增加1个输入，平均增加多少输出”解释结果。",
+      "takeaways": [
+        "差商的两个差必须使用同一对端点。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²在[1,3]上的平均变化率是多少？",
+          "options": [
+            "8",
+            "4",
+            "3",
+            "2"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "8只算了输出变化，尚未除以输入变化。",
+            "按本课条件独立计算得到4；其余选项混淆了运算或漏算步骤。",
+            "3是终点输入，不是差商。",
+            "2是输入变化，不是平均变化率。"
+          ]
+        }
+      ],
+      "review_of": [
+        1
+      ]
+    },
+    {
+      "id": "quadratic-003",
+      "day": 3,
+      "title": "负区间也用同一差商",
+      "objectives": [
+        "保留符号并检查平均变化率的方向。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "负区间也用同一差商",
+          "body": "当函数值下降时，平均变化率可以为负。以输入递增的顺序计算b−a，同时按相同顺序计算f(b)−f(a)。若把分子分母都反向，商不变；只反向一处会错号。",
+          "example": "f(x)=x²在[−2,0]上的变化量是0−4=−4，输入变化为2，平均变化率为−2。"
+        }
+      ],
+      "practice": "求f(x)=x²在[−3,−1]上的平均变化率，再把两处差都反向计算一次验证。",
+      "takeaways": [
+        "平均变化率的正负来自输出如何随输入改变。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²在[−2,0]上的平均变化率是多少？",
+          "options": [
+            "2",
+            "−4",
+            "−2",
+            "0"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "2丢掉了函数值下降的负号。",
+            "−4是输出变化，尚未除以2。",
+            "按本课条件独立计算得到−2；其余选项混淆了运算或漏算步骤。",
+            "终点函数值为0，不代表区间没有变化。"
+          ]
+        }
+      ],
+      "review_of": [
+        1,
+        2
+      ]
+    },
+    {
+      "id": "quadratic-004",
+      "day": 4,
+      "title": "瞬时变化率：让区间靠近一点",
+      "objectives": [
+        "用二次函数差商的化简理解一个点的导数。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "瞬时变化率：让区间靠近一点",
+          "body": "平均变化率属于两个不同输入；瞬时变化率属于一个输入。对f(x)=x²，在a与a+h之间，h≠0时差商化简为2a+h。当h趋近0，所得极限为2a，记为f′(a)。不能直接在未化简的分母h处代入0。本课只处理这种可直接化简的二次函数，不展开一般极限理论。",
+          "example": "对f(x)=x²，在a=2处差商为4+h，因此h趋近0时得到f′(2)=4。",
+          "formulas": [
+            {
+              "title": "差商的极限",
+              "expression": "f′(a) = lim（h→0）[f(a+h)−f(a)] ÷ h",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>f</mi><mo>′</mo><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><munder><mo>lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mi>h</mi></mfrac></mrow></math>",
+              "explanation": "差商在h不为0时定义；本课通过展开二次式求其极限。",
+              "conditions": "本课在实数二次多项式上使用，导数存在。不能先把分母h代成0。",
+              "variables": [
+                {
+                  "symbol": "a",
+                  "meaning": "固定的求导点",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "h",
+                  "meaning": "非零输入增量",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "f",
+                  "meaning": "给定二次函数",
+                  "unit": "无量纲"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "对f(x)=x²，在a=3处先写差商并展开消去h，再写出瞬时变化率。",
+      "takeaways": [
+        "导数是差商的极限，不是把0除以0。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²在x=2处的瞬时变化率是多少？",
+          "options": [
+            "2",
+            "0",
+            "8",
+            "4"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "2是输入点；还需计算2a。",
+            "0混淆了h趋近0和差商趋近0。",
+            "8是区间[1,3]上的输出变化量。",
+            "按本课条件独立计算得到4；其余选项混淆了运算或漏算步骤。"
+          ]
+        }
+      ],
+      "review_of": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": "quadratic-005",
+      "day": 5,
+      "title": "一次检索：平均不等于起点瞬时",
+      "objectives": [
+        "独立比较同一函数的区间平均与起点瞬时变化率。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "一次检索：平均不等于起点瞬时",
+          "body": "先不看前课，写出平均变化率和导数各自需要的输入。对二次函数，区间平均一般不等于起点的瞬时变化率；它们可能数值偶合，但定义仍不同。计算前先写“区间”还是“点”。",
+          "example": "f(x)=x²在[2,4]上的平均变化率是(16−4)÷2=6，而f′(2)=4。"
+        }
+      ],
+      "practice": "对f(x)=x²，分别计算[1,5]上的平均变化率和x=1处瞬时变化率，并用一句话比较两者。",
+      "takeaways": [
+        "一对端点与单个点回答不同问题。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "只问f(x)=x²在[2,4]上的平均变化率，答案是多少？",
+          "options": [
+            "6",
+            "4",
+            "12",
+            "8"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到6；其余选项混淆了运算或漏算步骤。",
+            "4是起点x=2处的导数。",
+            "12是输出变化量，尚未除以2。",
+            "8是终点x=4处的导数。"
+          ]
+        }
+      ],
+      "review_of": [
+        2,
+        4
+      ]
+    },
+    {
+      "id": "quadratic-006",
+      "day": 6,
+      "title": "常数与直线的导数",
+      "objectives": [
+        "使用常数和线性函数规则计算导数值。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "常数与直线的导数",
+          "body": "常数函数不随输入变化，导数是0。对mx+c，任意两个不同输入的差商都等于m，因此导数函数也是m。截距c改变函数值，却不改变直线的变化率。",
+          "example": "f(x)=3x−2的导数恒为3，所以f′(−4)=3；f(x)=7的导数恒为0。"
+        }
+      ],
+      "practice": "对g(x)=−2x+5，写导数函数并求g′(3)。用x=0和x=1的差商验证。",
+      "takeaways": [
+        "直线的导数由斜率决定，不由截距决定。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "os-derivative",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=3x−2时，f′(−4)是多少？",
+          "options": [
+            "−4",
+            "3",
+            "−14",
+            "0"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "−4是代入的输入，不是导数。",
+            "按本课条件独立计算得到3；其余选项混淆了运算或漏算步骤。",
+            "−14是f(−4)的函数值。",
+            "0仅适用于常数函数，3x−2并非常数。"
+          ]
+        }
+      ],
+      "review_of": [
+        4,
+        5
+      ]
+    },
+    {
+      "id": "quadratic-007",
+      "day": 7,
+      "title": "二次项的系数不能丢",
+      "objectives": [
+        "计算常数倍二次项的导数。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "二次项的系数不能丢",
+          "body": "已知x²的导数为2x，乘上固定系数后，导数也乘同一系数。因此ax²的导数为2ax。这里a是固定数，不随x变化；先求导数函数，再代入输入。",
+          "example": "f(x)=2x²，所以f′(x)=4x，在x=3处f′(3)=12。"
+        }
+      ],
+      "practice": "对g(x)=3x²，求g′(2)，并写出求导与代入两步。",
+      "takeaways": [
+        "求导先处理幂次与系数，再代入点。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=2x²时，f′(3)是多少？",
+          "options": [
+            "6",
+            "18",
+            "12",
+            "4"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "6漏掉原有系数2。",
+            "18是f(3)，不是导数值。",
+            "按本课条件独立计算得到12；其余选项混淆了运算或漏算步骤。",
+            "4是导数的系数，尚未乘以输入3。"
+          ]
+        }
+      ],
+      "review_of": [
+        4,
+        6
+      ]
+    },
+    {
+      "id": "quadratic-008",
+      "day": 8,
+      "title": "逐项求导，再合并",
+      "objectives": [
+        "求次数不超过2的多项式的导数值。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "逐项求导，再合并",
+          "body": "和的导数等于各项导数之和。对ax²+bx+c，分别得到2ax、b、0，所以导数为2ax+b。本课不引入乘积、商或复合函数的求导规则，遇到范围外表达式应先说明未覆盖。",
+          "example": "f(x)=x²+3x+2的导数为2x+3，所以f′(2)=7。",
+          "formulas": [
+            {
+              "title": "二次多项式的导数",
+              "expression": "f(x)=ax²+bx+c ⇒ f′(x)=2ax+b",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>f</mi><mo>′</mo><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow></math>",
+              "explanation": "逐项使用常数、一次项和二次项的规则。",
+              "conditions": "a、b、c是固定实数；x为实数。",
+              "variables": [
+                {
+                  "symbol": "x",
+                  "meaning": "输入",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "a",
+                  "meaning": "二次项固定系数",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "b",
+                  "meaning": "一次项固定系数",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "c",
+                  "meaning": "常数项",
+                  "unit": "无量纲"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "对g(x)=2x²−x+4，先逐项求导，再求g′(1)。",
+      "takeaways": [
+        "常数项的导数为0，而一次项仍贡献一个常数。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²+3x+2时，f′(2)是多少？",
+          "options": [
+            "9",
+            "12",
+            "5",
+            "7"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "9错误地保留了原常数项2。",
+            "12是f(2)的函数值。",
+            "5漏掉一次项的部分贡献。",
+            "按本课条件独立计算得到7；其余选项混淆了运算或漏算步骤。"
+          ]
+        }
+      ],
+      "review_of": [
+        6,
+        7
+      ]
+    },
+    {
+      "id": "quadratic-009",
+      "day": 9,
+      "title": "导数函数与导数值",
+      "objectives": [
+        "在含负系数的二次函数中分清表达式和数值。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "导数函数与导数值",
+          "body": "f′(x)是一个可继续代入的函数，f′(a)是在指定点得到的数。负系数也按同一规则保留：−x²求导得到−2x。不要把求导后的x又当作固定输入的名称。",
+          "example": "f(x)=−x²+4x，所以f′(x)=−2x+4，在x=1处得到2。"
+        }
+      ],
+      "practice": "对g(x)=−2x²+6x，写g′(x)，再求g′(2)，最后解释它与g(2)不是同一量。",
+      "takeaways": [
+        "先得到导数函数，再求点上的导数值。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=−x²+4x时，f′(1)是多少？",
+          "options": [
+            "2",
+            "3",
+            "4",
+            "−2"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到2；其余选项混淆了运算或漏算步骤。",
+            "3是f(1)，不是f′(1)。",
+            "4只取了一次项，漏掉二次项贡献。",
+            "−2只计算了−x²的贡献。"
+          ]
+        }
+      ],
+      "review_of": [
+        7,
+        8
+      ]
+    },
+    {
+      "id": "quadratic-010",
+      "day": 10,
+      "title": "导数为零，只说明这一点",
+      "objectives": [
+        "计算二次函数的驻点并限定结论。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "导数为零，只说明这一点",
+          "body": "对本课多项式，导数值的正负描述局部变化方向。导数为0表示该点瞬时变化率为0，不能据此说整个函数恒定。对f(x)=x²−4x，f′(x)=2x−4，因此x=2处导数为0，但其他点通常不为0。",
+          "example": "f′(2)=0；同一函数f′(1)=−2、f′(3)=2，说明不能把单点的零扩展到全区间。"
+        }
+      ],
+      "practice": "对g(x)=x²−6x，求使g′(x)=0的输入，再分别求该点左、右各1处的导数。",
+      "takeaways": [
+        "“某一点变化率为0”不等于“函数处处不变”。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x²−4x时，f′(2)是多少？",
+          "options": [
+            "−4",
+            "0",
+            "2",
+            "4"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "−4是f(2)，不是导数。",
+            "按本课条件独立计算得到0；其余选项混淆了运算或漏算步骤。",
+            "2是输入位置，不是导数值。",
+            "4漏掉一次项求导贡献的−4。"
+          ]
+        }
+      ],
+      "review_of": [
+        5,
+        8,
+        9
+      ]
+    },
+    {
+      "id": "quadratic-011",
+      "day": 11,
+      "title": "反向看：什么叫原函数",
+      "objectives": [
+        "用已学导数解释原函数与常数自由度。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "反向看：什么叫原函数",
+          "body": "如果F的导数等于f，就称F是f的一个原函数。对f(x)=2x，F(x)=x²和x²+3都符合条件，因为常数求导为0。原函数一般不唯一；本课从已知多项式规则反向识别，不教授完整积分技巧。",
+          "example": "F(x)=x²+3是2x的一个原函数，它在x=1处的导数是2，而不是F(1)=4。"
+        }
+      ],
+      "practice": "写出2x的两个不同原函数，并用其中F(x)=x²+5算F′(2)。预期产出：两个函数和一次求导核对。",
+      "takeaways": [
+        "原函数相差常数，导数却相同。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "F(x)=x²+3是2x的原函数。F′(1)是多少？",
+          "options": [
+            "4",
+            "3",
+            "2",
+            "1"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "4是原函数F(1)的值，不是其导数。",
+            "3是原函数的常数项，其导数为0。",
+            "按本课条件独立计算得到2；其余选项混淆了运算或漏算步骤。",
+            "1是输入点，不是导数值。"
+          ]
+        }
+      ],
+      "review_of": [
+        6,
+        8,
+        10
+      ]
+    },
+    {
+      "id": "quadratic-012",
+      "day": 12,
+      "title": "初始值选定一个原函数",
+      "objectives": [
+        "利用给定初始值确定原函数常数。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "初始值选定一个原函数",
+          "body": "如果F′(x)=4x+1，原函数族可写为F(x)=2x²+x+C。给出F(0)=5，代入0得到C=5，才选定一个具体函数。这里初始值是函数值，不能直接当成导数。",
+          "example": "F(x)=2x²+x+5时，F(0)=5，F(1)=8。"
+        }
+      ],
+      "practice": "对G′(x)=2x+2且G(0)=3，写出G(x)并求G(2)，同时用求导验证。",
+      "takeaways": [
+        "初始条件固定常数，求导规则固定变化率。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "已知F′(x)=4x+1且F(0)=5，F(1)是多少？",
+          "options": [
+            "3",
+            "5",
+            "5/2",
+            "8"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "3是遗漏初始常数时的结果。",
+            "5只保留了初始值，没有加入变化。",
+            "5/2不是根据给定原函数规则得到的值。",
+            "按本课条件独立计算得到8；其余选项混淆了运算或漏算步骤。"
+          ]
+        }
+      ],
+      "review_of": [
+        8,
+        11
+      ]
+    },
+    {
+      "id": "quadratic-013",
+      "day": 13,
+      "title": "先从常数的累积开始",
+      "objectives": [
+        "把定积分看作有方向的累积数值。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "先从常数的累积开始",
+          "body": "固定上下限的定积分是一个数，不是原函数族。对非负常数函数，累积可以用矩形面积理解：高度乘输入区间长度。若值为负，则在输入正向增加时贡献负的有向累积。",
+          "example": "常数f(x)=3在[1,4]上的定积分为3×(4−1)=9。"
+        }
+      ],
+      "practice": "求常数f(x)=−2在[0,3]上的定积分，并解释为何几何总面积为6而定积分为−6。",
+      "takeaways": [
+        "定积分的符号不能用几何面积的非负性抹掉。"
+      ],
+      "source_ids": [
+        "os-definite",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "常数f(x)=3在[1,4]上的定积分是多少？",
+          "options": [
+            "9",
+            "12",
+            "3",
+            "1"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到9；其余选项混淆了运算或漏算步骤。",
+            "12忘记减去起点1，误用区间长度4。",
+            "3只保留了高度，漏掉宽度。",
+            "1不是高度乘实际区间长度的结果。"
+          ]
+        }
+      ],
+      "review_of": [
+        11,
+        12
+      ]
+    },
+    {
+      "id": "quadratic-014",
+      "day": 14,
+      "title": "给定幂函数原函数，再算端点",
+      "objectives": [
+        "使用给定原函数处理二次项定积分。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "给定幂函数原函数，再算端点",
+          "body": "本课给定x²的一个原函数F(x)=x³/3，不要求从头证明幂函数规则。对于本例连续多项式，定积分可由F(b)−F(a)计算。三次表达式只作为已给原函数使用，不扩展到一般高次求导训练。",
+          "example": "在[0,3]上，x²的定积分为F(3)−F(0)=27/3−0=9。",
+          "formulas": [
+            {
+              "title": "本课给定的原函数",
+              "expression": "F(x) = x³/3",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>F</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mfrac><msup><mi>x</mi><mn>3</mn></msup><mn>3</mn></mfrac></mrow></math>",
+              "explanation": "这是被积函数x²的一个原函数，用于端点求值。",
+              "conditions": "只在本课多项式情境使用；不要求从此证明一般幂函数原函数规则。",
+              "variables": [
+                {
+                  "symbol": "x",
+                  "meaning": "积分变量",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "F",
+                  "meaning": "x²的给定原函数",
+                  "unit": "无量纲"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "给定原函数F(x)=x³/3，计算x²在[0,2]上的定积分，写出端点代入；保留分数。",
+      "takeaways": [
+        "原函数的取值差给出定积分，不要再求一次导数。"
+      ],
+      "source_ids": [
+        "os-ftc",
+        "os-integration",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "给定F(x)=x³/3是x²的原函数，x²在[0,3]上的定积分是多少？",
+          "options": [
+            "6",
+            "9",
+            "27",
+            "3"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "6是x²在3处的导数值，运算选错。",
+            "按本课条件独立计算得到9；其余选项混淆了运算或漏算步骤。",
+            "27遗漏原函数中的除以3。",
+            "3是终点，不是累积值。"
+          ]
+        }
+      ],
+      "review_of": [
+        11,
+        13
+      ]
+    },
+    {
+      "id": "quadratic-015",
+      "day": 15,
+      "title": "基本定理：上端点减下端点",
+      "objectives": [
+        "在说明连续条件后计算简单定积分。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "基本定理：上端点减下端点",
+          "body": "本课采用基本定理的求值形式：f在闭区间连续，F是f的一个原函数，则从a到b的定积分等于F(b)−F(a)。多项式满足连续条件。不能只算F(b)，也不能把f(b)−f(a)当成定积分。",
+          "example": "f(x)=2x+1，取F(x)=x²+x；在[1,3]上得到(9+3)−(1+1)=10。",
+          "formulas": [
+            {
+              "title": "基本定理的求值形式",
+              "expression": "从a到b对f(x)积分 = F(b)−F(a)",
+              "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><munderover><mo>∫</mo><mi>a</mi><mi>b</mi></munderover><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mi>d</mi><mi>x</mi><mo>=</mo><mi>F</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>F</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow></math>",
+              "explanation": "上端点减下端点；F为f的原函数。",
+              "conditions": "a<b，f在[a,b]连续且F′=f；本课多项式符合条件。",
+              "variables": [
+                {
+                  "symbol": "a",
+                  "meaning": "下限",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "b",
+                  "meaning": "上限",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "x",
+                  "meaning": "积分变量",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "f",
+                  "meaning": "被积函数",
+                  "unit": "无量纲"
+                },
+                {
+                  "symbol": "F",
+                  "meaning": "f的一个原函数",
+                  "unit": "无量纲"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "对f(x)=2x+1，计算[0,2]上的定积分；另选F(x)=x²+x+7验证常数会抵消。",
+      "takeaways": [
+        "求值差的是原函数，而不是被积函数。"
+      ],
+      "source_ids": [
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=2x+1在[1,3]上的定积分是多少？",
+          "options": [
+            "12",
+            "4",
+            "10",
+            "2"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "12只算了原函数的上端点，忘记下端点。",
+            "4是被积函数端点值之差。",
+            "按本课条件独立计算得到10；其余选项混淆了运算或漏算步骤。",
+            "2只算了区间长度。"
+          ]
+        }
+      ],
+      "review_of": [
+        12,
+        13,
+        14
+      ]
+    },
+    {
+      "id": "quadratic-016",
+      "day": 16,
+      "title": "有向累积与总面积",
+      "objectives": [
+        "区分零定积分与非零几何总面积。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "有向累积与总面积",
+          "body": "以f(x)=x在[−1,1]为例，函数在负半段为负、正半段为正。定积分把两侧有向贡献相加，可以抵消；几何总面积则把每块面积的正值相加。零定积分不表示每处函数值为零。",
+          "example": "左侧有向贡献−1/2，右侧+1/2，所以定积分为0；两块三角形总面积为1。",
+          "diagrams": [
+            {
+              "title": "同样大小的正负两块",
+              "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 350 320\"><title>有向面积相消</title><desc>y=x在负一到一之间，左侧三角形在横轴下，右侧三角形在横轴上，两者几何面积均为二分之一。</desc><polygon id=\"negative-region\" points=\"70,180 170,180 70,280\" fill=\"#ead8ca\"/><polygon id=\"positive-region\" points=\"170,180 270,180 270,80\" fill=\"#d7e3cb\"/><line x1=\"45\" y1=\"180\" x2=\"310\" y2=\"180\" stroke=\"#355e48\"/><line x1=\"170\" y1=\"300\" x2=\"170\" y2=\"35\" stroke=\"#355e48\"/><line id=\"graph\" x1=\"70\" y1=\"280\" x2=\"270\" y2=\"80\" stroke=\"#355e48\" stroke-width=\"3\"/><text x=\"67\" y=\"170\" font-size=\"14\">−1</text><text x=\"175\" y=\"200\" font-size=\"14\">0</text><text x=\"267\" y=\"200\" font-size=\"14\">1</text><text x=\"312\" y=\"185\" font-size=\"14\">x</text><text x=\"175\" y=\"35\" font-size=\"14\">y</text><text x=\"35\" y=\"245\" font-size=\"14\">−1/2</text><text x=\"235\" y=\"135\" font-size=\"14\">+1/2</text></svg>",
+              "alt": "y=x在[−1,0]形成横轴下的三角形，在[0,1]形成横轴上的同面积三角形。",
+              "caption": "横纵轴均每单位100像素，原点为(170,180)。两块几何面积各1/2；定积分为−1/2+1/2=0，总面积为1。",
+              "source_ids": [
+                "original"
+              ]
+            }
+          ]
+        }
+      ],
+      "practice": "对f(x)=x在[−2,2]，分别给出定积分和几何总面积。列出两侧三角形各自面积。",
+      "takeaways": [
+        "先写清题目求的是净有向累积还是总面积。"
+      ],
+      "source_ids": [
+        "os-definite",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "f(x)=x在[−1,1]上的定积分是多少？",
+          "options": [
+            "1",
+            "1/2",
+            "−1",
+            "0"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "1是几何总面积，不是有向定积分。",
+            "1/2只算了正半段。",
+            "−1把两段都误当成负的贡献。",
+            "按本课条件独立计算得到0；其余选项混淆了运算或漏算步骤。"
+          ]
+        }
+      ],
+      "review_of": [
+        13,
+        15
+      ]
+    },
+    {
+      "id": "quadratic-017",
+      "day": 17,
+      "title": "反向与分段：守住端点顺序",
+      "objectives": [
+        "使用反向变号和区间拼接核对积分。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "反向与分段：守住端点顺序",
+          "body": "交换定积分上下限会变号；把[a,b]按内部点c分成两段，两个积分相加等于原区间积分。这些是积分的性质，不能把反向结果误说成几何面积为负。",
+          "example": "2x+1在[1,3]的积分为10，所以从3到1的积分为−10。"
+        }
+      ],
+      "practice": "对f(x)=x，把[0,2]分成[0,1]与[1,2]分别积分再相加，并比较反向从2到0的积分。",
+      "takeaways": [
+        "改变方向和拆分区间是两件不同操作。"
+      ],
+      "source_ids": [
+        "os-definite",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "2x+1从3到1的定积分是多少？",
+          "options": [
+            "−10",
+            "10",
+            "12",
+            "−12"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到−10；其余选项混淆了运算或漏算步骤。",
+            "10保留了正向积分，没有随方向变号。",
+            "12漏掉下端点且没有处理方向。",
+            "−12只负了上端点原函数值，仍漏算另一端。"
+          ]
+        }
+      ],
+      "review_of": [
+        14,
+        15,
+        16
+      ]
+    },
+    {
+      "id": "quadratic-018",
+      "day": 18,
+      "title": "点上的率与区间总变化",
+      "objectives": [
+        "对同一二次函数分别计算导数值和净变化。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "点上的率与区间总变化",
+          "body": "若Q是一个量，Q′是它的变化率。点上的Q′(a)和区间的Q(b)−Q(a)不是同一数；对本课多项式，也可用对Q′的定积分求净变化。不要直接对Q积分来求Q自己的变化。",
+          "example": "Q(x)=x²，在x=2处的变化率为4；从1到3的净变化是9−1=8，也等于2x在[1,3]的定积分。"
+        }
+      ],
+      "practice": "对Q(x)=x²，比较x=3处变化率与从2到4的净变化；再积分Q′验证后者。",
+      "takeaways": [
+        "要先辨明给的是量还是它的变化率。"
+      ],
+      "source_ids": [
+        "os-derivative",
+        "os-ftc",
+        "os-integration",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "Q(x)=x²，从x=1到x=3的净变化是多少？",
+          "options": [
+            "4",
+            "8",
+            "4/3",
+            "26/3"
+          ],
+          "correct_index": 1,
+          "explanations": [
+            "4是x=2处的变化率，不是区间净变化。",
+            "按本课条件独立计算得到8；其余选项混淆了运算或漏算步骤。",
+            "4/3不是此端点差的结果。",
+            "26/3是Q本身在[1,3]的积分，求错了量。"
+          ]
+        }
+      ],
+      "review_of": [
+        5,
+        8,
+        15,
+        16
+      ]
+    },
+    {
+      "id": "quadratic-019",
+      "day": 19,
+      "title": "负的二次函数仍可积分",
+      "objectives": [
+        "保留系数负号并检验定积分方向。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "负的二次函数仍可积分",
+          "body": "对非负区间上的−x²，被积函数不为正，正向定积分不应为正。给定它的一个原函数是−x³/3，按上端点减下端点即可。用函数符号检验结果，能发现漏负号。",
+          "example": "−x²在[0,3]上的积分是−27/3−0=−9；对应几何面积为9。"
+        }
+      ],
+      "practice": "求−x²在[0,2]上的定积分，并另写几何面积。说明两者符号不同的原因。",
+      "takeaways": [
+        "计算结果应与函数在区间上的符号相容。"
+      ],
+      "source_ids": [
+        "os-definite",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "−x²在[0,3]上的定积分是多少？",
+          "options": [
+            "9",
+            "−6",
+            "−9",
+            "0"
+          ],
+          "correct_index": 2,
+          "explanations": [
+            "9是几何面积，丢失了有向负号。",
+            "−6是−x²在3处的导数，不是积分。",
+            "按本课条件独立计算得到−9；其余选项混淆了运算或漏算步骤。",
+            "0并非本区间的累积，函数不是处处为0。"
+          ]
+        }
+      ],
+      "review_of": [
+        14,
+        16,
+        17
+      ]
+    },
+    {
+      "id": "quadratic-020",
+      "day": 20,
+      "title": "查错：两个原函数项都要算",
+      "objectives": [
+        "用分数与端点检验纠正积分计算。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "查错：两个原函数项都要算",
+          "body": "对x²+1，给定原函数是x³/3+x。线性叠加意味着两项都参与端点求值；不能把常数1遗忘，也不能把x²求导得到的2x塞进积分。先保留分数，再检查结果正负和大致大小。",
+          "example": "在[0,2]上，x²+1的积分是8/3+2=14/3，结果为正。"
+        }
+      ],
+      "practice": "求x²+1在[0,1]的定积分，分别写出x²与1两项的贡献；解释为什么只得到1/3不完整。",
+      "takeaways": [
+        "积分和求导使用不同规则，常数1的积分贡献并非0。"
+      ],
+      "source_ids": [
+        "os-ftc",
+        "os-integration",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "x²+1在[0,2]上的定积分是多少？",
+          "options": [
+            "8/3",
+            "4",
+            "2",
+            "14/3"
+          ],
+          "correct_index": 3,
+          "explanations": [
+            "8/3漏掉常数1在长度2区间上的贡献。",
+            "4是只取端点导数等错误运算产生的值。",
+            "2只计算了常数项，漏掉二次项。",
+            "按本课条件独立计算得到14/3；其余选项混淆了运算或漏算步骤。"
+          ]
+        }
+      ],
+      "review_of": [
+        12,
+        14,
+        15,
+        19
+      ]
+    },
+    {
+      "id": "quadratic-021",
+      "day": 21,
+      "title": "最后迁移：先选运算再算",
+      "objectives": [
+        "在新二次函数上独立选择变化率或累积运算。"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 5
+        },
+        {
+          "kind": "例题",
+          "minutes": 3
+        },
+        {
+          "kind": "practice",
+          "minutes": 7
+        },
+        {
+          "kind": "订正",
+          "minutes": 3
+        },
+        {
+          "kind": "review",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "最后迁移：先选运算再算",
+          "body": "拿到问题先圈出“点、区间、平均、净变化、积分”中的关键词。对g(x)=x²−2x，问点上的瞬时变化率就求g′；问函数自己的端点变化就算g(b)−g(a)；问g的定积分则使用给定原函数x³/3−x²。本课结束不表示能证明基本定理、处理三角函数或完成整门微积分。",
+          "example": "g′(x)=2x−2，所以g′(3)=4；g在[0,3]上的定积分是9−9=0，两者数值和意义不同。"
+        }
+      ],
+      "practice": "对g(x)=x²−2x，完成三项：求g′(1)；求g(3)−g(0)；给定原函数x³/3−x²求[0,3]的定积分。最后各用一句话解释。",
+      "takeaways": [
+        "能选对运算并解释范围，才算完成这门窄范围检查。"
+      ],
+      "source_ids": [
+        "os-rules",
+        "os-ftc",
+        "original"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "g(x)=x²−2x，在x=3处的瞬时变化率是多少？",
+          "options": [
+            "4",
+            "0",
+            "3",
+            "6"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "按本课条件独立计算得到4；其余选项混淆了运算或漏算步骤。",
+            "0是g在[0,3]的积分，不是点上导数。",
+            "3是g(3)的函数值。",
+            "6只求了x²的导数，漏掉−2x的贡献。"
+          ]
+        }
+      ],
+      "review_of": [
+        10,
+        16,
+        18,
+        20
+      ]
+    }
+  ]
+}

@@ -103,7 +103,8 @@ def build(data, output, calendar=False, overwrite=False, expected_days=None, exp
         (output / 'schedule.ics').write_bytes(ics.encode('utf-8'))
     return {'html': str(output / 'index.html'), 'plan': str(output / 'plan.json'), 'calendar': str(output / 'schedule.ics') if calendar else None,
             'days': data['course']['days'], 'daily_minutes': data['course']['daily_minutes'],
-            'questions': sum(len(l['questions']) for l in data['lessons']), 'offline_dependencies': 'none', 'calendar_events_created': False}
+            'questions': sum(len(l['questions']) for l in data['lessons']), 'offline_dependencies': 'none', 'calendar_events_created': False,
+            'budget_arithmetic_verified': False, 'facts_verified': False, 'delivery_status': 'structure_only'}
 
 
 def main():

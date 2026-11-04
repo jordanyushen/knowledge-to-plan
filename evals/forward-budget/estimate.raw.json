@@ -1,0 +1,857 @@
+{
+  "schema_version": 1,
+  "constraints": {
+    "days": 21,
+    "daily_minutes": 30
+  },
+  "original_goal": "掌握完整微积分",
+  "selected_goal": "掌握完整微积分",
+  "background": "只会基本代数",
+  "prerequisite_basis": "用户只确认基本代数；未做诊断，不默认已会函数图像、三角、指数对数；下列区间是任务假设，不是实测或科学下限。",
+  "prerequisites": [
+    {
+      "skill": "基本代数",
+      "status": "known",
+      "evidence": "用户自述，未独立诊断"
+    },
+    {
+      "skill": "函数图像、三角、指数对数",
+      "status": "gap",
+      "evidence": "用户未确认；据所读教材先修范围暂按缺口处理，需诊断修正。"
+    }
+  ],
+  "scope": {
+    "mode": "full",
+    "excluded": []
+  },
+  "buffer_percent": 15,
+  "buffer_reason": "为未诊断的先修缺口、额外订正及学习波动预留；常规反馈与复习已计入任务，不重复计入。",
+  "goals": [
+    {
+      "id": "g01",
+      "outcome": "解释函数、图像、复合与反函数并完成基础诊断",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g02",
+      "outcome": "处理三角、指数与对数函数的先修题",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g03",
+      "outcome": "独立判断极限及连续性并解释条件",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g04",
+      "outcome": "从变化率定义解释导数",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g05",
+      "outcome": "计算基本函数及复合函数的导数",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g06",
+      "outcome": "在优化与相关变化率中建立和检查模型",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g07",
+      "outcome": "解释定积分与微积分基本定理",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g08",
+      "outcome": "完成换元与分部积分并核对结果",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g09",
+      "outcome": "计算积分应用并解释单位与区间",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g10",
+      "outcome": "判断初等微分方程模型并求解基础实例",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g11",
+      "outcome": "判断数列与级数收敛及适用检验",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g12",
+      "outcome": "使用幂级数与误差条件处理基础近似",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g13",
+      "outcome": "处理参数曲线、极坐标、空间向量与向量值函数",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    },
+    {
+      "id": "g14",
+      "outcome": "计算并解释偏导数、重积分及向量微积分基础任务",
+      "basis": "按已读三册课程范围划分的粗模块；任务数与分钟是本次初始假设，未经过新手试学校准；不以教材课时当掌握时间。",
+      "source_ids": [
+        "openstax-scope",
+        "openstax-prereq"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "分段讲解与自我解释",
+          "count": 3,
+          "minutes_low": 20,
+          "minutes_high": 30,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "example",
+          "description": "逐步例题与条件核对",
+          "count": 4,
+          "minutes_low": 10,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "practice",
+          "description": "不看答案独立解题",
+          "count": 12,
+          "minutes_low": 8,
+          "minutes_high": 15,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "feedback",
+          "description": "对预计错题订正并复做",
+          "count": 6,
+          "minutes_low": 5,
+          "minutes_high": 10,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "review",
+          "description": "跨日检索与混合练习",
+          "count": 3,
+          "minutes_low": 8,
+          "minutes_high": 12,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        },
+        {
+          "kind": "quiz",
+          "description": "独立知识与迁移检查",
+          "count": 2,
+          "minutes_low": 15,
+          "minutes_high": 25,
+          "basis": "每模块约定任务量；分钟为初始估计，依据任务复杂度与独立产出要求，未宣称为来源给定的用时。"
+        }
+      ]
+    }
+  ]
+}

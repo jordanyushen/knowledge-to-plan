@@ -46,6 +46,10 @@ jobs:
         run: python evals/check_evals.py
       - name: Frozen-course independent calculation records
         run: python evals/review_checks.py
+      - name: Scoped long-course merge, budget, teaching risks and delivery
+        run: python evals/check_long_course.py
+      - name: Independently reviewed long-course fixed calculations
+        run: python evals/long-course-independent-checks.py
 
   release-integrity:
     name: Examples and release integrity

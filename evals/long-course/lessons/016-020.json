@@ -1,0 +1,385 @@
+[
+  {
+    "id": "quadratic-016",
+    "day": 16,
+    "title": "有向累积与总面积",
+    "objectives": [
+      "区分零定积分与非零几何总面积。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "有向累积与总面积",
+        "body": "以f(x)=x在[−1,1]为例，函数在负半段为负、正半段为正。定积分把两侧有向贡献相加，可以抵消；几何总面积则把每块面积的正值相加。零定积分不表示每处函数值为零。",
+        "example": "左侧有向贡献−1/2，右侧+1/2，所以定积分为0；两块三角形总面积为1。",
+        "diagrams": [
+          {
+            "title": "同样大小的正负两块",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 350 320\"><title>有向面积相消</title><desc>y=x在负一到一之间，左侧三角形在横轴下，右侧三角形在横轴上，两者几何面积均为二分之一。</desc><polygon id=\"negative-region\" points=\"70,180 170,180 70,280\" fill=\"#ead8ca\"/><polygon id=\"positive-region\" points=\"170,180 270,180 270,80\" fill=\"#d7e3cb\"/><line x1=\"45\" y1=\"180\" x2=\"310\" y2=\"180\" stroke=\"#355e48\"/><line x1=\"170\" y1=\"300\" x2=\"170\" y2=\"35\" stroke=\"#355e48\"/><line id=\"graph\" x1=\"70\" y1=\"280\" x2=\"270\" y2=\"80\" stroke=\"#355e48\" stroke-width=\"3\"/><text x=\"67\" y=\"170\" font-size=\"14\">−1</text><text x=\"175\" y=\"200\" font-size=\"14\">0</text><text x=\"267\" y=\"200\" font-size=\"14\">1</text><text x=\"312\" y=\"185\" font-size=\"14\">x</text><text x=\"175\" y=\"35\" font-size=\"14\">y</text><text x=\"35\" y=\"245\" font-size=\"14\">−1/2</text><text x=\"235\" y=\"135\" font-size=\"14\">+1/2</text></svg>",
+            "alt": "y=x在[−1,0]形成横轴下的三角形，在[0,1]形成横轴上的同面积三角形。",
+            "caption": "横纵轴均每单位100像素，原点为(170,180)。两块几何面积各1/2；定积分为−1/2+1/2=0，总面积为1。",
+            "source_ids": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "对f(x)=x在[−2,2]，分别给出定积分和几何总面积。列出两侧三角形各自面积。",
+    "takeaways": [
+      "先写清题目求的是净有向累积还是总面积。"
+    ],
+    "source_ids": [
+      "os-definite",
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x在[−1,1]上的定积分是多少？",
+        "options": [
+          "1",
+          "1/2",
+          "−1",
+          "0"
+        ],
+        "correct_index": 3,
+        "explanations": [
+          "1是几何总面积，不是有向定积分。",
+          "1/2只算了正半段。",
+          "−1把两段都误当成负的贡献。",
+          "按本课条件独立计算得到0；其余选项混淆了运算或漏算步骤。"
+        ]
+      }
+    ],
+    "review_of": [
+      13,
+      15
+    ]
+  },
+  {
+    "id": "quadratic-017",
+    "day": 17,
+    "title": "反向与分段：守住端点顺序",
+    "objectives": [
+      "使用反向变号和区间拼接核对积分。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "反向与分段：守住端点顺序",
+        "body": "交换定积分上下限会变号；把[a,b]按内部点c分成两段，两个积分相加等于原区间积分。这些是积分的性质，不能把反向结果误说成几何面积为负。",
+        "example": "2x+1在[1,3]的积分为10，所以从3到1的积分为−10。"
+      }
+    ],
+    "practice": "对f(x)=x，把[0,2]分成[0,1]与[1,2]分别积分再相加，并比较反向从2到0的积分。",
+    "takeaways": [
+      "改变方向和拆分区间是两件不同操作。"
+    ],
+    "source_ids": [
+      "os-definite",
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "2x+1从3到1的定积分是多少？",
+        "options": [
+          "−10",
+          "10",
+          "12",
+          "−12"
+        ],
+        "correct_index": 0,
+        "explanations": [
+          "按本课条件独立计算得到−10；其余选项混淆了运算或漏算步骤。",
+          "10保留了正向积分，没有随方向变号。",
+          "12漏掉下端点且没有处理方向。",
+          "−12只负了上端点原函数值，仍漏算另一端。"
+        ]
+      }
+    ],
+    "review_of": [
+      14,
+      15,
+      16
+    ]
+  },
+  {
+    "id": "quadratic-018",
+    "day": 18,
+    "title": "点上的率与区间总变化",
+    "objectives": [
+      "对同一二次函数分别计算导数值和净变化。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "点上的率与区间总变化",
+        "body": "若Q是一个量，Q′是它的变化率。点上的Q′(a)和区间的Q(b)−Q(a)不是同一量，数值可能相同；对本课多项式，也可用对Q′的定积分求净变化。不要直接对Q积分来求Q自己的变化。",
+        "example": "Q(x)=x²，在x=2处的变化率为4；从1到3的净变化是9−1=8，也等于2x在[1,3]的定积分。"
+      }
+    ],
+    "practice": "对Q(x)=x²，比较x=3处变化率与从2到4的净变化；再积分Q′验证后者。",
+    "takeaways": [
+      "要先辨明给的是量还是它的变化率。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "os-ftc",
+      "os-integration",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "Q(x)=x²，从x=1到x=3的净变化是多少？",
+        "options": [
+          "4",
+          "8",
+          "4/3",
+          "26/3"
+        ],
+        "correct_index": 1,
+        "explanations": [
+          "4是x=2处的变化率，不是区间净变化。",
+          "按本课条件独立计算得到8；其余选项混淆了运算或漏算步骤。",
+          "4/3不是此端点差的结果。",
+          "26/3是Q本身在[1,3]的积分，求错了量。"
+        ]
+      }
+    ],
+    "review_of": [
+      5,
+      8,
+      15,
+      16
+    ]
+  },
+  {
+    "id": "quadratic-019",
+    "day": 19,
+    "title": "负的二次函数仍可积分",
+    "objectives": [
+      "保留系数负号并检验定积分方向。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "负的二次函数仍可积分",
+        "body": "对非负区间上的−x²，被积函数不为正，正向定积分不应为正。给定它的一个原函数是−x³/3，按上端点减下端点即可。用函数符号检验结果，能发现漏负号。",
+        "example": "−x²在[0,3]上的积分是−27/3−0=−9；对应几何面积为9。"
+      }
+    ],
+    "practice": "求−x²在[0,2]上的定积分，并另写几何面积。说明两者符号不同的原因。",
+    "takeaways": [
+      "计算结果应与函数在区间上的符号相容。"
+    ],
+    "source_ids": [
+      "os-definite",
+      "os-ftc",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "−x²在[0,3]上的定积分是多少？",
+        "options": [
+          "9",
+          "−6",
+          "−9",
+          "0"
+        ],
+        "correct_index": 2,
+        "explanations": [
+          "9是几何面积，丢失了有向负号。",
+          "−6是−x²在3处的导数，不是积分。",
+          "按本课条件独立计算得到−9；其余选项混淆了运算或漏算步骤。",
+          "0并非本区间的累积，函数不是处处为0。"
+        ]
+      }
+    ],
+    "review_of": [
+      14,
+      16,
+      17
+    ]
+  },
+  {
+    "id": "quadratic-020",
+    "day": 20,
+    "title": "查错：两个原函数项都要算",
+    "objectives": [
+      "用分数与端点检验纠正积分计算。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "查错：两个原函数项都要算",
+        "body": "对x²+1，给定原函数是x³/3+x。线性叠加意味着两项都参与端点求值；不能把常数1遗忘，也不能把x²求导得到的2x塞进积分。先保留分数，再检查结果正负和大致大小。",
+        "example": "在[0,2]上，x²+1的积分是8/3+2=14/3，结果为正。"
+      }
+    ],
+    "practice": "求x²+1在[0,1]的定积分，分别写出x²与1两项的贡献；解释为什么只得到1/3不完整。",
+    "takeaways": [
+      "积分和求导使用不同规则，常数1的积分贡献并非0。"
+    ],
+    "source_ids": [
+      "os-ftc",
+      "os-integration",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "x²+1在[0,2]上的定积分是多少？",
+        "options": [
+          "8/3",
+          "4",
+          "2",
+          "14/3"
+        ],
+        "correct_index": 3,
+        "explanations": [
+          "8/3漏掉常数1在长度2区间上的贡献。",
+          "4是只取端点导数等错误运算产生的值。",
+          "2只计算了常数项，漏掉二次项。",
+          "按本课条件独立计算得到14/3；其余选项混淆了运算或漏算步骤。"
+        ]
+      }
+    ],
+    "review_of": [
+      12,
+      14,
+      15,
+      19
+    ]
+  }
+]

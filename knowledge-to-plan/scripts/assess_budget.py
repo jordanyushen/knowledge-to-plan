@@ -44,9 +44,9 @@ def _buffer_percent(value: str) -> float:
     return parsed
 
 
-def _number(value: Any, name: str) -> float:
+def _number(value: Any, name: str):
     """Validate programmatic calls as well as the command-line interface."""
-    if isinstance(value, bool) or not isinstance(value, (int, float)):
+    if isinstance(value, bool) or not isinstance(value, (int, float, Fraction)):
         raise ValueError(f"{name} must be a finite number")
     try:
         number = float(value)
@@ -54,7 +54,9 @@ def _number(value: Any, name: str) -> float:
         raise ValueError(f"{name} must be a finite number") from None
     if not math.isfinite(number):
         raise ValueError(f"{name} must be a finite number")
-    return number
+    # Author-side minute ledgers use exact fractions of an hour. Keep those
+    # exact for boundary decisions; the public CLI still accepts decimal hours.
+    return value if isinstance(value, Fraction) else number
 
 
 def _positive_target(value: Fraction) -> int:
@@ -82,7 +84,7 @@ def assess_budget(
         raise ValueError('minutes cannot exceed 1440 in one day')
     low = _number(estimated_hours_low, "estimated_hours_low")
     high = _number(estimated_hours_high, "estimated_hours_high")
-    buffer = _number(buffer_percent, "buffer_percent")
+    buffer = float(_number(buffer_percent, "buffer_percent"))
     if low < 0 or high < 0:
         raise ValueError("estimated hours must be at least 0")
     if high < low:
@@ -159,7 +161,7 @@ def assess_budget(
         },
         "available_hours": available_hours,
         "usable_hours": usable_hours,
-        "estimate_range": {"low": low, "high": high, "unit": "hours"},
+        "estimate_range": {"low": float(low), "high": float(high), "unit": "hours"},
         "status": status,
         "recommended_total_days_range": total_days,
         "recommended_daily_minutes_range": daily_minutes,

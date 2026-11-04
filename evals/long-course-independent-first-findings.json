@@ -1,0 +1,32 @@
+{
+  "date": "2026-11-05",
+  "review_kind": "independent agent reading before author revisions",
+  "initial_plan_sha256": "1180c052dd6977c336fa51ef02df4731fc63eca8de5fe3b97398657e6f2d2d62",
+  "initial_snapshot": "long-course/review-history/first-reviewed-plan.json; captured after LC-03 rendering correction, before LC-01/LC-02 semantic corrections",
+  "findings": [
+    {
+      "id": "LC-01",
+      "location": "$.lessons[4].sections[0].body",
+      "original_excerpt": "对二次函数，区间平均一般不等于起点的瞬时变化率；它们可能数值偶合，但定义仍不同。",
+      "issue": "严格非退化二次函数在非零区间上两者不可能相等：平均斜率a(u+v)+b，起点导数2au+b，差为a(v-u)，非零。数值偶合属于其他函数或退化线性情形，应明确范围。",
+      "requested_fix": "明确非退化二次函数的本例不相等；若谈其他函数可能偶合，单独说明。"
+    },
+    {
+      "id": "LC-02",
+      "location": "$.lessons[17].sections[0].body",
+      "original_excerpt": "点上的Q′(a)和区间的Q(b)−Q(a)不是同一数",
+      "issue": "意义不同不代表数值必定不同；Q=x²在x=2的导数为4，从0到2的净变化也为4。",
+      "requested_fix": "改成不是同一量，数值可能相同，并以定义选择运算。"
+    },
+    {
+      "id": "LC-03",
+      "location": "$.lessons[14].sections[0].formulas[0].conditions",
+      "original_excerpt": "a&lt;b",
+      "issue": "conditions是纯文本渲染，HTML实体将原样显示为a&lt;b。",
+      "requested_fix": "使用可读的a < b或Unicode不等号；不要把实体塞进纯文本字段。"
+    }
+  ],
+  "author_revisions": "LC-01 and LC-02 corrected by author and independently reread; LC-03 corrected by author before semantic snapshot. Revised plan SHA256 478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "facts_verified": false,
+  "learner_trial": "not_performed"
+}

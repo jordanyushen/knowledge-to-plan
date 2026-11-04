@@ -1,0 +1,425 @@
+[
+  {
+    "id": "quadratic-001",
+    "day": 1,
+    "title": "先算函数值，再谈变化",
+    "objectives": [
+      "准确区分函数值与两个输入之间的变化量。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "先算函数值，再谈变化",
+        "body": "本课所有变量都无量纲。函数f把每个输入x映射到一个值；f(2)是在2处的值，f(2)−f(1)才是从1到2的变化量。对f(x)=x²+1，先分别代入，再相减，不能把差值误当端点值。",
+        "example": "f(x)=x²+1时，f(1)=2、f(2)=5，所以从1到2的变化量为3。"
+      }
+    ],
+    "practice": "对g(x)=x²+1，列出g(0)、g(3)，再写出从0到3的变化量，并说明它不是g(3)。预期产出：两次代入和一次相减。",
+    "takeaways": [
+      "变化量=结束值−开始值。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²+1，从x=1到x=2的变化量是多少？",
+        "options": [
+          "3",
+          "5",
+          "2",
+          "4"
+        ],
+        "correct_index": 0,
+        "explanations": [
+          "按本课条件独立计算得到3；其余选项混淆了运算或漏算步骤。",
+          "5是结束函数值，还没有减去开始值。",
+          "2是开始函数值，不是变化量。",
+          "4把x²的值与完整函数混在了一起。"
+        ]
+      }
+    ]
+  },
+  {
+    "id": "quadratic-002",
+    "day": 2,
+    "title": "平均变化率：先比较同一区间",
+    "objectives": [
+      "计算二次函数在非零长度区间上的平均变化率。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "平均变化率：先比较同一区间",
+        "body": "平均变化率把输出变化量除以输入变化量。当起点a和终点b不相同时，它是连接两点的割线斜率。对f(x)=x²，不能用f(b)÷b代替差商，除非已说明为何起点项为零。",
+        "example": "f(x)=x²在[1,3]上的变化量为9−1=8，输入变化为2，所以平均变化率是4。",
+        "formulas": [
+          {
+            "title": "平均变化率",
+            "expression": "m = [f(b)−f(a)] ÷ (b−a)",
+            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>m</mi><mo>=</mo><mfrac><mrow><mi>f</mi><mo>(</mo><mi>b</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mrow><mi>b</mi><mo>−</mo><mi>a</mi></mrow></mfrac></mrow></math>",
+            "explanation": "分子分母使用同一对端点，所得数是割线斜率。",
+            "conditions": "a与b是定义域内不同输入；本例函数为二次多项式。",
+            "variables": [
+              {
+                "symbol": "a",
+                "meaning": "起点输入",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "b",
+                "meaning": "终点输入",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "f",
+                "meaning": "给定函数",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "m",
+                "meaning": "平均变化率",
+                "unit": "无量纲"
+              }
+            ]
+          }
+        ],
+        "diagrams": [
+          {
+            "title": "二次函数的两点割线",
+            "svg": "<svg xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 360 310\"><title>x²与两点割线</title><desc>横轴x，纵轴y，点A为(1,1)，点B为(3,9)，连接两点得到割线斜率4。</desc><line x1=\"50\" y1=\"250\" x2=\"320\" y2=\"250\" stroke=\"#355e48\"/><line x1=\"50\" y1=\"275\" x2=\"50\" y2=\"10\" stroke=\"#355e48\"/><path d=\"M 50 250 Q 170 250 290 10\" fill=\"none\" stroke=\"#355e48\" stroke-width=\"3\"/><line id=\"secant\" x1=\"110\" y1=\"235\" x2=\"230\" y2=\"115\" stroke=\"#ab703b\" stroke-width=\"3\"/><circle id=\"point-a\" cx=\"110\" cy=\"235\" r=\"4\" fill=\"#ab703b\"/><circle id=\"point-b\" cx=\"230\" cy=\"115\" r=\"4\" fill=\"#ab703b\"/><text x=\"114\" y=\"226\" font-size=\"14\">A(1,1)</text><text x=\"234\" y=\"110\" font-size=\"14\">B(3,9)</text><text x=\"300\" y=\"272\" font-size=\"14\">x</text><text x=\"28\" y=\"20\" font-size=\"14\">y</text><text x=\"42\" y=\"268\" font-size=\"12\">0</text><text x=\"180\" y=\"30\" font-size=\"14\">y=x²</text></svg>",
+            "alt": "点A(1,1)和B(3,9)位于y=x²上，割线平均变化率为4。",
+            "caption": "原图使用横轴每单位60像素、纵轴每单位15像素。两轴缩放不同，不能从屏幕倾角直接读斜率；根据标注数据计算(9−1)÷(3−1)=4。图线按所声明数值绘制。",
+            "source_ids": [
+              "original"
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "计算f(x)=x²在[0,2]上的平均变化率。写出分子和分母，并用“每增加1个输入，平均增加多少输出”解释结果。",
+    "takeaways": [
+      "差商的两个差必须使用同一对端点。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²在[1,3]上的平均变化率是多少？",
+        "options": [
+          "8",
+          "4",
+          "3",
+          "2"
+        ],
+        "correct_index": 1,
+        "explanations": [
+          "8只算了输出变化，尚未除以输入变化。",
+          "按本课条件独立计算得到4；其余选项混淆了运算或漏算步骤。",
+          "3是终点输入，不是差商。",
+          "2是输入变化，不是平均变化率。"
+        ]
+      }
+    ],
+    "review_of": [
+      1
+    ]
+  },
+  {
+    "id": "quadratic-003",
+    "day": 3,
+    "title": "负区间也用同一差商",
+    "objectives": [
+      "保留符号并检查平均变化率的方向。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "负区间也用同一差商",
+        "body": "当函数值下降时，平均变化率可以为负。以输入递增的顺序计算b−a，同时按相同顺序计算f(b)−f(a)。若把分子分母都反向，商不变；只反向一处会错号。",
+        "example": "f(x)=x²在[−2,0]上的变化量是0−4=−4，输入变化为2，平均变化率为−2。"
+      }
+    ],
+    "practice": "求f(x)=x²在[−3,−1]上的平均变化率，再把两处差都反向计算一次验证。",
+    "takeaways": [
+      "平均变化率的正负来自输出如何随输入改变。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²在[−2,0]上的平均变化率是多少？",
+        "options": [
+          "2",
+          "−4",
+          "−2",
+          "0"
+        ],
+        "correct_index": 2,
+        "explanations": [
+          "2丢掉了函数值下降的负号。",
+          "−4是输出变化，尚未除以2。",
+          "按本课条件独立计算得到−2；其余选项混淆了运算或漏算步骤。",
+          "终点函数值为0，不代表区间没有变化。"
+        ]
+      }
+    ],
+    "review_of": [
+      1,
+      2
+    ]
+  },
+  {
+    "id": "quadratic-004",
+    "day": 4,
+    "title": "瞬时变化率：让区间靠近一点",
+    "objectives": [
+      "用二次函数差商的化简理解一个点的导数。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "瞬时变化率：让区间靠近一点",
+        "body": "平均变化率属于两个不同输入；瞬时变化率属于一个输入。对f(x)=x²，在a与a+h之间，h≠0时差商化简为2a+h。当h趋近0，所得极限为2a，记为f′(a)。不能直接在未化简的分母h处代入0。本课只处理这种可直接化简的二次函数，不展开一般极限理论。",
+        "example": "对f(x)=x²，在a=2处差商为4+h，因此h趋近0时得到f′(2)=4。",
+        "formulas": [
+          {
+            "title": "差商的极限",
+            "expression": "f′(a) = lim（h→0）[f(a+h)−f(a)] ÷ h",
+            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>f</mi><mo>′</mo><mo>(</mo><mi>a</mi><mo>)</mo><mo>=</mo><munder><mo>lim</mo><mrow><mi>h</mi><mo>→</mo><mn>0</mn></mrow></munder><mfrac><mrow><mi>f</mi><mo>(</mo><mi>a</mi><mo>+</mo><mi>h</mi><mo>)</mo><mo>−</mo><mi>f</mi><mo>(</mo><mi>a</mi><mo>)</mo></mrow><mi>h</mi></mfrac></mrow></math>",
+            "explanation": "差商在h不为0时定义；本课通过展开二次式求其极限。",
+            "conditions": "本课在实数二次多项式上使用，导数存在。不能先把分母h代成0。",
+            "variables": [
+              {
+                "symbol": "a",
+                "meaning": "固定的求导点",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "h",
+                "meaning": "非零输入增量",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "f",
+                "meaning": "给定二次函数",
+                "unit": "无量纲"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "对f(x)=x²，在a=3处先写差商并展开消去h，再写出瞬时变化率。",
+    "takeaways": [
+      "导数是差商的极限，不是把0除以0。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²在x=2处的瞬时变化率是多少？",
+        "options": [
+          "2",
+          "0",
+          "8",
+          "4"
+        ],
+        "correct_index": 3,
+        "explanations": [
+          "2是输入点；还需计算2a。",
+          "0混淆了h趋近0和差商趋近0。",
+          "8是区间[1,3]上的输出变化量。",
+          "按本课条件独立计算得到4；其余选项混淆了运算或漏算步骤。"
+        ]
+      }
+    ],
+    "review_of": [
+      2,
+      3
+    ]
+  },
+  {
+    "id": "quadratic-005",
+    "day": 5,
+    "title": "一次检索：平均不等于起点瞬时",
+    "objectives": [
+      "独立比较同一函数的区间平均与起点瞬时变化率。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "一次检索：平均不等于起点瞬时",
+        "body": "先不看前课，写出平均变化率和导数各自需要的输入。对非退化二次函数且起终点不同时，区间平均不等于起点瞬时变化率。对其他类型函数两者数值可能相同，但定义仍不同。计算前先写“区间”还是“点”。",
+        "example": "f(x)=x²在[2,4]上的平均变化率是(16−4)÷2=6，而f′(2)=4。"
+      }
+    ],
+    "practice": "对f(x)=x²，分别计算[1,5]上的平均变化率和x=1处瞬时变化率，并用一句话比较两者。",
+    "takeaways": [
+      "一对端点与单个点回答不同问题。"
+    ],
+    "source_ids": [
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "只问f(x)=x²在[2,4]上的平均变化率，答案是多少？",
+        "options": [
+          "6",
+          "4",
+          "12",
+          "8"
+        ],
+        "correct_index": 0,
+        "explanations": [
+          "按本课条件独立计算得到6；其余选项混淆了运算或漏算步骤。",
+          "4是起点x=2处的导数。",
+          "12是输出变化量，尚未除以2。",
+          "8是终点x=4处的导数。"
+        ]
+      }
+    ],
+    "review_of": [
+      2,
+      4
+    ]
+  }
+]

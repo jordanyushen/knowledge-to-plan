@@ -1,0 +1,395 @@
+[
+  {
+    "id": "quadratic-006",
+    "day": 6,
+    "title": "常数与直线的导数",
+    "objectives": [
+      "使用常数和线性函数规则计算导数值。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "常数与直线的导数",
+        "body": "常数函数不随输入变化，导数是0。对mx+c，任意两个不同输入的差商都等于m，因此导数函数也是m。截距c改变函数值，却不改变直线的变化率。",
+        "example": "f(x)=3x−2的导数恒为3，所以f′(−4)=3；f(x)=7的导数恒为0。"
+      }
+    ],
+    "practice": "对g(x)=−2x+5，写导数函数并求g′(3)。用x=0和x=1的差商验证。",
+    "takeaways": [
+      "直线的导数由斜率决定，不由截距决定。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "os-derivative",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=3x−2时，f′(−4)是多少？",
+        "options": [
+          "−4",
+          "3",
+          "−14",
+          "0"
+        ],
+        "correct_index": 1,
+        "explanations": [
+          "−4是代入的输入，不是导数。",
+          "按本课条件独立计算得到3；其余选项混淆了运算或漏算步骤。",
+          "−14是f(−4)的函数值。",
+          "0仅适用于常数函数，3x−2并非常数。"
+        ]
+      }
+    ],
+    "review_of": [
+      4,
+      5
+    ]
+  },
+  {
+    "id": "quadratic-007",
+    "day": 7,
+    "title": "二次项的系数不能丢",
+    "objectives": [
+      "计算常数倍二次项的导数。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "二次项的系数不能丢",
+        "body": "已知x²的导数为2x，乘上固定系数后，导数也乘同一系数。因此ax²的导数为2ax。这里a是固定数，不随x变化；先求导数函数，再代入输入。",
+        "example": "f(x)=2x²，所以f′(x)=4x，在x=3处f′(3)=12。"
+      }
+    ],
+    "practice": "对g(x)=3x²，求g′(2)，并写出求导与代入两步。",
+    "takeaways": [
+      "求导先处理幂次与系数，再代入点。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=2x²时，f′(3)是多少？",
+        "options": [
+          "6",
+          "18",
+          "12",
+          "4"
+        ],
+        "correct_index": 2,
+        "explanations": [
+          "6漏掉原有系数2。",
+          "18是f(3)，不是导数值。",
+          "按本课条件独立计算得到12；其余选项混淆了运算或漏算步骤。",
+          "4是导数的系数，尚未乘以输入3。"
+        ]
+      }
+    ],
+    "review_of": [
+      4,
+      6
+    ]
+  },
+  {
+    "id": "quadratic-008",
+    "day": 8,
+    "title": "逐项求导，再合并",
+    "objectives": [
+      "求次数不超过2的多项式的导数值。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "逐项求导，再合并",
+        "body": "和的导数等于各项导数之和。对ax²+bx+c，分别得到2ax、b、0，所以导数为2ax+b。本课不引入乘积、商或复合函数的求导规则，遇到范围外表达式应先说明未覆盖。",
+        "example": "f(x)=x²+3x+2的导数为2x+3，所以f′(2)=7。",
+        "formulas": [
+          {
+            "title": "二次多项式的导数",
+            "expression": "f(x)=ax²+bx+c ⇒ f′(x)=2ax+b",
+            "mathml": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\"><mrow><mi>f</mi><mo>′</mo><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><mn>2</mn><mi>a</mi><mi>x</mi><mo>+</mo><mi>b</mi></mrow></math>",
+            "explanation": "逐项使用常数、一次项和二次项的规则。",
+            "conditions": "a、b、c是固定实数；x为实数。",
+            "variables": [
+              {
+                "symbol": "x",
+                "meaning": "输入",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "a",
+                "meaning": "二次项固定系数",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "b",
+                "meaning": "一次项固定系数",
+                "unit": "无量纲"
+              },
+              {
+                "symbol": "c",
+                "meaning": "常数项",
+                "unit": "无量纲"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "practice": "对g(x)=2x²−x+4，先逐项求导，再求g′(1)。",
+    "takeaways": [
+      "常数项的导数为0，而一次项仍贡献一个常数。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²+3x+2时，f′(2)是多少？",
+        "options": [
+          "9",
+          "12",
+          "5",
+          "7"
+        ],
+        "correct_index": 3,
+        "explanations": [
+          "9错误地保留了原常数项2。",
+          "12是f(2)的函数值。",
+          "5漏掉一次项的部分贡献。",
+          "按本课条件独立计算得到7；其余选项混淆了运算或漏算步骤。"
+        ]
+      }
+    ],
+    "review_of": [
+      6,
+      7
+    ]
+  },
+  {
+    "id": "quadratic-009",
+    "day": 9,
+    "title": "导数函数与导数值",
+    "objectives": [
+      "在含负系数的二次函数中分清表达式和数值。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "导数函数与导数值",
+        "body": "f′(x)是一个可继续代入的函数，f′(a)是在指定点得到的数。负系数也按同一规则保留：−x²求导得到−2x。不要把求导后的x又当作固定输入的名称。",
+        "example": "f(x)=−x²+4x，所以f′(x)=−2x+4，在x=1处得到2。"
+      }
+    ],
+    "practice": "对g(x)=−2x²+6x，写g′(x)，再求g′(2)，最后解释它与g(2)不是同一量。",
+    "takeaways": [
+      "先得到导数函数，再求点上的导数值。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=−x²+4x时，f′(1)是多少？",
+        "options": [
+          "2",
+          "3",
+          "4",
+          "−2"
+        ],
+        "correct_index": 0,
+        "explanations": [
+          "按本课条件独立计算得到2；其余选项混淆了运算或漏算步骤。",
+          "3是f(1)，不是f′(1)。",
+          "4只取了一次项，漏掉二次项贡献。",
+          "−2只计算了−x²的贡献。"
+        ]
+      }
+    ],
+    "review_of": [
+      7,
+      8
+    ]
+  },
+  {
+    "id": "quadratic-010",
+    "day": 10,
+    "title": "导数为零，只说明这一点",
+    "objectives": [
+      "计算二次函数的驻点并限定结论。"
+    ],
+    "activities": [
+      {
+        "kind": "learn",
+        "minutes": 5
+      },
+      {
+        "kind": "例题",
+        "minutes": 3
+      },
+      {
+        "kind": "practice",
+        "minutes": 7
+      },
+      {
+        "kind": "订正",
+        "minutes": 3
+      },
+      {
+        "kind": "review",
+        "minutes": 3
+      },
+      {
+        "kind": "quiz",
+        "minutes": 3
+      }
+    ],
+    "sections": [
+      {
+        "title": "导数为零，只说明这一点",
+        "body": "对本课多项式，导数值的正负描述局部变化方向。导数为0表示该点瞬时变化率为0，不能据此说整个函数恒定。对f(x)=x²−4x，f′(x)=2x−4，因此x=2处导数为0，但其他点通常不为0。",
+        "example": "f′(2)=0；同一函数f′(1)=−2、f′(3)=2，说明不能把单点的零扩展到全区间。"
+      }
+    ],
+    "practice": "对g(x)=x²−6x，求使g′(x)=0的输入，再分别求该点左、右各1处的导数。",
+    "takeaways": [
+      "“某一点变化率为0”不等于“函数处处不变”。"
+    ],
+    "source_ids": [
+      "os-rules",
+      "original"
+    ],
+    "questions": [
+      {
+        "id": "q1",
+        "prompt": "f(x)=x²−4x时，f′(2)是多少？",
+        "options": [
+          "−4",
+          "0",
+          "2",
+          "4"
+        ],
+        "correct_index": 1,
+        "explanations": [
+          "−4是f(2)，不是导数。",
+          "按本课条件独立计算得到0；其余选项混淆了运算或漏算步骤。",
+          "2是输入位置，不是导数值。",
+          "4漏掉一次项求导贡献的−4。"
+        ]
+      }
+    ],
+    "review_of": [
+      5,
+      8,
+      9
+    ]
+  }
+]

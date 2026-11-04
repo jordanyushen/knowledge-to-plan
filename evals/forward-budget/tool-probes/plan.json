@@ -1,0 +1,72 @@
+{
+  "schema_version": 1,
+  "course": {
+    "id": "isolated-forward-probe",
+    "title": "单位换算小练习",
+    "goal": "独立完成毫米到米的换算",
+    "background": "会基本除法",
+    "days": 1,
+    "daily_minutes": 10,
+    "timezone": "Asia/Hong_Kong"
+  },
+  "sources": [
+    {
+      "id": "unit",
+      "title": "已知单位关系",
+      "locator": "1米=1000毫米。"
+    }
+  ],
+  "lessons": [
+    {
+      "id": "l1",
+      "day": 1,
+      "title": "毫米与米",
+      "objectives": [
+        "独立完成毫米到米的换算"
+      ],
+      "activities": [
+        {
+          "kind": "learn",
+          "minutes": 4
+        },
+        {
+          "kind": "practice",
+          "minutes": 3
+        },
+        {
+          "kind": "quiz",
+          "minutes": 3
+        }
+      ],
+      "sections": [
+        {
+          "title": "换算",
+          "body": "1米等于1000毫米；毫米数除以1000得到米数。",
+          "example": "250毫米=0.25米。"
+        }
+      ],
+      "practice": "将500毫米换算成米，并用反向乘法核对。",
+      "takeaways": [
+        "毫米转米除以1000。"
+      ],
+      "source_ids": [
+        "unit"
+      ],
+      "questions": [
+        {
+          "id": "q1",
+          "prompt": "500毫米等于多少米？",
+          "options": [
+            "0.5米",
+            "5米"
+          ],
+          "correct_index": 0,
+          "explanations": [
+            "500除以1000等于0.5。",
+            "比正确值大10倍。"
+          ]
+        }
+      ]
+    }
+  ]
+}

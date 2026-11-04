@@ -1,0 +1,22 @@
+{
+  "plan_sha256": "e9b276943b61c4e89380081daa4dc23681ecd4ed7001a1dda344c5e9d168b42e",
+  "goals": [
+    {
+      "id": "unit-conversion",
+      "description": "独立完成毫米到米的换算",
+      "taught_in": [
+        "l1"
+      ],
+      "practiced_in": [
+        "l1"
+      ],
+      "assessed_by": [
+        {
+          "lesson_id": "l1",
+          "question_id": "q1"
+        }
+      ],
+      "reviewed_in": []
+    }
+  ]
+}

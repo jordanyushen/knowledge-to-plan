@@ -1,0 +1,78 @@
+{
+  "schema_version": 1,
+  "constraints": {
+    "days": 1,
+    "daily_minutes": 10
+  },
+  "original_goal": "独立完成毫米到米的换算",
+  "selected_goal": "独立完成毫米到米的换算",
+  "background": "会基本除法",
+  "prerequisites": [],
+  "prerequisite_basis": "用户会基本除法，未对本合成工具测试开展学习者诊断。",
+  "scope": {
+    "mode": "full",
+    "excluded": []
+  },
+  "buffer_percent": 0,
+  "buffer_reason": "仅测试小型工具路径；不报告为已经验证的学习时间。",
+  "goals": [
+    {
+      "id": "unit-conversion",
+      "outcome": "独立完成毫米到米的换算",
+      "basis": "固定单位关系和单次换算任务；合成测试假设，非教学效果证据。",
+      "source_ids": [
+        "unit"
+      ],
+      "tasks": [
+        {
+          "kind": "learn",
+          "description": "learn任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        },
+        {
+          "kind": "example",
+          "description": "example任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        },
+        {
+          "kind": "practice",
+          "description": "practice任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        },
+        {
+          "kind": "feedback",
+          "description": "feedback任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        },
+        {
+          "kind": "review",
+          "description": "review任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        },
+        {
+          "kind": "quiz",
+          "description": "quiz任务",
+          "count": 1,
+          "minutes_low": 1,
+          "minutes_high": 1,
+          "basis": "工具回归合成的分钟数。"
+        }
+      ]
+    }
+  ]
+}

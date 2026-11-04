@@ -1,0 +1,112 @@
+{
+  "request": "我只会基本代数，想21天每天30分钟掌握完整微积分；先判断能不能装下，别改我的天数时间，也别写入日历或云盘。",
+  "command": [
+    "python3",
+    "knowledge-to-plan/scripts/budget_evidence.py",
+    "--estimate",
+    "evals/forward-budget/estimate.raw.json",
+    "--output",
+    "<new-temporary-directory>/budget.json",
+    "--expected-days",
+    "21",
+    "--expected-daily-minutes",
+    "30"
+  ],
+  "exit_code": 0,
+  "no_lesson_authored": true,
+  "no_calendar_or_cloud_actions": true,
+  "budget": {
+    "status": "insufficient",
+    "estimated_minutes": {
+      "low": 3920.0,
+      "high": 6664.0
+    },
+    "plan_sha256": null,
+    "evidence_truth_verified": false
+  },
+  "assessment": {
+    "current_plan": {
+      "days": 21,
+      "daily_minutes": 30,
+      "buffer_percent": 15.0
+    },
+    "available_hours": 10.5,
+    "usable_hours": 8.925,
+    "estimate_range": {
+      "low": 65.33333333333333,
+      "high": 111.06666666666666,
+      "unit": "hours"
+    },
+    "status": "insufficient",
+    "recommended_total_days_range": {
+      "low": 154,
+      "high": 262,
+      "fixed_daily_minutes": 30
+    },
+    "recommended_daily_minutes_range": {
+      "low": 220,
+      "high": 374,
+      "fixed_total_days": 21,
+      "low_within_24_hours": true,
+      "high_within_24_hours": true,
+      "feasibility_note": "Arithmetic range fits within 24 hours; still check the learner's actual availability and workload."
+    },
+    "recommendation_rules": {
+      "rounding": "up to the next whole unit, minimum 1",
+      "buffer_percent": 15.0,
+      "automatic_plan_changes": false
+    },
+    "candidate_options": [
+      {
+        "option": "extend_duration",
+        "description": "Keep scope and daily minutes; consider the recommended total days range."
+      },
+      {
+        "option": "increase_daily_time",
+        "description": "Keep scope and total days; consider the recommended daily minutes range.",
+        "possible_within_24_hours": true
+      },
+      {
+        "option": "reduce_scope",
+        "description": "Define a smaller subset, then supply a new grounded estimate for it."
+      },
+      {
+        "option": "core_first",
+        "description": "Prioritize essential concepts and practice; estimate remaining material as a separate phase."
+      }
+    ]
+  },
+  "initial_skill_sha256": "c2d9d1a424d2180a175d52f2ee25bcd3fc67e4c0d57f915c77e9d51858f42908",
+  "current_files_sha256": {
+    "knowledge-to-plan/SKILL.md": "9f7151e3c2ff2887a87a682e82e1a18b146e03e96af6d224f6d1900be9c492f4",
+    "knowledge-to-plan/references/budget-estimation.md": "23763ed4ce973038ddf13d85b90abf71c7dd433f37498f66647d4591209fd969",
+    "knowledge-to-plan/scripts/budget_evidence.py": "9892a11855378d94d0b5b3225cd550d9aeb7feb4a611f8b17c8826a847459c34",
+    "knowledge-to-plan/scripts/build_course.py": "c7579ed1b88c5f0661a2cd6015b9ba42e55013e7ce7718c89c85372efe8b07d5",
+    "knowledge-to-plan/scripts/merge_plan.py": "9aec54e47c3060407d01756e68c5596d7f35bac5ebe4b7ec8ebfda896001d65d",
+    "knowledge-to-plan/scripts/lint_pedagogy.py": "8697562fe8942ed159a74749afaec06a9d451eb9a7c64dc4e3bc2a04d000c834"
+  },
+  "limitations": [
+    "The task-time intervals are this author's unmeasured assumptions, not a scientific lower bound or measured learner performance.",
+    "Primary sources were read only for curriculum scope and prerequisite discussion; no full source pages are redistributed.",
+    "Original SKILL read during early in-progress state was hash-recorded but not snapshotted. Current docs were read again after update.",
+    "No real calculus course, learner trial, calendar events or cloud files were generated. Synthetic tool probes are separate from the user task.",
+    "Semantic teaching coverage remains a manual review requirement; a thin authored lesson can pass mechanical checks but is no longer called semantically complete."
+  ],
+  "merge_probe": {
+    "lessons": 12,
+    "batches": [
+      5,
+      5,
+      2
+    ],
+    "merged": true,
+    "budget_verified": false,
+    "facts_verified": false,
+    "lint_passed": true,
+    "lint_issues": [
+      "goal_map_missing"
+    ],
+    "missing_batch_rejected": "011-012.json存在缺课或范围重叠；此处应从第6课开始",
+    "fixture_type": "synthetic tool regression, not calculus teaching content"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "date": "2026-11-05",
+  "browser": "Existing signed-in desktop Chrome through supported cua_repl extension",
+  "transport": "HTTP localhost; no file URL or subprocess browser launch",
+  "fixture": "evals/long-course",
+  "fixture_type": "Synthetic bounded quadratic-calculus evaluation with explicitly declared scope/background; not a silent replacement for the original full-calculus user request.",
+  "plan_sha256": "478386dafb5cc8e73df24f70928b7e0cc035bca8c4a84bb90c32f28cae7de5c3",
+  "html_sha256": "20bebeab7a81ce585eec5d1323fbbce4f035e13aa2b09b44c1ba283dde866f34",
+  "source_files_sha256": {
+    "course.json": "394f7792beb03d3ee6b7d7f5760c874ab38f4593bc3d0c286624c07abb6e5256",
+    "estimate.json": "26732b826171107a420d372d011e9286ca463648ab22798c39bd95f6b6228239",
+    "budget.json": "55cbe8e9e3f3ab2343da067f936fb2655b476174a36d950d509fe3817bcc2109",
+    "goal-map.json": "4332799e1c236141f99598d11e07635ed9e1574ee39dd39b4fe0f93f4f7023f2",
+    "review.json": "4519517d72d3d34b37942829d92fcb970f9a2711f9114bea9527793cc34f9d3f"
+  },
+  "build_entrypoint": "build_course.py, expected-days=21, expected-daily-minutes=30, review.json supplied",
+  "delivery_status": "generated_pending_content_review",
+  "content_review_status": "findings_recorded",
+  "facts_verified": false,
+  "viewports": [
+    {
+      "width": 1440,
+      "height": 1000,
+      "type": "desktop viewport"
+    },
+    {
+      "width": 390,
+      "height": 1000,
+      "type": "narrow viewport in desktop Chrome, not a physical phone"
+    }
+  ],
+  "navigation": {
+    "desktop_and_mobile_days": [
+      5,
+      6,
+      10,
+      11,
+      20,
+      21
+    ],
+    "tested_boundaries": [
+      [
+        5,
+        6
+      ],
+      [
+        10,
+        11
+      ],
+      [
+        20,
+        21
+      ]
+    ],
+    "heading_hash_and_current_link_matched": true,
+    "page_horizontal_overflow": false
+  },
+  "mathml": [
+    {
+      "day": 2,
+      "accessible_expression": "m = [f(b)−f(a)] ÷ (b−a)",
+      "desktop_and_mobile_widths": [
+        786,
+        264
+      ],
+      "fallback_warnings": 0,
+      "visual_screenshot_saved": true
+    },
+    {
+      "day": 14,
+      "accessible_expression": "F(x) = x³/3",
+      "desktop_and_mobile_widths": [
+        786,
+        264
+      ],
+      "fallback_warnings": 0,
+      "visual_screenshot_saved": false,
+      "scope": "DOM render/geometry check only"
+    }
+  ],
+  "svg": [
+    {
+      "day": 2,
+      "decoded": true,
+      "mobile_container_width": 274,
+      "mobile_content_width": 480,
+      "observed_horizontal_scroll_left": 206
+    },
+    {
+      "day": 16,
+      "decoded": true,
+      "mobile_container_width": 274,
+      "mobile_content_width": 480
+    }
+  ],
+  "console_warnings_or_errors": [],
+  "print": {
+    "verified": false,
+    "reason": "Supported tab keyboard command did not open print preview. Native Chrome inspection selected an unrelated user-owned report window, so no print action was taken there."
+  },
+  "screenshots": [
+    {
+      "path": "docs/screenshots/long-course-day02-desktop.jpg",
+      "sha256": "53b9d1dd3b31dbd491bc464b91a5f90015ae4b724450e8cfe9370c8964f1c040",
+      "bytes": 203423
+    },
+    {
+      "path": "docs/screenshots/long-course-day02-mobile.jpg",
+      "sha256": "4a989f546a94a21484142b36fd015e4d0822e4150fafdf4cc57ffd69aef7ebdc",
+      "bytes": 125664
+    },
+    {
+      "path": "docs/screenshots/long-course-day16-desktop.jpg",
+      "sha256": "49d88c32544084aa21640c38f48f89c2665988c6b2db6b20dc223c849e9258d9",
+      "bytes": 177602
+    },
+    {
+      "path": "docs/screenshots/long-course-day16-mobile.jpg",
+      "sha256": "497d6dc62afddf2d0ee809ca543aa13a43b3db5f68f51b5b4a5cbbc6ef78dc3f",
+      "bytes": 108950
+    }
+  ],
+  "limitations": [
+    "No full21lesson pedagogical browser review.",
+    "No complete quiz/backup flow repeated on this fixture; those flows were separately checked on the isolated2lesson fixture.",
+    "No file URL, physical phone, Safari or new Linux CI run in this local browser pass.",
+    "Browser rendering does not verify teaching facts, source correctness, novice completion time or learning outcomes."
+  ],
+  "cleanup": {
+    "temporary_viewport_reset": true,
+    "isolated_http_server_stopped": true
+  },
+  "network_note": "Temporary static server returned404 for /favicon.ico. No claim is made that every HTTP request succeeded; available CUA warn/error log query returned an empty array."
+}
